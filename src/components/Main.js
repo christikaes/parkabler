@@ -3,16 +3,16 @@ require('normalize.css/normalize.css');
 import React from 'react';
 import styles from './Main.scss';
 
-// let yeomanImage = require('../images/yeoman.png');
-import logo from '~/images/yeoman.png';
+import logo from '~/assets/logo.png';
+import Map from '~/components/Map/Map.js';
+import Splash from '~/components/Splash/Splash.js';
 
 class AppComponent extends React.Component {
   render() {
     return (
-      <div className="index">
-        <div className={styles.test}>TEST</div>
-        <img src={logo} alt="Yeoman Generator" />
-        <div className="notice">Please edit <code>src/components/Main.js</code> to get started!</div>
+      <div className={styles.app}>
+        <Splash />
+        <Map />
       </div>
     );
   }
