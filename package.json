@@ -73,6 +73,7 @@
     "normalize.css": "^4.0.0",
     "react": "^0.14.0",
     "react-dom": "^0.14.0",
+    "react-google-maps": "^4.9.1",
     "react-tap-event-plugin": "^0.2.2"
   }
 }
