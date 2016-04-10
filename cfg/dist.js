@@ -25,7 +25,7 @@ let config = Object.assign({}, baseConfig, {
     new webpack.optimize.OccurenceOrderPlugin(),
     new webpack.optimize.AggressiveMergingPlugin(),
     new webpack.NoErrorsPlugin()
-  ],
+  ].concat(defaultSettings.getDefaultPlugins()),
   module: defaultSettings.getDefaultModules()
 });
 

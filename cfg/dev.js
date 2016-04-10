@@ -22,7 +22,7 @@ let config = Object.assign({}, baseConfig, {
     new BowerWebpackPlugin({
       searchResolveModulesDirectories: false
     })
-  ],
+  ].concat(defaultSettings.getDefaultPlugins()),
   module: defaultSettings.getDefaultModules()
 });
 

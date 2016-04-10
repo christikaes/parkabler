@@ -1,5 +1,6 @@
 'use strict';
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const srcPath = path.join(__dirname, '/../src');
 const dfltPort = 8000;
 function getDefaultModules() {
@@ -20,7 +21,7 @@ function getDefaultModules() {
       },
       {
         test: /\.scss/,
-        loader: 'style-loader!css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]'
+        loader: ExtractTextPlugin.extract("style-loader", "css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]")
       },
       {
         test: /\.less/,
@@ -41,11 +42,19 @@ function getDefaultModules() {
     ]
   };
 }
+
+function getDefaultPlugins(){
+  return [
+    new ExtractTextPlugin('styles.css', { allChunks: true})
+  ]
+}
+
 module.exports = {
   srcPath: srcPath,
   publicPath: '/assets/',
   port: dfltPort,
   getDefaultModules: getDefaultModules,
+  getDefaultPlugins: getDefaultPlugins,
   postcss: function () {
     return [];
   }
