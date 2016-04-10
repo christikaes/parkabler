@@ -1,8 +1,8 @@
-import { default as React, Component } from 'react';
-import { default as update } from 'react-addons-update';
+import React, { Component } from 'react';
+import update from 'react-addons-update';
 
-import { default as canUseDOM } from 'can-use-dom';
-import { default as _ } from 'lodash';
+import canUseDOM from 'can-use-dom';
+import _ from 'lodash';
 
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 import { triggerEvent } from 'react-google-maps/lib/utils';
@@ -91,7 +91,7 @@ export default class GettingStarted extends Component {
             {...this.props}
             style={{
               height: '300px',
-              width: '300px'
+              width: '100%'
             }}
           />
         }
