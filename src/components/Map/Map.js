@@ -1,11 +1,11 @@
-import { default as React, Component } from "react";
-import { default as update } from "react-addons-update";
+import { default as React, Component } from 'react';
+import { default as update } from 'react-addons-update';
 
-import { default as canUseDOM } from "can-use-dom";
-import { default as _ } from "lodash";
+import { default as canUseDOM } from 'can-use-dom';
+import { default as _ } from 'lodash';
 
-import { GoogleMapLoader, GoogleMap, Marker } from "react-google-maps";
-import { triggerEvent } from "react-google-maps/lib/utils";
+import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
+import { triggerEvent } from 'react-google-maps/lib/utils';
 
 /*
  * This is the modify version of:
@@ -23,11 +23,11 @@ export default class GettingStarted extends Component {
       markers: [{
         position: {
           lat: 25.0112183,
-          lng: 121.52067570000001,
+          lng: 121.52067570000001
         },
-        key: `Taiwan`,
-        defaultAnimation: 2,
-      }],
+        key: 'Taiwan',
+        defaultAnimation: 2
+      }]
     }
   }
 
@@ -35,19 +35,19 @@ export default class GettingStarted extends Component {
     if (!canUseDOM) {
       return;
     }
-    window.addEventListener(`resize`, this.handleWindowResize);
+    window.addEventListener('resize', this.handleWindowResize);
   }
 
   componentWillUnmount() {
     if (!canUseDOM) {
       return;
     }
-    window.removeEventListener(`resize`, this.handleWindowResize);
+    window.removeEventListener('resize', this.handleWindowResize);
   }
 
   handleWindowResize() {
-    console.log(`handleWindowResize`, this._googleMapComponent);
-    triggerEvent(this._googleMapComponent, `resize`);
+    console.log('handleWindowResize', this._googleMapComponent);
+    triggerEvent(this._googleMapComponent, 'resize');
   }
 
   /*
@@ -61,9 +61,9 @@ export default class GettingStarted extends Component {
         {
           position: event.latLng,
           defaultAnimation: 2,
-          key: Date.now(), // Add a key property for: http://fb.me/react-warning-keys
-        },
-      ],
+          key: Date.now() // Add a key property for: http://fb.me/react-warning-keys
+        }
+      ]
     });
     this.setState({ markers });
   }
@@ -77,8 +77,8 @@ export default class GettingStarted extends Component {
     let { markers } = this.state;
     markers = update(markers, {
       $splice: [
-        [index, 1],
-      ],
+        [index, 1]
+      ]
     });
     this.setState({ markers });
   }
@@ -90,8 +90,8 @@ export default class GettingStarted extends Component {
           <div
             {...this.props}
             style={{
-              height: "300px",
-              width: "300px"
+              height: '300px',
+              width: '300px'
             }}
           />
         }
