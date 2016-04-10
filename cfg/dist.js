@@ -2,7 +2,6 @@
 
 let path = require('path');
 let webpack = require('webpack');
-
 let baseConfig = require('./base');
 let defaultSettings = require('./defaults');
 
