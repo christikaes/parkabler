@@ -45,7 +45,7 @@ function getDefaultModules() {
 
 function getDefaultPlugins(){
   return [
-    new ExtractTextPlugin('styles.css', { allChunks: true})
+    new ExtractTextPlugin('app.css', { allChunks: true})
   ]
 }
 
