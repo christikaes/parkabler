@@ -7,6 +7,9 @@ import _ from 'lodash';
 import { GoogleMapLoader, GoogleMap, Marker } from 'react-google-maps';
 import { triggerEvent } from 'react-google-maps/lib/utils';
 
+var Rebase = require('re-base');
+var base = Rebase.createClass('https://parkable.firebaseio.com');
+
 /*
  * This is the modify version of:
  * https://developers.google.com/maps/documentation/javascript/examples/event-arguments
@@ -32,6 +35,13 @@ export default class GettingStarted extends Component {
   }
 
   componentDidMount() {
+
+    base.syncState('markers', {
+      context: this,
+      state: 'markers',
+      asArray: true
+    });
+
     if (!canUseDOM) {
       return;
     }
@@ -59,7 +69,7 @@ export default class GettingStarted extends Component {
     markers = update(markers, {
       $push: [
         {
-          position: event.latLng,
+          position: { lat: event.latLng.lat(), lng: event.latLng.lng()},
           defaultAnimation: 2,
           key: Date.now() // Add a key property for: http://fb.me/react-warning-keys
         }
