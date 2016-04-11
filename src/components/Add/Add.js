@@ -3,7 +3,7 @@ import {FontIcon, FlatButton, RaisedButton, Dialog, TextField, RadioButton, Radi
 
 // import styles from './Add.scss'
 
-export default class DialogExampleSimple extends React.Component {
+export default class Add extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
