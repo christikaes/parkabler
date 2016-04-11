@@ -11,6 +11,7 @@ import {Paper} from 'material-ui';
 import ThemeManager from 'material-ui/lib/styles/theme-manager';
 import ParkableTheme from '~/styles/ParkableTheme';
 
+import AppBar from '~/components/AppBar/AppBar.js';
 import Map from '~/components/Map/Map.js';
 import Splash from '~/components/Splash/Splash.js';
 import Add from '~/components/Add/Add.js';
@@ -28,6 +29,7 @@ class AppComponent extends React.Component {
   render() {
     return (
       <Paper className={styles.app}>
+        <AppBar />
         <Splash />
         <Map />
         <Add />

@@ -40,7 +40,7 @@ export default class DialogExampleSimple extends React.Component {
           label="Add Spot"
           onTouchTap={this.handleOpen.bind(this)}
           primary={true}
-          icon={<FontIcon className="material-icons">add_circle</FontIcon>}
+          icon={<FontIcon className="material-icons">add_location</FontIcon>}
         />
         <Dialog
           title="Add Spot"

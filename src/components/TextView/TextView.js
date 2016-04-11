@@ -10,23 +10,28 @@ export default class TextView extends React.Component {
       spaces:[
         {
           numSpaces: 2,
-          dist: 200
+          dist: 200,
+          key: 0
         },
         {
           numSpaces: 2,
-          dist: 200
+          dist: 200,
+          key: 1
         },
         {
           numSpaces: 2,
-          dist: 200
+          dist: 200,
+          key: 2
         },
         {
           numSpaces: 2,
-          dist: 200
+          dist: 200,
+          key: 3
         },
         {
           numSpaces: 2,
-          dist: 200
+          dist: 200,
+          key: 4
         }
       ]
     };
@@ -39,7 +44,7 @@ export default class TextView extends React.Component {
           {this.state.spaces.map(function(space){
            return (<ListItem
              primaryText={"There are " + space.numSpaces + " spaces " + space.dist + " feet from the desitnation."}
-             rightIcon={<FontIcon className="material-icons">navigation</FontIcon>}
+             rightIcon={<FontIcon className="material-icons">directions</FontIcon>}
            />);
           })}
         </List>
