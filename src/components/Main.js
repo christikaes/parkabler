@@ -1,4 +1,4 @@
-require('normalize.css/normalize.css');
+// require('normalize.css/normalize.css');
 
 // Needed for Material-UI
 import injectTapEventPlugin from 'react-tap-event-plugin';
@@ -28,13 +28,13 @@ class AppComponent extends React.Component {
 
   render() {
     return (
-      <Paper className={styles.app}>
+      <div className={styles.app}>
         <AppBar />
         <Splash />
         <Map />
         <Add />
         <TextView />
-      </Paper>
+      </div>
     );
   }
 }

@@ -1,8 +1,5 @@
 import React from 'react';
 import {AppBar, FontIcon, LeftNav, MenuItem} from 'material-ui';
-import IconButton from 'material-ui/lib/icon-button';
-import FlatButton from 'material-ui/lib/flat-button';
-import _ from 'lodash'
 
 function handleTouchTap() {
   console.log('onTouchTap triggered on the title component');
