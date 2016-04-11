@@ -100,7 +100,7 @@ export default class GettingStarted extends Component {
           <div
             {...this.props}
             style={{
-              height: '300px',
+              height: '500px',
               width: '100%'
             }}
           />
