@@ -36,7 +36,7 @@ export default class GettingStarted extends Component {
 
   componentDidMount() {
 
-    base.syncState('markers', {
+    base.syncState('dbmarkers', {
       context: this,
       state: 'markers',
       asArray: true
