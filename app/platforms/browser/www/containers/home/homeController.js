@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngMaterial', 'ngMap']);
+var app = angular.module('App', ['ngMaterial', 'ngMap', 'header', 'add']);
 app.controller('MyController', function(NgMap) {
   NgMap.getMap().then(function(map) {
 
