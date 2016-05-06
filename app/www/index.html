@@ -27,7 +27,7 @@
     <meta name="msapplication-tap-highlight" content="no" />
     <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
     <!-- This is a wide open CSP declaration. To lock this down for production, see below. -->
-    <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <!-- <meta http-equiv="Content-Security-Policy" content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" /> -->
     <!-- Good default declaration:
     * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
     * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
@@ -39,22 +39,59 @@
     <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: 'unsafe-inline' https://ssl.gstatic.com; style-src 'self' 'unsafe-inline'; media-src *" /> -->
 
     <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <!-- Angular Material style sheet -->
+    <link rel="stylesheet" type="text/css" href="css/angular-material.min.css">
     <title>Hello World</title>
 </head>
 
-<body>
-    <div class="app">
-        <h1>PhoneGap</h1>
-        <div id="deviceready" class="blink">
-            <p class="event listening">Connecting to Device</p>
-            <p class="event received">Device is Ready</p>
-        </div>
-    </div>
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-    <script type="text/javascript">
-        app.initialize();
-    </script>
-</body>
+<body ng-app="BlankApp" ng-cloak>
+  <!--
+    Your HTML content here
+  -->
 
+  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+     <md-button class="md-raised">Button</md-button>
+     <md-button class="md-raised md-primary">Primary</md-button>
+     <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
+     <md-button class="md-raised md-warn">Warn</md-button>
+     <div class="label">Raised</div>
+   </section>
+
+   <map zoom="11" center="[41.875696,-87.624207]"></map>
+
+  <!-- Angular Material requires Angular.js Libraries -->
+  <script src="js/angular.min.js"></script>
+  <script src="js/angular-animate.min.js"></script>
+  <script src="js/angular-aria.min.js"></script>
+  <script src="js/angular-messages.min.js"></script>
+
+  <!-- Angular Material Library -->
+  <script src="js/angular-material.min.js"></script>
+
+  <!-- Google Map -->
+  <script src="js/ng-map.min.js"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHu3f7MyNDM0sDGW1p81GQFp2c7fkVWOw&libraries=visualization"></script>
+
+  <!-- Your application bootstrap  -->
+  <script type="text/javascript">
+    /**
+     * You must include the dependency on 'ngMaterial'
+     */
+    var app = angular.module('BlankApp', ['ngMaterial', 'ngMap']);
+    app.controller('MyController', function(NgMap) {
+      NgMap.getMap().then(function(map) {
+
+        console.log(map.getCenter());
+        console.log('markers', map.markers);
+        console.log('shapes', map.shapes);
+      });
+    });
+  </script>
+  <!-- <script type="text/javascript" src="cordova.js"></script> -->
+  <script type="text/javascript" src="js/index.js"></script>
+  <script type="text/javascript">
+      app.initialize();
+  </script>
+
+</body>
 </html>
