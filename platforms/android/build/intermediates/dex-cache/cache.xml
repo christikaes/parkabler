@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/christi/Documents/parkable/app/platforms/android/build/intermediates/exploded-aar/android/CordovaLib/unspecified/debug/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="65f29f7bc558366de8fb52bd42fc53308d1a3ea5">
+        <dex dex="/home/christi/Documents/parkable/app/platforms/android/build/intermediates/pre-dexed/debug/CordovaLib-unspecified-debug_f1db2890a6556c2d050b9c27a8efdb19650c8e2d.jar" />
+    </item>
+
+</items>

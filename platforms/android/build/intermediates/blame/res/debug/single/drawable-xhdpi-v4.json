@@ -1,0 +1,18 @@
+[
+    {
+        "merged": "/home/christi/Documents/parkable/app/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_remove.png",
+        "source": "/home/christi/Documents/parkable/app/platforms/android/res/drawable-xhdpi/ic_action_remove.png"
+    },
+    {
+        "merged": "/home/christi/Documents/parkable/app/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_previous_item.png",
+        "source": "/home/christi/Documents/parkable/app/platforms/android/res/drawable-xhdpi/ic_action_previous_item.png"
+    },
+    {
+        "merged": "/home/christi/Documents/parkable/app/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/icon.png",
+        "source": "/home/christi/Documents/parkable/app/platforms/android/res/drawable-xhdpi/icon.png"
+    },
+    {
+        "merged": "/home/christi/Documents/parkable/app/platforms/android/build/intermediates/res/merged/debug/drawable-xhdpi-v4/ic_action_next_item.png",
+        "source": "/home/christi/Documents/parkable/app/platforms/android/res/drawable-xhdpi/ic_action_next_item.png"
+    }
+]
