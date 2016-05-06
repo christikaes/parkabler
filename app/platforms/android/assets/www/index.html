@@ -45,19 +45,7 @@
 </head>
 
 <body ng-app="BlankApp" ng-cloak>
-  <!--
-    Your HTML content here
-  -->
-
-  <section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
-     <md-button class="md-raised">Button</md-button>
-     <md-button class="md-raised md-primary">Primary</md-button>
-     <md-button ng-disabled="true" class="md-raised md-primary">Disabled</md-button>
-     <md-button class="md-raised md-warn">Warn</md-button>
-     <div class="label">Raised</div>
-   </section>
-
-   <map zoom="11" center="[41.875696,-87.624207]"></map>
+  <home-view></home-view>
 
   <!-- Angular Material requires Angular.js Libraries -->
   <script src="js/angular.min.js"></script>
@@ -72,26 +60,8 @@
   <script src="js/ng-map.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHu3f7MyNDM0sDGW1p81GQFp2c7fkVWOw&libraries=visualization"></script>
 
-  <!-- Your application bootstrap  -->
-  <script type="text/javascript">
-    /**
-     * You must include the dependency on 'ngMaterial'
-     */
-    var app = angular.module('BlankApp', ['ngMaterial', 'ngMap']);
-    app.controller('MyController', function(NgMap) {
-      NgMap.getMap().then(function(map) {
-
-        console.log(map.getCenter());
-        console.log('markers', map.markers);
-        console.log('shapes', map.shapes);
-      });
-    });
-  </script>
   <!-- <script type="text/javascript" src="cordova.js"></script> -->
-  <script type="text/javascript" src="js/index.js"></script>
-  <script type="text/javascript">
-      app.initialize();
-  </script>
+  <script type="text/javascript" src="containers/home/homeController.js"></script>
 
 </body>
 </html>
