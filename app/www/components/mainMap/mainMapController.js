@@ -7,21 +7,15 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
   this.markers = $firebaseArray(ref);
   this.test = this.markers.length;
 
-  // NgMap.getMap().then(function(map) {
-  //   console.log(map.getCenter());
-  //   console.log('markers', map.markers);
-  //   console.log('shapes', map.shapes);
-  // });
-
   var vm = this;
    vm.dynMarkers = [];
    NgMap.getMap().then(function(map) {
      for (var i=0; i<vm.markers.length; i++) {
        console.log(vm.markers[i])
        var latLng = new google.maps.LatLng(vm.markers[i].lat, vm.markers[i].lng);
-       vm.dynMarkers.push(new google.maps.Marker({position:latLng}));
+      //  vm.dynMarkers.push(new google.maps.Marker({position:latLng}));
      }
-     vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
+    //  vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
    });
 });
 
