@@ -1,12 +1,5 @@
-var app = angular.module('App', ['ngMaterial', 'ngMap', 'header', 'add']);
-app.controller('MyController', function(NgMap) {
-  NgMap.getMap().then(function(map) {
+var app = angular.module('App', ['ngMaterial', 'ngMap', 'header', 'add', 'mainMap']);
 
-    console.log(map.getCenter());
-    console.log('markers', map.markers);
-    console.log('shapes', map.shapes);
-  });
-});
 app.directive('homeView', function(){
   return {
     restrict: 'E',
