@@ -13,6 +13,7 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
   this.markers = $firebaseArray(ref);
   this.test = this.markers.length;
 
+  // TODO: How do deal with this? https://johnpapa.net/angularjss-controller-as-and-the-vm-variable/
   var vm = this;
 
   // Markers

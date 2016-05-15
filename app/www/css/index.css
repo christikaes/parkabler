@@ -118,3 +118,18 @@ h1 {
   height: 300px;
   height: 100%;
 }
+
+/*TODO: Clean up this dialog css:::*/
+.dialogdemoBasicUsage #popupContainer {
+  position: relative; }
+.dialogdemoBasicUsage .footer {
+  width: 100%;
+  text-align: center;
+  margin-left: 20px; }
+.dialogdemoBasicUsage .footer, .dialogdemoBasicUsage .footer > code {
+  font-size: 0.8em;
+  margin-top: 50px; }
+.dialogdemoBasicUsage button {
+  width: 200px; }
+.dialogdemoBasicUsage div#status {
+  color: #c60008; }
