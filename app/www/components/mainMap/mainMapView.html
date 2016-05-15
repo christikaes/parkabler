@@ -1,5 +1,10 @@
-<div ng-controller="mainMapController as vm">
-  <ng-map zoom="13" center="[42.3601,-71.0589]">
+<div ng-controller="mainMapController as vm" >
+  <ng-map zoom="13" center="[42.3601,-71.0589]" class="map">
+    <md-input-container>
+      <input places-auto-complete size=80
+        component-restrictions="{country:'us'}"
+        on-place-changed="vm.placeChanged()" />
+    </md-input-container>
     <marker
       ng-repeat="marker in mainmap.markers"
       position="{{marker.lat}}, {{marker.lng}}"
