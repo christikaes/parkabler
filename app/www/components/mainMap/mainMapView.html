@@ -1,10 +1,7 @@
-<map zoom="11" center="[42.3601,-71.0589]">
+<map zoom="13" center="[42.3601,-71.0589]">
   <marker
-    ng-repeat="marker in map1.markers"
-    position="{{marker.position.lat}} {{marker.position.lng}}"
-    title="{{marker.title}}">
+    ng-repeat="marker in mainmap.markers"
+    position="{{marker.lat}}, {{marker.lng}}"
+    title="{{marker.title}} ">
   </marker>
 </map>
-<div class="test">
-  <div ng-repeat="marker in map1.markers">TEST!</div>
-</div>

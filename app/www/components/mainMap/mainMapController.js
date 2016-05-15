@@ -2,9 +2,10 @@ var mainMap = angular.module('mainMap', ['ngMaterial','ngMap', 'firebase']);
 
 mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
   console.log("CONTROLLER!!!")
-  var ref = new Firebase("https://parkable.firebaseio.com/dbmarkers");
+  var ref = new Firebase("https://parkable.firebaseio.com/markers");
 
   this.markers = $firebaseArray(ref);
+  this.test = this.markers.length;
 
   NgMap.getMap().then(function(map) {
     console.log(map.getCenter());
@@ -18,7 +19,7 @@ mainMap.directive('mainMapView', function(){
     restrict: 'E',
     templateUrl: 'components/mainMap/mainMapView.html',
     controller: 'mainMapController',
-    controllerAs: 'map1'
+    controllerAs: 'mainmap'
   };
 });
 
