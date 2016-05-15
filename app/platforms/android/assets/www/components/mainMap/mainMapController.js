@@ -22,7 +22,7 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
    NgMap.getMap().then(function(map) {
      vm.map = map;
      for (var i=0; i<vm.markers.length; i++) {
-       console.log(vm.markers[i])
+      //  console.log(vm.markers[i])
        var latLng = new google.maps.LatLng(vm.markers[i].lat, vm.markers[i].lng);
       //  vm.dynMarkers.push(new google.maps.Marker({position:latLng}));
      }
@@ -37,6 +37,20 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
       console.log('location', vm.place.geometry.location);
       vm.map.setCenter(vm.place.geometry.location);
     }
+    if(navigator.geolocation) {
+      console.log("GOOD")
+    }else {
+      console.log("BAD")
+    }
+
+    // Center to current position on load
+    navigator.geolocation.getCurrentPosition(function(r){
+        var latLng = new google.maps.LatLng(r.coords.latitude, r.coords.longitude);
+        vm.map.setCenter(latLng);
+    }, function(){
+      console.log("error")
+    });
+
    });
 });
 
