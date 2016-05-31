@@ -1,0 +1,22 @@
+<md-bottom-sheet ng-controller="AddViewSheetController as addInfo"  class="md-list md-has-header" ng-cloak>
+  <!-- <md-subheader>Add a Spot</md-subheader> -->
+  <md-input-container class="md-block" flex-gt-sm>
+    <label>Description</label>
+    <textarea ng-model="addInfo.description" rows="3" md-select-on-focus></textarea>
+  </md-input-container>
+  <md-input-container>
+     <label>Number of Spots</label>
+     <md-select ng-model="addInfo.number">
+       <md-option value="1-2">1-2</md-option>
+       <md-option value="3-4">3-4</md-option>
+       <md-option value=">5">5 or more</md-option>
+     </md-select>
+   </md-input-container>
+  <md-radio-group ng-model="addInfo.type" layout="row">
+    <md-radio-button value="Residential">Residential</md-radio-button>
+    <md-radio-button value="Commercial"> Commercial </md-radio-button>
+    <md-radio-button value="Don't Know">Don't Know</md-radio-button>
+  </md-radio-group>
+  <md-button class="md-raised" ng-click="addInfo.print()">Cancel</md-button>
+  <md-button class="md-raised" ng-click="addInfo.print()">Submit</md-button>
+</md-bottom-sheet>
