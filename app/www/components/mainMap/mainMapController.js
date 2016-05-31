@@ -6,7 +6,7 @@
 
 var mainMap = angular.module('mainMap', ['ngMaterial','ngMap', 'firebase']);
 
-mainMap.controller('mainMapController', function(NgMap, $firebaseArray, $mdBottomSheet){
+mainMap.controller('mainMapController', ['$scope', 'NgMap', '$firebaseArray', '$mdBottomSheet' , function($scope, NgMap, $firebaseArray, $mdBottomSheet){
   console.log("CONTROLLER!!!")
   var ref = new Firebase("https://parkable.firebaseio.com/markers");
 
@@ -67,7 +67,15 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray, $mdBotto
        controller: 'NavigateViewSheetController'
      });
    }
-});
+
+   // Listen to changes in map center
+  $scope.$on('changeCenter', function(event, newCenter) {
+    console.log(newCenter)
+    vm.map.setCenter(newCenter)
+    console.log(vm.markers)
+    vm.markers = $firebaseArray(ref);
+  });
+}]);
 
 mainMap.controller('NavigateViewSheetController', function($mdBottomSheet){
   console.log("DEFINED")

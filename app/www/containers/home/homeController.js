@@ -1,4 +1,4 @@
-var app = angular.module('App', ['ngMaterial', 'ngMap', 'header', 'add', 'mainMap']);
+var app = angular.module('App', ['ngMaterial', 'ngMap', 'header', 'add', 'mainMap', 'places']);
 
 app.directive('homeView', function(){
   return {
