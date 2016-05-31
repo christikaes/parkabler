@@ -1,3 +1,28 @@
-<div ng-controller="addController as add">
+<!-- <div ng-controller="addController as add">
   <md-button flex="50" class="md-primary md-raised" ng-click="add.showAdd()">Add a Spot</md-button>
+</div> -->
+
+<div ng-controller="addController as add">
+  <md-fab-toolbar md-open="demo.isOpen" count="demo.count"
+                  md-direction="right"
+                  >
+    <md-fab-trigger class="align-with-text">
+      <md-button aria-label="menu" class="md-fab md-primary">
+        <md-icon md-font-library="material-icons">menu</md-icon>
+      </md-button>
+    </md-fab-trigger>
+    <md-toolbar>
+      <md-fab-actions class="md-toolbar-tools">
+          <md-button class="md-raised" ng-click="add.showAdd()">
+            <md-icon md-font-library="material-icons">add</md-icon> Add Spot
+          </md-button>
+          <md-button class="md-raised" ng-click="add.showAdd()">
+            <md-icon md-font-library="material-icons">report</md-icon> File a Report
+          </md-button>
+          <md-button class="md-raised" ng-click="add.showAdd()">
+            <md-icon md-font-library="material-icons">info</md-icon> More Parking Info
+          </md-button>
+      </md-fab-actions>
+    </md-toolbar>
+  </md-fab-toolbar>
 </div>
