@@ -15,9 +15,10 @@ app.directive('addView', function(){
   };
 });
 
-app.controller('AddViewSheetController', function(){
+app.controller('AddViewSheetController', function($mdBottomSheet){
   this.type = "Residential"
   this.print = function(){
-    console.log(this)
+    console.log(this);
+    $mdBottomSheet.cancel();
   }
 });

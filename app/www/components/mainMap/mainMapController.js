@@ -6,12 +6,13 @@
 
 var mainMap = angular.module('mainMap', ['ngMaterial','ngMap', 'firebase']);
 
-mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
+mainMap.controller('mainMapController', function(NgMap, $firebaseArray, $mdBottomSheet){
   console.log("CONTROLLER!!!")
   var ref = new Firebase("https://parkable.firebaseio.com/markers");
 
   this.markers = $firebaseArray(ref);
   this.test = this.markers.length;
+
 
   // TODO: How do deal with this? https://johnpapa.net/angularjss-controller-as-and-the-vm-variable/
   var vm = this;
@@ -52,7 +53,33 @@ mainMap.controller('mainMapController', function(NgMap, $firebaseArray){
     });
 
    });
+
+   // TODO Move this logic...
+   // Show the navigation/report onMarkerClicked
+   this.onMarkerClicked = function(marker){
+     lat = marker.latLng.lat();
+     lng = marker.latLng.lng()
+     console.log(lat)
+     console.log(lng)
+
+     $mdBottomSheet.show({
+       templateUrl: 'components/mainMap/navigateViewSheet.html',
+       controller: 'NavigateViewSheetController'
+     });
+   }
 });
+
+mainMap.controller('NavigateViewSheetController', function($mdBottomSheet){
+  console.log("DEFINED")
+  this.cancel = function(){
+    console.log(this);
+    $mdBottomSheet.cancel();
+  }
+  this.navigate = function(){
+    $mdBottomSheet.cancel();
+    window.location = "maps:daddr=" + lat + "," + lng;
+  }
+})
 
 mainMap.directive('mainMapView', function(){
   return {
