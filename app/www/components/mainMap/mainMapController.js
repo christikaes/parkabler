@@ -25,9 +25,13 @@ mainMap.controller('mainMapController', ['$scope', 'NgMap', '$firebaseArray', '$
      for (var i=0; i<vm.markers.length; i++) {
       //  console.log(vm.markers[i])
        var latLng = new google.maps.LatLng(vm.markers[i].lat, vm.markers[i].lng);
-      //  vm.dynMarkers.push(new google.maps.Marker({position:latLng}));
+       var marker = new google.maps.Marker({position:latLng});
+       vm.dynMarkers.push(marker);
+          google.maps.event.addListener(marker, 'click', function() {
+            vm.onMarkerClicked({latLng: marker.position})
+          });
      }
-    //  vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
+     vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, {});
 
     // places
     // TODO: maybe write our own directive for this: http://stackoverflow.com/questions/30274617/google-maps-autocomplete-with-material-design

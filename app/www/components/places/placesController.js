@@ -9,8 +9,8 @@ app.controller('placesController', ['$scope', '$mdDialog', '$q', '$http', functi
   vm.geocoder = new google.maps.Geocoder();
 
   vm.search = search;
-  vm.searchText = "test"
-  vm.selectedItem = ""
+  // vm.searchText = "test"
+  // vm.selectedItem = ""
 
   function search(address) {
     if(!address) {
