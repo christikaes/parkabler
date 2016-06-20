@@ -17,5 +17,11 @@
   "bugs": {
     "url": "https://github.com/phonegap/phonegap-app-hello-world/issues"
   },
-  "homepage": "https://github.com/phonegap/phonegap-app-hello-world"
+  "homepage": "https://github.com/phonegap/phonegap-app-hello-world",
+  "scripts": {
+    "app": "rimraf ./www/* && cp -r ./dist/* ./www"
+  },
+  "dependencies": {
+    "rimraf": "^2.5.2"
+  }
 }
