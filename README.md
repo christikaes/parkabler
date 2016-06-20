@@ -1,3 +1,12 @@
+# Parkable app
+
+This is the PhoneGap app for Parkable
+
+After running `ng build -prod` in the master branch, switch to this branch.
+Then run `npm run app`.
+This will copy over the file in dist directory to the www folder for phonegap to consume.
+
+
 # Hello World PhoneGap Template [![bitHound Score][bithound-img]][bithound-url]
 
 A PhoneGap Hello World template
