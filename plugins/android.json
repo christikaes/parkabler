@@ -1,0 +1,76 @@
+{
+    "prepare_queue": {
+        "installed": [],
+        "uninstalled": []
+    },
+    "config_munge": {
+        "files": {}
+    },
+    "installed_plugins": {
+        "cordova-plugin-battery-status": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-camera": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-media-capture": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-contacts": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-device": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-device-motion": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-device-orientation": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-dialogs": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-file-transfer": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-geolocation": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-globalization": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-inappbrowser": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-media": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-vibration": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "app.parkable"
+        }
+    },
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "app.parkable"
+        },
+        "cordova-plugin-file": {
+            "PACKAGE_NAME": "app.parkable"
+        }
+    }
+}
