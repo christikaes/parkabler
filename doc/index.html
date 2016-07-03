@@ -1,0 +1,292 @@
+<!doctype html>
+<html class="default no-js">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>app</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="assets/css/main.css">
+	<script src="assets/js/modernizr.js"></script>
+</head>
+<body>
+<header>
+	<div class="tsd-page-toolbar">
+		<div class="container">
+			<div class="table-wrap">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+					<div class="field">
+						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
+						<input id="tsd-search-field" type="text" />
+					</div>
+					<ul class="results">
+						<li class="state loading">Preparing search index...</li>
+						<li class="state failure">The search index is not available</li>
+					</ul>
+					<a href="index.html" class="title">app</a>
+				</div>
+				<div class="table-cell" id="tsd-widgets">
+					<div id="tsd-filter">
+						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
+						<div class="tsd-filter-group">
+							<div class="tsd-select" id="tsd-filter-visibility">
+								<span class="tsd-select-label">All</span>
+								<ul class="tsd-select-list">
+									<li data-value="public">Public</li>
+									<li data-value="protected">Public/Protected</li>
+									<li data-value="private" class="selected">All</li>
+								</ul>
+							</div>
+							<input type="checkbox" id="tsd-filter-inherited" checked />
+							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
+							<input type="checkbox" id="tsd-filter-only-exported" />
+							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+						</div>
+					</div>
+					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="tsd-page-title">
+		<div class="container">
+			<ul class="tsd-breadcrumb">
+				<li>
+					<a href="globals.html">Globals</a>
+				</li>
+			</ul>
+			<h1> app</h1>
+		</div>
+	</div>
+</header>
+<div class="container container-main">
+	<div class="row">
+		<div class="col-8 col-content">
+			<div class="tsd-panel tsd-typography">
+				<h1 id="angular2-webpack">angular2-webpack</h1>
+				<p><a href="https://david-dm.org/preboot/angular2-webpack#info=dependencies"><img src="https://david-dm.org/preboot/angular2-webpack/status.svg" alt="Dependency Status"></a> <a href="https://david-dm.org/preboot/angular2-webpack#info=devDependencies"><img src="https://david-dm.org/preboot/angular2-webpack/dev-status.svg" alt="devDependency Status"></a></p>
+				<p><strong>Note: This guide is following the Angular&#39;s <a href="http://angular.io/styleguide">Style Guide</a> so I will be changing conventions here and there eventually. You are free to use your own conventions with this starter.</strong></p>
+				<p>A complete, yet simple, starter for Angular 2 using Webpack.</p>
+				<p>This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using <a href="http://webpack.github.io/">Webpack</a> for building our files and assisting with boilerplate. We&#39;re also using Protractor for our end-to-end story and Karma for our unit tests.</p>
+				<ul>
+					<li>Best practices in file and application organization for <a href="https://angular.io/">Angular 2</a>.</li>
+					<li>Ready to go build system using <a href="https://webpack.github.io/docs/">Webpack</a> for working with <a href="http://www.typescriptlang.org/">TypeScript</a>.</li>
+					<li>Testing Angular 2 code with <a href="http://jasmine.github.io/">Jasmine</a> and <a href="http://karma-runner.github.io/">Karma</a>.</li>
+					<li>Coverage with <a href="https://github.com/gotwarlost/istanbul">Istanbul</a></li>
+					<li>End-to-end Angular 2 code using <a href="https://angular.github.io/protractor/">Protractor</a>.</li>
+					<li>Stylesheets with <a href="http://sass-lang.com/">SASS</a> (not required, it supports regular css too).</li>
+					<li>Error reported with <a href="http://palantir.github.io/tslint/">TSLint</a> and <a href="https://github.com/mgechev/codelyzer">Codelyzer</a>.</li>
+					<li>Documentation with <a href="http://typedoc.io/">TypeDoc</a>.</li>
+				</ul>
+				<blockquote>
+					<p>Warning: Make sure you&#39;re using the latest version of Node.js and NPM</p>
+				</blockquote>
+				<p><a href="http://splintercode.github.io/is-angular-2-ready/">Is Angular 2 Ready Yet?</a></p>
+				<h3 id="quick-start">Quick start</h3>
+				<blockquote>
+					<p>Clone/Download the repo then edit <code>app.ts</code> inside <a href="/src/app/app.component.ts"><code>/src/app/app.component.ts</code></a></p>
+				</blockquote>
+				<pre><code class="lang-bash"><span class="hljs-comment"># clone our repo</span>
+$ git <span class="hljs-built_in">clone</span> https://github.com/preboot/angular2-webpack.git my-app
+
+<span class="hljs-comment"># change directory to your app</span>
+$ <span class="hljs-built_in">cd</span> my-app
+
+<span class="hljs-comment"># install the dependencies with npm</span>
+$ npm install
+
+<span class="hljs-comment"># start the server</span>
+$ npm start
+</code></pre>
+				<p>go to <a href="http://localhost:8080">http://localhost:8080</a> in your browser.</p>
+				<h1 id="table-of-contents">Table of Contents</h1>
+				<ul>
+					<li><a href="#getting-started">Getting Started</a><ul>
+							<li><a href="#dependencies">Dependencies</a></li>
+							<li><a href="#installing">Installing</a></li>
+							<li><a href="#running-the-app">Running the app</a></li>
+							<li><a href="#developing">Developing</a></li>
+							<li><a href="#testing">Testing</a></li>
+							<li><a href="#documentation">Documentation</a></li>
+						</ul>
+					</li>
+					<li><a href="#faq">Frequently asked questions</a></li>
+					<li><a href="#typescript">TypeScript</a></li>
+					<li><a href="#license">License</a></li>
+				</ul>
+				<h1 id="getting-started">Getting Started</h1>
+				<h2 id="dependencies">Dependencies</h2>
+				<p>What you need to run this app:</p>
+				<ul>
+					<li><code>node</code> and <code>npm</code> (Use <a href="https://github.com/creationix/nvm">NVM</a>)</li>
+					<li>Ensure you&#39;re running Node (<code>v5.x.x</code>+) and NPM (<code>3.x.x</code>+)</li>
+				</ul>
+				<h2 id="installing">Installing</h2>
+				<ul>
+					<li><code>fork</code> this repo</li>
+					<li><code>clone</code> your fork</li>
+					<li><code>npm install</code> to install all dependencies</li>
+				</ul>
+				<h2 id="running-the-app">Running the app</h2>
+				<p>After you have installed all dependencies you can now run the app with:</p>
+				<pre><code class="lang-bash">npm start
+</code></pre>
+				<p>It will start a local server using <code>webpack-dev-server</code> which will watch, build (in-memory), and reload for you. The port will be displayed to you as <code>http://localhost:8080</code>.</p>
+				<h2 id="developing">Developing</h2>
+				<h3 id="build-files">Build files</h3>
+				<ul>
+					<li>single run: <code>npm run build</code></li>
+					<li>build files and watch: <code>npm run watch</code></li>
+				</ul>
+				<h2 id="testing">Testing</h2>
+				<h4 id="1-unit-tests">1. Unit Tests</h4>
+				<ul>
+					<li>single run: <code>npm test</code></li>
+					<li>live mode (TDD style): <code>npm run test-watch</code></li>
+				</ul>
+				<h4 id="2-end-to-end-tests-aka-e2e-integration-">2. End-to-End Tests (aka. e2e, integration)</h4>
+				<ul>
+					<li>single run:<ul>
+							<li>in a tab, <em>if not already running!</em>: <code>npm start</code></li>
+							<li>in a new tab: <code>npm run webdriver-start</code></li>
+							<li>in another new tab: <code>npm run e2e</code></li>
+						</ul>
+					</li>
+					<li>interactive mode:<ul>
+							<li>instead of the last command above, you can run: <code>npm run e2e-live</code></li>
+							<li>when debugging or first writing test suites, you may find it helpful to try out Protractor commands without starting up the entire test suite. You can do this with the element explorer.</li>
+							<li>you can learn more about <a href="https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively">Protractor Interactive Mode here</a></li>
+						</ul>
+					</li>
+				</ul>
+				<h2 id="documentation">Documentation</h2>
+				<p>You can generate api docs (using <a href="http://typedoc.io/">TypeDoc</a>) for your code with the following:</p>
+				<pre><code class="lang-bash">npm run docs
+</code></pre>
+				<h1 id="faq">FAQ</h1>
+				<h4 id="do-i-need-to-add-script-link-tags-into-index-html-">Do I need to add script / link tags into index.html ?</h4>
+				<p>No, Webpack will add all the needed Javascript bundles as script tags and all the CSS files as link tags. The advantage is that you don&#39;t need to modify the index.html every time you build your solution to update the hashes.</p>
+				<h4 id="how-to-include-external-angular-2-libraries-">How to include external angular 2 libraries ?</h4>
+				<p>It&#39;s simple, just install the lib via npm and import it in your code when you need it. Don&#39;t forget that you need to configure some external libs in the <a href="https://github.com/preboot/angular2-webpack/blob/master/src/main.ts">bootstrap</a> of your application.</p>
+				<h3 id="how-to-include-external-css-files-such-as-bootstrap-css-">How to include external css files such as bootstrap.css ?</h3>
+				<p>Just install the lib and import the css files in <a href="https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts">vendor.ts</a>. For example this is how to do it with bootstrap:</p>
+				<pre><code class="lang-sh">npm install bootstrap@<span class="hljs-number">4.0</span>.<span class="hljs-number">0</span> --save
+</code></pre>
+				<p>And in <a href="https://github.com/preboot/angular2-webpack/blob/master/src/vendor.ts">vendor.ts</a> add the following:</p>
+				<pre><code class="lang-ts"><span class="hljs-keyword">import</span> <span class="hljs-string">'bootstrap/dist/css/bootstrap.css'</span>;
+</code></pre>
+				<h1 id="typescript">TypeScript</h1>
+				<blockquote>
+					<p>To take full advantage of TypeScript with autocomplete you would have to use an editor with the correct TypeScript plugins.</p>
+				</blockquote>
+				<h2 id="use-a-typescript-aware-editor">Use a TypeScript-aware editor</h2>
+				<p>We have good experience using these editors:</p>
+				<ul>
+					<li><a href="https://code.visualstudio.com/">Visual Studio Code</a></li>
+					<li><a href="https://www.jetbrains.com/webstorm/download/">Webstorm 11+</a></li>
+					<li><a href="https://atom.io/">Atom</a> with <a href="https://atom.io/packages/atom-typescript">TypeScript plugin</a></li>
+					<li><a href="http://www.sublimetext.com/3">Sublime Text</a> with <a href="https://github.com/Microsoft/Typescript-Sublime-plugin#installation">Typescript-Sublime-Plugin</a></li>
+				</ul>
+				<h1 id="license">License</h1>
+				<p><a href="/LICENSE">MIT</a></p>
+			</div>
+		</div>
+		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
+			<nav class="tsd-navigation primary">
+				<ul>
+					<li class="globals  ">
+						<a href="globals.html"><em>Globals</em></a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Internals</span>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_app_component_.html">"app.component"</a>
+					</li>
+					<li class="label tsd-is-external">
+						<span>Externals</span>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_shared_api_service_.html">"shared/api.service"</a>
+					</li>
+					<li class=" tsd-kind-external-module tsd-is-external">
+						<a href="modules/_shared_index_.html">"shared/index"</a>
+					</li>
+				</ul>
+			</nav>
+			<nav class="tsd-navigation secondary menu-sticky">
+				<ul class="before-current">
+				</ul>
+			</nav>
+		</div>
+	</div>
+</div>
+<footer class="with-border-bottom">
+	<div class="container">
+		<h2>Legend</h2>
+		<div class="tsd-legend-group">
+			<ul class="tsd-legend">
+				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
+				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
+				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
+				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
+				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
+				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
+				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
+				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
+				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
+				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
+				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
+			</ul>
+			<ul class="tsd-legend">
+				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
+				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
+			</ul>
+		</div>
+	</div>
+</footer>
+<div class="container tsd-generator">
+	<p>Generated using <a href="http://typedoc.io" target="_blank">TypeDoc</a></p>
+</div>
+<div class="overlay"></div>
+<script src="assets/js/main.js"></script>
+<script>if (location.protocol == 'file:') document.write('<script src="assets/js/search.js"><' + '/script>');</script>
+</body>
+</html>
