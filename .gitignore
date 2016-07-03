@@ -31,5 +31,4 @@ bower_components/
 
 # from angular build
 dist
-tmp
 typings
