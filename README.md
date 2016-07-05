@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/christinakayastha/parkable.png?label=ready&title=Ready)](https://waffle.io/christinakayastha/parkable)
 # Parkable
 
 This is an app that shows parking spot availability in real time.
