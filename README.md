@@ -1,4 +1,5 @@
 [![Stories in Ready](https://badge.waffle.io/christinakayastha/parkable.png?label=ready&title=Ready)](https://waffle.io/christinakayastha/parkable)
+[![Stories in Progress](https://badge.waffle.io/christinakayastha/parkable.png?label=in%20progress&title=In%20Progress)](https://waffle.io/christinakayastha/parkable)
 # Parkable
 
 This is an app that shows parking spot availability in real time.
