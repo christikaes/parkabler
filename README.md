@@ -1,6 +1,6 @@
 [![Stories in Ready](https://badge.waffle.io/christinakayastha/parkable.png?label=ready&title=Ready)](https://waffle.io/christinakayastha/parkable)
 [![Stories in Progress](https://badge.waffle.io/christinakayastha/parkable.png?label=in%20progress&title=In%20Progress)](https://waffle.io/christinakayastha/parkable)
-# Parkable
+# ParkAbler
 
 Based on: https://github.com/preboot/angular2-webpack/blob/master/package.json
 
