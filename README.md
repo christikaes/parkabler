@@ -2,8 +2,6 @@
 [![Stories in Progress](https://badge.waffle.io/christinakayastha/parkable.png?label=in%20progress&title=In%20Progress)](https://waffle.io/christinakayastha/parkable)
 # ParkAbler
 
-Based on: https://github.com/preboot/angular2-webpack/blob/master/package.json
-
 Mockup: https://www.youtube.com/watch?time_continue=78&v=1AbLbqd4E8o
 
 Old ios version:
@@ -35,7 +33,7 @@ Currently the database contains info about parking spots in Boston. The informat
 
 ===
 
-This project was generated with angular2-webpack
+This project was based off of angular2-webpack (https://github.com/preboot/angular2-webpack/blob/master/package.json)
 
 ## Running the app
 
@@ -53,6 +51,11 @@ It will start a local server using `webpack-dev-server` which will watch, build 
 
 * single run: `npm run build`
 * build files and watch: `npm run watch`
+
+### Build phonegap
+
+* run: `npm run phonegap`
+* go into the phonegap directory and build phonegap: `cd phonegap` `phonegap build android` `phonegap run android`
 
 ## Testing
 

@@ -14,6 +14,7 @@
     "lint": "tslint --force \"src/**/*.ts\"",
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
+    "phonegap": "npm run build && rimraf phonegap/www/* && cp dist/* phonegap/www/ -r", 
     "pretest": "npm run lint",
     "test": "karma start",
     "test-watch": "karma start --no-single-run --auto-watch",
