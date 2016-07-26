@@ -1,5 +1,18 @@
 # Parkable
 
+Based on: https://github.com/preboot/angular2-webpack/blob/master/package.json
+
+Mockup: https://www.youtube.com/watch?time_continue=78&v=1AbLbqd4E8o
+
+
+List of components:
+* AppBar
+** Help part of this
+* PlacesSearch
+* Map
+* Add/remove spots
+
+
 This is an app that shows parking spot availability in real time.
 
 The following stack is used:
