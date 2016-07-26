@@ -6,6 +6,9 @@ Based on: https://github.com/preboot/angular2-webpack/blob/master/package.json
 
 Mockup: https://www.youtube.com/watch?time_continue=78&v=1AbLbqd4E8o
 
+Old ios version:
+https://www.youtube.com/watch?v=jlJs5QWENng
+
 
 List of components:
 * AppBar
