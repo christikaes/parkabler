@@ -1,11 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'places-search',
   templateUrl: './places.component.html',
   styleUrls: ['./places.component.scss']
 })
-export class PlacesComponent implements OnInit {
+export class PlacesComponent implements OnInit, AfterViewInit {
+  @ViewChild('placesInput') placesInput;
+  autocomplete: any;
 
   constructor() {
     // Do stuff
@@ -13,6 +15,11 @@ export class PlacesComponent implements OnInit {
 
   ngOnInit() {
     console.log('Hello Places');
+  }
+
+  ngAfterViewInit() {
+    let inputElement = this.placesInput.nativeElement;
+    this.autocomplete = new google.maps.places.Autocomplete(inputElement);
   }
 
 }
