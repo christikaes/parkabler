@@ -14,7 +14,7 @@
     "lint": "tslint --force \"src/**/*.ts\"",
     "e2e": "protractor",
     "e2e-live": "protractor --elementExplorer",
-    "phonegap": "npm run build && rimraf phonegap/www/* && cp dist/* phonegap/www/ -r", 
+    "phonegap": "npm run build && rimraf phonegap/www/* && ncp dist phonegap/www",
     "pretest": "npm run lint",
     "test": "karma start",
     "test-watch": "karma start --no-single-run --auto-watch",
@@ -33,6 +33,7 @@
     "@angular/platform-browser-dynamic": "2.0.0-rc.4",
     "@angular/router": "3.0.0-beta.2",
     "es6-shim": "^0.35.0",
+    "ncp": "^2.0.0",
     "reflect-metadata": "0.1.3",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "0.6.12"
