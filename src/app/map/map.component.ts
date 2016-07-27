@@ -1,18 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+declare var google;
 
 @Component({
   selector: 'main-map',
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
+  @ViewChild('googleMapsDiv') googleMapsDiv;
+  map: any;
 
   constructor() {
     // Do stuff
   }
 
   ngOnInit() {
-    console.log('Hello Map');
+
+  }
+
+  ngAfterViewInit() {
+    let mapDiv = this.googleMapsDiv.nativeElement;
+    this.map = new google.maps.Map(mapDiv, {
+        center: {lat: 44.540, lng: -78.546},
+        zoom: 8
+    });
   }
 
 }
