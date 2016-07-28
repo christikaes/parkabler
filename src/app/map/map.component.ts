@@ -19,10 +19,20 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let mapDiv = this.googleMapsDiv.nativeElement;
-    this.map = new google.maps.Map(mapDiv, {
-        center: {lat: 44.540, lng: -78.546},
-        zoom: 8
+    this.map = plugin.google.maps.Map.getMap(mapDiv);
+    /*
+    this.map.addEventListener(plugin.google.maps.event.MAP_READY, () => {
+      this.map.getMyLocation((location) => {
+        this.map.addMarker({
+          "position": location.latLng
+        }, (marker) => {
+          marker.showInfoWindow();
+        });
+        this.map.setCenter(location.latLng);
+        this.map.setZoom(17); // it looks good
+      }, () => alert("location failure"));
     });
+    */
   }
 
 }

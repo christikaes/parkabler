@@ -19,7 +19,7 @@
   },
   "homepage": "https://github.com/phonegap/phonegap-app-hello-world",
   "scripts": {
-    "app": "git checkout master -- dist && rimraf ./www/* && cp -r ./dist/* ./www"
+    "prepare": "rimraf platforms && rimraf plugins && cordova prepare"
   },
   "dependencies": {
     "rimraf": "^2.5.2"

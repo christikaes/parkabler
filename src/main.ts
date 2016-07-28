@@ -11,10 +11,11 @@ if (process.env.ENV === 'build') {
   enableProdMode();
 }
 
-bootstrap(AppComponent, [
-    // These are dependencies of our App
-    HTTP_PROVIDERS,
-    APP_ROUTER_PROVIDERS,
-    { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
-  ])
-  .catch(err => console.error(err));
+document.addEventListener("deviceready", function() {
+  bootstrap(AppComponent, [
+      // These are dependencies of our App
+      HTTP_PROVIDERS,
+      APP_ROUTER_PROVIDERS
+    ])
+    .catch(err => console.error(err));
+});
