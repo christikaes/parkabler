@@ -34,5 +34,6 @@ Thumbs.db
 
 # From phonegap
 platforms
+plugins
 www
 dist
