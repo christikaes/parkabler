@@ -1,5 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
+declare var google: any;
+
 @Component({
   selector: 'main-map',
   templateUrl: './map.component.html',
