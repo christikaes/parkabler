@@ -3,5 +3,5 @@ const data = require('./data.json');
 
 @Injectable()
 export class SpotApiService {
-  spots = data.spots
+  spots = data.spots;
 }

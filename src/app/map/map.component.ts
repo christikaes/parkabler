@@ -1,8 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService } from '../shared';
 
-declare var google: any;
-
 @Component({
   selector: 'main-map',
   templateUrl: './map.component.html',
@@ -28,13 +26,12 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
 
     // Add spots to map from the spotApi
-    this.spotApi.spots.forEach(function(spot){
-      var marker = new google.maps.Marker({
+    this.spotApi.spots.forEach(function(spot) {
+      new google.maps.Marker({
         position: spot,
         map: this.map
       });
-    }, this)
-
+    }, this);
   }
 
 }

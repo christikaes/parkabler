@@ -1,7 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 
-declare var google: any;
-
 @Component({
   selector: 'places-search',
   templateUrl: './places.component.html',

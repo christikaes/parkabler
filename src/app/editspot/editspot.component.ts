@@ -4,7 +4,7 @@ import { MdCard } from '@angular2-material/card';
 import { MdButton } from '@angular2-material/button';
 import { MdCheckbox } from '@angular2-material/checkbox';
 import { MdRadioButton, MdRadioGroup } from '@angular2-material/radio';
-import { MdInput } from '@angular2-material/input'
+import { MdInput } from '@angular2-material/input';
 
 @Component({
   selector: 'edit-spot',

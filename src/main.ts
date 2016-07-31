@@ -22,3 +22,4 @@ bootstrap(AppComponent, [
     { provide: LocationStrategy, useClass: HashLocationStrategy } // use #/ routes, remove this for HTML5 mode
   ])
   .catch(err => console.error(err));
+
