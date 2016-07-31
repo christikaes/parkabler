@@ -31,9 +31,3 @@ testem.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# From phonegap
-platforms
-plugins
-www
-dist
