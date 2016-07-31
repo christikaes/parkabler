@@ -16,7 +16,7 @@
     "e2e-live": "protractor --elementExplorer",
     "phonegap": "npm run build && rimraf phonegap/www/* && ncp dist phonegap/www",
     "pretest": "npm run lint",
-    "publish": "git checkout gh-pages && rimraf ./* && git commit -a -m '[publish] clean' && git checkout master && npm install && npm run build && git checkout gh-pages && cp dist/* ./ -r && rimraf dist && git add --all && git commit -m '[publish] build' && git checkout master",
+    "publish": "./bin/publish.sh",
     "test": "karma start",
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
