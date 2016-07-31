@@ -56,7 +56,7 @@ It will start a local server using `webpack-dev-server` which will watch, build 
 
 * run: `npm run phonegap`
 * prepare: `cordova prepare` if plugins and platforms folder does not exist
-* go into the phonegap directory and build phonegap: `cd phonegap` `phonegap build android` `phonegap run android`
+* go into the phonegap directory and build phonegap: `cd phonegap` `cordova run android`
 
 ## Testing
 
