@@ -1,5 +1,4 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-declare var google;
 
 @Component({
   selector: 'main-map',
