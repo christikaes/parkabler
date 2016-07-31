@@ -16,6 +16,7 @@
     "e2e-live": "protractor --elementExplorer",
     "phonegap": "npm run build && rimraf phonegap/www/* && ncp dist phonegap/www",
     "pretest": "npm run lint",
+    "publish": "./bin/publish.sh",
     "test": "karma start",
     "test-watch": "karma start --no-single-run --auto-watch",
     "ci": "npm run e2e && npm run test",
