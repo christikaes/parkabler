@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { SpotApiService } from '../shared';
 
 declare var google: any;
 
@@ -11,7 +12,7 @@ export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('googleMapsDiv') googleMapsDiv;
   map: any;
 
-  constructor() {
+  constructor(private spotApi: SpotApiService) {
     // Do stuff
   }
 
