@@ -76,6 +76,13 @@ It will start a local server using `webpack-dev-server` which will watch, build 
   * when debugging or first writing test suites, you may find it helpful to try out Protractor commands without starting up the entire test suite. You can do this with the element explorer.
   * you can learn more about [Protractor Interactive Mode here](https://github.com/angular/protractor/blob/master/docs/debugging.md#testing-out-protractor-interactively)
 
+## Deploying
+The app is hosted on gh-pages. To publish the app:
+* Checkout master
+* Make sure you have nothing in the workspace (important!)
+* Run `npm run publish`
+** This will push a new build to gh-pages 
+
 ## Documentation
 
 You can generate api docs (using [TypeDoc](http://typedoc.io/)) for your code with the following:
