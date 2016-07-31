@@ -23,9 +23,18 @@ export class MapComponent implements OnInit, AfterViewInit {
   ngAfterViewInit() {
     let mapDiv = this.googleMapsDiv.nativeElement;
     this.map = new google.maps.Map(mapDiv, {
-        center: {lat: 44.540, lng: -78.546},
-        zoom: 8
+        center: {lat: 42.360, lng: -71.059},
+        zoom: 13
     });
+
+    // Add spots to map from the spotApi
+    this.spotApi.spots.forEach(function(spot){
+      var marker = new google.maps.Marker({
+        position: spot,
+        map: this.map
+      });
+    }, this)
+
   }
 
 }
