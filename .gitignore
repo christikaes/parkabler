@@ -2,6 +2,7 @@
 
 # compiled output
 /dist
+/dist-phonegap
 
 # dependencies
 /node_modules

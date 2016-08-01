@@ -19,7 +19,6 @@ export class PlacesComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let inputElement = this.placesInput.nativeElement;
-    this.autocomplete = new google.maps.places.Autocomplete(inputElement);
+    this.autocomplete = new window.google.maps.places.Autocomplete(inputElement);
   }
-
 }

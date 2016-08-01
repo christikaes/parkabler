@@ -20,14 +20,14 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   ngAfterViewInit() {
     let mapDiv = this.googleMapsDiv.nativeElement;
-    this.map = new google.maps.Map(mapDiv, {
+    this.map = new window.google.maps.Map(mapDiv, {
         center: {lat: 42.360, lng: -71.059},
         zoom: 13
     });
 
     // Add spots to map from the spotApi
     this.spotApi.spots.forEach(function(spot) {
-      new google.maps.Marker({
+      new window.google.maps.Marker({
         position: spot,
         map: this.map
       });
