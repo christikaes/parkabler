@@ -16,9 +16,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     private geolocation: GeolocationService
   ) {}
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   addSpots(): void {
     // Add spots to map from the spotApi
@@ -35,14 +33,20 @@ export class MapComponent implements OnInit, AfterViewInit {
   }
 
   initializeMap(): void {
+    // initialize google map div
+    let mapDiv = this.googleMapsDiv.nativeElement;
+    this.map = new window.google.maps.Map(mapDiv, { zoom: 15 });
+
+    // setup listener for map location updates
+    this.geolocation.mapLocation.subscribe((position: Position) => {
+      this.map.setCenter(position);
+      this.addSpots();
+    });
+
+    // set the current location as maplocation
     this.geolocation.currentLocation()
-      .then((position: Position) => {
-        let mapDiv = this.googleMapsDiv.nativeElement;
-        this.map = new window.google.maps.Map(mapDiv, {
-          center: { lat: position.latitude, lng: position.longitude },
-          zoom: 15
-        });
-        this.addSpots();
+      .then((p: Position) => {
+        this.geolocation.mapLocation.set(p);
       });
   }
 

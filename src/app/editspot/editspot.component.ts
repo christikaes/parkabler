@@ -19,8 +19,6 @@ export class EditSpotComponent implements OnInit {
     // Do stuff
   }
 
-  ngOnInit() {
-    console.log('Hello EditSpot');
-  }
+  ngOnInit() {}
 
 }

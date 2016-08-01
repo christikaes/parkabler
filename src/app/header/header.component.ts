@@ -12,15 +12,12 @@ import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
 export class HeaderComponent implements OnInit {
 
   constructor(mdIconRegistry: MdIconRegistry) {
-        // Sample to register more icons:
-        // mdIconRegistry
-        //     .addSvgIcon('thumb-up', '/demo-app/icon/assets/thumbup-icon.svg')
-        //     .addSvgIconSetInNamespace('core', '/demo-app/icon/assets/core-icon-set.svg')
-        //     .registerFontClassAlias('fontawesome', 'fa');
-    }
-
-  ngOnInit() {
-    console.log('Hello Header');
+    // Sample to register more icons:
+    // mdIconRegistry
+    //     .addSvgIcon('thumb-up', '/demo-app/icon/assets/thumbup-icon.svg')
+    //     .addSvgIconSetInNamespace('core', '/demo-app/icon/assets/core-icon-set.svg')
+    //     .registerFontClassAlias('fontawesome', 'fa');
   }
 
+  ngOnInit() {}
 }
