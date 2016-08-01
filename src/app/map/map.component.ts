@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService } from '../shared';
+import { SpotApiService } from '../shared/spotapi.service';
+import { GeolocationService, Position } from '../shared/geolocation.service';
 
 @Component({
   selector: 'main-map',
@@ -10,28 +11,39 @@ export class MapComponent implements OnInit, AfterViewInit {
   @ViewChild('googleMapsDiv') googleMapsDiv;
   map: any;
 
-  constructor(private spotApi: SpotApiService) {
-    // Do stuff
-  }
+  constructor(
+    private spotApi: SpotApiService,
+    private geolocation: GeolocationService
+  ) {}
 
   ngOnInit() {
 
   }
 
-  ngAfterViewInit() {
-    let mapDiv = this.googleMapsDiv.nativeElement;
-    this.map = new window.google.maps.Map(mapDiv, {
-        center: {lat: 42.360, lng: -71.059},
-        zoom: 13
-    });
-
+  addSpots(): void {
     // Add spots to map from the spotApi
-    this.spotApi.spots.forEach(function(spot) {
+    this.spotApi.spots.forEach((spot) => {
       new window.google.maps.Marker({
         position: spot,
         map: this.map
       });
-    }, this);
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.initializeMap();
+  }
+
+  initializeMap(): void {
+    this.geolocation.currentLocation()
+      .then((position: Position) => {
+        let mapDiv = this.googleMapsDiv.nativeElement;
+        this.map = new window.google.maps.Map(mapDiv, {
+          center: { lat: position.latitude, lng: position.longitude },
+          zoom: 15
+        });
+        this.addSpots();
+      });
   }
 
 }
