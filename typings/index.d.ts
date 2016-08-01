@@ -5,4 +5,7 @@
 /// <reference path="globals/node/index.d.ts" />
 /// <reference path="modules/angularfire2/index.d.ts" />
 /// <reference path="modules/es6-promise/index.d.ts" />
-declare var google;
+interface Window {
+  google: any;
+  cordova: any;
+}

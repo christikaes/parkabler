@@ -14,8 +14,17 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
  * Get npm lifecycle event to identify the environment
  */
 var ENV = process.env.npm_lifecycle_event;
+ENV = ENV.startsWith('build') ? 'build' : ENV;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
+
+var PHONEGAP_MODE = process.argv.indexOf('--phonegap') > 0;
+
+var OUTPUT_PATH = PHONEGAP_MODE ? 'dist-phonegap' : 'dist';
+
+var htmlWebpackPluginIndexHtml = PHONEGAP_MODE ?
+  './src/public/cordova-index.html' : 
+  './src/public/index.html';
 
 module.exports = function makeWebpackConfig() {
   /**
@@ -54,7 +63,7 @@ module.exports = function makeWebpackConfig() {
    * Reference: http://webpack.github.io/docs/configuration.html#output
    */
   config.output = isTest ? {} : {
-    path: root('dist'),
+    path: root(OUTPUT_PATH),
     publicPath: isProd ? '' : 'http://localhost:8080/',
     filename: isProd ? 'js/[name].[hash].js' : 'js/[name].js',
     chunkFilename: isProd ? '[id].[hash].chunk.js' : '[id].chunk.js'
@@ -171,10 +180,11 @@ module.exports = function makeWebpackConfig() {
         name: ['vendor', 'polyfills']
       }),
 
+
       // Inject script and link tags into html files
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
       new HtmlWebpackPlugin({
-        template: './src/public/index.html',
+        template: htmlWebpackPluginIndexHtml,
         chunksSortMode: 'dependency'
       }),
 
@@ -205,8 +215,9 @@ module.exports = function makeWebpackConfig() {
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-        from: root('src/public')
-      }])
+        from: root('src/public'),
+        to: root(OUTPUT_PATH)
+      }], { ignore: ["*cordova*"] })
     );
   }
 
