@@ -22,6 +22,8 @@
     "app": "git checkout master -- dist && rimraf ./www/* && cp -r ./dist/* ./www"
   },
   "dependencies": {
+    "angularfire2": "^2.0.0-beta.2",
+    "firebase": "^3.2.1",
     "rimraf": "^2.5.2"
   }
 }

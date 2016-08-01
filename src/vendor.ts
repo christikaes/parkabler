@@ -18,6 +18,7 @@ import '@angular2-material/radio';
 import '@angular2-material/progress-bar';
 import '@angular2-material/progress-circle';
 import '@angular2-material/toolbar';
+import 'angularfire2';
 
 // RxJS
 import 'rxjs';
