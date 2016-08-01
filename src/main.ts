@@ -18,10 +18,10 @@ function startBootstrap() {
       { provide: LocationStrategy, useClass: HashLocationStrategy }, // use #/ routes, remove this for HTML5 mode
       FIREBASE_PROVIDERS, // Initialize Firebase app
       defaultFirebase({
-        apiKey: "AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8",
-        authDomain: "parkabler.firebaseapp.com",
-        databaseURL: "https://parkabler.firebaseio.com",
-        storageBucket: "parkabler.appspot.com"
+        apiKey: 'AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8',
+        authDomain: 'parkabler.firebaseapp.com',
+        databaseURL: 'https://parkabler.firebaseio.com',
+        storageBucket: 'parkabler.appspot.com'
       })
     ])
     .catch(err => console.error(err));

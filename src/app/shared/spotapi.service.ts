@@ -8,7 +8,7 @@ export class SpotApiService {
   spots = data.spots;
   items: FirebaseListObservable<any[]>;
 
-  constructor(af: AngularFire){
+  constructor(af: AngularFire) {
      this.items = af.database.list('spots');
   }
 }
