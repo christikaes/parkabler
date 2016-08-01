@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { GeolocationService } from '../shared/geolocation.service';
+import { MapLocationService } from '../shared/maplocation.service';
 
 @Component({
   selector: 'places-search',
@@ -11,7 +11,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
   autocomplete: any;
 
   constructor(
-    private geolocation: GeolocationService
+    private mapLocation: MapLocationService
   ) {}
 
   ngOnInit() {}
@@ -25,7 +25,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
         console.log('places api did not return geometry');
         return;
       }
-      this.geolocation.mapLocation.set(place.geometry.location);
+      this.mapLocation.set(place.geometry.location);
     });
   }
 }

@@ -3,6 +3,7 @@ import { ROUTER_DIRECTIVES } from '@angular/router';
 
 import { SpotApiService } from './shared/spotapi.service';
 import { GeolocationService } from './shared/geolocation.service';
+import { MapLocationService } from './shared/maplocation.service';
 import { HeaderComponent } from './header';
 
 import '../style/app.scss';
@@ -13,7 +14,7 @@ import '../style/app.scss';
  */
 @Component({
   selector: 'my-app', // <my-app></my-app>
-  providers: [SpotApiService, GeolocationService],
+  providers: [SpotApiService, GeolocationService, MapLocationService],
   directives: [...ROUTER_DIRECTIVES, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],

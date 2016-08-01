@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService } from '../shared/spotapi.service';
-import { GeolocationService, Position } from '../shared/geolocation.service';
+import { MapLocationService } from '../shared/maplocation.service';
 
 @Component({
   selector: 'main-map',
@@ -13,7 +13,7 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   constructor(
     private spotApi: SpotApiService,
-    private geolocation: GeolocationService
+    private mapLocation: MapLocationService
   ) {}
 
   ngOnInit() {}
@@ -37,17 +37,10 @@ export class MapComponent implements OnInit, AfterViewInit {
     let mapDiv = this.googleMapsDiv.nativeElement;
     this.map = new window.google.maps.Map(mapDiv, { zoom: 15 });
 
-    // setup listener for map location updates
-    this.geolocation.mapLocation.subscribe((position: Position) => {
-      this.map.setCenter(position);
+    this.mapLocation.current.subscribe(res => {
+      this.map.setCenter(res);
       this.addSpots();
     });
-
-    // set the current location as maplocation
-    this.geolocation.currentLocation()
-      .then((p: Position) => {
-        this.geolocation.mapLocation.set(p);
-      });
   }
 
 }
