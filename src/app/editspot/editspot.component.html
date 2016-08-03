@@ -3,26 +3,27 @@
     ADD SPOT
   </button>
 
-  <md-card *ngIf="enteringSpot">
-    Report a Parking Sport
-    <br />
-    <md-input placeholder="Description"></md-input>
-    <br />
-    <md-radio-group>
-      <md-radio-button>1-2</md-radio-button>
-      <md-radio-button>2-3</md-radio-button>
-      <md-radio-button>3-4</md-radio-button>
-      <md-radio-button>5<</md-radio-button>
-    </md-radio-group>
-    <br />
-    <br />
-    <md-radio-group>
-      <md-radio-button>Commercial</md-radio-button>
-      <md-radio-button>Residential</md-radio-button>
-      <md-radio-button>Don't know</md-radio-button>
-    </md-radio-group>
-    <br />
-    <button md-raised-button color="primary" (click)="cancelAddSpot()">Cancel</button>
-    <button md-raised-button color="primary">Submit</button>
+  <md-card *ngIf="enteringSpot" class="md-card-raised">
+    <md-card-subtitle>Report a Parking Sport</md-card-subtitle>
+    <md-card-content>
+      <md-input aria-label="description" placeholder="Description"></md-input>
+      <md-card-subtitle>How many spaces are there?</md-card-subtitle>
+      <div class="spaces-buttons">
+        <button md-button color="primary">1</button>
+        <button md-button color="primary">2</button>
+        <button md-raised-button color="primary">3</button>
+        <button md-button color="primary">4</button>
+        <button md-button color="primary">Many</button>
+      </div>
+      <md-card-subtitle>What type of space is this?</md-card-subtitle>
+      <md-radio-group>
+        <md-radio-button>Commercial</md-radio-button>
+        <md-radio-button>Residential</md-radio-button>
+        <md-radio-button>Don't know</md-radio-button>
+      </md-radio-group>
+      <br/>
+      <button md-button color="primary" (click)="cancelAddSpot()">Cancel</button>
+      <button md-raised-button color="primary" id="submit">Submit</button>
+    </md-card-content>
   </md-card>
 </div>

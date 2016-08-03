@@ -3,4 +3,32 @@
   position: absolute;
   bottom: 40px;
   left: 7%;
+  text-align: left;
+  width: 300px;
 }
+
+md-card-header {
+  height: 30px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.spaces-buttons {
+  button[md-raised-button], button[md-button] {
+    min-width: 0px;
+  }
+}
+
+#submit {
+  float: right;
+}
+
+md-input, md-radio-group, .spaces-buttons {
+  display: block;
+  padding-bottom: 30px;
+}
+
+md-radio-button {
+  margin: 10px;
+}
+
