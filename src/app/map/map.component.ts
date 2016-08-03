@@ -34,7 +34,10 @@ export class MapComponent implements OnInit, AfterViewInit {
   initializeMap(): void {
     // initialize google map div
     let mapDiv = this.googleMapsDiv.nativeElement;
-    this.map = new window.google.maps.Map(mapDiv, { zoom: 15 });
+    this.map = new window.google.maps.Map(mapDiv, {
+      zoom: 15,
+      disableDefaultUI: true
+    });
 
     this.mapLocation.current.subscribe(res => {
       this.map.setCenter(res);

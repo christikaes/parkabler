@@ -1,22 +1,28 @@
-<md-card>
-  Report a Parking Sport
-  <br />
-  <md-input placeholder="Description"></md-input>
-  <br />
-  <md-radio-group>
-    <md-radio-button>1-2</md-radio-button>
-    <md-radio-button>2-3</md-radio-button>
-    <md-radio-button>3-4</md-radio-button>
-    <md-radio-button>5<</md-radio-button>
-  </md-radio-group>
-  <br />
-  <br />
-  <md-radio-group>
-    <md-radio-button>Commercial</md-radio-button>
-    <md-radio-button>Residential</md-radio-button>
-    <md-radio-button>Don't know</md-radio-button>
-  </md-radio-group>
-  <br />
-  <button md-raised-button color="primary">Cancel</button>
-  <button md-raised-button color="primary">Submit</button>
-</md-card>
+<div class="container" [ngClass]="{ editing: enteringSpot }">
+  <button *ngIf="!enteringSpot" md-raised-button color="primary" (click)="addSpot()">
+    ADD SPOT
+  </button>
+
+  <md-card *ngIf="enteringSpot">
+    Report a Parking Sport
+    <br />
+    <md-input placeholder="Description"></md-input>
+    <br />
+    <md-radio-group>
+      <md-radio-button>1-2</md-radio-button>
+      <md-radio-button>2-3</md-radio-button>
+      <md-radio-button>3-4</md-radio-button>
+      <md-radio-button>5<</md-radio-button>
+    </md-radio-group>
+    <br />
+    <br />
+    <md-radio-group>
+      <md-radio-button>Commercial</md-radio-button>
+      <md-radio-button>Residential</md-radio-button>
+      <md-radio-button>Don't know</md-radio-button>
+    </md-radio-group>
+    <br />
+    <button md-raised-button color="primary" (click)="cancelAddSpot()">Cancel</button>
+    <button md-raised-button color="primary">Submit</button>
+  </md-card>
+</div>

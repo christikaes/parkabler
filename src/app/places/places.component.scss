@@ -1,4 +1,40 @@
 // component styles are encapsulated and only applied to their components
-* {
-  color: #FFEF00;
+.places-search {
+  color: black;
+  position: absolute;
+  z-index: 100;
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+
+  input {
+    font-size: 18px;
+    font-family: Roboto;
+    font-weight: 300;
+    display: inline-block;
+    vertical-align: middle;
+    border: none;
+    padding: 9px;
+    width: 85%;
+    text-overflow: ellipsis;
+  }
+
+  button {
+    color: white;
+    background-color: #009688;
+    border-radius: 0px; 
+  }
 }
+
+/*  for md-raised-button
+    padding-top: 5px;
+    height: 32px;
+    vertical-align: -7px;
+    min-width: 0px;
+    margin: 0px;
+    border-radius: 0px;
+    left: -4px;
+#009688
+*/

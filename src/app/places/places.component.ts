@@ -1,10 +1,14 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { MdIcon, MdIconRegistry } from '@angular2-material/icon';
+import { MdButton } from '@angular2-material/button';
 import { MapLocationService } from '../services';
 
 @Component({
   selector: 'places-search',
   templateUrl: './places.component.html',
-  styleUrls: ['./places.component.scss']
+  styleUrls: ['./places.component.scss'],
+  directives: [MdIcon, MdButton],
+  viewProviders: [MdIconRegistry]
 })
 export class PlacesComponent implements OnInit, AfterViewInit {
   @ViewChild('placesInput') placesInput;
