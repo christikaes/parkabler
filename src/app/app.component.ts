@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { ROUTER_DIRECTIVES } from '@angular/router';
 
-import { SpotApiService } from './shared/spotapi.service';
-import { GeolocationService } from './shared/geolocation.service';
-import { MapLocationService } from './shared/maplocation.service';
+import { SpotApiService, GeolocationService, MapLocationService } from './services';
 import { HeaderComponent } from './header';
 
 import '../style/app.scss';

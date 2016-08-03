@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService } from '../shared/spotapi.service';
-import { MapLocationService } from '../shared/maplocation.service';
+import { SpotApiService, MapLocationService } from '../services';
 
 @Component({
   selector: 'main-map',
