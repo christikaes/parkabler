@@ -1,4 +1,9 @@
 // component styles are encapsulated and only applied to their components
+md-toolbar {
+  position: absolute;  
+  z-index: 1;
+}
+
 span {
   margin-left: 15px;
 }

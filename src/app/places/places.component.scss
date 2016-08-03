@@ -2,7 +2,8 @@
 .places-search {
   color: black;
   position: absolute;
-  z-index: 100;
+  z-index: 1;
+  top: 60px; // TODO: figure out how to not set pixel value
   left: 0;
   right: 0;
   margin-left: auto;
@@ -37,5 +38,4 @@
     margin: 0px;
     border-radius: 0px;
     left: -4px;
-#009688
 */
