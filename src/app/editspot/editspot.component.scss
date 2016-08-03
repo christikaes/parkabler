@@ -1,11 +1,7 @@
 // component styles are encapsulated and only applied to their components
 .container {
-  padding-top: 88%;
-  padding-right: 80%;
-}
-
-.container.editing {
-  padding-top: 68%;
-  padding-right: 2%;
-  padding-left: 10px;
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  z-index: 2;
 }
