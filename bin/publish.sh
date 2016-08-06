@@ -11,7 +11,11 @@ echo 'Clean Commit to gh-pages'
 # Clean commit the gh-pages branch
 git checkout gh-pages
 rimraf ./*
-git commit -a -m '[publish] clean'
+if [ -n "$(git status --porcelain)" ]; then
+  git commit -a -m '[publish] clean'
+else 
+  echo "no changes";
+fi
 git checkout master
 
 echo '_________________________________________'
