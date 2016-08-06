@@ -13,7 +13,7 @@ git checkout gh-pages
 rimraf ./*
 if [ -n "$(git status --porcelain)" ]; then
   git commit -a -m '[publish] clean'
-else 
+else
   echo "no changes";
 fi
 git checkout master
@@ -22,6 +22,7 @@ echo '_________________________________________'
 echo 'Build Master'
 # Clean build on master
 npm install
+typings install
 npm run build
 
 # Get the new dist on gh-pages
