@@ -8,19 +8,19 @@
     <md-card-content>
       <md-input aria-label="description" placeholder="Description"></md-input>
       <md-card-subtitle>How many spaces are there?</md-card-subtitle>
-      <div class="spaces-buttons">
-        <button md-button color="primary">1</button>
-        <button md-button color="primary">2</button>
-        <button md-raised-button color="primary">3</button>
-        <button md-button color="primary">4</button>
-        <button md-button color="primary">Many</button>
-      </div>
+      <md-button-toggle-group name="spaces-buttons">
+        <md-button-toggle value="1" checked=true>1</md-button-toggle>
+        <md-button-toggle value="2">2</md-button-toggle>
+        <md-button-toggle value="3">3</md-button-toggle>
+        <md-button-toggle value="4">4</md-button-toggle>
+        <md-button-toggle value="Many">Many</md-button-toggle>
+      </md-button-toggle-group>
       <md-card-subtitle>What type of space is this?</md-card-subtitle>
-      <md-radio-group>
-        <md-radio-button>Commercial</md-radio-button>
-        <md-radio-button>Residential</md-radio-button>
-        <md-radio-button>Don't know</md-radio-button>
-      </md-radio-group>
+      <md-button-toggle-group name="spaces-buttons">
+        <md-button-toggle value="commercial">Commercial</md-button-toggle>
+        <md-button-toggle value="residential">Residential</md-button-toggle>
+        <md-button-toggle value="Don't Know" checked=true>Don't know</md-button-toggle>
+      </md-button-toggle-group>
       <br/>
       <button md-button color="primary" (click)="cancelAddSpot()">Cancel</button>
       <button md-raised-button color="primary" id="submit">Submit</button>

@@ -1,0 +1,25 @@
+// component styles are encapsulated and only applied to their components
+.container {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+}
+
+.header {
+  width: 100%;
+}
+
+.content {
+  max-height: 300px; // TODO: don't hard code
+  overflow-y: scroll;
+}
+
+md-list {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.list-item {
+  border: 1px solid black;
+}
