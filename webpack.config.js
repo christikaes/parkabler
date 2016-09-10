@@ -23,7 +23,7 @@ var PHONEGAP_MODE = process.argv.indexOf('--phonegap') > 0;
 var OUTPUT_PATH = PHONEGAP_MODE ? 'dist-phonegap' : 'dist';
 
 var htmlWebpackPluginIndexHtml = PHONEGAP_MODE ?
-  './src/public/cordova-index.html' : 
+  './src/public/cordova-index.html' :
   './src/public/index.html';
 
 module.exports = function makeWebpackConfig() {
@@ -96,12 +96,15 @@ module.exports = function makeWebpackConfig() {
       // Support for .ts files.
       {
         test: /\.ts$/,
-        loaders: ['ts', 'angular2-template-loader'],
+        loaders: ['ts', 'angular2-template-loader', '@angularclass/hmr-loader'],
         exclude: [isTest ? /\.(e2e)\.ts$/ : /\.(spec|e2e)\.ts$/, /node_modules\/(?!(ng2-.+))/]
       },
 
       // copy those assets to output
-      {test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/, loader: 'file?name=fonts/[name].[hash].[ext]?'},
+      {
+        test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'file?name=fonts/[name].[hash].[ext]?'
+      },
 
       // Support for *.json files.
       {test: /\.json$/, loader: 'json'},
@@ -130,10 +133,9 @@ module.exports = function makeWebpackConfig() {
 
       // support for .html as raw text
       // todo: change the loader to something that adds a hash to images
-      {test: /\.html$/, loader: 'raw'}
+      {test: /\.html$/, loader: 'raw', exclude: root('src', 'public')}
     ],
     postLoaders: [],
-    noParse: [/.+zone\.js\/dist\/.+/, /.+angular2\/bundles\/.+/, /angular2-polyfills\.js/]
   };
 
   if (isTest) {

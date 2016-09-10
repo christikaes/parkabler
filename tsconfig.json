@@ -5,7 +5,16 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "types": [
+        "core-js",
+        "hammerjs",
+        "jasmine",
+        "firebase",
+        "node",
+        "protractor",
+        "selenium-webdriver"
+     ]
   },
   "compileOnSave": false,
   "buildOnSave": false,
