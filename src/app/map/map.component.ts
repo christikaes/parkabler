@@ -67,6 +67,7 @@ export class MapComponent implements OnInit, AfterViewInit {
                lng: newMarker.lng
              },
              map: this.map,
+             icon: 'img/marker.png',
              $key: newMarker.$key,
              $lat: newMarker.lat,
              $lng: newMarker.lng
