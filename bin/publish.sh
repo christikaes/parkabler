@@ -22,7 +22,6 @@ echo '_________________________________________'
 echo 'Build Master'
 # Clean build on master
 npm install
-typings install
 npm run build
 
 # Get the new dist on gh-pages
