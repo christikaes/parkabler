@@ -24,8 +24,9 @@ This is an app that shows parking spot availability in real time.
 
 The following stack is used:
 * Angular2
+* Typescript2
 * Angular Material2 (useful resource: https://github.com/angular/material2/tree/master/src/demo-app)
-* Firebase 2
+* Firebase3
 * Google Maps
 * PhoneGap
 
