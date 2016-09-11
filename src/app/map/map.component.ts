@@ -13,6 +13,8 @@ export class MapComponent implements OnInit, AfterViewInit {
   private markers = [];
   // Holds a reference to the markerClusterer so that we can update this on changes
   private markerClusterer: any;
+  private infoWindow: any;
+  private infoWindowTemplate: any;
 
   constructor(
     private spotApi: SpotApiService,
@@ -36,10 +38,22 @@ export class MapComponent implements OnInit, AfterViewInit {
     // initialize markerClusterer
     this.markerClusterer = new window.MarkerClusterer(this.map, this.markers);
 
+    // initialize infoWindow
+    this.infoWindow = new window.google.maps.InfoWindow();
+    this.infoWindowTemplate = function(marker){
+      return '<div>' +
+                '<button md-button color="primary"> Report </button> </br>' +
+                '<a md-raised-button color="primary" href="http://maps.google.com/maps?daddr=' +
+                  marker.$lat + ',' + marker.$lng + '"> Navigate </a>' +
+              '</div>';
+    };
+
+    // Update map center whenever the mapLocation is updated
     this.mapLocation.current.subscribe(res => {
       this.map.setCenter(res);
     });
 
+    // Update the spots whenever spots are updated
     this.spotApi.spots.subscribe(newMarkers => {
 
       this.markers.forEach(function(marker, i){
@@ -78,6 +92,11 @@ export class MapComponent implements OnInit, AfterViewInit {
             $lat: newMarker.lat,
             $lng: newMarker.lng
           });
+          // Open info window on marker click
+          addedMarker.addListener('click', function(){
+            this.infoWindow.setContent(this.infoWindowTemplate(addedMarker));
+            this.infoWindow.open(this.map, addedMarker);
+          }.bind(this));
           this.markers.push(addedMarker);
           this.markerClusterer.addMarker(addedMarker);
         };
