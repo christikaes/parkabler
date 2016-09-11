@@ -35,13 +35,13 @@
     }, {
         "title": "Signs",
         "content": [{
-            "img": "someurl",
+            "img": "img/signs/1.jpg",
             "text": "Appropriate disabled parking sport designation"
         }, {
-            "img": "someUrl",
+            "img": "img/signs/2.jpg",
             "text": "Designates “ramp” only. Do not park here"
         }, {
-            "img": "someurl",
+            "img": "img/signs/3.png",
             "text": "Unfortunately, individuals may hang private signs on the street to try to designate disabled parking  spots for private use; however, these are not spots designated by the city and you should not park at  spots"
         }]
     }]

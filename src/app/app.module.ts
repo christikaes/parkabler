@@ -31,6 +31,7 @@ import {MdTooltipModule} from '@angular2-material/tooltip';
 
 import { AngularFireModule } from 'angularfire2';
 
+// Components
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { HeaderComponent } from './header';
@@ -40,7 +41,18 @@ import { MapComponent } from './map';
 import { PlacesComponent } from './places';
 import { TextComponent } from './text';
 import { RulesInfoComponent } from './rulesinfo';
-import { MapLocationService, GeolocationService, SpotApiService, DestinationLocationService, DistanceService, RulesInfoService } from './services';
+
+// Services
+import {
+  MapLocationService,
+  GeolocationService,
+  SpotApiService,
+  DestinationLocationService,
+  DistanceService,
+  RulesInfoService
+} from './services';
+
+// Router
 import { routing } from './app.routing';
 
 

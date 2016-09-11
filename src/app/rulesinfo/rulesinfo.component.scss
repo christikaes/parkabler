@@ -1,13 +1,17 @@
+.content {
+  text-align: left;
+}
+
 .content .line {
   display: flex;
   flex-direction: row;
   align-items: center;
   padding: 20px;
-  text-align: left;
 
   img {
     margin: 10px;
     height: 100px;
+    width: 60px;
   }
 }
 
