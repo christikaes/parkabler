@@ -14,7 +14,7 @@ export class DestinationLocationService {
     this.current.subscribe(res => {
       this._lastPosition = res;
     });
-    this.unset()
+    this.unset();
   }
 
   set(position: Position): void {

@@ -30,7 +30,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
       this.destinationLocation.set({
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
-      })
+      });
     });
   }
 }

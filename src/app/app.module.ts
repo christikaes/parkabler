@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule, JsonpModule } from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -54,7 +54,6 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
-    JsonpModule,
     FormsModule,
     // Material
     MdButtonModule.forRoot(),
