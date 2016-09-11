@@ -1,6 +1,6 @@
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
+import { HttpModule, JsonpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -39,7 +39,7 @@ import { SpotsListComponent } from './spotslist';
 import { MapComponent } from './map';
 import { PlacesComponent } from './places';
 import { TextComponent } from './text';
-import { MapLocationService, GeolocationService, SpotApiService } from './services';
+import { MapLocationService, GeolocationService, SpotApiService, DestinationLocationService, DistanceService } from './services';
 import { routing } from './app.routing';
 
 
@@ -54,6 +54,7 @@ export const firebaseConfig = {
   imports: [
     BrowserModule,
     HttpModule,
+    JsonpModule,
     FormsModule,
     // Material
     MdButtonModule.forRoot(),
@@ -96,7 +97,9 @@ export const firebaseConfig = {
   providers: [
     MapLocationService,
     GeolocationService,
-    SpotApiService
+    SpotApiService,
+    DestinationLocationService,
+    DistanceService
   ],
   bootstrap: [AppComponent]
 })

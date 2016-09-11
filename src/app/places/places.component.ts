@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MapLocationService } from '../services';
+import { MapLocationService, DestinationLocationService } from '../services';
 
 @Component({
   selector: 'places-search',
@@ -11,7 +11,8 @@ export class PlacesComponent implements OnInit, AfterViewInit {
   autocomplete: any;
 
   constructor(
-    private mapLocation: MapLocationService
+    private mapLocation: MapLocationService,
+    private destinationLocation: DestinationLocationService
   ) {}
 
   ngOnInit() {}
@@ -26,6 +27,10 @@ export class PlacesComponent implements OnInit, AfterViewInit {
         return;
       }
       this.mapLocation.set(place.geometry.location);
+      this.destinationLocation.set({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      })
     });
   }
 }

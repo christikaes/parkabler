@@ -1,4 +1,4 @@
-<div class="container" [ngClass]="{ expanded: expanded }">
+<div class="container" *ngIf="enabled" [ngClass]="{ expanded: expanded }">
   <button md-raised-button class="header" (click)="toggleExapand()">
     There are {{numSpot}} spots nearby
     <md-icon *ngIf="expanded">keyboard_arrow_down</md-icon>
@@ -7,9 +7,8 @@
 
   <div class="content">
     <md-list *ngIf="expanded">
-      <md-list-item *ngFor="let spot of spots">
-        <h4 md-line>2 Spaces</h4>
-        <h5 md-line>within 200 feet of destination</h5>
+      <md-list-item *ngFor="let spot of filteredSpots">
+        <h4 md-line>Parking space within {{spot.distanceToDest}} meters of destination</h4>
         <p md-line>
           <button  md-button color="primary">
             Report

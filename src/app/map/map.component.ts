@@ -67,7 +67,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       newMarkers.forEach(function(newMarker){
         if (!this.markers.find(m => m.$key === newMarker.$key)) {
           // Something was added
-          var addedMarker = new window.google.maps.Marker({
+          let addedMarker = new window.google.maps.Marker({
             position: {
               lat: newMarker.lat,
               lng: newMarker.lng
@@ -79,7 +79,7 @@ export class MapComponent implements OnInit, AfterViewInit {
             $lng: newMarker.lng
           });
           this.markers.push(addedMarker);
-          this.markerClusterer.addMarker(addedMarker)
+          this.markerClusterer.addMarker(addedMarker);
         };
       }, this);
 
