@@ -1,6 +1,6 @@
 // component styles are encapsulated and only applied to their components
 md-toolbar {
-  position: absolute;  
+  position: absolute;
   z-index: 1;
 }
 
@@ -8,4 +8,8 @@ span {
   margin-left: 15px;
 }
 
-
+.fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}

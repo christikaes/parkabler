@@ -39,7 +39,8 @@ import { SpotsListComponent } from './spotslist';
 import { MapComponent } from './map';
 import { PlacesComponent } from './places';
 import { TextComponent } from './text';
-import { MapLocationService, GeolocationService, SpotApiService, DestinationLocationService, DistanceService } from './services';
+import { RulesInfoComponent } from './rulesinfo';
+import { MapLocationService, GeolocationService, SpotApiService, DestinationLocationService, DistanceService, RulesInfoService } from './services';
 import { routing } from './app.routing';
 
 
@@ -91,14 +92,16 @@ export const firebaseConfig = {
     SpotsListComponent,
     MapComponent,
     PlacesComponent,
-    TextComponent
+    TextComponent,
+    RulesInfoComponent
   ],
   providers: [
     MapLocationService,
     GeolocationService,
     SpotApiService,
     DestinationLocationService,
-    DistanceService
+    DistanceService,
+    RulesInfoService
   ],
   bootstrap: [AppComponent]
 })

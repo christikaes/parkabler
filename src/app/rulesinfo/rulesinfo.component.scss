@@ -1,0 +1,22 @@
+.content .line {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20px;
+  text-align: left;
+
+  img {
+    margin: 10px;
+    height: 100px;
+  }
+}
+
+.separated {
+  border-bottom: 1px solid #ccc;
+}
+
+.fill-remaining-space {
+  // This fills the remaining space, by using flexbox.
+  // Every toolbar row uses a flexbox row layout.
+  flex: 1 1 auto;
+}
