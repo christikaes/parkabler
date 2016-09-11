@@ -44,7 +44,7 @@ export class MapComponent implements OnInit, AfterViewInit {
       return '<div>' +
                 '<button md-button color="primary"> Report </button> </br>' +
                 '<a md-raised-button color="primary" href="http://maps.google.com/maps?daddr=' +
-                  marker.$lat + ',' + marker.$lng + '"> Navigate </a>' +
+                  marker.$lat + ',' + marker.$lng + '" target="_blank"> Navigate </a>' +
               '</div>';
     };
 
