@@ -43,10 +43,20 @@
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>ParkAbler</title>
+    <style>
+      .loading-background{
+          max-height: 100%;
+          height: auto;
+          position: fixed;
+          left:0;
+          right:0;
+          margin:0 auto;
+      }
+    </style>
   </head>
 
   <body>
-    <my-app>Loading...</my-app>
+    <my-app><img src="img/loading.png" class="loading-bakckground"></my-app>
     <script type="text/javascript" src="cordova.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCHu3f7MyNDM0sDGW1p81GQFp2c7fkVWOw&libraries=visualization,places,geometry"></script>
   </body>
