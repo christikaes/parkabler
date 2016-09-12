@@ -7,9 +7,9 @@ export class RecenterControl {
     private destinationLocation: DestinationLocationService
   ) {}
 
-  createControl(controlDiv, map) : void {
+  createControl(controlDiv, map): void {
     // Set CSS for the control border.
-    var controlUI = document.createElement('div');
+    let controlUI = document.createElement('div');
     controlUI.style.backgroundColor = '#fff';
     controlUI.style.border = '2px solid #fff';
     controlUI.style.borderRadius = '3px';
@@ -19,8 +19,8 @@ export class RecenterControl {
     controlUI.style.marginRight = '10px';
     controlUI.style.textAlign = 'center';
     controlUI.title = 'Click to recenter the map';
-    controlUI.style.backgroundImage = "url(img/ic_my_location.png)";
-    controlUI.style.backgroundSize = "24px 24px";
+    controlUI.style.backgroundImage = 'url(img/ic_my_location.png)';
+    controlUI.style.backgroundSize = '24px 24px';
     controlUI.style.height = '24px';
     controlUI.style.width = '24px';
     controlDiv.appendChild(controlUI);

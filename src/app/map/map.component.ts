@@ -1,6 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '../services';
-import { RecenterControl } from './recenterControl'
+import { RecenterControl } from './recenterControl';
 
 @Component({
   selector: 'main-map',
@@ -54,8 +54,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     // Create the recenterControl
     // Create the DIV to hold the control and call the CenterControl()
     // constructor passing in this DIV.
-    var recenterControlDiv = document.createElement('div');
-    var recenterControl = new RecenterControl(this.mapLocation, this.geoLocation, this.destinationLocation);
+    let recenterControlDiv = document.createElement('div');
+    let recenterControl = new RecenterControl(this.mapLocation, this.geoLocation, this.destinationLocation);
     recenterControl.createControl(recenterControlDiv, this.map);
     this.map.controls[window.google.maps.ControlPosition.RIGHT_BOTTOM].push(recenterControlDiv);
 
