@@ -4,7 +4,9 @@
 
 This is an app that shows parking spot availability in real time. Currently the database contains info about parking spots in Boston. The information is crowd sourced.
 
+
 The app is live at: http://christinakayastha.github.io/parkabler
+
 The latest apk is available at: https://github.com/christinakayastha/parkabler/tree/gh-pages/apk
 
 *Other versions*
