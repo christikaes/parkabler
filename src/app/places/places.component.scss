@@ -3,14 +3,12 @@
   color: black;
   position: absolute;
   z-index: 1;
-  top: 60px; // TODO: figure out how to not set pixel value
+  top: 60px; // TODO:figure out how to not set pixel value
   left: 0;
   right: 0;
-  margin-left: auto;
-  margin-right: auto;
   padding: 20px 0px;
-  white-space: nowrap;
-  text-align: center;
+  display: flex;
+  justify-content: center;
 
   input {
     font-size: 18px;
@@ -20,7 +18,7 @@
     vertical-align: middle;
     border: none;
     padding: 9px;
-    width: 70%;
+    width: 75%;
     text-overflow: ellipsis;
   }
 
