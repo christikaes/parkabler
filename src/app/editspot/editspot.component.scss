@@ -5,6 +5,7 @@
   left: 7%;
   text-align: left;
   width: 300px;
+  z-index: 1000; // Should be above everything
 }
 
 md-card-header {

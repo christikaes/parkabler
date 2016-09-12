@@ -6,7 +6,6 @@
   <md-card *ngIf="enteringSpot" class="md-card-raised">
     <md-card-subtitle>Report a Parking Sport</md-card-subtitle>
     <md-card-content>
-      <md-input aria-label="description" placeholder="Description"></md-input>
       <md-card-subtitle>How many spaces are there?</md-card-subtitle>
       <md-button-toggle-group name="spaces-buttons">
         <md-button-toggle value="1" checked=true>1</md-button-toggle>
@@ -21,6 +20,7 @@
         <md-button-toggle value="residential">Residential</md-button-toggle>
         <md-button-toggle value="Don't Know" checked=true>Don't know</md-button-toggle>
       </md-button-toggle-group>
+      <md-input aria-label="description" placeholder="Description"></md-input>
       <br/>
       <button md-button color="primary" (click)="cancelAddSpot()">Cancel</button>
       <button md-raised-button color="primary" id="submit">Submit</button>

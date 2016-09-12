@@ -24,6 +24,15 @@ echo 'Build Master'
 npm install
 npm run build
 
+echo '_________________________________________'
+echo 'Build Master (Phonegap)'
+# Clean phonegap build on master
+npm run phonegap
+mkdir -p dist/apk
+cp phonegap/platforms/android/build/outputs/apk/* dist/apk/ -r
+
+echo '_________________________________________'
+echo 'Copy to gh-pages branch'
 # Get the new dist on gh-pages
 git checkout gh-pages
 cp dist/* ./ -r
