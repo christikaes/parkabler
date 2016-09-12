@@ -2,11 +2,13 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { RulesInfoService } from '../services';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
+import Animations from '../animations';
 
 @Component({
   selector: 'rules-info',
   templateUrl: './rulesinfo.component.html',
-  styleUrls: ['./rulesinfo.component.scss']
+  styleUrls: ['./rulesinfo.component.scss'],
+  animations: Animations
 })
 export class RulesInfoComponent implements OnInit, OnDestroy {
   private rules: any;

@@ -190,7 +190,7 @@ function MarkerClusterer(map, opt_markers, opt_options) {
  * @type {string}
  * @private
  */
-MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = './img/m';
+MarkerClusterer.prototype.MARKER_CLUSTER_IMAGE_PATH_ = './img/marker/m';
 
 
 /**
@@ -247,8 +247,9 @@ MarkerClusterer.prototype.setupStyles_ = function() {
   for (var i = 0, size; size = this.sizes[i]; i++) {
     this.styles_.push({
       url: this.imagePath_ + (i + 1) + '.' + this.imageExtension_,
-      height: size,
-      width: size
+      size: i + 1,
+      height: 40, // size
+      width: 40   // size
     });
   }
 };
@@ -1197,6 +1198,7 @@ ClusterIcon.prototype.useStyle = function() {
   index = Math.min(this.styles_.length - 1, index);
   var style = this.styles_[index];
   this.url_ = style['url'];
+  this.size_ = style['size'];
   this.height_ = style['height'];
   this.width_ = style['width'];
   this.textColor_ = style['textColor'];
@@ -1225,9 +1227,34 @@ ClusterIcon.prototype.setCenter = function(center) {
  */
 ClusterIcon.prototype.createCss = function(pos) {
   var style = [];
-  style.push('background-image:url(' + this.url_ + ');');
-  var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
-  style.push('background-position:' + backgroundPosition + ';');
+  // Draw a circle
+  style.push('border-radius: 50%;');
+  style.push('border: 1px solid #FFF;');
+  switch (this.size_) {
+    case 1:
+      style.push('background-color: rgba(21,101,192,0.8);');
+      break;
+    case 2:
+      style.push('background-color: rgba(13,71,161,0.8);');
+      break;
+    case 3:
+      style.push('background-color: rgba(48,79,254,0.8);');
+      break;
+    case 4:
+      style.push('background-color: rgba(40,53,147,0.8);');
+      break;
+    case 5:
+      style.push('background-color: rgba(26,35,126,0.8);');
+      break;
+    default:
+      style.push('background-color: rgba(26,35,126,0.8);');
+      break;
+
+  }
+  // Turn this back on if you want to use images
+  // style.push('background-image:url(' + this.url_ + ');');
+  // var backgroundPosition = this.backgroundPosition_ ? this.backgroundPosition_ : '0 0';
+  // style.push('background-position:' + backgroundPosition + ';');
 
   if (typeof this.anchor_ === 'object') {
     if (typeof this.anchor_[0] === 'number' && this.anchor_[0] > 0 &&
@@ -1254,8 +1281,8 @@ ClusterIcon.prototype.createCss = function(pos) {
         this.height_ + 'px; width:' + this.width_ + 'px; text-align:center;');
   }
 
-  var txtColor = this.textColor_ ? this.textColor_ : 'black';
-  var txtSize = this.textSize_ ? this.textSize_ : 11;
+  var txtColor = this.textColor_ ? this.textColor_ : 'white';
+  var txtSize = this.textSize_ ? this.textSize_ : 18;
 
   style.push('cursor:pointer; top:' + pos.y + 'px; left:' +
       pos.x + 'px; color:' + txtColor + '; position:absolute; font-size:' +

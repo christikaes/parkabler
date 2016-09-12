@@ -1,23 +1,25 @@
-<md-toolbar color="primary">
-  <button md-button *ngIf='isHome' [routerLink]="''">< Map</button>
-  <button md-button *ngIf='!isHome' [routerLink]="'/rulesinfo'">< Back</button>
-  <span>{{title}}</span>
-</md-toolbar>
+<div @slideLeft>
+  <md-toolbar color="primary">
+    <button md-button *ngIf='isHome' [routerLink]="''">< Map</button>
+    <button md-button *ngIf='!isHome' [routerLink]="'/rulesinfo'">< Back</button>
+    <span>{{title}}</span>
+  </md-toolbar>
 
-<!-- Show a nav list for nav pages (home page) -->
-<md-nav-list *ngIf='isHome' class="content">
-  <a md-list-item *ngFor="let item of content" [routerLink]="item.href">
-    {{item.text}}
-    <!-- TODO Chevron_right not showing up on phone -->
-    <span class="fill-remaining-space"></span>
-    <md-icon>chevron_right</md-icon>
-  </a>
-</md-nav-list>
+  <!-- Show a nav list for nav pages (home page) -->
+  <md-nav-list *ngIf='isHome' class="content" @slideRight>
+    <a md-list-item *ngFor="let item of content" [routerLink]="item.href">
+      {{item.text}}
+      <!-- TODO Chevron_right not showing up on phone -->
+      <span class="fill-remaining-space"></span>
+      <md-icon>chevron_right</md-icon>
+    </a>
+  </md-nav-list>
 
-<!-- Show content for regular content -->
-<div *ngIf='!isHome' class="content">
-  <div *ngFor="let item of content" class="line" [ngClass]="{separated: !!item.img}">
-    <img *ngIf='!!item.img' src="{{item.img}}"/>
-    <div>{{item.text}}</div>
+  <!-- Show content for regular content -->
+  <div *ngIf='!isHome' class="content" @slideLeft>
+    <div *ngFor="let item of content" class="line" [ngClass]="{separated: !!item.img}">
+      <img *ngIf='!!item.img' src="{{item.img}}"/>
+      <div>{{item.text}}</div>
+    </div>
   </div>
 </div>
