@@ -15,7 +15,8 @@ export class GeolocationService {
           lng: p.coords.longitude
         });
       }, () => {
-        throw new Error('LocationService: currentLocation failed');
+        console.log('Error: LocationService: currentLocation failed');
+        reject();
       });
     });
   }

@@ -13,6 +13,14 @@ export class MapLocationService {
     this.geolocation.currentLocation()
       .then((p: Position) => {
         this._location.next(p);
+      })
+      .catch(() => {
+        // Could not find destination, setting to boston
+        console.log('Could not find current location, redirecting to Boston');
+        this._location.next({
+          lat: 42.3601,
+          lng: -71.0589
+        });
       });
   }
 

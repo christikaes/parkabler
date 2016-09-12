@@ -32,6 +32,10 @@ export class RecenterControl {
         .then((p: Position) => {
           this.mapLocation.set(p);
           this.destinationLocation.set(p);
+          controlUI.style.backgroundImage = 'url(img/ic_my_location.png)';
+        })
+        .catch(() => {
+          controlUI.style.backgroundImage = 'url(img/ic_help.png)';
         });
     }.bind(this));
   }
