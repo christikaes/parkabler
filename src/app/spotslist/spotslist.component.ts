@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import { DistanceService, SpotApiService, DestinationLocationService } from '../services';
 import { Position } from '../services/geolocation.service';
 
@@ -25,17 +25,19 @@ let distanceBetweenPoints = function(p1: Position, p2: Position) {
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
+  private enabled: boolean;
   private expanded: boolean;
   private numSpot: number;
   private spots: any[];
   private filteredSpots: any[];
-  private enabled: boolean;
 
-  private updateFilteredSpots = function() {
-    let destination = this.destinationLocationService.getLastDestination();
+  private updateFilteredSpots = function(destination) {
     if (this.spots) {
       this.filteredSpots = this.spots.filter(function(spot){
         return distanceBetweenPoints(spot, destination) < 0.2;
+        // Alternative:
+        // return Math.abs(destination.lat - spot.lat) < 0.001
+        //     && Math.abs(destination.lng - spot.lng) < 0.001
       });
     }
     this.numSpot = this.filteredSpots.length;
@@ -45,23 +47,29 @@ export class SpotsListComponent implements OnInit {
   constructor(
     private distanceService: DistanceService,
     private spotApiService: SpotApiService,
-    private destinationLocationService: DestinationLocationService
+    private destinationLocationService: DestinationLocationService,
+    private zone: NgZone
   ) {
     this.expanded = false;
     this.enabled = false;
     this.numSpot = 100;
     this.filteredSpots = [];
     spotApiService.spots.subscribe(res => {
-      this.spots = res.map(function(r){
-        return {
-          lat: r.lat,
-          lng: r.lng
-        };
+      this.zone.run(() => {
+        this.spots = res.map(function(r){
+          return {
+            lat: r.lat,
+            lng: r.lng
+          };
+        });
+        this.updateFilteredSpots(this.destinationLocationService.getLastDestination());
       });
-      this.updateFilteredSpots();
     });
     destinationLocationService.current.subscribe(res => {
-      this.updateFilteredSpots();
+      // Something in destinationLocationService is running outside of AngularZone, firebase?
+      this.zone.run(() => {
+        this.updateFilteredSpots(res);
+      });
     });
   }
 
