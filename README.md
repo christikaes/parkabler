@@ -2,26 +2,24 @@
 [![Stories in Progress](https://badge.waffle.io/christinakayastha/parkable.png?label=in%20progress&title=In%20Progress)](https://waffle.io/christinakayastha/parkable)
 # ParkAbler
 
+This is an app that shows parking spot availability in real time. Currently the database contains info about parking spots in Boston. The information is crowd sourced.
+
+
+The app is live at: http://christinakayastha.github.io/parkabler
+
+The latest apk is available at: https://github.com/christinakayastha/parkabler/tree/gh-pages/apk
+
+*Other versions*
+
 Mockup: https://www.youtube.com/watch?time_continue=78&v=1AbLbqd4E8o
 
 Invision Mockup: https://projects.invisionapp.com/share/CX5EJJU5E
 
-Old ios version:
-https://www.youtube.com/watch?v=jlJs5QWENng
+Old ios version: https://www.youtube.com/watch?v=jlJs5QWENng
 
 Really old original meteor (Hackathon) version: https://github.com/christinakayastha/handipark
 
-
-List of components:
-* AppBar
-** Help part of this
-* PlacesSearch
-* Map
-* Add/remove spots
-
-
-This is an app that shows parking spot availability in real time.
-
+## Stack
 The following stack is used:
 * Angular2
 * Typescript2
@@ -30,11 +28,8 @@ The following stack is used:
 * Google Maps
 * PhoneGap
 
-
 There are several branches, most contain old work (react version, meteor version, angular 1 version).
-The App branch contains the phonegap app that is used to generate the built apps.
-
-Currently the database contains info about parking spots in Boston. The information is crowd sourced.
+The gh-pages branch contains the latest build
 
 ===
 
