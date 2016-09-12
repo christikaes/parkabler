@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService } from '../services';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '../services';
+import { RecenterControl } from './recenterControl'
 
 @Component({
   selector: 'main-map',
@@ -18,7 +19,9 @@ export class MapComponent implements OnInit, AfterViewInit {
 
   constructor(
     private spotApi: SpotApiService,
-    private mapLocation: MapLocationService
+    private mapLocation: MapLocationService,
+    private geoLocation: GeolocationService,
+    private destinationLocation: DestinationLocationService
   ) {}
 
   ngOnInit() {}
@@ -32,8 +35,29 @@ export class MapComponent implements OnInit, AfterViewInit {
     let mapDiv = this.googleMapsDiv.nativeElement;
     this.map = new window.google.maps.Map(mapDiv, {
       zoom: 15,
-      disableDefaultUI: true
+      zoomControl: true,
+      zoomControlOptions: {
+          position: window.google.maps.ControlPosition.RIGHT_BOTTOM
+      },
+      mapTypeControl: true,
+      mapTypeControlOptions: {
+        style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+        position: window.google.maps.ControlPosition.BOTTOM_CENTER,
+        mapTypeIds: ['roadmap', 'satellite']
+      },
+      fullscreenControl: false,
+      rotateControl: false,
+      scaleControl: false,
+      streetViewControl: false
     });
+
+    // Create the recenterControl
+    // Create the DIV to hold the control and call the CenterControl()
+    // constructor passing in this DIV.
+    var recenterControlDiv = document.createElement('div');
+    var recenterControl = new RecenterControl(this.mapLocation, this.geoLocation, this.destinationLocation);
+    recenterControl.createControl(recenterControlDiv, this.map);
+    this.map.controls[window.google.maps.ControlPosition.RIGHT_BOTTOM].push(recenterControlDiv);
 
     // initialize markerClusterer
     this.markerClusterer = new window.MarkerClusterer(this.map, this.markers);
