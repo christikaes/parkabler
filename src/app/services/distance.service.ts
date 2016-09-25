@@ -10,7 +10,7 @@ export class DistanceService {
 
 
   getDistanceToDestinationFrom(originPositions: Position[]): Promise<any> {
-    return this.getDistance(originPositions, this.destinationLocationService.getLastDestination());
+    return this.getDistance(originPositions, this.destinationLocationService.current.getValue());
   }
 
   getDistance(originPositions: Position[], destinationPosition: Position): Promise<any> {

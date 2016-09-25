@@ -15,8 +15,11 @@ export class GeolocationService {
           lng: p.coords.longitude
         });
       }, () => {
-        console.log('Error: LocationService: currentLocation failed');
-        reject();
+        console.log('Error: LocationService: currentLocation failed, defaulting to Boston');
+        resolve({
+          lat: 42.3601,
+          lng: -71.0589
+        });
       });
     });
   }

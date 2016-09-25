@@ -62,7 +62,7 @@ export class SpotsListComponent implements OnInit {
             lng: r.lng
           };
         });
-        this.updateFilteredSpots(this.destinationLocationService.getLastDestination());
+        this.updateFilteredSpots(this.destinationLocationService.current.getValue());
       });
     });
     destinationLocationService.current.subscribe(res => {

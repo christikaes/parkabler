@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Position, GeolocationService } from './geolocation.service';
-import { Subject } from 'rxjs/Subject';
-import { Observable } from 'rxjs/Observable';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 
 @Injectable()
 export class DestinationLocationService {
   private _lastPosition: Position;
-  private _location: Subject<Position> = new Subject<Position>();
-  public current: Observable<Position> = this._location.asObservable();
+  private _location: BehaviorSubject<Position> = new BehaviorSubject<Position>({lat: 42.3601, lng: -71.058 });
+  public current: BehaviorSubject<Position> = this._location;
 
   constructor(private geolocation: GeolocationService) {
     // initialize with current location
@@ -27,16 +26,8 @@ export class DestinationLocationService {
         this._location.next(p);
       })
       .catch(() => {
-        // Could not find location, setting to boston
-        console.log('Could not find Location, setting destination to Boston');
-        this._location.next({
-          lat: 42.3601,
-          lng: -71.0589
-        });
+        // Could not find location
+        console.log('Could not find Location');
       });
-  }
-
-  getLastDestination(): Position {
-    return this._lastPosition;
   }
 }
