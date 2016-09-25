@@ -23,7 +23,9 @@ Really old original meteor (Hackathon) version: https://github.com/christinakaya
 The following stack is used:
 * Angular2
 * Typescript2
-* Angular Material2 (useful resource: https://github.com/angular/material2/tree/master/src/demo-app)
+* Angular Material2 
+ * useful resource: https://github.com/angular/material2/tree/master/src/demo-app
+ * https://jperrott-material2.firebaseapp.com/button
 * Firebase3
 * Google Maps
 * PhoneGap
