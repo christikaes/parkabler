@@ -1,9 +1,26 @@
-<div class="container" [ngClass]="{ editing: enteringSpot }">
-  <button *ngIf="!enteringSpot" md-raised-button color="primary" (click)="addSpot()">
+<div class="container" [ngClass]="{ editing: enteringSpot }" [ngSwitch]="state">
+  <!-- State.Closed -->
+  <button *ngSwitchCase="states.Closed" md-raised-button color="primary" (click)="addLocation()">
     ADD SPOT
   </button>
 
-  <md-card *ngIf="enteringSpot" class="md-card-raised">
+  <!-- State.AddLocation -->
+  <div *ngSwitchCase="states.AddLocation">
+    <div>
+      Location Marker
+    </div>
+    <md-card class="md-card-raised">
+      <md-card-subtitle>Place the Marker over the location of the spot</md-card-subtitle>
+      <md-card-content>
+        <md-card-subtitle>Where is the spot located?</md-card-subtitle>
+        <button md-button color="primary" (click)="close()">Cancel</button>
+        <button md-raised-button color="primary" (click)="addDetails()">Next</button>
+      </md-card-content>
+    </md-card>
+  </div>
+
+  <!-- State.AddDetails -->
+  <md-card *ngSwitchCase="states.AddDetails" class="md-card-raised">
     <md-card-subtitle>Report a Parking Sport</md-card-subtitle>
     <md-card-content>
       <md-card-subtitle>How many spaces are there?</md-card-subtitle>
@@ -22,8 +39,18 @@
       </md-button-toggle-group>
       <md-input aria-label="description" placeholder="Description"></md-input>
       <br/>
-      <button md-button color="primary" (click)="cancelAddSpot()">Cancel</button>
-      <button md-raised-button color="primary" id="submit">Submit</button>
+      <button md-button color="primary" (click)="close()">Cancel</button>
+      <button md-raised-button color="primary" (click)="submit()">Submit</button>
     </md-card-content>
   </md-card>
+
+  <!-- State.Submitted -->
+  <div *ngSwitchCase="states.Submitted">
+    <md-card class="md-card-raised">
+      <md-card-subtitle>Thank you for your help</md-card-subtitle>
+      <md-card-content>
+        The details have been submitted, we will review the submission and add it to the map accordingly.
+      </md-card-content>
+    </md-card>
+  </div>
 </div>
