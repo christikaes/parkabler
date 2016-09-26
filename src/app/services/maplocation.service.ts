@@ -16,6 +16,14 @@ export class MapLocationService {
 
   constructor(private geolocation: GeolocationService) {
     // initialize with current location
+    this.centerOnMe();
+  }
+
+  set(position: Position): void {
+    this._location.next(position);
+  }
+
+  centerOnMe(): void {
     this.geolocation.currentLocation()
       .then((p: Position) => {
         this._location.next(p);
@@ -24,10 +32,6 @@ export class MapLocationService {
         // Could not find destination
         console.log('Could not find destination');
       });
-  }
-
-  set(position: Position): void {
-    this._location.next(position);
   }
 
   setZoom(z: number): void {

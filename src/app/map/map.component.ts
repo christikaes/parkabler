@@ -48,7 +48,8 @@ export class MapComponent implements OnInit, AfterViewInit {
       fullscreenControl: false,
       rotateControl: false,
       scaleControl: false,
-      streetViewControl: false
+      streetViewControl: false,
+      tilt: 0
     });
 
     // Create the recenterControl

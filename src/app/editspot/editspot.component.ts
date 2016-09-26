@@ -29,8 +29,9 @@ export class EditSpotComponent implements OnInit {
 
   addLocation() {
     this.state = this.states.AddLocation;
-    this.mapLocationService.setZoom(18);
+    this.mapLocationService.setZoom(20);
     this.mapLocationService.setMode('satellite');
+    this.mapLocationService.centerOnMe();
   }
 
   addDetails() {
