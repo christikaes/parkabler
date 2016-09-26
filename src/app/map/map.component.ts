@@ -72,9 +72,26 @@ export class MapComponent implements OnInit, AfterViewInit {
               '</div>';
     };
 
-    // Update map center whenever the mapLocation is updated
+    // Update map center, zoom, or mapMode whenever the mapLocation is updated
     this.mapLocation.current.subscribe(res => {
       this.map.setCenter(res);
+    });
+
+    this.mapLocation.zoom.subscribe(res => {
+      // Zoom the map smoothly
+      function smoothZoom (map: any, targetZoom: number, currentZoom: number) {
+        if (currentZoom !== targetZoom) {
+            window.google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
+                smoothZoom(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
+            });
+            setTimeout(function(){ map.setZoom(currentZoom); }, 80);
+        }
+      };
+      smoothZoom(this.map, res, this.map.getZoom());
+    });
+
+    this.mapLocation.mode.subscribe(res => {
+      this.map.setMapTypeId(res);
     });
 
     // Update the spots whenever spots are updated

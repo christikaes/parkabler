@@ -3,10 +3,16 @@ import { Position, GeolocationService } from './geolocation.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 
+export type MapModes = 'satellite' | 'roadmap';
+
 @Injectable()
 export class MapLocationService {
   private _location: Subject<Position> = new Subject<Position>();
   public current: Observable<Position> = this._location.asObservable();
+  private _zoom: Subject<number> = new Subject<number>();
+  public zoom: Observable<number> = this._zoom.asObservable();
+  private _mode: Subject<MapModes> = new Subject<MapModes>();
+  public mode: Observable<MapModes> = this._mode.asObservable();
 
   constructor(private geolocation: GeolocationService) {
     // initialize with current location
@@ -22,5 +28,13 @@ export class MapLocationService {
 
   set(position: Position): void {
     this._location.next(position);
+  }
+
+  setZoom(z: number): void {
+    this._zoom.next(z);
+  }
+
+  setMode(m: MapModes): void {
+    this._mode.next(m);
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
+import { MapLocationService } from '../services';
 
 export enum States {
   Closed,
@@ -19,7 +20,7 @@ export class EditSpotComponent implements OnInit {
   private state: States;
   public enteringSpot: boolean;
 
-  constructor() {
+  constructor(private mapLocationService: MapLocationService) {
   }
 
   ngOnInit() {
@@ -28,6 +29,8 @@ export class EditSpotComponent implements OnInit {
 
   addLocation() {
     this.state = this.states.AddLocation;
+    this.mapLocationService.setZoom(18);
+    this.mapLocationService.setMode('satellite');
   }
 
   addDetails() {
@@ -36,6 +39,8 @@ export class EditSpotComponent implements OnInit {
 
   submit() {
     this.state = this.states.Submitted;
+    this.mapLocationService.setZoom(15);
+    this.mapLocationService.setMode('roadmap');
     setTimeout(() => {
       this.state = this.states.Closed;
     }, 2000);
