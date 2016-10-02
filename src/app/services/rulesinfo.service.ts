@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+// import { AngularFire, FirebaseListObservable } from 'angularfire2';
 
 // If the user is offline, use this data:
-// const info = require('./rulesinfo.json');
+const info = require('./data/rulesinfo.json');
 
 @Injectable()
 export class RulesInfoService {
-  rules: FirebaseListObservable<any[]>;
+  rules: any[];
 
-  constructor(af: AngularFire) {
-     this.rules = af.database.list('rulesinfo');
+  constructor() {
+    this.rules = info.Boston;
   }
 }

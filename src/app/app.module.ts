@@ -29,7 +29,7 @@ import {MdTooltipModule} from '@angular2-material/tooltip';
 // import {OverlayModule} from '@angular2-material/core/overlay/overlay-directives';
 // import {RtlModule} from '@angular2-material/core/rtl/dir';
 
-import { AngularFireModule } from 'angularfire2';
+// import { AngularFireModule } from 'angularfire2';
 
 // Components
 import { AppComponent } from './app.component';
@@ -69,6 +69,7 @@ export const firebaseConfig = {
     HttpModule,
     FormsModule,
     // Material
+    // Do i need these:
     MdButtonModule.forRoot(),
     MdButtonToggleModule.forRoot(),
     MdCardModule.forRoot(),
@@ -92,7 +93,7 @@ export const firebaseConfig = {
     // PortalModule.forRoot(),
     // RtlModule.forRoot(),
     // Firebase
-    AngularFireModule.initializeApp(firebaseConfig),
+    // AngularFireModule.initializeApp(firebaseConfig),
     // Routing
     routing
   ],

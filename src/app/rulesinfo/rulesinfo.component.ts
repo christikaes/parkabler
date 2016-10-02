@@ -45,13 +45,11 @@ export class RulesInfoComponent implements OnInit, OnDestroy {
     private rulesInfoService: RulesInfoService,
     private route: ActivatedRoute
   ) {
-    rulesInfoService.rules.subscribe(res => {
-      this.rules = res[0];
-      this.title = '';
-      this.content = [];
-      this.isHome = true;
-      this.updateContent();
-    });
+    this.rules = rulesInfoService.rules;
+    this.title = '';
+    this.content = [];
+    this.isHome = true;
+    this.updateContent();
   }
 
   ngOnInit() {
