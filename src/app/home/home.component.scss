@@ -1,1 +1,12 @@
 // component styles are encapsulated and only applied to their components
+.content {
+  display: flex;
+  flex-direction:column;
+  height: 100%;
+  width: 100%;
+}
+
+.map-container{
+  flex: 1 1 auto;
+  position: relative;
+}

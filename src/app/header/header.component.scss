@@ -1,10 +1,11 @@
-// @import '~@angular/material/core/theming/all-theme';
-// @include md-core();
-
 md-toolbar {
   position: absolute;
   z-index: 1;
   font-size: 30px;
+}
+
+md-button {
+  min-width: 40px;
 }
 
 span {

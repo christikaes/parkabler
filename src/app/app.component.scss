@@ -1,12 +1,16 @@
 // styles applied on :host are applied on the current component, "app" in this case
 :host {
   display: block;
+  height: 100%;
+  width: 100%;
 }
 
 main {
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
   display: block;
+  height: 100%;
+  width: 100%;
 }
 
 footer {
