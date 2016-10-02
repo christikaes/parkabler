@@ -1,6 +1,5 @@
 // component styles are encapsulated and only applied to their components
 .container {
-  // position: absolute;
   bottom: 0px;
   left: 0px;
   width: 100%;
@@ -17,11 +16,10 @@
   background-color: white;
 }
 
-md-list-item {
+.list-item {
   .info {
     width: 80%;
     float: left;
-    padding: 10px;
     text-align: left;
 
     h4 {
@@ -33,6 +31,10 @@ md-list-item {
     width: 20%;
     float: right;
     border-left: 1px dashed grey;
+
+    .icon{
+      font-size: 40px;
+    }
   }
 }
 

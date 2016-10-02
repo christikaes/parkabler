@@ -1,23 +1,24 @@
 <div class="container" *ngIf="enabled" [ngClass]="{ expanded: expanded }">
-  <button md-raised-button class="header" (click)="toggleExapand()">
-    There are {{numSpot}} spots nearby
-    <md-icon *ngIf="expanded">keyboard_arrow_down</md-icon>
-    <md-icon *ngIf="!expanded">keyboard_arrow_up</md-icon>
+  <button md-button class="header" (click)="toggleExapand()">
+    {{numSpot}} spots near destination
+    <!-- <md-icon *ngIf="expanded">keyboard_arrow_down</md-icon>
+    <md-icon *ngIf="!expanded">keyboard_arrow_up</md-icon> -->
   </button>
 
   <md-nav-list class="content" *ngIf="expanded">
-    <md-list-item *ngFor="let spot of filteredSpots">
-      <div class="info">
-        <h4>1 Space</h4>
-        <span>within {{spot.distanceToDest}} meters of destination</span>
-        <button  md-button color="primary">
-          Report
-        </button>
-      </div>
-      <a md-button class="directions" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
-        <md-icon>directions</md-icon>
-        Directions
-      </a>
+    <md-list-item *ngFor="let spot of filteredSpots" class="list-item">
+      <!-- <md-list-text> -->
+        <div class="info">
+          <h4>1 Space</h4>
+          <span>within {{spot.distanceToDest}} meters</span>
+          <button  md-button color="primary">
+            Report
+          </button>
+        </div>
+        <a md-button class="directions" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+          <md-icon class="icon">directions</md-icon>
+        </a>
+      <!-- </md-list-text> -->
     </md-list-item>
   </md-nav-list>
 </div>
