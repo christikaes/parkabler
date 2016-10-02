@@ -1,6 +1,9 @@
 <div class="places-search">
-  <input #placesInput type="text"/><!-- remove space between elements
-  --><button md-icon-button color="primary">
+  <input #placesInput type="text"/>
+  <button md-mini-fab color="primary" class="search">
     <md-icon>search</md-icon>
+  </button>
+  <button md-mini-fab color="secondary" class="center" (click)="recenter()">
+    <md-icon>my_location</md-icon>
   </button>
 </div>

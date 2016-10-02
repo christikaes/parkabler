@@ -5,29 +5,7 @@ import { FormsModule } from '@angular/forms';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
-import {MdButtonModule} from '@angular2-material/button';
-import {MdButtonToggleModule} from '@angular2-material/button-toggle';
-import {MdCardModule} from '@angular2-material/card';
-import {MdCheckboxModule} from '@angular2-material/checkbox';
-import {MdGridListModule} from '@angular2-material/grid-list';
-import {MdIconModule} from '@angular2-material/icon';
-import {MdInputModule} from '@angular2-material/input';
-import {MdListModule} from '@angular2-material/list';
-import {MdMenuModule} from '@angular2-material/menu';
-import {MdProgressBarModule} from '@angular2-material/progress-bar';
-import {MdProgressCircleModule} from '@angular2-material/progress-circle';
-import {MdRadioModule} from '@angular2-material/radio';
-import {MdSidenavModule} from '@angular2-material/sidenav';
-import {MdSliderModule} from '@angular2-material/slider';
-import {MdSlideToggleModule} from '@angular2-material/slide-toggle';
-import {MdTabsModule} from '@angular2-material/tabs';
-import {MdToolbarModule} from '@angular2-material/toolbar';
-import {MdTooltipModule} from '@angular2-material/tooltip';
-
-// import {MdRippleModule} from '@angular2-material/core/ripple/ripple';
-// import {PortalModule} from '@angular2-material/core/portal/portal-directives';
-// import {OverlayModule} from '@angular2-material/core/overlay/overlay-directives';
-// import {RtlModule} from '@angular2-material/core/rtl/dir';
+import { MaterialModule } from '@angular/material';
 
 // import { AngularFireModule } from 'angularfire2';
 
@@ -69,29 +47,7 @@ export const firebaseConfig = {
     HttpModule,
     FormsModule,
     // Material
-    // Do i need these:
-    MdButtonModule.forRoot(),
-    MdButtonToggleModule.forRoot(),
-    MdCardModule.forRoot(),
-    MdCheckboxModule.forRoot(),
-    MdGridListModule.forRoot(),
-    MdIconModule.forRoot(),
-    MdInputModule.forRoot(),
-    MdListModule.forRoot(),
-    MdMenuModule.forRoot(),
-    MdProgressBarModule.forRoot(),
-    MdProgressCircleModule.forRoot(),
-    MdRadioModule.forRoot(),
-    // MdRippleModule.forRoot(),
-    MdSidenavModule.forRoot(),
-    MdSliderModule.forRoot(),
-    MdSlideToggleModule.forRoot(),
-    MdTabsModule.forRoot(),
-    MdToolbarModule.forRoot(),
-    MdTooltipModule.forRoot(),
-    // OverlayModule.forRoot(),
-    // PortalModule.forRoot(),
-    // RtlModule.forRoot(),
+    MaterialModule.forRoot(),
     // Firebase
     // AngularFireModule.initializeApp(firebaseConfig),
     // Routing

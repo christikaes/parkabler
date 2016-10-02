@@ -1,4 +1,6 @@
-// component styles are encapsulated and only applied to their components
+// @import '~@angular/material/core/theming/all-theme';
+// @include md-core();
+
 md-toolbar {
   position: absolute;
   z-index: 1;
@@ -22,10 +24,9 @@ span {
 
 .park {
   margin: 0;
-  color: #3498DB;
+  color: #FFFFFF;
 }
 
 .abler {
   margin: 0;
-  color: #FFFFFF;
 }

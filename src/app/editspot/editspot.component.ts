@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
+// import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
 import { MapLocationService } from '../services';
 
 export enum States {
@@ -13,7 +13,7 @@ export enum States {
   selector: 'edit-spot',
   templateUrl: './editspot.component.html',
   styleUrls: ['./editspot.component.scss'],
-  providers: [MdUniqueSelectionDispatcher], // what's this?
+  providers: [], // what's this?
 })
 export class EditSpotComponent implements OnInit {
   private states = States;

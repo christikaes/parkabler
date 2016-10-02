@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MapLocationService, DestinationLocationService } from '../services';
+import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '../services';
 
 @Component({
   selector: 'places-search',
@@ -12,6 +12,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
 
   constructor(
     private mapLocation: MapLocationService,
+    private geoLocation: GeolocationService,
     private destinationLocation: DestinationLocationService
   ) {}
 
@@ -33,5 +34,17 @@ export class PlacesComponent implements OnInit, AfterViewInit {
         lng: place.geometry.location.lng()
       });
     });
+  }
+
+  recenter() {
+    this.geoLocation.currentLocation()
+      .then((p: Position) => {
+        this.mapLocation.set(p);
+        this.destinationLocation.set(p);
+        this.mapLocation.setZoom(17);
+      })
+      .catch(() => {
+        console.log('Current Location Not found');
+      });
   }
 }

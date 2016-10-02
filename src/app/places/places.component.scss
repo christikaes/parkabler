@@ -22,20 +22,8 @@
     text-overflow: ellipsis;
   }
 
-  button {
-    color: white;
-    background-color: #009688;
-    border-radius: 0px; 
-    display: inline-block;
+  .search {
+    border-radius: 0px;
+    margin-right: 10px;
   }
 }
-
-/*  for md-raised-button
-    padding-top: 5px;
-    height: 32px;
-    vertical-align: -7px;
-    min-width: 0px;
-    margin: 0px;
-    border-radius: 0px;
-    left: -4px;
-*/

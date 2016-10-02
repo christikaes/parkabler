@@ -1,6 +1,19 @@
+// Angular Material themeing
+@import '~@angular/material/core/theming/all-theme';
+
+@include md-core();
+
+$primary: md-palette($md-indigo);
+$secondary:  md-palette($md-grey, A200, A100, A400);
+$warn: md-palette($md-red);
+
+$theme: md-light-theme($primary, $secondary, $warn);
+
+@include angular-material-theme($theme);
+
 // styles in src/style directory are applied to the whole page
 html, body {
-  height: 100%;  
+  height: 100%;
 }
 
 body {
