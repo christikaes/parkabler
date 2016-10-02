@@ -2,6 +2,7 @@
 md-toolbar {
   position: absolute;
   z-index: 1;
+  font-size: 30px;
 }
 
 span {
@@ -12,4 +13,19 @@ span {
   // This fills the remaining space, by using flexbox.
   // Every toolbar row uses a flexbox row layout.
   flex: 1 1 auto;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+}
+
+.park {
+  margin: 0;
+  color: #3498DB;
+}
+
+.abler {
+  margin: 0;
+  color: #FFFFFF;
 }
