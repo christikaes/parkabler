@@ -5,19 +5,19 @@
     <md-icon *ngIf="!expanded">keyboard_arrow_up</md-icon>
   </button>
 
-  <div class="content">
-    <md-list *ngIf="expanded">
-      <md-list-item *ngFor="let spot of filteredSpots">
-        <h4 md-line>Parking space within {{spot.distanceToDest}} meters of destination</h4>
-        <p md-line>
-          <button  md-button color="primary">
-            Report
-          </button>
-          <a href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank" md-raised-button color="primary">
-            Navigate
-          </a>
-        </p>
-      </md-list-item>
-    </md-list>
-</div>
+  <md-nav-list class="content" *ngIf="expanded">
+    <md-list-item *ngFor="let spot of filteredSpots">
+      <div class="info">
+        <h4>1 Space</h4>
+        <span>within {{spot.distanceToDest}} meters of destination</span>
+        <button  md-button color="primary">
+          Report
+        </button>
+      </div>
+      <a md-button class="directions" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+        <md-icon>directions</md-icon>
+        Directions
+      </a>
+    </md-list-item>
+  </md-nav-list>
 </div>

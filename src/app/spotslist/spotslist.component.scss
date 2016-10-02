@@ -4,6 +4,7 @@
   bottom: 0px;
   left: 0px;
   width: 100%;
+  z-index: 1001;
 }
 
 .header {
@@ -13,13 +14,30 @@
 .content {
   max-height: 300px; // TODO: don't hard code
   overflow-y: scroll;
-}
-
-md-list {
   background-color: white;
-  border: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-.list-item {
-  border: 1px solid black;
+md-list-item {
+  .info {
+    width: 80%;
+    float: left;
+    padding: 10px;
+    text-align: left;
+
+    h4 {
+      margin: 2px;
+    }
+  }
+
+  .directions {
+    width: 20%;
+    float: right;
+    border-left: 1px dashed grey;
+  }
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: grey;
 }
