@@ -1,6 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '../services';
-import { RecenterControl } from './recenterControl';
 
 @Component({
   selector: 'main-map',
