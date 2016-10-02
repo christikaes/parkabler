@@ -27,6 +27,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
         return;
       }
       this.mapLocation.set(place.geometry.location);
+      this.mapLocation.setZoom(20);
       this.destinationLocation.set({
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
