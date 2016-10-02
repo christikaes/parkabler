@@ -1,9 +1,9 @@
 <div class="places-search">
-  <input #placesInput type="text"/>
-  <!-- <button md-mini-fab color="secondary" class="search">
+  <button md-mini-fab color="secondary" class="search" disabled>
     <md-icon>search</md-icon>
-  </button> -->
-  <button md-mini-fab color="secondary" class="search" (click)="recenter()">
+  </button>
+  <input #placesInput type="text"/>
+  <button md-mini-fab color="primary" class="recenter" (click)="recenter()">
     <md-icon svgSrc="./img/icons/ic_my_location.svg"></md-icon>
   </button>
 </div>

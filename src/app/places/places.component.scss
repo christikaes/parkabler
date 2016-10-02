@@ -18,12 +18,17 @@
     vertical-align: middle;
     border: none;
     padding: 9px;
+    padding-left: 40px;
     width: 75%;
     text-overflow: ellipsis;
   }
 
+  .recenter {
+    margin-left: -20px;
+  }
+
   .search {
-    border-radius: 0px;
-    margin-right: 10px;
+    margin-right: -20px;
+    background-color: white;
   }
 }
