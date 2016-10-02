@@ -19,16 +19,21 @@
     border: none;
     padding: 9px;
     padding-left: 40px;
+    height: 22px;
     width: 75%;
     text-overflow: ellipsis;
   }
 
   .recenter {
     margin-left: -20px;
+    height: 40px;
+    display: inline-block;
   }
 
   .search {
     margin-right: -20px;
+    height: 40px;
     background-color: white;
+    display: inline-block;
   }
 }
