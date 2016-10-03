@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes } from '../services';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes, EditSpotStateService, States } from '../services';
 
 @Component({
   selector: 'main-map',
@@ -20,7 +20,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     private spotApi: SpotApiService,
     private mapLocation: MapLocationService,
     private geoLocation: GeolocationService,
-    private destinationLocation: DestinationLocationService
+    private destinationLocation: DestinationLocationService,
+    private editSpotState: EditSpotStateService
   ) {}
 
   ngOnInit() {}
@@ -50,7 +51,6 @@ export class MapComponent implements OnInit, AfterViewInit {
     this.infoWindow = new window.google.maps.InfoWindow();
     this.infoWindowTemplate = function(marker){
       return '<div>' +
-                '<button md-button color="primary"> Report </button> </br>' +
                 '<a md-raised-button color="primary" href="http://maps.google.com/maps?daddr=' +
                   marker.$lat + ',' + marker.$lng + '" target="_blank"> Navigate </a>' +
               '</div>';

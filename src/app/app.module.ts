@@ -28,7 +28,8 @@ import {
   SpotApiService,
   DestinationLocationService,
   DistanceService,
-  RulesInfoService
+  RulesInfoService,
+  EditSpotStateService
 } from './services';
 
 // Router
@@ -72,7 +73,8 @@ export const firebaseConfig = {
     SpotApiService,
     DestinationLocationService,
     DistanceService,
-    RulesInfoService
+    RulesInfoService,
+    EditSpotStateService
   ],
   bootstrap: [AppComponent]
 })

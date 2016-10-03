@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
-import { MapLocationService } from '../services';
+import { MapLocationService, EditSpotStateService } from '../services';
 
 export enum States {
   Closed,
@@ -20,22 +20,41 @@ export class EditSpotComponent implements OnInit {
   private state: States;
   public enteringSpot: boolean;
 
-  constructor(private mapLocationService: MapLocationService) {
-  }
+  constructor(
+    private mapLocationService: MapLocationService,
+    private editSpotStateService: EditSpotStateService
+  ) {}
 
   ngOnInit() {
     this.state = this.states.Closed;
+
+    this.editSpotStateService.state.subscribe(res => {
+      console.log(res)
+      switch (res) {
+        case 1:
+          this.addLocation();
+          break;
+        case 2:
+          this.addDetails();
+          break;
+        default:
+          this.submit();
+          break;
+      }
+    })
   }
 
   addLocation() {
     this.state = this.states.AddLocation;
+    this.mapLocationService.centerOnMe();
     this.mapLocationService.setZoom(20);
     this.mapLocationService.setMode('satellite');
-    this.mapLocationService.centerOnMe();
   }
 
   addDetails() {
     this.state = this.states.AddDetails;
+    this.mapLocationService.setZoom(20);
+    this.mapLocationService.setMode('satellite');
   }
 
   submit() {
