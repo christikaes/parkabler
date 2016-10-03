@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes, EditSpotStateService, States } from '../services';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes} from '../services';
 
 @Component({
   selector: 'main-map',
@@ -20,8 +20,7 @@ export class MapComponent implements OnInit, AfterViewInit {
     private spotApi: SpotApiService,
     private mapLocation: MapLocationService,
     private geoLocation: GeolocationService,
-    private destinationLocation: DestinationLocationService,
-    private editSpotState: EditSpotStateService
+    private destinationLocation: DestinationLocationService
   ) {}
 
   ngOnInit() {}

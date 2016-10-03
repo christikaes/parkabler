@@ -29,7 +29,6 @@ export class EditSpotComponent implements OnInit {
     this.state = this.states.Closed;
 
     this.editSpotStateService.state.subscribe(res => {
-      console.log(res)
       switch (res) {
         case 1:
           this.addLocation();
@@ -41,7 +40,7 @@ export class EditSpotComponent implements OnInit {
           this.submit();
           break;
       }
-    })
+    });
   }
 
   addLocation() {

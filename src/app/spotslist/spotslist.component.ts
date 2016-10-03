@@ -96,8 +96,7 @@ export class SpotsListComponent implements OnInit {
     }
   }
 
-  onReport(spot){
-    this.editSpotStateService.set(States.AddDetails)
-    console.log()
+  onReport(spot) {
+    this.editSpotStateService.set(States.AddDetails);
   }
 }
