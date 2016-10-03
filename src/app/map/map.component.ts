@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, NgModule } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes } from '../services';
 
 @Component({

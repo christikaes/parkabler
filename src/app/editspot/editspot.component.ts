@@ -44,10 +44,12 @@ export class EditSpotComponent implements OnInit {
     this.mapLocationService.setMode('roadmap');
     setTimeout(() => {
       this.state = this.states.Closed;
-    }, 2000);
+    }, 3000);
   }
 
   close() {
     this.state = this.states.Closed;
+    this.mapLocationService.setZoom(15);
+    this.mapLocationService.setMode('roadmap');
   }
 }

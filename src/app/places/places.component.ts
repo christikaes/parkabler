@@ -41,7 +41,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
       .then((p: Position) => {
         this.mapLocation.set(p);
         this.destinationLocation.set(p);
-        this.mapLocation.setZoom(17);
+        this.mapLocation.setZoom(18);
       })
       .catch(() => {
         console.log('Current Location Not found');
