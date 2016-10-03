@@ -1,0 +1,18 @@
+.map-view {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  background-color: white;
+}
+
+.zoom {
+  position: absolute;
+  bottom: 70px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  
+  button {
+    border-radius: 0px;
+  }
+}

@@ -14,6 +14,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home';
 import { HeaderComponent } from './header';
 import { EditSpotComponent } from './editspot';
+import { MapControlsComponent } from './mapcontrols';
 import { SpotsListComponent } from './spotslist';
 import { MapComponent } from './map';
 import { PlacesComponent } from './places';
@@ -58,6 +59,7 @@ export const firebaseConfig = {
     HomeComponent,
     HeaderComponent,
     EditSpotComponent,
+    MapControlsComponent,
     SpotsListComponent,
     MapComponent,
     PlacesComponent,

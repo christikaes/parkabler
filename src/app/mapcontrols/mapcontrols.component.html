@@ -1,0 +1,10 @@
+<div class="container">
+  <md-button-toggle-group name="spaces-buttons" class="map-view" color="secondary" (change)="changeView($event.value)">
+    <md-button-toggle value="roadmap" checked=true>Map</md-button-toggle>
+    <md-button-toggle value="satellite">Satellite</md-button-toggle>
+  </md-button-toggle-group>
+  <div class="zoom">
+    <button md-mini-fab (click)="changeZoom(1)"><md-icon>add</md-icon></button>
+    <button md-mini-fab (click)="changeZoom(-1)"><md-icon>remove</md-icon></button>
+  </div>
+</div>

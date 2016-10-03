@@ -1,5 +1,5 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '../services';
+import { Component, OnInit, AfterViewInit, ViewChild, NgModule } from '@angular/core';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes } from '../services';
 
 @Component({
   selector: 'main-map',
@@ -34,16 +34,8 @@ export class MapComponent implements OnInit, AfterViewInit {
     let mapDiv = this.googleMapsDiv.nativeElement;
     this.map = new window.google.maps.Map(mapDiv, {
       zoom: 15,
-      zoomControl: true,
-      zoomControlOptions: {
-          position: window.google.maps.ControlPosition.RIGHT_BOTTOM
-      },
-      mapTypeControl: true,
-      mapTypeControlOptions: {
-        style: window.google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
-        position: window.google.maps.ControlPosition.BOTTOM_CENTER,
-        mapTypeIds: ['roadmap', 'satellite']
-      },
+      zoomControl: false,
+      mapTypeControl: false,
       fullscreenControl: false,
       rotateControl: false,
       scaleControl: false,
@@ -152,4 +144,11 @@ export class MapComponent implements OnInit, AfterViewInit {
     });
   }
 
+  zoomChange(z: number): void {
+    this.map.setZoom(this.map.getZoom() + z);
+  }
+
+  viewChange(v: MapModes): void {
+    this.map.setMapTypeId(v);
+  }
 }
