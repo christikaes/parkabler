@@ -1,3 +1,8 @@
+<!-- State.Closed -->
+<button *ngIf="state == states.Closed" md-raised-button color="primary" (click)="addLocation()" class="add-spot">
+  ADD SPOT
+</button>
+
 <div class="container" [ngClass]="{ editing: enteringSpot }" [ngSwitch]="state">
   <!-- Marker Overlay -->
   <div id="addMarker" *ngIf="state == states.AddLocation || state == states.AddDetails">
@@ -6,10 +11,6 @@
     </svg>
   </div>
 
-  <!-- State.Closed -->
-  <button *ngSwitchCase="states.Closed" md-raised-button color="primary" (click)="addLocation()" class="add-spot">
-    ADD SPOT
-  </button>
 
   <!-- State.AddLocation -->
   <div *ngSwitchCase="states.AddLocation">

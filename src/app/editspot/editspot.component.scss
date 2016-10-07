@@ -1,17 +1,18 @@
-// component styles are encapsulated and only applied to their components
+.add-spot {
+  position: fixed;
+  bottom: 60px;
+  left: 20px;
+}
+
 .container {
-  position: absolute;
+  // TODO: Style for desktop?
+  // position: absolute;
+  // max-width: 400px;
   bottom: 0px;
   left: 0px;
   text-align: left;
   width: 100%;
-  max-width: 400px;
   z-index: 1000; // Should be above everything
-}
-
-.add-spot {
-  bottom: 20px;
-  left: 20px;
 }
 
 md-card-header {
