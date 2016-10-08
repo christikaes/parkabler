@@ -97,6 +97,7 @@ export class SpotsListComponent implements OnInit {
   }
 
   onReport(spot) {
+    this.expanded = false;
     this.editSpotStateService.set(States.AddDetails);
   }
 }

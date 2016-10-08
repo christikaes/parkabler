@@ -7,8 +7,24 @@
 
   <md-nav-list class="content" *ngIf="expanded">
     <md-list-item *ngFor="let spot of filteredSpots" class="list-item">
+      <div md-line>
+        <span class="large-text">1 Space</span>
+        <a class="right" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+          <img md-list-avatar src="img/icons/ic_directions.svg" alt="directions">
+        </a>
+      </div>
+      <div md-line>
+        <span> within {{spot.distanceToDest}} meters </span>
+        <a (click)="onReport()">
+          Report
+        </a>
+        <a class="right" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+          Directions
+        </a>
+      </div>
+      <div md-line class="divider"></div>
       <!-- <md-list-text> -->
-        <div class="info">
+        <!-- <div class="info">
           <h4>1 Space</h4>
           <span>within {{spot.distanceToDest}} meters</span>
           <button  md-button color="primary" (click)="onReport()">
@@ -16,8 +32,8 @@
           </button>
         </div>
         <a md-button class="directions" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
-          <md-icon class="icon">directions</md-icon>
-        </a>
+          <md-icon class="icon" svgSrc="img/icons/ic_directions.svg"></md-icon>
+        </a> -->
       <!-- </md-list-text> -->
     </md-list-item>
   </md-nav-list>
