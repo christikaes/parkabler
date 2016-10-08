@@ -47,19 +47,19 @@ export class EditSpotComponent implements OnInit {
     this.state = this.states.AddLocation;
     this.mapLocationService.centerOnMe();
     this.mapLocationService.setZoom(20);
-    this.mapLocationService.setMode('satellite');
+    // this.mapLocationService.setMode('satellite');
   }
 
   addDetails() {
     this.state = this.states.AddDetails;
     this.mapLocationService.setZoom(20);
-    this.mapLocationService.setMode('satellite');
+    // this.mapLocationService.setMode('satellite');
   }
 
   submit() {
     this.state = this.states.Submitted;
     this.mapLocationService.setZoom(15);
-    this.mapLocationService.setMode('roadmap');
+    // this.mapLocationService.setMode('roadmap');
     setTimeout(() => {
       this.state = this.states.Closed;
     }, 3000);
@@ -68,6 +68,6 @@ export class EditSpotComponent implements OnInit {
   close() {
     this.state = this.states.Closed;
     this.mapLocationService.setZoom(15);
-    this.mapLocationService.setMode('roadmap');
+    // this.mapLocationService.setMode('roadmap');
   }
 }
