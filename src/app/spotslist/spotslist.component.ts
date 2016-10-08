@@ -102,7 +102,7 @@ export class SpotsListComponent implements OnInit {
     this.editSpotStateService.set(States.AddDetails);
   }
 
-  onClickSpot(position){
+  onClickSpot(position) {
     this.mapLocationService.setZoom(20);
     this.mapLocationService.set(position);
   }
