@@ -1,5 +1,5 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { DistanceService, SpotApiService, DestinationLocationService, EditSpotStateService, States } from '../services';
+import { DistanceService, SpotApiService, DestinationLocationService, EditSpotStateService, MapLocationService, States } from '../services';
 import { Position } from '../services/geolocation.service';
 
 let distanceBetweenPoints = function(p1: Position, p2: Position) {
@@ -49,6 +49,7 @@ export class SpotsListComponent implements OnInit {
     private spotApiService: SpotApiService,
     private destinationLocationService: DestinationLocationService,
     private editSpotStateService: EditSpotStateService,
+    private mapLocationService: MapLocationService,
     private zone: NgZone
   ) {
     this.expanded = false;
@@ -99,5 +100,10 @@ export class SpotsListComponent implements OnInit {
   onReport(spot) {
     this.expanded = false;
     this.editSpotStateService.set(States.AddDetails);
+  }
+
+  onClickSpot(position){
+    this.mapLocationService.setZoom(20);
+    this.mapLocationService.set(position);
   }
 }
