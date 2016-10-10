@@ -25,6 +25,7 @@ let distanceBetweenPoints = function(p1: Position, p2: Position) {
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
+  private hidden: boolean;
   private enabled: boolean;
   private expanded: boolean;
   private numSpot: number;
@@ -54,6 +55,7 @@ export class SpotsListComponent implements OnInit {
   ) {
     this.expanded = false;
     this.enabled = false;
+    this.hidden = false;
     this.numSpot = 100;
     this.filteredSpots = [];
     spotApiService.spots.subscribe(res => {
@@ -75,7 +77,15 @@ export class SpotsListComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.editSpotStateService.state.subscribe((res) => {
+      if (res === 0) {
+        this.hidden = false;
+      } else {
+        this.hidden = true;
+      }
+    });
+  }
 
   toggleExapand() {
     this.expanded = !this.expanded;

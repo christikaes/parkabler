@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { MapLocationService, MapModes } from '../services';
+import { EditSpotStateService, MapModes, States } from '../services';
 
 @Component({
   selector: 'map-controls',
@@ -10,10 +10,20 @@ export class MapControlsComponent implements OnInit {
   @Output() zoomChange = new EventEmitter();
   @Output() viewChange = new EventEmitter();
 
-  constructor(private mapLocationService: MapLocationService) {
+  private showAddSpot: boolean;
+
+  constructor(private editSpotState: EditSpotStateService) {
   }
 
   ngOnInit() {
+    this.showAddSpot = true;
+    this.editSpotState.state.subscribe((res) => {
+      if (res === 0) {
+        this.showAddSpot = true;
+      } else {
+        this.showAddSpot = false;
+      }
+    });
   }
 
   changeView(v: MapModes): void {
@@ -22,5 +32,10 @@ export class MapControlsComponent implements OnInit {
 
   changeZoom(z: number): void {
     this.zoomChange.emit(z);
+  }
+
+  addLocation(): void {
+    this.editSpotState.set(States.AddLocation);
+    this.showAddSpot = false;
   }
 }

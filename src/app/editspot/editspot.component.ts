@@ -31,23 +31,26 @@ export class EditSpotComponent implements OnInit {
 
     this.editSpotStateService.state.subscribe(res => {
       switch (res) {
+        case 0:
+          this.onClose();
+          break;
         case 1:
-          this.addLocation();
+          this.onAddLocation();
           break;
         case 2:
-          this.addDetails();
+          this.onAddDetails();
           break;
         case 3:
-          this.reportDetails();
+          this.onReportDetails();
           break;
         default:
-          this.submit();
+          this.onSubmit();
           break;
       }
     });
   }
 
-  addLocation() {
+  onAddLocation() {
     this.state = this.states.AddLocation;
     this.mapLocationService.centerOnMe();
     this.mapLocationService.setZoom(20);
@@ -55,30 +58,51 @@ export class EditSpotComponent implements OnInit {
   }
 
   // TODO: Report in its own thing
-  reportDetails() {
+  onReportDetails() {
     this.state = this.states.ReportDetails;
     this.mapLocationService.setZoom(20);
     // this.mapLocationService.setMode('satellite');
   }
 
-  addDetails() {
+  onAddDetails() {
     this.state = this.states.AddDetails;
     this.mapLocationService.setZoom(20);
     // this.mapLocationService.setMode('satellite');
   }
 
-  submit() {
+  onSubmit() {
     this.state = this.states.Submitted;
     this.mapLocationService.setZoom(15);
     // this.mapLocationService.setMode('roadmap');
     setTimeout(() => {
-      this.state = this.states.Closed;
+      this.editSpotStateService.set(this.states.Closed);
     }, 3000);
   }
 
-  close() {
+  onClose() {
     this.state = this.states.Closed;
     this.mapLocationService.setZoom(15);
     // this.mapLocationService.setMode('roadmap');
+  }
+
+  addLocation() {
+    this.editSpotStateService.set(this.states.AddLocation);
+  }
+
+  // TODO: Report in its own thing
+  reportDetails() {
+    this.editSpotStateService.set(this.states.ReportDetails);
+  }
+
+  addDetails() {
+    this.editSpotStateService.set(this.states.AddDetails);
+  }
+
+  submit() {
+    this.editSpotStateService.set(this.states.Submitted);
+  }
+
+  close() {
+    this.editSpotStateService.set(this.states.Closed);
   }
 }

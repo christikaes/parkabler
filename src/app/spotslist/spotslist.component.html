@@ -1,4 +1,4 @@
-<div class="container" *ngIf="enabled" [ngClass]="{ expanded: expanded }">
+<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }">
   <button md-button class="header" (click)="toggleExapand()">
     {{numSpot}} spots near destination
   </button>
