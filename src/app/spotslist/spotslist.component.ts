@@ -97,9 +97,10 @@ export class SpotsListComponent implements OnInit {
     }
   }
 
-  onReport(spot) {
+  onReport(position) {
     this.expanded = false;
-    this.editSpotStateService.set(States.AddDetails);
+    // this.mapLocationService.set(position);
+    this.editSpotStateService.set(States.ReportDetails);
   }
 
   onClickSpot(position) {

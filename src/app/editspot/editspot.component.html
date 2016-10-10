@@ -14,18 +14,43 @@
   <!-- State.AddLocation -->
   <div *ngSwitchCase="states.AddLocation">
     <md-card class="md-card-raised">
-      <md-card-subtitle>Place the Marker over the location of the spot</md-card-subtitle>
+      <md-card-subtitle>Where is the spot located?</md-card-subtitle>
       <md-card-content>
-        <md-card-subtitle>Where is the spot located?</md-card-subtitle>
+        <md-card-subtitle>Place the Marker over the location of the spot</md-card-subtitle>
         <button md-button color="primary" (click)="close()">Cancel</button>
         <button md-raised-button color="primary" (click)="addDetails()">Next</button>
       </md-card-content>
     </md-card>
   </div>
 
+  <!-- State.ReportLocation -->
+  <md-card *ngSwitchCase="states.ReportDetails" class="md-card-raised">
+    <md-card-subtitle>Report a Parking Sport</md-card-subtitle>
+    <md-card-content>
+      <md-card-subtitle>How many spaces are there?</md-card-subtitle>
+      <md-button-toggle-group name="spaces-buttons">
+        <md-button-toggle value="1" checked=true>1</md-button-toggle>
+        <md-button-toggle value="2">2</md-button-toggle>
+        <md-button-toggle value="3">3</md-button-toggle>
+        <md-button-toggle value="4">4</md-button-toggle>
+        <md-button-toggle value="Many">Many</md-button-toggle>
+      </md-button-toggle-group>
+      <md-card-subtitle>What type of space is this?</md-card-subtitle>
+      <md-button-toggle-group name="spaces-buttons">
+        <md-button-toggle value="commercial">Commercial</md-button-toggle>
+        <md-button-toggle value="residential">Residential</md-button-toggle>
+        <md-button-toggle value="Don't Know" checked=true>Don't know</md-button-toggle>
+      </md-button-toggle-group>
+      <md-input aria-label="description" placeholder="Description"></md-input>
+      <br/>
+      <button md-button color="primary" (click)="close()">Cancel</button>
+      <button md-raised-button color="primary" (click)="submit()">Submit</button>
+    </md-card-content>
+  </md-card>
+
   <!-- State.AddDetails -->
   <md-card *ngSwitchCase="states.AddDetails" class="md-card-raised">
-    <md-card-subtitle>Report a Parking Sport</md-card-subtitle>
+    <md-card-subtitle>Add a Parking Sport</md-card-subtitle>
     <md-card-content>
       <md-card-subtitle>How many spaces are there?</md-card-subtitle>
       <md-button-toggle-group name="spaces-buttons">

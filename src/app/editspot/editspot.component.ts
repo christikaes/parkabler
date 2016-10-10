@@ -6,6 +6,7 @@ export enum States {
   Closed,
   AddLocation,
   AddDetails,
+  ReportDetails,
   Submitted
 };
 
@@ -36,6 +37,9 @@ export class EditSpotComponent implements OnInit {
         case 2:
           this.addDetails();
           break;
+        case 3:
+          this.reportDetails();
+          break;
         default:
           this.submit();
           break;
@@ -46,6 +50,13 @@ export class EditSpotComponent implements OnInit {
   addLocation() {
     this.state = this.states.AddLocation;
     this.mapLocationService.centerOnMe();
+    this.mapLocationService.setZoom(20);
+    // this.mapLocationService.setMode('satellite');
+  }
+
+  // TODO: Report in its own thing
+  reportDetails() {
+    this.state = this.states.ReportDetails;
     this.mapLocationService.setZoom(20);
     // this.mapLocationService.setMode('satellite');
   }

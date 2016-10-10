@@ -1,6 +1,6 @@
 .add-spot {
   position: fixed;
-  bottom: 60px;
+  bottom: 40px;
   left: 20px;
 }
 
@@ -13,6 +13,7 @@
   text-align: left;
   width: 100%;
   z-index: 1000; // Should be above everything
+  position: fixed;
 }
 
 md-card-header {

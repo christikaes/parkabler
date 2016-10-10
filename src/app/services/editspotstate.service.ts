@@ -6,6 +6,7 @@ export enum States {
   Closed,
   AddLocation,
   AddDetails,
+  ReportDetails,
   Submitted
 };
 
