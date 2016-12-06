@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EditSpotStateService, MapModes, States } from '../services';
+import { EditSpotStateService, MapModes, States } from '../../services';
 
 @Component({
   selector: 'map-controls',
