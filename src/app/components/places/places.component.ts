@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '../services';
+import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '../../services';
 
 @Component({
   selector: 'places-search',

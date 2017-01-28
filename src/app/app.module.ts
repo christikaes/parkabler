@@ -2,6 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgReduxModule, DevToolsExtension } from 'ng2-redux';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -11,21 +12,27 @@ import { MaterialModule } from '@angular/material';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { HeaderComponent } from './header';
-import { EditSpotComponent } from './editspot';
-import { MapControlsComponent } from './mapcontrols';
-import { SpotsListComponent } from './spotslist';
-import { MapComponent } from './map';
-import { PlacesComponent } from './places';
-import { TextComponent } from './text';
-import { RulesInfoComponent } from './rulesinfo';
+import {
+  HeaderComponent,
+  EditSpotComponent,
+  MapControlsComponent,
+  SpotsListComponent,
+  MapComponent,
+  PlacesComponent
+} from './components';
+
+// Pages
+import {
+  HomeComponent,
+  RulesInfoComponent,
+  TextComponent
+} from './pages';
 
 // Services
 import {
   MapLocationService,
   GeolocationService,
-  SpotApiService,
+  SpotsService,
   DestinationLocationService,
   DistanceService,
   RulesInfoService,
@@ -35,6 +42,8 @@ import {
 // Router
 import { routing } from './app.routing';
 
+// Actions
+import { ACTION_PROVIDERS } from './actions';
 
 export const firebaseConfig = {
   apiKey: 'AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8',
@@ -53,7 +62,8 @@ export const firebaseConfig = {
     // Firebase
     // AngularFireModule.initializeApp(firebaseConfig),
     // Routing
-    routing
+    routing,
+    NgReduxModule.forRoot(),
   ],
   declarations: [
     AppComponent,
@@ -68,13 +78,15 @@ export const firebaseConfig = {
     RulesInfoComponent
   ],
   providers: [
+    DevToolsExtension,
     MapLocationService,
     GeolocationService,
-    SpotApiService,
+    SpotsService,
     DestinationLocationService,
     DistanceService,
     RulesInfoService,
-    EditSpotStateService
+    EditSpotStateService,
+    ACTION_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

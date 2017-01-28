@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 // import { MdUniqueSelectionDispatcher } from '@angular2-material/core';
-import { MapLocationService, EditSpotStateService } from '../services';
+import { MapLocationService, EditSpotStateService } from '../../services';
 
 export enum States {
   Closed,

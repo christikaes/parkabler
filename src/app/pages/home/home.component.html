@@ -5,7 +5,8 @@
     <places-search></places-search>
   </div>
   <div class="bottom-drawer-container">
-    <edit-spot ></edit-spot>
-    <spots-list></spots-list>
+    <edit-spot></edit-spot>
+    <spots-list [spots]="nearbySpots$ | async">
+    </spots-list>
   </div>
 </div>
