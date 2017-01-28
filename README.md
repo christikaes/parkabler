@@ -27,6 +27,8 @@ The following stack is used:
  * useful resource: https://github.com/angular/material2/tree/master/src/demo-app
  * https://jperrott-material2.firebaseapp.com/button
 * Firebase3
+ * We are using firebase with redux: https://www.youtube.com/watch?v=UHJq5NOtNG4
+* Redux
 * Google Maps
 * PhoneGap
 
