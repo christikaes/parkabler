@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '~/services';
 
 @Component({
@@ -9,6 +9,8 @@ import { MapLocationService, Position, GeolocationService, DestinationLocationSe
 export class PlacesComponent implements OnInit, AfterViewInit {
   @ViewChild('placesInput') placesInput;
   autocomplete: any;
+
+  @Output() destinationUpdate = new EventEmitter();
 
   constructor(
     private mapLocation: MapLocationService,
@@ -30,6 +32,11 @@ export class PlacesComponent implements OnInit, AfterViewInit {
       this.mapLocation.set(place.geometry.location);
       this.mapLocation.setZoom(20);
       this.destinationLocation.set({
+        lat: place.geometry.location.lat(),
+        lng: place.geometry.location.lng()
+      });
+
+      this.destinationUpdate.emit({
         lat: place.geometry.location.lat(),
         lng: place.geometry.location.lng()
       });

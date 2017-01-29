@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DestinationActions } from '~/actions';
+import { Position } from '~/store';
 
 @Component({
   selector: 'my-home',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() {
-    // Do stuff
-  }
+  constructor(
+    private destinationActions: DestinationActions
+  ) {}
 
   ngOnInit() {}
 
+  onDestinationUpdate(newDestination: Position){
+    this.destinationActions.setDestination(newDestination);
+  }
 }
