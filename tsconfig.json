@@ -8,7 +8,6 @@
     "noEmitHelpers": true,
     "types": [
         "core-js",
-        "hammerjs",
         "jasmine",
         "node",
         "protractor",
@@ -20,5 +19,9 @@
   "exclude": [
         "node_modules",
         "phonegap"
-  ]
+  ],
+  "awesomeTypescriptLoaderOptions": {
+    "forkChecker": true,
+    "useWebpackText": true
+  }
 }
