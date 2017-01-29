@@ -18,15 +18,15 @@ ENV = ENV.startsWith('build') ? 'build' : ENV;
 var isTest = ENV === 'test' || ENV === 'test-watch';
 var isProd = ENV === 'build';
 
-var PHONEGAP_MODE = process.argv.indexOf('--phonegap') > 0;
+var PHONEGAP_MODE = process.env.npm_lifecycle_event.endsWith('phonegap');
 
 var OUTPUT_PATH = PHONEGAP_MODE ? 'dist-phonegap' : 'dist';
 
 var htmlWebpackPluginIndexHtml = PHONEGAP_MODE ?
-  './src/public/cordova-index.html' :
-  './src/public/index.html';
+'./src/public/cordova-index.html' :
+'./src/public/index.html';
 
-module.exports = function makeWebpackConfig() {
+module.exports = function() {
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
