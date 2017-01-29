@@ -1,8 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RulesInfoService } from '../services';
+import { RulesInfoService } from '~/services';
 import { Subscription } from 'rxjs/Subscription';
 import { ActivatedRoute } from '@angular/router';
-import Animations from '../animations';
+import Animations from '~/animations';
 
 @Component({
   selector: 'rules-info',

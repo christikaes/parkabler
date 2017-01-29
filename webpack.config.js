@@ -8,6 +8,7 @@ var autoprefixer = require('autoprefixer');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var CopyWebpackPlugin = require('copy-webpack-plugin');
+var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlugin;
 
 /**
  * Env
@@ -75,7 +76,10 @@ module.exports = function() {
    */
   config.resolve = {
     // only discover files that have those extensions
-    extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html']
+    extensions: ['.ts', '.js', '.json', '.css', '.scss', '.html'],
+    plugins: [
+        new TsConfigPathsPlugin(/* { tsconfig, compiler } */)
+    ]
   };
 
   var atlOptions = '';

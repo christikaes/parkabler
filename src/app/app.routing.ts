@@ -1,8 +1,10 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { HomeComponent } from './home';
-import { TextComponent } from './text';
-import { RulesInfoComponent } from './rulesinfo';
+import {
+  HomeComponent,
+  TextComponent,
+  RulesInfoComponent
+} from './pages';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },

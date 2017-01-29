@@ -11,15 +11,21 @@ import { MaterialModule } from '@angular/material';
 
 // Components
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home';
-import { HeaderComponent } from './header';
-import { EditSpotComponent } from './editspot';
-import { MapControlsComponent } from './mapcontrols';
-import { SpotsListComponent } from './spotslist';
-import { MapComponent } from './map';
-import { PlacesComponent } from './places';
-import { TextComponent } from './text';
-import { RulesInfoComponent } from './rulesinfo';
+import {
+  HeaderComponent,
+  EditSpotComponent,
+  MapControlsComponent,
+  SpotsListComponent,
+  MapComponent,
+  PlacesComponent
+} from './components';
+
+// Pages
+import {
+  HomeComponent,
+  RulesInfoComponent,
+  TextComponent
+} from './pages';
 
 // Services
 import {
