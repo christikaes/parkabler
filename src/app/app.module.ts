@@ -2,6 +2,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { NgReduxModule, DevToolsExtension} from 'ng2-redux';
 
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
@@ -38,6 +39,9 @@ import {
   EditSpotStateService
 } from './services';
 
+// Actions
+import { ACTION_PROVIDERS } from './actions';
+
 // Router
 import { routing } from './app.routing';
 
@@ -59,7 +63,8 @@ export const firebaseConfig = {
     // Firebase
     // AngularFireModule.initializeApp(firebaseConfig),
     // Routing
-    routing
+    routing,
+    NgReduxModule
   ],
   declarations: [
     AppComponent,
@@ -74,13 +79,15 @@ export const firebaseConfig = {
     RulesInfoComponent
   ],
   providers: [
+    DevToolsExtension,
     MapLocationService,
     GeolocationService,
     SpotApiService,
     DestinationLocationService,
     DistanceService,
     RulesInfoService,
-    EditSpotStateService
+    EditSpotStateService,
+    ACTION_PROVIDERS
   ],
   bootstrap: [AppComponent]
 })

@@ -132,7 +132,7 @@ module.exports = function() {
         loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.scss$/, exclude: root('src', 'style'), loader: 'raw-loader!postcss!sass'},
+      {test: /\.scss$/, exclude: root('src', 'styles'), loader: 'raw-loader!postcss!sass'},
 
       // support for .html as raw text
       // todo: change the loader to something that adds a hash to images

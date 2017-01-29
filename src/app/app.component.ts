@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { DevToolsExtension, NgRedux } from 'ng2-redux';
+import { IAppState, rootReducer, middleware, enhancers } from './store';
 import '../styles/app.scss';
 
 /*
@@ -6,11 +8,24 @@ import '../styles/app.scss';
  * Top Level Component
  */
 @Component({
-  selector: 'my-app', // <my-app></my-app>
+  selector: 'pa-app', // <pa-app></pa-app>
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor() {
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private devTools: DevToolsExtension
+  ) {
+
+    const tools = devTools.isEnabled() ?
+      [ ...enhancers, devTools.enhancer() ] : enhancers;
+
+    ngRedux.configureStore(
+      rootReducer,
+      {},
+      middleware,
+      tools
+    );
   }
 }
