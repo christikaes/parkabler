@@ -9,6 +9,7 @@ import { EditSpotStateService, MapModes, States } from '~/services';
 export class MapControlsComponent implements OnInit {
   @Output() zoomChange = new EventEmitter();
   @Output() viewChange = new EventEmitter();
+  @Output() recenterChange = new EventEmitter();
 
   private showAddSpot: boolean;
 
@@ -37,5 +38,18 @@ export class MapControlsComponent implements OnInit {
   addLocation(): void {
     this.editSpotState.set(States.AddLocation);
     this.showAddSpot = false;
+  }
+
+  recenter() {
+    this.recenterChange.emit();
+    // this.geoLocation.currentLocation()
+    //   .then((p: Position) => {
+    //     this.mapLocation.set(p);
+    //     this.destinationLocation.set(p);
+    //     this.mapLocation.setZoom(18);
+    //   })
+    //   .catch(() => {
+    //     console.log('Current Location Not found');
+    //   });
   }
 }

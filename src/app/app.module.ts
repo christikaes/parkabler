@@ -18,6 +18,7 @@ import {
   MapControlsComponent,
   SpotsListComponent,
   MapComponent,
+  DrawerComponent,
   PlacesComponent
 } from './components';
 
@@ -74,6 +75,7 @@ export const firebaseConfig = {
     MapControlsComponent,
     SpotsListComponent,
     MapComponent,
+    DrawerComponent,
     PlacesComponent,
     TextComponent,
     RulesInfoComponent

@@ -1,12 +1,15 @@
 <pa-header></pa-header>
 <div class="content">
   <div class="map-container">
-    <!-- <main-map></main-map> -->
     <map></map>
     <places-search (destinationUpdate)="onDestinationUpdate($event)"></places-search>
   </div>
-  <div class="bottom-drawer-container">
+  <pa-drawer>
     <edit-spot ></edit-spot>
     <spots-list></spots-list>
-  </div>
+  </pa-drawer>
+  <!-- <div class="bottom-drawer-container">
+    <edit-spot ></edit-spot>
+    <spots-list></spots-list>
+  </div> -->
 </div>

@@ -42,16 +42,4 @@ export class PlacesComponent implements OnInit, AfterViewInit {
       });
     });
   }
-
-  recenter() {
-    this.geoLocation.currentLocation()
-      .then((p: Position) => {
-        this.mapLocation.set(p);
-        this.destinationLocation.set(p);
-        this.mapLocation.setZoom(18);
-      })
-      .catch(() => {
-        console.log('Current Location Not found');
-      });
-  }
 }
