@@ -15,11 +15,13 @@ import { AppComponent } from './app.component';
 import {
   HeaderComponent,
   EditSpotComponent,
-  MapControlsComponent,
   SpotsListComponent,
-  MapComponent,
   DrawerComponent,
-  PlacesComponent
+  PlacesComponent,
+  MapComponent,
+  MapGLComponent,
+  MapJSComponent,
+  MapControlsComponent
 } from './components';
 
 // Pages
@@ -72,13 +74,15 @@ export const firebaseConfig = {
     HomeComponent,
     HeaderComponent,
     EditSpotComponent,
-    MapControlsComponent,
     SpotsListComponent,
-    MapComponent,
     DrawerComponent,
     PlacesComponent,
     TextComponent,
-    RulesInfoComponent
+    RulesInfoComponent,
+    MapComponent,
+    MapGLComponent,
+    MapJSComponent,
+    MapControlsComponent
   ],
   providers: [
     DevToolsExtension,

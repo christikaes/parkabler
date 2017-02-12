@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EditSpotStateService, MapModes, States } from '~/services';
 
 @Component({
-  selector: 'map-controls',
+  selector: 'pa-map-controls',
   templateUrl: './mapcontrols.component.html',
   styleUrls: ['./mapcontrols.component.scss']
 })
@@ -42,14 +42,5 @@ export class MapControlsComponent implements OnInit {
 
   recenter() {
     this.recenterChange.emit();
-    // this.geoLocation.currentLocation()
-    //   .then((p: Position) => {
-    //     this.mapLocation.set(p);
-    //     this.destinationLocation.set(p);
-    //     this.mapLocation.setZoom(18);
-    //   })
-    //   .catch(() => {
-    //     console.log('Current Location Not found');
-    //   });
   }
 }

@@ -1,13 +1,17 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Input, Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes} from '~/services';
 
 @Component({
-  selector: 'main-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+  selector: 'pa-map-js',
+  templateUrl: './mapjs.component.html',
+  styleUrls: ['./mapjs.component.scss']
 })
-export class MapComponent implements OnInit, AfterViewInit {
+export class MapJSComponent implements OnInit, AfterViewInit {
   @ViewChild('googleMapsDiv') googleMapsDiv;
+  @Input() zoom : number;
+  @Input('view') mode : MapModes;
+  @Input() center: any;
+
   private map: any;
   // Holds a reference to all the markers on the map so we know what changes
   private markers = [];

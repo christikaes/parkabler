@@ -1,0 +1,3 @@
+<pa-map-gl *ngIf="supportsGL" [zoom]="zoom" [view]="view" [center]="center"></pa-map-gl>
+<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [view]="view" [center]="center"></pa-map-js>
+<pa-map-controls (zoomChange)="zoomChange($event)" (viewChange)="viewChange($event)" (recenterChange)="recenterChange($event)"></pa-map-controls>
