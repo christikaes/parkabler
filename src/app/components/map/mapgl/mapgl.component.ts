@@ -33,6 +33,10 @@ export class MapGLComponent extends BaseMapComponent {
     console.log("setMode");
   }
 
+  setCenter(center: Position) {
+    this.map.flyTo({center: [center.lng, center.lat]});
+  }
+
   addMarker($key: string, position: Position){
     var el = document.createElement('div');
     el.className = 'marker';

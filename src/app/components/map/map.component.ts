@@ -1,4 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { select } from 'ng2-redux';
+import { Observable } from 'rxjs/Observable';
 import { MapGLComponent } from './mapgl';
 import { MapJSComponent } from './mapjs';
 import { MapControlsComponent } from './mapcontrols';
@@ -20,6 +22,8 @@ export class MapComponent implements OnInit {
   private mode: MapModes;
   private center: Position;
 
+  @select() private destination$: Observable<Position>;
+
   constructor(
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions
@@ -31,6 +35,13 @@ export class MapComponent implements OnInit {
 
   ngOnInit() {
     this.supportsGL = mapboxgl.supported();
+
+    // Listen to changes on destination
+    this.destination$.subscribe(destination => {
+      this.center = destination;
+      this.zoom = 15;
+    })
+
   }
 
   zoomChange(z: number): void {
@@ -53,5 +64,7 @@ export class MapComponent implements OnInit {
         console.log('Current Location Not found');
       });
   }
+
+
 
 }

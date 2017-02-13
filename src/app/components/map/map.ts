@@ -35,6 +35,9 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
   // Change between mapModes
   abstract setMode(mode: MapModes): void;
 
+  // Set the center of the map
+  abstract setCenter(center: Position): void;
+
   ngOnChanges(changes: SimpleChanges) {
     // Only start listening to changes after the map is initialized
     if(this.initialized){
@@ -45,6 +48,9 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
             break;
           case "mode":
             this.setMode(changes[change].currentValue);
+            break;
+          case "center":
+            this.setCenter(changes[change].currentValue);
             break;
           default:
             console.log("Uncaught change: " + change);
