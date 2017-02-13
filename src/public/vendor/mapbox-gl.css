@@ -275,6 +275,9 @@
     top: 0;
     left: 0;
     will-change: transform;
+    width: 40px;
+    height: 40px;
+    background-color: blue;
 }
 
 .mapboxgl-crosshair,

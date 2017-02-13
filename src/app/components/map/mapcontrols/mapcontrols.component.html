@@ -2,7 +2,7 @@
   <button *ngIf="showAddSpot" md-raised-button color="primary" (click)="addLocation()" class="add-spot">
     ADD SPOT
   </button>
-  <md-button-toggle-group name="spaces-buttons" class="map-view" color="secondary" (change)="changeView($event.value)">
+  <md-button-toggle-group name="spaces-buttons" class="map-view" color="secondary" (change)="changeMode($event.value)">
     <md-button-toggle value="roadmap" checked=true>Map</md-button-toggle>
     <md-button-toggle value="satellite">Satellite</md-button-toggle>
   </md-button-toggle-group>

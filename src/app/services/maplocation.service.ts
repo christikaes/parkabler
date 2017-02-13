@@ -2,8 +2,7 @@ import { Injectable } from '@angular/core';
 import { Position, GeolocationService } from './geolocation.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-
-export type MapModes = 'satellite' | 'roadmap';
+import { MapModes } from '~/components/map';
 
 @Injectable()
 export class MapLocationService {

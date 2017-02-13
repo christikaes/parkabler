@@ -1,16 +1,14 @@
 import { Input, Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService, MapModes} from '~/services';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService} from '~/services';
+import { BaseMapComponent, MapModes } from '~/components/map';
 
 @Component({
   selector: 'pa-map-js',
   templateUrl: './mapjs.component.html',
   styleUrls: ['./mapjs.component.scss']
 })
-export class MapJSComponent implements OnInit, AfterViewInit {
+export class MapJSComponent { //extends BaseMapComponent {
   @ViewChild('googleMapsDiv') googleMapsDiv;
-  @Input() zoom : number;
-  @Input('view') mode : MapModes;
-  @Input() center: any;
 
   private map: any;
   // Holds a reference to all the markers on the map so we know what changes
@@ -25,12 +23,8 @@ export class MapJSComponent implements OnInit, AfterViewInit {
     private mapLocation: MapLocationService,
     private geoLocation: GeolocationService,
     private destinationLocation: DestinationLocationService
-  ) {}
-
-  ngOnInit() {}
-
-  ngAfterViewInit(): void {
-    this.initializeMap();
+  ) {
+    //super(spotApi);
   }
 
   initializeMap(): void {
@@ -58,28 +52,6 @@ export class MapJSComponent implements OnInit, AfterViewInit {
                   marker.$lat + ',' + marker.$lng + '" target="_blank"> Navigate </a>' +
               '</div>';
     };
-
-    // Update map center, zoom, or mapMode whenever the mapLocation is updated
-    this.mapLocation.current.subscribe(res => {
-      this.map.setCenter(res);
-    });
-
-    this.mapLocation.zoom.subscribe(res => {
-      // Zoom the map smoothly
-      function smoothZoom (map: any, targetZoom: number, currentZoom: number) {
-        if (currentZoom !== targetZoom) {
-            window.google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
-                smoothZoom(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
-            });
-            setTimeout(function(){ map.setZoom(currentZoom); }, 80);
-        }
-      };
-      smoothZoom(this.map, res, this.map.getZoom());
-    });
-
-    this.mapLocation.mode.subscribe(res => {
-      this.map.setMapTypeId(res);
-    });
 
     // Update the spots whenever spots are updated
     this.spotApi.spots.subscribe(newMarkers => {
@@ -147,11 +119,20 @@ export class MapJSComponent implements OnInit, AfterViewInit {
     });
   }
 
-  zoomChange(z: number): void {
-    this.map.setZoom(this.map.getZoom() + z);
+  updateZoom(zoom : number) {
+    // Zoom the map smoothly
+    function smoothZoom (map: any, targetZoom: number, currentZoom: number) {
+      if (currentZoom !== targetZoom) {
+          window.google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
+              smoothZoom(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
+          });
+          setTimeout(function(){ map.setZoom(currentZoom); }, 80);
+      }
+    };
+    smoothZoom(this.map, this.map.getZoom() + zoom, this.map.getZoom());
   }
 
-  viewChange(v: MapModes): void {
-    this.map.setMapTypeId(v);
+  setMode(mode: MapModes) {
+    this.map.setMapTypeId(mode);
   }
 }

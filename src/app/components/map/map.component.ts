@@ -4,6 +4,10 @@ import { MapJSComponent } from './mapjs';
 import { MapControlsComponent } from './mapcontrols';
 import { MapModes } from './map';
 import { GeolocationService, Position } from '~/services';
+import { DestinationActions } from '~/actions';
+// TODO-rangle: is there a better way to require this?
+// Should i add this to vendor.js?
+var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 @Component({
   selector: 'pa-map',
@@ -13,23 +17,28 @@ import { GeolocationService, Position } from '~/services';
 export class MapComponent implements OnInit {
   private supportsGL : boolean;
   private zoom : number;
-  private view: MapModes;
+  private mode: MapModes;
   private center: Position;
 
   constructor(
-    private geoLocation: GeolocationService
-  ){}
+    private geoLocation: GeolocationService,
+    private destinationActions: DestinationActions
+  ){
+    this.zoom = 15;
+    this.mode = "street";
+    this.center = {lat: -71.06, lng: 42.35}
+  }
 
   ngOnInit() {
-    this.supportsGL = true;
+    this.supportsGL = mapboxgl.supported();
   }
 
   zoomChange(z: number): void {
     this.zoom += z;
   }
 
-  viewChange(v: MapModes): void {
-    this.view = v;
+  modeChange(v: MapModes): void {
+    this.mode = v;
   }
 
   recenterChange(): void {
@@ -37,8 +46,8 @@ export class MapComponent implements OnInit {
     this.geoLocation.currentLocation()
       .then((p: Position) => {
         this.center = p;
-        //this.destinationLocation.set(p);
         this.zoom = 18;
+        this.destinationActions.setDestination(p);
       })
       .catch(() => {
         console.log('Current Location Not found');

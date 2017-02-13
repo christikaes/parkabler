@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { EditSpotStateService, MapModes, States } from '~/services';
+import { EditSpotStateService, States } from '~/services';
+import { MapModes } from '~/components/map';
 
 @Component({
   selector: 'pa-map-controls',
@@ -8,7 +9,7 @@ import { EditSpotStateService, MapModes, States } from '~/services';
 })
 export class MapControlsComponent implements OnInit {
   @Output() zoomChange = new EventEmitter();
-  @Output() viewChange = new EventEmitter();
+  @Output() modeChange = new EventEmitter();
   @Output() recenterChange = new EventEmitter();
 
   private showAddSpot: boolean;
@@ -27,8 +28,8 @@ export class MapControlsComponent implements OnInit {
     });
   }
 
-  changeView(v: MapModes): void {
-    this.viewChange.emit(v);
+  changeMode(v: MapModes): void {
+    this.modeChange.emit(v);
   }
 
   changeZoom(z: number): void {
