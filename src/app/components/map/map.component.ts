@@ -47,7 +47,6 @@ export class MapComponent implements OnInit {
   }
 
   modeChange(v: MapModes): void {
-    console.log(v);
     this.mode = v;
   }
 

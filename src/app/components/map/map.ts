@@ -46,7 +46,6 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
         if (change === 'zoom') {
           this.updateZoom(changes[change].currentValue);
         } else if ( change === 'mode') {
-          console.log('her2e');
           this.setMode(changes[change].currentValue);
         } else if (change === 'center') {
           this.setCenter(changes[change].currentValue);
