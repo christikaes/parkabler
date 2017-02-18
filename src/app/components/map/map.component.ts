@@ -62,7 +62,4 @@ export class MapComponent implements OnInit {
         console.log('Current Location Not found');
       });
   }
-
-
-
 }
