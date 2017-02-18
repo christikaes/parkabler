@@ -11,14 +11,14 @@ export enum States {
 };
 
 @Component({
-  selector: 'edit-spot',
+  selector: 'pa-edit-spot',
   templateUrl: './editspot.component.html',
   styleUrls: ['./editspot.component.scss'],
   providers: [], // what's this?
 })
 export class EditSpotComponent implements OnInit {
-  private states = States;
-  private state: States;
+  public states = States;
+  public state: States;
   public enteringSpot: boolean;
 
   constructor(

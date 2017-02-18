@@ -3,7 +3,7 @@ import { DestinationActions } from '~/actions';
 import { Position } from '~/store';
 
 @Component({
-  selector: 'my-home',
+  selector: 'pa-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
-  onDestinationUpdate(newDestination: Position){
+  onDestinationUpdate(newDestination: Position) {
     this.destinationActions.setDestination(newDestination);
   }
 }

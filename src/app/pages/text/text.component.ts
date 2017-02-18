@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'text-view',
+  selector: 'pa-text-view',
   templateUrl: './text.component.html',
   styleUrls: ['./text.component.scss']
 })

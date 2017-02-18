@@ -1,15 +1,13 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { MapGLComponent } from './mapgl';
-import { MapJSComponent } from './mapjs';
-import { MapControlsComponent } from './mapcontrols';
 import { MapModes } from './map';
 import { GeolocationService, Position } from '~/services';
 import { DestinationActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
+// The types don't seem to be loading for mapboxgl
 // Should i add this to vendor.js?
-var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
+const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 @Component({
   selector: 'pa-map',
@@ -17,20 +15,20 @@ var mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
-  private supportsGL : boolean;
-  private zoom : number;
-  private mode: MapModes;
-  private center: Position;
+  public supportsGL: boolean;
+  public zoom: number;
+  public mode: MapModes;
+  public center: Position;
 
   @select() private destination$: Observable<Position>;
 
   constructor(
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions
-  ){
+  ) {
     this.zoom = 15;
-    this.mode = "street";
-    this.center = {lat: -71.06, lng: 42.35}
+    this.mode = 'street';
+    this.center = {lat: -71.06, lng: 42.35};
   }
 
   ngOnInit() {
@@ -40,7 +38,7 @@ export class MapComponent implements OnInit {
     this.destination$.subscribe(destination => {
       this.center = destination;
       this.zoom = 15;
-    })
+    });
 
   }
 
@@ -49,6 +47,7 @@ export class MapComponent implements OnInit {
   }
 
   modeChange(v: MapModes): void {
+    console.log(v);
     this.mode = v;
   }
 

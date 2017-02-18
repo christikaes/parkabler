@@ -5,18 +5,18 @@ import { ActivatedRoute } from '@angular/router';
 import Animations from '~/animations';
 
 @Component({
-  selector: 'rules-info',
+  selector: 'pa-rules-info',
   templateUrl: './rulesinfo.component.html',
   styleUrls: ['./rulesinfo.component.scss'],
   animations: Animations
 })
 export class RulesInfoComponent implements OnInit, OnDestroy {
+  public isHome: boolean;
+  public content: any[];
+  public title: string;
   private rules: any;
   private sub: Subscription;
-  private title: string;
-  private content: any[];
   private id: number;
-  private isHome: boolean;
 
   private updateContent = function(){
     if (!this.rules) {

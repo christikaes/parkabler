@@ -1,4 +1,4 @@
-// Helper: root(), and rootDir() are defined at the bottom
+// Helper: root() is defined at the bottom
 var path = require('path');
 var webpack = require('webpack');
 
@@ -15,8 +15,8 @@ var TsConfigPathsPlugin = require('awesome-typescript-loader').TsConfigPathsPlug
  * Get npm lifecycle event to identify the environment
  */
 var ENV = process.env.npm_lifecycle_event;
-ENV = ENV.startsWith('build') ? 'build' : ENV;
-var isTest = ENV === 'test' || ENV === 'test-watch';
+var isTestWatch = ENV === 'test-watch';
+var isTest = ENV === 'test' || isTestWatch;
 var isProd = ENV === 'build';
 
 var PHONEGAP_MODE = process.env.npm_lifecycle_event.endsWith('phonegap');
@@ -27,7 +27,8 @@ var htmlWebpackPluginIndexHtml = PHONEGAP_MODE ?
 './src/public/cordova-index.html' :
 './src/public/index.html';
 
-module.exports = function() {
+
+module.exports = function makeWebpackConfig() {
   /**
    * Config
    * Reference: http://webpack.github.io/docs/configuration.html
@@ -42,12 +43,13 @@ module.exports = function() {
    */
   if (isProd) {
     config.devtool = 'source-map';
-  } else {
+  }
+  else if (isTest) {
+    config.devtool = 'inline-source-map';
+  }
+  else {
     config.devtool = 'eval-source-map';
   }
-
-  // // add debug messages
-  // config.debug = !isProd || !isTest;
 
   /**
    * Entry
@@ -83,7 +85,7 @@ module.exports = function() {
   };
 
   var atlOptions = '';
-  if (isTest) {
+  if (isTest && !isTestWatch) {
     // awesome-typescript-loader needs to output inlineSourceMap for code coverage to work with source maps.
     atlOptions = 'inlineSourceMap=true&sourceMap=false';
   }
@@ -106,7 +108,7 @@ module.exports = function() {
       // copy those assets to output
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-        loader: 'file?name=fonts/[name].[hash].[ext]?'
+        loader: 'file-loader?name=fonts/[name].[hash].[ext]?'
       },
 
       // Support for *.json files.
@@ -118,7 +120,7 @@ module.exports = function() {
       {
         test: /\.css$/,
         exclude: root('src', 'app'),
-        loader: isTest ? 'null' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader']})
+        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader']})
       },
       // all css required in src/app files will be merged in js files
       {test: /\.css$/, include: root('src', 'app'), loader: 'raw-loader!postcss-loader'},
@@ -127,20 +129,20 @@ module.exports = function() {
       // use 'null' loader in test mode (https://github.com/webpack/null-loader)
       // all css in src/style will be bundled in an external css file
       {
-        test: /\.scss$/,
+        test: /\.(scss|sass)$/,
         exclude: root('src', 'app'),
-        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallbackLoader: 'style-loader', loader: ['css-loader', 'postcss-loader', 'sass-loader']})
+        loader: isTest ? 'null-loader' : ExtractTextPlugin.extract({ fallback: 'style-loader', use: ['css-loader', 'postcss-loader', 'sass-loader']})
       },
       // all css required in src/app files will be merged in js files
-      {test: /\.scss$/, exclude: root('src', 'styles'), loader: 'raw-loader!postcss!sass'},
+      {test: /\.(scss|sass)$/, exclude: root('src', 'style'), loader: 'raw-loader!postcss-loader!sass-loader'},
 
       // support for .html as raw text
       // todo: change the loader to something that adds a hash to images
-      {test: /\.html$/, loader: 'raw-loader', exclude: root('src', 'public')}
+      {test: /\.html$/, loader: 'raw-loader',  exclude: root('src', 'public')}
     ]
   };
 
-  if (isTest) {
+  if (isTest && !isTestWatch) {
     // instrument only testing sources with Istanbul, covers ts files
     config.module.rules.push({
       test: /\.ts$/,
@@ -149,7 +151,9 @@ module.exports = function() {
       loader: 'istanbul-instrumenter-loader',
       exclude: [/\.spec\.ts$/, /\.e2e\.ts$/, /node_modules/]
     });
+  }
 
+  if (!isTest || !isTestWatch) {
     // tslint support
     config.module.rules.push({
       test: /\.ts$/,
@@ -173,13 +177,12 @@ module.exports = function() {
       }
     }),
 
-
     // Workaround needed for angular 2 angular/angular#11580
-    new webpack.ContextReplacementPlugin(
-      // The (\\|\/) piece accounts for path separators in *nix and Windows
-      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
-      root('./src') // location of your src
-    ),
+      new webpack.ContextReplacementPlugin(
+        // The (\\|\/) piece accounts for path separators in *nix and Windows
+        /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+        root('./src') // location of your src
+      ),
 
     // Tslint configuration for webpack 2
     new webpack.LoaderOptionsPlugin({
@@ -214,7 +217,7 @@ module.exports = function() {
     })
   ];
 
-  if (!isTest) {
+  if (!isTest && !isTestWatch) {
     config.plugins.push(
       // Generate common chunks if necessary
       // Reference: https://webpack.github.io/docs/code-splitting.html
@@ -222,7 +225,6 @@ module.exports = function() {
       new CommonsChunkPlugin({
         name: ['vendor', 'polyfills']
       }),
-
 
       // Inject script and link tags into html files
       // Reference: https://github.com/ampedandwired/html-webpack-plugin
@@ -251,16 +253,13 @@ module.exports = function() {
 
       // Reference: http://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
       // Minify all javascript, switch loaders to minimizing mode
-      new webpack.optimize.UglifyJsPlugin({
-        compress: { warnings: false }
-      }),
+      new webpack.optimize.UglifyJsPlugin({sourceMap: true, mangle: { keep_fnames: true }}),
 
       // Copy assets from the public folder
       // Reference: https://github.com/kevlened/copy-webpack-plugin
       new CopyWebpackPlugin([{
-        from: root('src/public'),
-        to: root(OUTPUT_PATH)
-      }], { ignore: ["*cordova*"] })
+        from: root('src/public')
+      }])
     );
   }
 
@@ -272,6 +271,7 @@ module.exports = function() {
   config.devServer = {
     contentBase: './src/public',
     historyApiFallback: true,
+    quiet: true,
     stats: 'minimal' // none (or false), errors-only, minimal, normal (or true) and verbose
   };
 

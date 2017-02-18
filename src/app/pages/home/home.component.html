@@ -2,11 +2,11 @@
 <div class="content">
   <div class="map-container">
     <pa-map></pa-map>
-    <places-search (destinationUpdate)="onDestinationUpdate($event)"></places-search>
+    <pa-places-search (destinationUpdate)="onDestinationUpdate($event)"></pa-places-search>
   </div>
   <pa-drawer>
-    <edit-spot ></edit-spot>
-    <spots-list></spots-list>
+    <pa-edit-spot ></pa-edit-spot>
+    <pa-spots-list></pa-spots-list>
   </pa-drawer>
   <!-- <div class="bottom-drawer-container">
     <edit-spot ></edit-spot>

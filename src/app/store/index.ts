@@ -13,11 +13,11 @@ export {
 export let middleware = [];
 export let enhancers = [];
   // store state offline
-  //persistState('spots', {key: 'parkabler/app/state'})
+  // persistState('spots', {key: 'parkabler/app/state'});
 
 // Enable logger for dev mode
 // TODO: Make this consistent with webpack
-if(process.env.ENV === 'server') {
+if (process.env.ENV === 'server') {
   middleware.push(
     createLogger({
       level: 'info',

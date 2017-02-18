@@ -1,11 +1,11 @@
 import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { SpotApiService, Position} from '~/services';
+import { SpotApiService, Position } from '~/services';
 
-type MapModes = "street" | "satellite";
+type MapModes = 'street' | 'satellite';
 
 @Component({})
 abstract class BaseMapComponent implements OnChanges, AfterViewInit {
-  private initialized : boolean;
+  private initialized: boolean;
 
   constructor(
     private spotApi: SpotApiService
@@ -25,12 +25,13 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
 
   // ---------------------------------------------
   // Update map view:
-  @Input() zoom : number;
-  @Input() mode : MapModes;
+  // tslint:disable-next-line:member-ordering
+  @Input() zoom: number;
+  @Input() mode: MapModes;
   @Input() center: any;
 
   // Increase or decrease the zoom by the given amount
-  abstract updateZoom(zoom : number): void;
+  abstract updateZoom(zoom: number): void;
 
   // Change between mapModes
   abstract setMode(mode: MapModes): void;
@@ -40,21 +41,17 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
 
   ngOnChanges(changes: SimpleChanges) {
     // Only start listening to changes after the map is initialized
-    if(this.initialized){
-      for(let change in changes){
-        switch (change) {
-          case "zoom":
-            this.updateZoom(changes[change].currentValue);
-            break;
-          case "mode":
-            this.setMode(changes[change].currentValue);
-            break;
-          case "center":
-            this.setCenter(changes[change].currentValue);
-            break;
-          default:
-            console.log("Uncaught change: " + change);
-            break;
+    if (this.initialized) {
+      for (let change in changes) {
+        if (change === 'zoom') {
+          this.updateZoom(changes[change].currentValue);
+        } else if ( change === 'mode') {
+          console.log('her2e');
+          this.setMode(changes[change].currentValue);
+        } else if (change === 'center') {
+          this.setCenter(changes[change].currentValue);
+        } else {
+          console.log('Uncaught change: ' + change);
         }
       }
     }
@@ -62,15 +59,16 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
 
   // ---------------------------------------------
   // Markers
+  // tslint:disable-next-line:member-ordering
   private markers = [];
   abstract addMarker($key: string, position: Position): void;
   abstract updateMarker($key: string, position: Position): void;
   abstract removeMarker($key: string): void;
 
   // Update the markers whenever spots are updated
-  private listenToSpots(){
+  private listenToSpots() {
     this.spotApi.spots.subscribe(newMarkers => {
-      this.markers.forEach(function(marker, i){
+      this.markers.forEach(function(marker, i) {
         let newMarker = newMarkers.find(nm => nm.$key === marker.$key) ;
         if (!newMarker) {
           // Something was deleted
@@ -87,14 +85,14 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
         }, this);
 
         // Check if anything was added
-        newMarkers.forEach(function(newMarker){
+        newMarkers.forEach(function(newMarker) {
           if (!this.markers.find(m => m.$key === newMarker.$key)) {
             // Something was added
             this.markers.push(newMarker);
             this.addMarker(newMarker.$key, {lat: newMarker.lat, lng: newMarker.lng});
           };
         }, this);
-      })
+      });
   }
   // // Update the Destination
   // //   This will drop a destination marker on the map

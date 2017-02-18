@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } fro
 import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '~/services';
 
 @Component({
-  selector: 'places-search',
+  selector: 'pa-places-search',
   templateUrl: './places.component.html',
   styleUrls: ['./places.component.scss']
 })

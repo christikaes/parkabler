@@ -20,17 +20,18 @@ let distanceBetweenPoints = function(p1: Position, p2: Position) {
 
 
 @Component({
-  selector: 'spots-list',
+  selector: 'pa-spots-list',
   templateUrl: './spotslist.component.html',
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
-  private hidden: boolean;
-  private enabled: boolean;
-  private expanded: boolean;
-  private numSpot: number;
+  public expanded: boolean;
+  public filteredSpots: any[];
+  public hidden: boolean;
+  public enabled: boolean;
+  public numSpot: number;
+
   private spots: any[];
-  private filteredSpots: any[];
 
   private updateFilteredSpots = function(destination) {
     if (this.spots) {

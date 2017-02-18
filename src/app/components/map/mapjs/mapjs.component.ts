@@ -1,5 +1,5 @@
 import { Input, Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService} from '~/services';
+import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
 import { BaseMapComponent, MapModes } from '~/components/map';
 
 @Component({
@@ -7,7 +7,7 @@ import { BaseMapComponent, MapModes } from '~/components/map';
   templateUrl: './mapjs.component.html',
   styleUrls: ['./mapjs.component.scss']
 })
-export class MapJSComponent { //extends BaseMapComponent {
+export class MapJSComponent { // extends BaseMapComponent {
   @ViewChild('googleMapsDiv') googleMapsDiv;
 
   private map: any;
@@ -24,7 +24,7 @@ export class MapJSComponent { //extends BaseMapComponent {
     private geoLocation: GeolocationService,
     private destinationLocation: DestinationLocationService
   ) {
-    //super(spotApi);
+    // super(spotApi);
   }
 
   initializeMap(): void {
@@ -119,7 +119,7 @@ export class MapJSComponent { //extends BaseMapComponent {
     });
   }
 
-  updateZoom(zoom : number) {
+  updateZoom(zoom: number) {
     // Zoom the map smoothly
     function smoothZoom (map: any, targetZoom: number, currentZoom: number) {
       if (currentZoom !== targetZoom) {

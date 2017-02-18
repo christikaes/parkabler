@@ -1,4 +1,4 @@
-import {style, animate, transition, state, trigger} from '@angular/core';
+import { style, animate, transition, state, trigger } from '@angular/core';
 
 export default [
   trigger('slideLeft', [
