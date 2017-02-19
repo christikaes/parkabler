@@ -37,3 +37,19 @@ export function convertToGeoJson(spots: Spots) {
 
     return spotsGeoJson;
 }
+
+export function distanceBetween(p1: Position, p2: Position): number {
+    if (!p1 || !p2) {
+      return 0;
+    }
+
+    let R = 6371; // Radius of the Earth in km
+    let dLat = (p2.lat - p1.lat) * Math.PI / 180;
+    let dLon = (p2.lng - p1.lng) * Math.PI / 180;
+    let a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+      Math.cos(p1.lat * Math.PI / 180) * Math.cos(p2.lat * Math.PI / 180) *
+      Math.sin(dLon / 2) * Math.sin(dLon / 2);
+    let c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    let d = R * c;
+    return d;
+  }
