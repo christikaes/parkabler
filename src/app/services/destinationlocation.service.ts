@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { Position, GeolocationService } from './geolocation.service';
+import { GeolocationService } from './geolocation.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Position } from '~/util';
 
 @Injectable()
 export class DestinationLocationService {

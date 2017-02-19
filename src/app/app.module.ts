@@ -2,13 +2,22 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import { NgReduxModule, DevToolsExtension } from 'ng2-redux';
-
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
+// Redux
+import { NgReduxModule, DevToolsExtension } from 'ng2-redux';
+
+// NgMaterial
 import { MaterialModule } from '@angular/material';
 
-// import { AngularFireModule } from 'angularfire2';
+// NgFire
+import { AngularFireModule } from 'angularfire2';
+const firebaseConfig = {
+  apiKey: 'AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8',
+  authDomain: 'parkabler.firebaseapp.com',
+  databaseURL: 'https://parkabler.firebaseio.com',
+  storageBucket: 'parkabler.appspot.com'
+};
 
 // Components
 import { AppComponent } from './app.component';
@@ -35,7 +44,7 @@ import {
 import {
   MapLocationService,
   GeolocationService,
-  SpotApiService,
+  SpotsService,
   DestinationLocationService,
   DistanceService,
   RulesInfoService,
@@ -49,25 +58,18 @@ import { ACTION_PROVIDERS } from './actions';
 import { routing } from './app.routing';
 
 
-export const firebaseConfig = {
-  apiKey: 'AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8',
-  authDomain: 'parkabler.firebaseapp.com',
-  databaseURL: 'https://parkabler.firebaseio.com',
-  storageBucket: 'parkabler.appspot.com'
-};
-
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     FormsModule,
+    routing,
+    // Redux
+    NgReduxModule,
     // Material
     MaterialModule.forRoot(),
     // Firebase
-    // AngularFireModule.initializeApp(firebaseConfig),
-    // Routing
-    routing,
-    NgReduxModule
+    AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [
     AppComponent,
@@ -88,7 +90,7 @@ export const firebaseConfig = {
     DevToolsExtension,
     MapLocationService,
     GeolocationService,
-    SpotApiService,
+    SpotsService,
     DestinationLocationService,
     DistanceService,
     RulesInfoService,

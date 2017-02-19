@@ -1,8 +1,8 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { MapModes } from './map';
-import { GeolocationService, Position } from '~/services';
+import { MapModes, Position, Spots } from '~/util';
+import { GeolocationService } from '~/services';
 import { DestinationActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
 // The types don't seem to be loading for mapboxgl
@@ -19,8 +19,10 @@ export class MapComponent implements OnInit {
   public zoom: number;
   public mode: MapModes;
   public center: Position;
+  public spots: Spots;
 
   @select() private destination$: Observable<Position>;
+  @select() private spots$: Observable<Spots>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -35,11 +37,15 @@ export class MapComponent implements OnInit {
     this.supportsGL = mapboxgl.supported();
 
     // Listen to changes on destination
-    this.destination$.subscribe(destination => {
+    this.destination$.subscribe((destination: Position) => {
       this.center = destination;
       this.zoom = 15;
     });
 
+    // Listen to changes on spots
+    this.spots$.subscribe((spots: Spots) => {
+      this.spots = spots;
+    });
   }
 
   zoomChange(z: number): void {

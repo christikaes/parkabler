@@ -2,11 +2,9 @@ const createLogger = require('redux-logger');
 const persistState = ('redux-localstorage');
 
 import { IAppState, rootReducer } from './store';
-import { Position } from './reducers';
 
 export {
   IAppState,
-  Position,
   rootReducer
 };
 

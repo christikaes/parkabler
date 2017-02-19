@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { DestinationLocationService } from './destinationlocation.service';
-import { Position } from './geolocation.service';
+import { Position } from '~/util';
 
 @Injectable()
 export class DistanceService {

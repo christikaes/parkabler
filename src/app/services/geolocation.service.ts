@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-
-export interface Position {
-  lat: number;
-  lng: number;
-}
+import { Position } from '~/util';
 
 @Injectable()
 export class GeolocationService {

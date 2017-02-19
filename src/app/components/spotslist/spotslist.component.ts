@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { DistanceService, SpotApiService, DestinationLocationService, EditSpotStateService, MapLocationService, States } from '~/services';
-import { Position } from '~/services/geolocation.service';
+import { DistanceService, SpotsService, DestinationLocationService, EditSpotStateService, MapLocationService, States } from '~/services';
+import { Position } from '~/util';
 
 let distanceBetweenPoints = function(p1: Position, p2: Position) {
   if (!p1 || !p2) {
@@ -48,7 +48,7 @@ export class SpotsListComponent implements OnInit {
 
   constructor(
     private distanceService: DistanceService,
-    private spotApiService: SpotApiService,
+    private spotApiService: SpotsService,
     private destinationLocationService: DestinationLocationService,
     private editSpotStateService: EditSpotStateService,
     private mapLocationService: MapLocationService,

@@ -1,26 +1,28 @@
 import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { SpotApiService, Position } from '~/services';
-
-type MapModes = 'street' | 'satellite';
+import { SpotsService } from '~/services';
+import { Position, MapModes, Spots } from '~/util';
 
 @Component({})
 abstract class BaseMapComponent implements OnChanges, AfterViewInit {
   private initialized: boolean;
 
   constructor(
-    private spotApi: SpotApiService
+    private spotApi: SpotsService
   ) {
     this.initialized = false;
   }
 
   // ---------------------------------------------
   // Initialize the Map
-  abstract initializeMap(): void;
+  // Call the callback once the map is done being initialized
+  abstract initializeMap(done: (boolean) => void): void;
 
   ngAfterViewInit(): void {
-    this.initializeMap();
-    this.initialized = true;
-    this.listenToSpots();
+    this.initializeMap((initialized: boolean) => {
+      this.initialized = initialized;
+      this.setSpots(this.spots);
+    });
+    // this.listenToSpots();
   }
 
   // ---------------------------------------------
@@ -29,6 +31,7 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
   @Input() zoom: number;
   @Input() mode: MapModes;
   @Input() center: any;
+  @Input() spots: any ; // TODO GeoJson
 
   // Increase or decrease the zoom by the given amount
   abstract updateZoom(zoom: number): void;
@@ -38,6 +41,9 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
 
   // Set the center of the map
   abstract setCenter(center: Position): void;
+
+  // Set the spots with the given list of spots
+  abstract setSpots(spots: Spots): void;
 
   ngOnChanges(changes: SimpleChanges) {
     // Only start listening to changes after the map is initialized
@@ -49,6 +55,9 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
           this.setMode(changes[change].currentValue);
         } else if (change === 'center') {
           this.setCenter(changes[change].currentValue);
+        } else if (change === 'spots') {
+          console.log('map.ts');
+          this.setSpots(changes[change].currentValue);
         } else {
           console.log('Uncaught change: ' + change);
         }
@@ -64,35 +73,6 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
   abstract updateMarker($key: string, position: Position): void;
   abstract removeMarker($key: string): void;
 
-  // Update the markers whenever spots are updated
-  private listenToSpots() {
-    this.spotApi.spots.subscribe(newMarkers => {
-      this.markers.forEach(function(marker, i) {
-        let newMarker = newMarkers.find(nm => nm.$key === marker.$key) ;
-        if (!newMarker) {
-          // Something was deleted
-          this.removeMarker(marker.$key);
-          this.markers.splice(i, 1);
-        } else if (marker.$lat !== newMarker.lat
-          || marker.$lng !== newMarker.lng) {
-            // Something was changed
-            // Update these for future comparasion
-            marker.lat = newMarker.lat;
-            marker.lng = newMarker.lng;
-            this.updateMarker(marker.$key, {lat: newMarker.lat, lng: newMarker.lng});
-          }
-        }, this);
-
-        // Check if anything was added
-        newMarkers.forEach(function(newMarker) {
-          if (!this.markers.find(m => m.$key === newMarker.$key)) {
-            // Something was added
-            this.markers.push(newMarker);
-            this.addMarker(newMarker.$key, {lat: newMarker.lat, lng: newMarker.lng});
-          };
-        }, this);
-      });
-  }
   // // Update the Destination
   // //   This will drop a destination marker on the map
   // //   If the destination is set to the current location,

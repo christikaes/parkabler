@@ -1,6 +1,7 @@
 import { Input, Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { SpotApiService, MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
-import { BaseMapComponent, MapModes } from '~/components/map';
+import { SpotsService, MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
+import { BaseMapComponent } from '~/components/map';
+import { MapModes } from '~/util';
 
 @Component({
   selector: 'pa-map-js',
@@ -19,7 +20,7 @@ export class MapJSComponent { // extends BaseMapComponent {
   private infoWindowTemplate: any;
 
   constructor(
-    private spotApi: SpotApiService,
+    private spotApi: SpotsService,
     private mapLocation: MapLocationService,
     private geoLocation: GeolocationService,
     private destinationLocation: DestinationLocationService

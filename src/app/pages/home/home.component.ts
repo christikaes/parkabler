@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DestinationActions } from '~/actions';
-import { Position } from '~/store';
+import { DestinationActions, SpotsActions } from '~/actions';
+import { Position } from '~/util';
 
 @Component({
   selector: 'pa-home',
@@ -10,10 +10,13 @@ import { Position } from '~/store';
 export class HomeComponent implements OnInit {
 
   constructor(
-    private destinationActions: DestinationActions
+    private destinationActions: DestinationActions,
+    private spotsActions: SpotsActions
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.spotsActions.getSpots();
+  }
 
   onDestinationUpdate(newDestination: Position) {
     this.destinationActions.setDestination(newDestination);

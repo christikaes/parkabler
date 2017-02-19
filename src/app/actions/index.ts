@@ -1,9 +1,12 @@
-import { DestinationActions } from './destination.action';
+import { DestinationActions } from './destination.actions';
+import { SpotsActions } from './spots.actions';
 
 export const ACTION_PROVIDERS = [
-  DestinationActions
+  DestinationActions,
+  SpotsActions
 ];
 
 export {
-  DestinationActions
+  DestinationActions,
+  SpotsActions
 };

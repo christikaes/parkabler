@@ -1,8 +1,5 @@
 import { DestinationActions } from '~/actions';
-import { Position } from '~/services/geolocation.service';
-
-// TODO: Where should this live?
-export { Position };
+import { Position } from '~/util';
 
 const INITIAL_STATE: Position = {
   lat: 42.350530,

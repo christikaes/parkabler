@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
-import { IAppState, Position } from '~/store';
+import { IAppState } from '~/store';
 import { DestinationLocationService, GeolocationService } from '~/services';
+import { Position } from '~/util';
 
 
 @Injectable()
@@ -14,7 +15,7 @@ export class DestinationActions {
     private geoloationService: GeolocationService
   ) {}
 
-  setDestination(destination: Position) {
+  public setDestination(destination: Position) {
     this.ngRedux.dispatch({
       type: DestinationActions.SET,
       payload: destination

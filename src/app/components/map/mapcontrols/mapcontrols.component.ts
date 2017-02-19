@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EditSpotStateService, States } from '~/services';
-import { MapModes } from '~/components/map';
+import { MapModes } from '~/util';
 
 @Component({
   selector: 'pa-map-controls',

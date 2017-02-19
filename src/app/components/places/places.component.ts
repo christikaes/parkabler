@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { MapLocationService, Position, GeolocationService, DestinationLocationService } from '~/services';
+import { MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
+import { Position } from '~/util';
 
 @Component({
   selector: 'pa-places-search',

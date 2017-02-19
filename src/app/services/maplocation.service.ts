@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-import { Position, GeolocationService } from './geolocation.service';
+import { GeolocationService } from './geolocation.service';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
-import { MapModes } from '~/components/map';
+import { MapModes, Position } from '~/util';
 
 @Injectable()
 export class MapLocationService {
