@@ -1,14 +1,11 @@
 import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { SpotsService } from '~/services';
 import { Position, MapModes, Spots } from '~/util';
 
 @Component({})
 abstract class BaseMapComponent implements OnChanges, AfterViewInit {
   private initialized: boolean;
 
-  constructor(
-    private spotApi: SpotsService
-  ) {
+  constructor() {
     this.initialized = false;
   }
 
@@ -22,7 +19,6 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
       this.initialized = initialized;
       this.setSpots(this.spots);
     });
-    // this.listenToSpots();
   }
 
   // ---------------------------------------------
@@ -56,22 +52,13 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
         } else if (change === 'center') {
           this.setCenter(changes[change].currentValue);
         } else if (change === 'spots') {
-          console.log('map.ts');
           this.setSpots(changes[change].currentValue);
         } else {
-          console.log('Uncaught change: ' + change);
+          throw 'Uncaught change: ' + change;
         }
       }
     }
   }
-
-  // ---------------------------------------------
-  // Markers
-  // tslint:disable-next-line:member-ordering
-  private markers = [];
-  abstract addMarker($key: string, position: Position): void;
-  abstract updateMarker($key: string, position: Position): void;
-  abstract removeMarker($key: string): void;
 
   // // Update the Destination
   // //   This will drop a destination marker on the map
@@ -92,4 +79,4 @@ abstract class BaseMapComponent implements OnChanges, AfterViewInit {
 
 }
 
-export {BaseMapComponent, MapModes};
+export {BaseMapComponent};

@@ -1,5 +1,4 @@
 import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { SpotsService, MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
 import { BaseMapComponent } from '~/components/map';
 import { MapModes, Position, Spots, convertToGeoJson } from '~/util';
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -16,8 +15,8 @@ export class MapGLComponent extends BaseMapComponent {
   @ViewChild('MapDiv') MapDiv;
   private map: any;
 
-  constructor(spotApiService: SpotsService) {
-    super(spotApiService);
+  constructor() {
+    super();
   }
 
   initializeMap(done: (boolean) => void): void {
@@ -33,6 +32,7 @@ export class MapGLComponent extends BaseMapComponent {
     // HACK: Not sure why canvas is set to absolute position, but it breaks styling:
     map.getCanvas().style.position = 'initial';
 
+    // TODO: a lot of this can be moved to style.json so that it happens before load
     // Setup the spots layer
     map.on('load', () => {
 
@@ -111,6 +111,7 @@ export class MapGLComponent extends BaseMapComponent {
   }
 
   setMode(mode: MapModes) {
+    // TODO: setting style removes all layers, turn on and off layers instead
     switch (mode) {
       case 'satellite':
         this.map.setStyle('mapbox://styles/mapbox/satellite-streets-v9');
@@ -131,25 +132,6 @@ export class MapGLComponent extends BaseMapComponent {
   setSpots(spots: Spots) {
     let spotsGeoJson = convertToGeoJson(spots);
     this.map.getSource('spots').setData(spotsGeoJson);
-  }
-
-  addMarker($key: string, position: Position) {
-    let el = document.createElement('div');
-    el.className = 'marker';
-
-    // TODO: pull this from redux store
-
-    let marker = new mapboxgl.Marker(el)
-      .setLngLat([position.lng, position.lat])
-      .addTo(this.map);
-  }
-
-  removeMarker() {
-    throw 'Not implemented';
-  }
-
-  updateMarker() {
-    throw 'Not implemented';
   }
 
 }

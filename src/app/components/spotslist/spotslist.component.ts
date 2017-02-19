@@ -1,6 +1,9 @@
 import { Component, OnInit, NgZone } from '@angular/core';
-import { DistanceService, SpotsService, DestinationLocationService, EditSpotStateService, MapLocationService, States } from '~/services';
-import { Position } from '~/util';
+import { DistanceService, EditSpotStateService, MapLocationService, States } from '~/services';
+import { Position, Spots } from '~/util';
+import { select, NgRedux } from 'ng2-redux';
+import { IAppState } from '~/store';
+import { Observable } from 'rxjs';
 
 let distanceBetweenPoints = function(p1: Position, p2: Position) {
   if (!p1 || !p2) {
@@ -25,6 +28,8 @@ let distanceBetweenPoints = function(p1: Position, p2: Position) {
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
+  @select() private spots$: Observable<Spots>;
+
   public expanded: boolean;
   public filteredSpots: any[];
   public hidden: boolean;
@@ -48,8 +53,7 @@ export class SpotsListComponent implements OnInit {
 
   constructor(
     private distanceService: DistanceService,
-    private spotApiService: SpotsService,
-    private destinationLocationService: DestinationLocationService,
+    private ngRedux: NgRedux<IAppState>,
     private editSpotStateService: EditSpotStateService,
     private mapLocationService: MapLocationService,
     private zone: NgZone
@@ -59,23 +63,20 @@ export class SpotsListComponent implements OnInit {
     this.hidden = false;
     this.numSpot = 100;
     this.filteredSpots = [];
-    spotApiService.spots.subscribe(res => {
+    this.spots$.subscribe(res => {
       this.zone.run(() => {
         this.spots = res.map(function(r){
           return {
-            lat: r.lat,
-            lng: r.lng
+            lat: r.position.lat,
+            lng: r.position.lng
           };
         });
-        this.updateFilteredSpots(this.destinationLocationService.current.getValue());
+        let { destination } = this.ngRedux.getState();
+        this.updateFilteredSpots(destination);
       });
     });
-    destinationLocationService.current.subscribe(res => {
-      // Something in destinationLocationService is running outside of AngularZone, firebase?
-      this.zone.run(() => {
-        this.updateFilteredSpots(res);
-      });
-    });
+    let { destination } = this.ngRedux.getState();
+    this.updateFilteredSpots(destination);
   }
 
   ngOnInit() {

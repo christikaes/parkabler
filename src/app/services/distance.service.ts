@@ -1,16 +1,20 @@
 import { Injectable } from '@angular/core';
-import { DestinationLocationService } from './destinationlocation.service';
 import { Position } from '~/util';
+import { NgRedux } from 'ng2-redux';
+import { IAppState } from '~/store';
 
 @Injectable()
 export class DistanceService {
   constructor (
-    private destinationLocationService: DestinationLocationService,
+    private ngRedux: NgRedux<IAppState>
   ) { }
 
 
   getDistanceToDestinationFrom(originPositions: Position[]): Promise<any> {
-    return this.getDistance(originPositions, this.destinationLocationService.current.getValue());
+    console.log('TEST');
+    let { destination } = this.ngRedux.getState();
+    console.log(destination);
+    return this.getDistance(originPositions, destination);
   }
 
   getDistance(originPositions: Position[], destinationPosition: Position): Promise<any> {

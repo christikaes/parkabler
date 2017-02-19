@@ -45,7 +45,6 @@ import {
   MapLocationService,
   GeolocationService,
   SpotsService,
-  DestinationLocationService,
   DistanceService,
   RulesInfoService,
   EditSpotStateService
@@ -91,7 +90,6 @@ import { routing } from './app.routing';
     MapLocationService,
     GeolocationService,
     SpotsService,
-    DestinationLocationService,
     DistanceService,
     RulesInfoService,
     EditSpotStateService,

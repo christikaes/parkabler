@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { MapLocationService, GeolocationService, DestinationLocationService } from '~/services';
+import { MapLocationService } from '~/services';
 import { Position } from '~/util';
 
 @Component({
@@ -14,9 +14,7 @@ export class PlacesComponent implements OnInit, AfterViewInit {
   @Output() destinationUpdate = new EventEmitter();
 
   constructor(
-    private mapLocation: MapLocationService,
-    private geoLocation: GeolocationService,
-    private destinationLocation: DestinationLocationService
+    private mapLocation: MapLocationService
   ) {}
 
   ngOnInit() {}
@@ -32,10 +30,6 @@ export class PlacesComponent implements OnInit, AfterViewInit {
       }
       this.mapLocation.set(place.geometry.location);
       this.mapLocation.setZoom(20);
-      this.destinationLocation.set({
-        lat: place.geometry.location.lat(),
-        lng: place.geometry.location.lng()
-      });
 
       this.destinationUpdate.emit({
         lat: place.geometry.location.lat(),
