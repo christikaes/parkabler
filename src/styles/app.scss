@@ -1,13 +1,13 @@
 // Angular Material themeing
 @import '~@angular/material/core/theming/all-theme';
 
-@include md-core();
+@include mat-core();
 
-$primary: md-palette($md-indigo);
-$secondary:  md-palette($md-grey, A200, A100, A400);
-$warn: md-palette($md-red);
+$primary: mat-palette($mat-indigo);
+$secondary:  mat-palette($mat-grey, A200, A100, A400);
+$warn: mat-palette($mat-red);
 
-$theme: md-light-theme($primary, $secondary, $warn);
+$theme: mat-light-theme($primary, $secondary, $warn);
 
 @include angular-material-theme($theme);
 
