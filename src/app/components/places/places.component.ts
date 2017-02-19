@@ -1,5 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
-import { MapLocationService } from '~/services';
+import { Component, AfterViewInit, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Position } from '~/util';
 
 @Component({
@@ -7,17 +6,13 @@ import { Position } from '~/util';
   templateUrl: './places.component.html',
   styleUrls: ['./places.component.scss']
 })
-export class PlacesComponent implements OnInit, AfterViewInit {
+export class PlacesComponent implements AfterViewInit {
   @ViewChild('placesInput') placesInput;
   autocomplete: any;
 
   @Output() destinationUpdate = new EventEmitter();
 
-  constructor(
-    private mapLocation: MapLocationService
-  ) {}
-
-  ngOnInit() {}
+  constructor() {}
 
   ngAfterViewInit() {
     let inputElement = this.placesInput.nativeElement;
@@ -28,8 +23,6 @@ export class PlacesComponent implements OnInit, AfterViewInit {
         console.log('places api did not return geometry');
         return;
       }
-      this.mapLocation.set(place.geometry.location);
-      this.mapLocation.setZoom(20);
 
       this.destinationUpdate.emit({
         lat: place.geometry.location.lat(),
