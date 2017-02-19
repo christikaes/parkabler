@@ -1,18 +1,21 @@
 import { combineReducers } from 'redux';
 import {
   destinationReducer,
-  spotsReducer
+  spotsReducer,
+  nearbySpotsReducer
 } from './reducers';
 
-import { Position, Spots } from '~/util';
+import { Position, Spots, NearbySpots } from '~/util';
 
 // 'assemble' the full store out of modules
 export interface IAppState {
   destination?: Position;
   spots?: Spots;
+  nearbySpots?: NearbySpots;
 }
 
 export const rootReducer = combineReducers<IAppState>({
   destination: destinationReducer,
-  spots: spotsReducer
+  spots: spotsReducer,
+  nearbySpots: nearbySpotsReducer
 });

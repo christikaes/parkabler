@@ -6,7 +6,7 @@
   </div>
   <pa-drawer>
     <pa-edit-spot ></pa-edit-spot>
-    <pa-spots-list></pa-spots-list>
+    <pa-spots-list [spots]="nearbySpots$ | async"></pa-spots-list>
   </pa-drawer>
   <!-- <div class="bottom-drawer-container">
     <edit-spot ></edit-spot>

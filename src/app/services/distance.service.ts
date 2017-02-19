@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Position } from '~/util';
+import { Position, distanceBetween, Spots } from '~/util';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 
@@ -9,17 +9,29 @@ export class DistanceService {
     private ngRedux: NgRedux<IAppState>
   ) { }
 
+  // Returns a function that will filter spots by the given distance
+  public filterByEuclideanDistance (threshold: number) {
+    return (center: Position, spots: any[]) => {
+      return spots.filter(spot => {
+        return distanceBetween(spot.position, center) < threshold;
+      });
+    };
+  }
 
-  getDistanceToDestinationFrom(originPositions: Position[]): Promise<any> {
+  getDistanceToDestinationFrom(originSpots: Spots): Promise<any> {
     console.log('TEST');
     let { destination } = this.ngRedux.getState();
     console.log(destination);
-    return this.getDistance(originPositions, destination);
+    return this.getDistance(originSpots, destination);
   }
 
-  getDistance(originPositions: Position[], destinationPosition: Position): Promise<any> {
+  getDistance(originSpots: Spots, destinationPosition: Position): Promise<any> {
+    let originPositions = originSpots.map(spot => {
+      return Object.assign({}, spot.position);
+    });
     return new Promise((resolve, reject) => {
       let service = new window.google.maps.DistanceMatrixService;
+      console.log(originPositions);
       service.getDistanceMatrix({
         origins: originPositions,
         destinations: [destinationPosition],

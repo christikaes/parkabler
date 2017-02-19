@@ -11,6 +11,12 @@ export interface Spot {
 
 export type Spots = Spot[];
 
+export interface NearbySpot extends Spot {
+  distanceToDestination: number;
+}
+
+export type NearbySpots = NearbySpot[];
+
 export function convertToGeoJson(spots: Spots) {
     if (spots.length === 0) {
       return {};

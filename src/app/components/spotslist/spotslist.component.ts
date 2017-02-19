@@ -1,8 +1,6 @@
-import { Component, OnInit, NgZone } from '@angular/core';
-import { DistanceService, EditSpotStateService, MapLocationService, States } from '~/services';
-import { Position, Spots, distanceBetween } from '~/util';
-import { select, NgRedux } from 'ng2-redux';
-import { IAppState } from '~/store';
+import { Input, Component, OnInit, NgZone } from '@angular/core';
+import { EditSpotStateService, MapLocationService, States } from '~/services';
+import { Position, NearbySpots, distanceBetween } from '~/util';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -11,55 +9,26 @@ import { Observable } from 'rxjs';
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
-  @select() private spots$: Observable<Spots>;
+  @Input() private spots: NearbySpots;
 
   public expanded: boolean;
-  public filteredSpots: any[];
   public hidden: boolean;
-  public enabled: boolean;
-  public numSpot: number;
-
-  private spots: any[];
-
-  private updateFilteredSpots = function(destination) {
-    if (this.spots) {
-      this.filteredSpots = this.spots.filter(function(spot){
-        return distanceBetween(spot, destination) < 0.2;
-        // Alternative:
-        // return Math.abs(destination.lat - spot.lat) < 0.001
-        //     && Math.abs(destination.lng - spot.lng) < 0.001
-      });
-    }
-    this.numSpot = this.filteredSpots.length;
-    this.enabled = this.numSpot > 0;
-  };
 
   constructor(
-    private distanceService: DistanceService,
-    private ngRedux: NgRedux<IAppState>,
     private editSpotStateService: EditSpotStateService,
     private mapLocationService: MapLocationService,
     private zone: NgZone
   ) {
     this.expanded = false;
-    this.enabled = false;
     this.hidden = false;
-    this.numSpot = 100;
-    this.filteredSpots = [];
-    this.spots$.subscribe(res => {
-      this.zone.run(() => {
-        this.spots = res.map(function(r){
-          return {
-            lat: r.position.lat,
-            lng: r.position.lng
-          };
-        });
-        let { destination } = this.ngRedux.getState();
-        this.updateFilteredSpots(destination);
-      });
-    });
-    let { destination } = this.ngRedux.getState();
-    this.updateFilteredSpots(destination);
+  }
+
+  get numSpot (): number {
+    return this.spots ? this.spots.length : 0;
+  }
+
+  get enabled(): boolean {
+    return this.numSpot > 0;
   }
 
   ngOnInit() {
@@ -74,22 +43,6 @@ export class SpotsListComponent implements OnInit {
 
   toggleExapand() {
     this.expanded = !this.expanded;
-    let spotsPositions = this.filteredSpots.map(function(spot){
-      return {
-        lat: spot.lat,
-        lng: spot.lng
-      };
-    });
-    if (spotsPositions.length > 0) {
-      let me = this;
-      this.distanceService.getDistanceToDestinationFrom(spotsPositions).then(function(distance){
-        for (let i = 0; i < distance.length; i++) {
-            me.filteredSpots[i].distanceToDest = distance[i];
-        }
-      }).catch(function(err){
-        console.log(err);
-      });
-    }
   }
 
   onReport(position) {

@@ -4,10 +4,10 @@
   </button>
 
   <md-nav-list class="content" *ngIf="expanded">
-    <md-list-item *ngFor="let spot of filteredSpots" class="list-item" (click)="onClickSpot(spot)">
+    <md-list-item *ngFor="let spot of spots" class="list-item" (click)="onClickSpot(spot)">
       <div md-line>
         <span class="large-text">1 Space</span>
-        <a class="right" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+        <a class="right" href="http://maps.google.com/maps?daddr={{spot.position.lat}},{{spot.position.lng}}" target="_blank">
           <img md-list-avatar src="img/icons/ic_directions.svg" alt="directions">
         </a>
       </div>
@@ -16,7 +16,7 @@
         <a (click)="onReport()">
           Report
         </a>
-        <a class="right" href="http://maps.google.com/maps?daddr={{spot.lat}},{{spot.lng}}" target="_blank">
+        <a class="right" href="http://maps.google.com/maps?daddr={{spot.position.lat}},{{spot.position.lng}}" target="_blank">
           Directions
         </a>
       </div>
