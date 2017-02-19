@@ -6,6 +6,7 @@ import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 // Redux
 import { NgReduxModule, DevToolsExtension } from 'ng2-redux';
+import { ACTION_PROVIDERS } from './actions';
 
 // NgMaterial
 import { MaterialModule } from '@angular/material';
@@ -50,12 +51,8 @@ import {
   EditSpotStateService
 } from './services';
 
-// Actions
-import { ACTION_PROVIDERS } from './actions';
-
 // Router
 import { routing } from './app.routing';
-
 
 @NgModule({
   imports: [

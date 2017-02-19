@@ -51,13 +51,13 @@ export class MapGLComponent extends BaseMapComponent {
       // and one for cluster labels.
       map.addLayer({
           'id': 'unclustered-points',
-          'type': 'circle',
+          'type': 'symbol',
           'source': 'spots',
           'filter': ['!has', 'point_count'],
-          'paint': {
-              'circle-color': '#028cb1',
-              'circle-radius': 15
-          },
+          layout: {
+            'icon-image': '{icon}-15',
+            'icon-allow-overlap': true
+          }
       });
 
       // Display the spots data in three layers, each filtered to a range of

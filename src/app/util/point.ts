@@ -36,7 +36,8 @@ export function convertToGeoJson(spots: Spots) {
                 coordinates: [spot.position.lng, spot.position.lat]
             },
             properties: {
-              numspots: spot.numspots
+              numspots: spot.numspots,
+              icon: 'marker'
             }
         });
     });
