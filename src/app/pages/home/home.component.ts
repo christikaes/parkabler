@@ -23,10 +23,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.spotsActions.getSpots();
-  }
-
-  onDestinationUpdate(newDestination: Position) {
-    this.destinationActions.setDestination(newDestination);
 
     // This combines both destination$ & spots$ observables
     // We then use the latest values from both to get nearby spots
@@ -36,6 +32,9 @@ export class HomeComponent implements OnInit {
     ).subscribe(({destination, spots}) => {
       this.nearbySpotsActions.getNearbySpots(destination, spots);
     });
+  }
 
+  onDestinationUpdate(newDestination: Position) {
+    this.destinationActions.setDestination(newDestination);
   }
 }
