@@ -75,6 +75,7 @@ export class MapGLComponent extends BaseMapComponent {
         }
     });
 
+
       done(true);
     });
 
