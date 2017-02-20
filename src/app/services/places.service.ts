@@ -26,7 +26,11 @@ export class PlacesService {
         autocompleteUrlSearchParams.set('autocomplete', 'true');
         autocompleteUrlSearchParams.set('country', 'us');
         if (proximity) {
-            autocompleteUrlSearchParams.set('proximity', `${proximity.lat},${proximity.lng}`);
+            autocompleteUrlSearchParams.set('proximity', `${proximity.lng},${proximity.lat}`);
+        } else {
+            // TODO-rangle: this query needs to know the center of the map, does it make sense for the service to get it from the store?
+            // TODO: Get center of map Default to boston
+            autocompleteUrlSearchParams.set('proximity', '-71.059096,42.350530'); 
         }
 
         return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', {search: autocompleteUrlSearchParams})

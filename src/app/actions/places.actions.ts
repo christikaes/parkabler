@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
-import { PlacesService } from '~/services';
 import { Place, PlaceCollection } from '~/util';
+import { DestinationActions } from '~/actions';
 
 @Injectable()
 export class PlacesActions {
@@ -10,7 +10,7 @@ export class PlacesActions {
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
-        private placesService: PlacesService
+        private destinationActions: DestinationActions
     ) {}
 
     /*
@@ -33,6 +33,10 @@ export class PlacesActions {
 
         // If not in add spot mode:
         // Set destination
+        this.destinationActions.setDestination({
+            lat: place.geometry.coordinates[1],
+            lng: place.geometry.coordinates[0]
+        });
 
         // else
         // Center map

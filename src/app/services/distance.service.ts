@@ -31,7 +31,6 @@ export class DistanceService {
     });
     return new Promise((resolve, reject) => {
       let service = new window.google.maps.DistanceMatrixService;
-      console.log(originPositions);
       service.getDistanceMatrix({
         origins: originPositions,
         destinations: [destinationPosition],
