@@ -35,10 +35,8 @@ export class PlacesService {
     }
 
     private extractData(res: Response) {
-        console.log('skfljslfjsd');
         let data = res.json();
         if (!data ) {
-            console.log('NO DATA');
             return { };
         }
 
@@ -50,17 +48,16 @@ export class PlacesService {
         //      https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
 
         // Go through the data and remove unnecessary information
+        let thinFeatures = [];
         data.features.forEach((feature) => {
-            console.log(feature.place_name);
-            feature = Object.assign({}, {
+            thinFeatures.push({
                 text: feature.text,
                 place_name: feature.place_name,
                 properties: feature.properties,
                 geometry: feature.geometry
             });
         });
-        console.log(data.features);
-        return data.features;
+        return thinFeatures;
     }
     private handleError (error: Response | any) {
         let errMsg: string;

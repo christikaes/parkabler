@@ -6,8 +6,8 @@
   <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
 </md-input-container>
 
-<md-autocomplete #auto="mdAutocomplete">
-  <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place.place_name" class="autocomplete" (click)="selectOption(place)">
+<md-autocomplete #auto="mdAutocomplete" class="autocomplete">
+  <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place.text" (click)="selectOption(place)">
     {{ place.place_name }}
   </md-option>
 </md-autocomplete>

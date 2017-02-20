@@ -2,8 +2,6 @@ import { Component, OnInit , ViewChild, Output, EventEmitter } from '@angular/co
 import { Position, Place } from '~/util';
 import { FormControl } from '@angular/forms';
 import { PlacesService } from '~/services';
-import 'rxjs/add/operator/startWith';
-import { MdAutocompleteTrigger } from '@angular/material';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -14,9 +12,6 @@ import { Observable } from 'rxjs';
 export class PlacesComponent implements OnInit {
   public placesControl: FormControl;
   public matchingPlaceCollection;
-
-  // @ViewChild(MdAutocompleteTrigger) trigger: MdAutocompleteTrigger;
-  autocomplete: any;
 
   @Output() placeUpdate = new EventEmitter();
 

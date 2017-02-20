@@ -2,7 +2,7 @@
 <div class="content">
   <div class="map-container">
     <pa-map></pa-map>
-    <pa-places (placeUpdate)="onPlaceUpdate()"></pa-places>
+    <pa-places (placeUpdate)="onPlaceUpdate($event)"></pa-places>
   </div>
   <pa-drawer>
     <pa-edit-spot ></pa-edit-spot>
