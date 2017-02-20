@@ -32,3 +32,8 @@ span {
   margin: 0;
   color: #FFFFFF;
 }
+
+@media screen and (max-width: 400px) {
+  .park { display: none; }
+  .abler {display: none;}
+}

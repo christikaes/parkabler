@@ -3,7 +3,8 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "start": "npm run server -- --hot",
+    "start": "npm run server",
+    "start:hot": "npm run server -- --hot",
     "docs": "typedoc --options typedoc.json src/app/app.component.ts",
     "publish": "./bin/publish.sh",
     "phonegap": "npm run build:phonegap && rimraf phonegap/www/* && ncp dist-phonegap phonegap/www",
