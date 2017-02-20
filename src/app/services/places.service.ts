@@ -25,7 +25,7 @@ export class PlacesService {
         autocompleteUrlSearchParams.set('types', 'address,poi,place');
         autocompleteUrlSearchParams.set('autocomplete', 'true');
         autocompleteUrlSearchParams.set('country', 'us');
-        if (proximity){
+        if (proximity) {
             autocompleteUrlSearchParams.set('proximity', `${proximity.lat},${proximity.lng}`);
         }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DestinationActions, SpotsActions, NearbySpotsActions } from '~/actions';
-import { Position, Spots, NearbySpots } from '~/util';
+import { PlacesActions, SpotsActions, NearbySpotsActions } from '~/actions';
+import { Position, Place, Spots, NearbySpots } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
@@ -16,7 +16,7 @@ export class HomeComponent implements OnInit {
   @select() public nearbySpots$: Observable<NearbySpots>;
 
   constructor(
-    private destinationActions: DestinationActions,
+    private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private nearbySpotsActions: NearbySpotsActions
   ) {}
@@ -34,7 +34,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  onDestinationUpdate(newDestination: Position) {
-    this.destinationActions.setDestination(newDestination);
+  onPlaceUpdate(newPlace: Place) {
+    this.placesActions.setPlace(newPlace);
   }
 }

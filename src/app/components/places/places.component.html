@@ -1,19 +1,17 @@
-<!--<div class="search">-->
-  <button md-mini-fab color="secondary" class="clear" disabled>
-    <md-icon>clear</md-icon>
-  </button>
+<button md-mini-fab color="secondary" class="clear" disabled>
+  <md-icon>clear</md-icon>
+</button>
 
-  <md-input-container class="places-search">
-    <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
-  </md-input-container>
+<md-input-container class="places-search">
+  <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
+</md-input-container>
 
-  <md-autocomplete #auto="mdAutocomplete">
-    <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place" class="autocomplete">
-      {{ place.place_name }}
-    </md-option>
-  </md-autocomplete>
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place.place_name" class="autocomplete" (click)="selectOption(place)">
+    {{ place.place_name }}
+  </md-option>
+</md-autocomplete>
 
-  <button md-mini-fab color="primary" class="search" (click)="search()">
-    <md-icon>search</md-icon>
-  </button>
-<!--</div>-->
+<button md-mini-fab color="primary" class="search" (click)="search()">
+  <md-icon>search</md-icon>
+</button>

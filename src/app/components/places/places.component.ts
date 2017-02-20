@@ -18,7 +18,7 @@ export class PlacesComponent implements OnInit {
   // @ViewChild(MdAutocompleteTrigger) trigger: MdAutocompleteTrigger;
   autocomplete: any;
 
-  @Output() destinationUpdate = new EventEmitter();
+  @Output() placeUpdate = new EventEmitter();
 
   constructor(
     private placesService: PlacesService
@@ -31,12 +31,9 @@ export class PlacesComponent implements OnInit {
       .subscribe((val) => {
         this.matchingPlaceCollection = this.placesService.getAutocomplete(val);
       });
+  }
 
-    // // optionSelections is an array of observables
-    // // https://github.com/angular/material2/issues/3205
-    // this.trigger.optionSelections[0].subscribe((option) => {
-    //   console.log(option);
-    //   // destinationUpdate
-    // });
+  selectOption(option) {
+    this.placeUpdate.emit(option);
   }
 }

@@ -25,7 +25,7 @@ export class PlacesActions {
         ^
     */
 
-    public placesSet(place: Place) {
+    public setPlace(place: Place) {
         this.ngRedux.dispatch({
             type: PlacesActions.SET,
             payload: place
