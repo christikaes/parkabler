@@ -28,6 +28,9 @@ export class TutorialComponent implements OnInit {
             // Note: the dialog takes care of closing itself, we just have to open it
             if (tutorialState.open) {
                 this.openTutorial();
+            } else {
+                // If something outside of the dialog framework asks to close this
+                this.dialog.closeAll();
             }
         });
     }
@@ -38,7 +41,7 @@ export class TutorialComponent implements OnInit {
             data: tutorial.tutorial
         };
         this.dialogRef = this.dialog.open(TutorialDialogComponent, dialogConfig);
-        this.dialogRef.afterClosed().subscribe(() => {
+        this.dialogRef.afterClosed().first().subscribe(() => {
             this.tutorialActions.close();
         });
     }
