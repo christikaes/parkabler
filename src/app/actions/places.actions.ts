@@ -7,22 +7,11 @@ import { Place, PlaceCollection } from '~/util';
 @Injectable()
 export class PlacesActions {
     static SET = 'PA/PLACES/SET';
-    static GET_AUTOCOMPLETE = 'PA/PLACES/AUTOCOMPLETE/GET';
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
         private placesService: PlacesService
     ) {}
-
-    public getAutocomplete(wordToAutocomplete: string) {
-        this.placesService.getAutocomplete(wordToAutocomplete)
-            .subscribe((matchingPlaceCollection: PlaceCollection) => {
-                this.ngRedux.dispatch({
-                    type: PlacesActions.GET_AUTOCOMPLETE,
-                    payload: matchingPlaceCollection
-                });
-            });
-    }
 
     /*
     What I'm confused about with redux is situations where two things might edit the state. For eg:

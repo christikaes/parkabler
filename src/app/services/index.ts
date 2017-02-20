@@ -5,4 +5,3 @@ export * from './distance.service';
 export * from './rulesinfo.service';
 export * from './editspotstate.service';
 export * from './places.service';
-export * from './tolken.service';

@@ -72,8 +72,3 @@ export interface PlaceCollection extends GeoJSON.GeoJsonObject {
   type: 'FeatureCollection';
   features: Array<Place>;
 }
-
-export interface PlacesState {
-    autocomplete: PlaceCollection;
-    place: Place;
-}

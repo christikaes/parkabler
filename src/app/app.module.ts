@@ -1,7 +1,9 @@
+// TODO-rangle: is there a good way to break this file up? it's really long /:
+
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
 
 // Redux
@@ -50,7 +52,8 @@ import {
   SpotsService,
   DistanceService,
   RulesInfoService,
-  EditSpotStateService
+  EditSpotStateService,
+  PlacesService
 } from './services';
 
 // Router
@@ -61,6 +64,7 @@ import { routing } from './app.routing';
     BrowserModule,
     HttpModule,
     FormsModule,
+    ReactiveFormsModule,
     routing,
     // Redux
     NgReduxModule,
@@ -95,6 +99,7 @@ import { routing } from './app.routing';
     DistanceService,
     RulesInfoService,
     EditSpotStateService,
+    PlacesService,
     ACTION_PROVIDERS
   ],
   bootstrap: [AppComponent]

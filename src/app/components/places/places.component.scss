@@ -9,17 +9,18 @@
   display: flex;
   justify-content: center;
 
-  input {
+  .places-search {
     font-size: 18px;
     font-family: Roboto;
     font-weight: 300;
     display: inline-block;
     vertical-align: middle;
     border: none;
-    padding: 9px 30px;
-    height: 22px;
+    // padding: 0px 30px;
+    height: 40px;
     width: 75%;
     text-overflow: ellipsis;
+    background-color: white;
   }
 
   .search {
@@ -30,7 +31,7 @@
   }
 
   .clear {
-    margin-right: -40px;
+    // margin-right: -40px;
     height: 40px;
     background-color: white;
     display: inline-block;

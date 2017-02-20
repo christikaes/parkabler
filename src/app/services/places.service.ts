@@ -1,38 +1,44 @@
-import { Injectable } from '@angular/core';
-import { Http, Response } from '@angular/http';
-import { TolkenService } from '~/services';
-import { Position, Place, PlaceCollection } from '~/util';
+import { Injectable, Inject } from '@angular/core';
+import { MapboxAccessTolken } from '~/util';
+import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
+import { Position, Place, PlaceCollection } from '~/util';
 
 Injectable();
 export class PlacesService {
 
-    private mapboxAccessTolken = this.tolken.getMapboxAccessTolken();
-    private mapboxPlacesAPIUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places';
+    private mapboxAccessTolken = MapboxAccessTolken;
+    private mapboxPlacesAPIUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 
+    // TODO-rangle: Why do I have to inject http explicitly?
+    // The httpmodule is included in app.module
     constructor(
-        private tolken: TolkenService,
-        private http: Http
+        @Inject(Http) public http: Http
     ) {}
 
     // Returns a featureCollection of possible points to resolve to
-    // TODO-rangle: Why does this return an observable strem? do we care about anything other than the first result?
-    public getAutocomplete(wordToAutocomplete: string, proximity?: Position): Observable<PlaceCollection> {
-        let autocompleteURL = `$(mapboxPlacesAPIURL)
-                                    /$(wordToAutocomplete).json
-                                    /access_token=$(mapboxAccessTolken)
-                                    &proximity=$(proximity.lat),$(proximity.lng)
-                                    &types=address,poi,places
-                                    &autocomplete=true`;
-        return this.http.get(autocompleteURL)
+    // TODO-rangle: Why does Http return an observable strem? do we care about anything other than the first result?
+    public getAutocomplete(wordToAutocomplete: string, proximity?: Position): Observable<Place[]> {
+
+        let autocompleteUrlSearchParams = new URLSearchParams();
+        autocompleteUrlSearchParams.set('access_token', this.mapboxAccessTolken);
+        autocompleteUrlSearchParams.set('types', 'address,poi,place');
+        autocompleteUrlSearchParams.set('autocomplete', 'true');
+        autocompleteUrlSearchParams.set('country', 'us');
+        if (proximity){
+            autocompleteUrlSearchParams.set('proximity', `${proximity.lat},${proximity.lng}`);
+        }
+
+        return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', {search: autocompleteUrlSearchParams})
             .map(this.extractData)
             .catch(this.handleError);
     }
 
     private extractData(res: Response) {
-        let body = res.json();
-        let data = body.data;
-        if (!data) {
+        console.log('skfljslfjsd');
+        let data = res.json();
+        if (!data ) {
+            console.log('NO DATA');
             return { };
         }
 
@@ -45,6 +51,7 @@ export class PlacesService {
 
         // Go through the data and remove unnecessary information
         data.features.forEach((feature) => {
+            console.log(feature.place_name);
             feature = Object.assign({}, {
                 text: feature.text,
                 place_name: feature.place_name,
@@ -52,8 +59,8 @@ export class PlacesService {
                 geometry: feature.geometry
             });
         });
-
-        return data;
+        console.log(data.features);
+        return data.features;
     }
     private handleError (error: Response | any) {
         let errMsg: string;

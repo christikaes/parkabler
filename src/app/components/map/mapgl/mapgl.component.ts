@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
 import { BaseMapComponent } from '~/components/map';
-import { MapModes, Position, Spots, convertToGeoJson } from '~/util';
-import { TolkenService } from '~/services';
+import { MapModes, Position, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 // Use this for the opensource maps:
@@ -17,14 +16,12 @@ export class MapGLComponent extends BaseMapComponent {
   @ViewChild('MapDiv') MapDiv;
   private map: any;
 
-  constructor(
-    private tolken: TolkenService
-  ) {
+  constructor() {
     super();
   }
 
   initializeMap(done: (boolean) => void): void {
-    mapboxgl.accessToken = this.tolken.getMapboxAccessTolken();
+    mapboxgl.accessToken = MapboxAccessTolken;
     let mapDiv = this.MapDiv.nativeElement;
     let map = new mapboxgl.Map({
       container: mapDiv,
