@@ -6,13 +6,14 @@ import '@angular/common';
 import '@angular/http';
 import '@angular/router';
 
+
+// TODO: Only require modules we need for material and turf
+
+// Firebase
+import 'angularfire2';
+
+// Material
 import '@angular/material';
-
-
-// TODO: Temporarily disabling firebase until https://github.com/angular/angularfire2/issues/543 is fixed
-//  AngularFire beta.5 also now required AngularCLI
-//  Need to investigate whether we can use it without the CLI
-// import 'angularfire2';
 
 // RxJS
 import 'rxjs';
@@ -21,6 +22,5 @@ import 'rxjs';
 // You can import js, ts, css, sass, ...
 import './vendor/markerclusterer.js';
 
-import 'turf-buffer';
-import 'turf-featurecollection';
-import 'turf-point';
+// Turf
+import 'turf';

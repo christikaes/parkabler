@@ -2,6 +2,17 @@
   <md-icon>clear</md-icon>
 </button>
 <input #placesInput type="text"/>
+
+<md-input-container>
+  <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
+</md-input-container>
+
+<md-autocomplete #auto="mdAutocomplete">
+  <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place">
+    {{ place }}
+  </md-option>
+</md-autocomplete>
+
 <button md-mini-fab color="primary" class="search" (click)="search()">
   <md-icon>search</md-icon>
 </button>

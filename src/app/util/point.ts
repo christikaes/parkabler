@@ -60,3 +60,20 @@ export function distanceBetween(p1: Position, p2: Position): number {
     let d = R * c;
     return d;
   }
+
+// PLACE
+
+export interface Place extends GeoJSON.Feature<GeoJSON.Point> {
+  text: string;
+  place_name: string;
+}
+
+export interface PlaceCollection extends GeoJSON.GeoJsonObject {
+  type: 'FeatureCollection';
+  features: Array<Place>;
+}
+
+export interface PlacesState {
+    autocomplete: PlaceCollection;
+    place: Place;
+}

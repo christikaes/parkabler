@@ -15,7 +15,10 @@
         "jasmine",
         "node",
         "protractor",
-        "selenium-webdriver"
+        "selenium-webdriver",
+        "geojson",
+        "mapbox-gl",
+        "turf"
      ]
   },
   "compileOnSave": false,
