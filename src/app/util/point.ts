@@ -22,7 +22,6 @@ export function convertToGeoJson(spots: Spots) {
       return {};
     }
 
-    // TODO-rangle: GeoJson types aren't working ):
     let spotsGeoJson = {
         type: 'FeatureCollection',
         features: []
