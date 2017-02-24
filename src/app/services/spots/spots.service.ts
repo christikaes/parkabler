@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Position } from '~/util';
 
 // If the user is offline, use this data:
-const data = require('./data/spots$.json');
+const data = require('../data/spots$.json');
 
 @Injectable()
 export class SpotsService {
