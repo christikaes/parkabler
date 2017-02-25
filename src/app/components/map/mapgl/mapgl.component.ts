@@ -74,6 +74,10 @@ export class MapGLComponent extends BaseMapComponent {
         }
     });
 
+      // map.resize();
+      let event = document.createEvent('HTMLEvents');
+      event.initEvent('resize', true, false);
+      document.dispatchEvent(event);
 
       done(true);
     });

@@ -1,6 +1,7 @@
 import 'core-js/client/shim';
 import 'reflect-metadata';
 require('zone.js/dist/zone');
+import './polyfills/web-animations.min.js';
 
 import 'ts-helpers';
 

@@ -19,6 +19,6 @@ export class HeaderComponent {
   }
 
    onClickHome() {
-    this.appModeActions.setModeToHome();
+    this.appModeActions.setModeHome();
    }
 }

@@ -1,15 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { PlacesActions, SpotsActions, NearbySpotsActions } from '~/actions';
+import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions } from '~/actions';
 import { Position, Place, Spots, NearbySpots, AppModes } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
-import Animations from '~/animations';
 
 @Component({
   selector: 'pa-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss'],
-  animations: Animations
+  styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   public mode: AppModes;
@@ -23,7 +21,8 @@ export class HomeComponent implements OnInit {
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
-    private nearbySpotsActions: NearbySpotsActions
+    private nearbySpotsActions: NearbySpotsActions,
+    private appModeActions: AppModeActions
   ) {}
 
   ngOnInit() {
@@ -46,5 +45,13 @@ export class HomeComponent implements OnInit {
 
   onPlaceUpdate(newPlace: Place) {
     this.placesActions.setPlace(newPlace);
+  }
+
+  onOpenAddSpot() {
+    this.appModeActions.setModeAddSpot();
+  }
+
+  onCloseAddSpot() {
+    this.appModeActions.unsetModeAddSpot();
   }
 }

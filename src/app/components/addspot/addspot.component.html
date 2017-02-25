@@ -1,19 +1,25 @@
-<p>
-    lorem
-</p>
-<p>
-    ipsum
-</p>
+<button *ngIf="!opened" md-raised-button color="primary" (click)="onOpen()" class="add-spot">
+    ADD SPOT
+</button>
 
-<p>
-    lorem
-</p>
-<p>
-    ipsum
-</p>
-<p>
-    lorem
-</p>
-<p>
-    ipsum
-</p>
+<pa-drawer [open]="opened">
+    <p>
+        lorem
+    </p>
+    <p>
+        ipsum
+    </p>
+
+    <p>
+        lorem
+    </p>
+    <p>
+        ipsum
+    </p>
+    <p>
+        lorem
+    </p>
+    <p>
+        ipsum
+    </p>
+</pa-drawer>

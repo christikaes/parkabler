@@ -12,16 +12,23 @@ export class AppModeActions {
         private ngRedux: NgRedux<IAppState>
     ) {}
 
-    public setModeToHome() {
+    public setModeHome() {
         console.log(AppModeActions.SET_MODE_HOME);
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_HOME
         });
     }
 
-    public setModeToAddSpot() {
+    public setModeAddSpot() {
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_ADDSPOT
+        });
+    }
+
+    public unsetModeAddSpot() {
+        // TODO: Set mode to the previous mode
+        this.ngRedux.dispatch({
+            type: AppModeActions.SET_MODE_HOME
         });
     }
 }
