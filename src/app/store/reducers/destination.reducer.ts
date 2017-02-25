@@ -1,5 +1,5 @@
 import { DestinationActions } from '~/actions';
-import { Position } from '~/util';
+import { Position, Action } from '~/util';
 
 const INITIAL_STATE: Position = {
   lat: 42.350530,
@@ -8,7 +8,7 @@ const INITIAL_STATE: Position = {
 
 export function destinationReducer(
   state: Position = INITIAL_STATE,
-  action: any
+  action: Action
 ) {
   switch (action.type) {
     case DestinationActions.SET:

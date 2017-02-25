@@ -4,10 +4,11 @@ import {
   spotsReducer,
   nearbySpotsReducer,
   tutorialReducer,
-  placesReducer
+  placesReducer,
+  appModeReducer
 } from './reducers';
 
-import { Position, Spots, NearbySpots, TutorialState, Place } from '~/util';
+import { Position, Spots, NearbySpots, TutorialState, Place, AppModes } from '~/util';
 
 // 'assemble' the full store out of modules
 export interface IAppState {
@@ -16,6 +17,7 @@ export interface IAppState {
   nearbySpots?: NearbySpots;
   tutorial?: TutorialState;
   place?: Place;
+  appMode?: AppModes;
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -23,5 +25,6 @@ export const rootReducer = combineReducers<IAppState>({
   spots: spotsReducer,
   nearbySpots: nearbySpotsReducer,
   tutorial: tutorialReducer,
-  place: placesReducer
+  place: placesReducer,
+  appMode: appModeReducer
 });

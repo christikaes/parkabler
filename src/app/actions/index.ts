@@ -3,13 +3,15 @@ import { SpotsActions } from './spots.actions';
 import { NearbySpotsActions } from './nearbyspots.actions';
 import { TutorialActions } from './tutorial.actions';
 import { PlacesActions } from './places.actions';
+import { AppModeActions } from './appmode.actions';
 
 export const ACTION_PROVIDERS = [
   DestinationActions,
   SpotsActions,
   NearbySpotsActions,
   TutorialActions,
-  PlacesActions
+  PlacesActions,
+  AppModeActions
 ];
 
 export {
@@ -17,5 +19,6 @@ export {
   SpotsActions,
   NearbySpotsActions,
   TutorialActions,
-  PlacesActions
+  PlacesActions,
+  AppModeActions
 };

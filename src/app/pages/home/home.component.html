@@ -5,7 +5,8 @@
     <pa-places (placeUpdate)="onPlaceUpdate($event)"></pa-places>
   </div>
   <pa-drawer>
-    <pa-edit-spot ></pa-edit-spot>
+    <pa-add-spot *ngIf="mode==appModes.AddSpot" @slideUp></pa-add-spot>
+    <!--<pa-edit-spot ></pa-edit-spot>-->
     <pa-spots-list [spots]="nearbySpots$ | async"></pa-spots-list>
   </pa-drawer>
 </div>

@@ -35,7 +35,8 @@ import {
   MapJSComponent,
   MapControlsComponent,
   TutorialComponent,
-  TutorialDialogComponent
+  TutorialDialogComponent,
+  AddSpotComponent
 } from './components';
 
 // Pages
@@ -88,7 +89,8 @@ import { routing } from './app.routing';
     MapJSComponent,
     MapControlsComponent,
     TutorialComponent,
-    TutorialDialogComponent
+    TutorialDialogComponent,
+    AddSpotComponent
   ],
   entryComponents: [TutorialDialogComponent],
   providers: [

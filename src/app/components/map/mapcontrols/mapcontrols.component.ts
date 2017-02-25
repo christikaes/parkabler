@@ -1,6 +1,7 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { EditSpotStateService, States } from '~/services';
 import { MapModes } from '~/util';
+import { AppModeActions } from '~/actions';
 
 @Component({
   selector: 'pa-map-controls',
@@ -14,8 +15,10 @@ export class MapControlsComponent implements OnInit {
 
   private showAddSpot: boolean;
 
-  constructor(private editSpotState: EditSpotStateService) {
-  }
+  constructor(
+    private editSpotState: EditSpotStateService,
+    private appModeActions: AppModeActions
+  ) {}
 
   ngOnInit() {
     this.showAddSpot = true;
@@ -37,8 +40,9 @@ export class MapControlsComponent implements OnInit {
   }
 
   addLocation(): void {
-    this.editSpotState.set(States.AddLocation);
-    this.showAddSpot = false;
+    this.appModeActions.setModeToAddSpot();
+    // this.editSpotState.set(States.AddLocation);
+    // this.showAddSpot = false;
   }
 
   recenter() {
