@@ -5,8 +5,8 @@ import { IAppState } from '~/store';
 
 @Injectable()
 export class AppModeActions {
-    static SET_MODE_HOME= 'PA/MODE/HOME';
-    static SET_MODE_ADDSPOT= 'PA/MODE/ADDSPOT';
+    static SET_MODE_HOME = 'PA/MODE/HOME';
+    static SET_MODE_ADDSPOT = 'PA/MODE/ADDSPOT';
 
     constructor(
         private ngRedux: NgRedux<IAppState>

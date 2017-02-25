@@ -4,3 +4,6 @@ export * from './nearbyspots.reducer';
 export * from './tutorial.reducer';
 export * from './places.reducer';
 export * from './appmode.reducer';
+export * from './addspotmode.reducer';
+export * from './reportspotmode.reducer';
+export * from './spotslistmode.reducer';
