@@ -25,3 +25,9 @@ body {
 a {
   color: #03A9F4;
 }
+
+// Current bug in autocomplete max width
+// TODO remove once https://github.com/angular/material2/issues/3198 is resolved
+.mat-autocomplete-panel {
+  max-width: none !important;
+}
