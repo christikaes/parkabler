@@ -5,7 +5,6 @@ import { MapModes, Position, Spots } from '~/util';
 import { GeolocationService } from '~/services';
 import { DestinationActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
-// The types don't seem to be loading for mapboxgl
 // Should i add this to vendor.js?
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
