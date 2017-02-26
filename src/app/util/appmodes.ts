@@ -20,3 +20,6 @@ export type SpotsListModes = 'open'
                         | 'closed'
                         | 'expanded' ;
 
+export type StepStates = 'active'
+                        | 'previous'
+                        | 'next' ;

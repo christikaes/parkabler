@@ -1,5 +1,5 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { AppModes } from '~/util';
+import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { AddSpotModes, StepStates } from '~/util';
 import Animations from '~/animations';
 
 
@@ -10,11 +10,15 @@ import Animations from '~/animations';
   animations: Animations
 })
 
-export class AddSpotComponent {
+export class AddSpotComponent implements OnChanges {
+
   @Input() public opened: boolean;
+  @Input() private step: number;
 
   @Output() private open = new EventEmitter();
   @Output() private close = new EventEmitter();
+  @Output() private next = new EventEmitter();
+  @Output() private previous = new EventEmitter();
 
   onClose() {
     this.close.emit();
@@ -22,5 +26,36 @@ export class AddSpotComponent {
 
   onOpen() {
     this.open.emit();
+  }
+
+  onNext() {
+    this.next.emit();
+  }
+
+  onPrevious() {
+    this.previous.emit();
+  }
+
+
+  ngOnChanges(changes: SimpleChanges) {
+    for (let change in changes) {
+      if (change === 'mode') {
+
+        // 1
+        let previousMode = changes[change].previousValue;
+
+        // 2
+        let currentMode = changes[change].currentValue;
+
+
+
+        this[previousMode] = 'previous';
+        this[currentMode] = 'current';
+      }
+    }
+  }
+
+  onStepChange() {
+    console.log('StepChanged');
   }
 }

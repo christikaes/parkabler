@@ -7,7 +7,6 @@ export function addSpotModeReducer(
     state: AddSpotModes = INITIAL_STATE,
     action: Action
 ) {
-    console.log(action.type);
     switch (action.type) {
         case AddSpotModeActions.SET_MODE_OPEN:
             return 'open';

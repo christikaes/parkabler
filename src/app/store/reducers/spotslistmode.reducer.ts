@@ -7,7 +7,6 @@ export function spotsListModeReducer(
     state: SpotsListModes = INITIAL_STATE,
     action: Action
 ) {
-    console.log(action.type);
     switch (action.type) {
         case SpotsListModeActions.SET_MODE_OPEN:
             return 'open';

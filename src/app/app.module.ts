@@ -36,7 +36,9 @@ import {
   MapControlsComponent,
   TutorialComponent,
   TutorialDialogComponent,
-  AddSpotComponent
+  AddSpotComponent,
+  StepperComponent,
+  StepComponent
 } from './components';
 
 // Pages
@@ -90,7 +92,9 @@ import { routing } from './app.routing';
     MapControlsComponent,
     TutorialComponent,
     TutorialDialogComponent,
-    AddSpotComponent
+    AddSpotComponent,
+    StepComponent,
+    StepperComponent
   ],
   entryComponents: [TutorialDialogComponent],
   providers: [
