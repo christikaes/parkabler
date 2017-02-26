@@ -1,53 +1,31 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { AddSpotModes, StepStates } from '~/util';
-import Animations from '~/animations';
-
+import { ReportSpotModes, StepStates } from '~/util';
 
 @Component({
-  selector: 'pa-add-spot',
-  templateUrl: './addspot.component.html',
-  styleUrls: ['./addspot.component.scss'],
-  animations: Animations
+  selector: 'pa-report-spot',
+  templateUrl: './reportspot.component.html',
+  styleUrls: ['./reportspot.component.scss']
 })
 
-export class AddSpotComponent implements OnChanges {
+export class ReportSpotComponent implements OnChanges {
 
   @Input() public opened: boolean;
-  @Input() private step: number;
 
-  @Output() private open = new EventEmitter();
   @Output() private close = new EventEmitter();
-  @Output() private next = new EventEmitter();
-  @Output() private previous = new EventEmitter();
 
   onClose() {
     this.close.emit();
-  }
-
-  onOpen() {
-    this.open.emit();
-  }
-
-  onNext() {
-    this.next.emit();
-  }
-
-  onPrevious() {
-    this.previous.emit();
   }
 
 
   ngOnChanges(changes: SimpleChanges) {
     for (let change in changes) {
       if (change === 'mode') {
-
         // 1
         let previousMode = changes[change].previousValue;
 
         // 2
         let currentMode = changes[change].currentValue;
-
-
 
         this[previousMode] = 'previous';
         this[currentMode] = 'current';
@@ -57,9 +35,5 @@ export class AddSpotComponent implements OnChanges {
 
   onStepChange() {
     console.log('StepChanged');
-  }
-
-  onDone(result) {
-    console.log(result);
   }
 }

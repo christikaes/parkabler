@@ -61,7 +61,7 @@ export class StepperComponent implements OnInit, AfterContentInit {
             current.state = 'active';
 
             let nextStepIndex = this.currentStepIndex + 1;
-            if (nextStepIndex < this.steps.length){
+            if (nextStepIndex < this.steps.length) {
                 this.steps.toArray()[nextStepIndex].state = 'next';
 
                 if (nextStepIndex < this.steps.length - 1) {
@@ -70,7 +70,7 @@ export class StepperComponent implements OnInit, AfterContentInit {
             }
 
             let previousStepIndex = this.currentStepIndex - 1;
-            if (previousStepIndex > -1){
+            if (previousStepIndex > -1) {
                 this.steps.toArray()[previousStepIndex].state = 'previous';
 
                 if (previousStepIndex > 0) {
