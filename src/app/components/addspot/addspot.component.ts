@@ -42,7 +42,7 @@ export class AddSpotComponent implements OnChanges {
       if (change === 'mode') {
 
         // 1
-        let previousMode = changes[change].previousValue;
+         let previousMode = changes[change].previousValue;
 
         // 2
         let currentMode = changes[change].currentValue;

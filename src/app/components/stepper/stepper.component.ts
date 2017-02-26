@@ -15,35 +15,31 @@ export class StepperComponent implements OnInit, AfterContentInit {
     @Output() private done = new EventEmitter();
     @Output() private stepChange = new EventEmitter();
 
-    constructor() {}
-
     ngOnInit() {
         this.reset();
     }
 
-    public onCancel() {
-        this.cancel.emit();
-        this.reset();
-    }
-
-    public onDone() {
-        this.done.emit();
-        this.reset();
-    }
-
     public onNext() {
+        console.log('onNext');
         let nextStepIndex = this.currentStepIndex + 1;
         if (nextStepIndex < this.steps.length) {
             this.currentStepIndex = nextStepIndex;
             this.setStep();
+        } else {
+            this.done.emit();
+            this.reset();
         }
     }
 
     public onPrevious() {
+        console.log('onprev');
         let previousStepIndex = this.currentStepIndex - 1;
         if (previousStepIndex > -1) {
             this.currentStepIndex = previousStepIndex;
             this.setStep();
+        } else {
+            this.cancel.emit();
+            this.reset();
         }
     }
 
@@ -52,14 +48,24 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     ngAfterContentInit() {
-       this.setStep();
+        // Subscribe to events from each step:
+        this.steps.forEach( step => {
+            step.next.subscribe(() => this.onNext());
+            step.previous.subscribe(() => this.onPrevious());
+        });
+
+        this.setStep();
     }
 
     private setStep() {
+        // Set the current step
         let current = this.steps.toArray()[this.currentStepIndex];
         if (current) {
             current.state = 'active';
 
+            // Previous and next are necessary for animation:
+
+            // Set the next step, and make anything after that inactive
             let nextStepIndex = this.currentStepIndex + 1;
             if (nextStepIndex < this.steps.length) {
                 this.steps.toArray()[nextStepIndex].state = 'next';
@@ -69,6 +75,7 @@ export class StepperComponent implements OnInit, AfterContentInit {
                 }
             }
 
+            // Set the previous step, and make anything before that inactive
             let previousStepIndex = this.currentStepIndex - 1;
             if (previousStepIndex > -1) {
                 this.steps.toArray()[previousStepIndex].state = 'previous';
@@ -77,8 +84,9 @@ export class StepperComponent implements OnInit, AfterContentInit {
                     this.steps.toArray()[previousStepIndex - 1].state = 'inactive';
                 }
             }
-        }
 
-        this.stepChange.emit(this.currentStepIndex);
+            // Emit the new step value
+            this.stepChange.emit(this.currentStepIndex);
+        }
     }
 }

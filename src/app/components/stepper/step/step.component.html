@@ -1,3 +1,5 @@
 <div [@stepperSlide]='state'>
     <ng-content></ng-content>
+    <button md-button color="primary" (click)="onPrevious()"> {{previousCopy}} </button>
+    <button md-raised-button color="primary" (click)="onNext()"> {{nextCopy}} </button>
 </div>
