@@ -1,5 +1,4 @@
 import { Component, Output, EventEmitter } from '@angular/core';
-import { EditSpotStateService, States } from '~/services';
 import { MapModes } from '~/util';
 
 @Component({
@@ -12,9 +11,7 @@ export class MapControlsComponent {
   @Output() modeChange = new EventEmitter();
   @Output() recenterChange = new EventEmitter();
 
-  constructor(
-    private editSpotState: EditSpotStateService
-  ) {}
+  constructor() {}
 
   changeMode(v: MapModes): void {
     this.modeChange.emit(v);

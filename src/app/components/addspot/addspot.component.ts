@@ -56,10 +56,11 @@ export class AddSpotComponent implements OnChanges {
   }
 
   onStepChange() {
-    console.log('StepChanged');
+    // Update global state
   }
 
   onDone(result) {
+    // post results to server through action
     console.log(result);
   }
 }

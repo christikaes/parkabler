@@ -26,7 +26,6 @@ const firebaseConfig = {
 import { AppComponent } from './app.component';
 import {
   HeaderComponent,
-  EditSpotComponent,
   SpotsListComponent,
   DrawerComponent,
   PlacesComponent,
@@ -37,6 +36,7 @@ import {
   TutorialComponent,
   TutorialDialogComponent,
   AddSpotComponent,
+  ReportSpotComponent,
   StepperComponent,
   StepComponent
 } from './components';
@@ -50,12 +50,10 @@ import {
 
 // Services
 import {
-  MapLocationService,
   GeolocationService,
   SpotsService,
   DistanceService,
   RulesInfoService,
-  EditSpotStateService,
   PlacesService
 } from './services';
 
@@ -80,7 +78,6 @@ import { routing } from './app.routing';
     AppComponent,
     HomeComponent,
     HeaderComponent,
-    EditSpotComponent,
     SpotsListComponent,
     DrawerComponent,
     PlacesComponent,
@@ -93,18 +90,17 @@ import { routing } from './app.routing';
     TutorialComponent,
     TutorialDialogComponent,
     AddSpotComponent,
+    ReportSpotComponent,
     StepComponent,
     StepperComponent
   ],
   entryComponents: [TutorialDialogComponent],
   providers: [
     DevToolsExtension,
-    MapLocationService,
     GeolocationService,
     SpotsService,
     DistanceService,
     RulesInfoService,
-    EditSpotStateService,
     PlacesService,
     ACTION_PROVIDERS
   ],

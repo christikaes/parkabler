@@ -1,7 +1,5 @@
-import { Input, Component, OnInit, NgZone } from '@angular/core';
-import { EditSpotStateService, MapLocationService, States } from '~/services';
-import { Position, NearbySpots, distanceBetween } from '~/util';
-import { Observable } from 'rxjs';
+import { Input, Component, OnInit } from '@angular/core';
+import { Position, NearbySpots } from '~/util';
 
 @Component({
   selector: 'pa-spots-list',
@@ -14,11 +12,7 @@ export class SpotsListComponent implements OnInit {
   public expanded: boolean;
   public hidden: boolean;
 
-  constructor(
-    private editSpotStateService: EditSpotStateService,
-    private mapLocationService: MapLocationService,
-    private zone: NgZone
-  ) {
+  constructor() {
     this.expanded = false;
     this.hidden = false;
   }
@@ -31,15 +25,7 @@ export class SpotsListComponent implements OnInit {
     return this.numSpot > 0;
   }
 
-  ngOnInit() {
-    this.editSpotStateService.state.subscribe((res) => {
-      if (res === 0) {
-        this.hidden = false;
-      } else {
-        this.hidden = true;
-      }
-    });
-  }
+  ngOnInit() {}
 
   toggleExapand() {
     this.expanded = !this.expanded;
@@ -47,12 +33,10 @@ export class SpotsListComponent implements OnInit {
 
   onReport(position) {
     this.expanded = false;
-    // this.mapLocationService.set(position);
-    this.editSpotStateService.set(States.ReportDetails);
+    // set report state
   }
 
   onClickSpot(position) {
-    this.mapLocationService.setZoom(20);
-    this.mapLocationService.set(position);
+    // set map center and zoom
   }
 }
