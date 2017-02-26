@@ -12,22 +12,18 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   public mode: AppModes;
   public appModes = AppModes;
-  public addSpotStep: AddSpotSteps;
   public reportSpotStep: ReportSpotSteps;
 
   @select() private destination$: Observable<Position>;
   @select() private spots$: Observable<Spots>;
   @select() public nearbySpots$: Observable<NearbySpots>;
   @select() private appMode$: Observable<AppModes>;
-  @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
 
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private nearbySpotsActions: NearbySpotsActions,
-    private appModeActions: AppModeActions,
-    private addSpotStepActions: AddSpotStepActions,
     private reportSpotStepActions: ReportSpotStepActions
   ) {}
 
@@ -47,30 +43,9 @@ export class HomeComponent implements OnInit {
     this.appMode$.subscribe((mode: AppModes) => {
         this.mode = mode;
     });
-
-    // Whenever the addspot/reportspot step changes, bubble to the components
-    this.addSpotStep$.subscribe((step: AddSpotSteps) => {
-      this.addSpotStep = step;
-    });
-
-    this.reportSpotStep$.subscribe((step: ReportSpotSteps) => {
-      this.reportSpotStep = step;
-    });
   }
 
   onPlaceUpdate(newPlace: Place) {
     this.placesActions.setPlace(newPlace);
-  }
-
-  onOpenAddSpot() {
-    this.appModeActions.setModeAddSpot();
-  }
-
-  onCloseAddSpot() {
-    this.appModeActions.unsetModeAddSpot();
-  }
-
-  onAddSpotStepChange(step) {
-    this.addSpotStepActions.setStep(step);
   }
 }

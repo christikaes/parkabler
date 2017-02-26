@@ -36,6 +36,9 @@ import {
   TutorialComponent,
   TutorialDialogComponent,
   AddSpotComponent,
+  AddSpotButtonComponent,
+  AddSpotDrawerComponent,
+  AddSpotOverlayComponent,
   ReportSpotComponent,
   StepperComponent,
   StepComponent
@@ -90,6 +93,9 @@ import { routing } from './app.routing';
     TutorialComponent,
     TutorialDialogComponent,
     AddSpotComponent,
+    AddSpotButtonComponent,
+    AddSpotDrawerComponent,
+    AddSpotOverlayComponent,
     ReportSpotComponent,
     StepComponent,
     StepperComponent

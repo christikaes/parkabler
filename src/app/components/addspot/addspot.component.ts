@@ -1,55 +1,49 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { AddSpotSteps, StepStates } from '~/util';
-import Animations from '~/animations';
-
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { AddSpotSteps, StepStates, AppModes } from '~/util';
+import { NgRedux, select } from 'ng2-redux';
+import { IAppState } from '~/store';
+import { AppModeActions, AddSpotStepActions } from '~/actions';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pa-add-spot',
   templateUrl: './addspot.component.html',
-  styleUrls: ['./addspot.component.scss'],
-  animations: Animations
+  styleUrls: ['./addspot.component.scss']
 })
 
-export class AddSpotComponent {
+export class AddSpotComponent implements OnInit {
+  public isAppMode: boolean;
+  public addSpotStep: AddSpotSteps;
+  public addSpotSteps = AddSpotSteps;
 
-  @Input() public opened: boolean;
-  @Input() public step = 0;
+  @select() private appMode$: Observable<AppModes>;
+  @select() private addSpotStep$: Observable<AddSpotSteps>;
 
-  @Output() private open = new EventEmitter();
-  @Output() private close = new EventEmitter();
-  @Output() private stepChange = new EventEmitter();
+  constructor(
+    private ngRedux: NgRedux<IAppState>,
+    private appModeActions: AppModeActions,
+    private addSpotStepActions: AddSpotStepActions
+  ) {}
 
-  onClose() {
-    this.close.emit();
+  ngOnInit() {
+    this.appMode$.subscribe((mode: AppModes) => {
+      this.isAppMode = mode === AppModes.AddSpot;
+    });
+
+    this.addSpotStep$.subscribe((step: AddSpotSteps) => {
+      this.addSpotStep = step;
+    });
   }
 
-  onOpen() {
-    this.open.emit();
+  onOpenAddSpot() {
+    this.appModeActions.setModeAddSpot();
   }
 
-  onStepChange(step) {
-    // Update global state if the step changed
-    if (step !== this.step) {
-      this.stepChange.emit(step);
-    }
+  onCloseAddSpot() {
+    this.appModeActions.unsetModeAddSpot();
   }
 
-  onDone(result) {
-    // post results to server through action
-    console.log(result);
-
-    this.close.emit();
-  }
-
-  changeNumSpots(value) {
-    console.log(value);
-  }
-
-  changeSpotType(value) {
-    console.log(value);
-  }
-
-  onLocationSet(){
-    console.log('LOCATION SET');
+  onAddSpotStepChange(step) {
+    this.addSpotStepActions.setStep(step);
   }
 }

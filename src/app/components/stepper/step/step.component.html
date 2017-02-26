@@ -1,5 +1,7 @@
 <div class='container' [@stepperSlide]='state'>
-    <ng-content class='content'></ng-content>
+    <div class='content'>
+        <ng-content></ng-content>
+    </div>
     <button md-button color="primary" (click)="onPrevious()" class='previous'> {{previousCopy}} </button>
     <button md-raised-button color="primary" (click)="onNext()" class='next'> {{nextCopy}} </button>
 </div>

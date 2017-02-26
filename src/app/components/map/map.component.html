@@ -1,3 +1,5 @@
 <pa-map-gl *ngIf="supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-gl>
 <!--<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-js>-->
 <pa-map-controls (zoomChange)="zoomChange($event)" (modeChange)="modeChange($event)" (recenterChange)="recenterChange($event)"></pa-map-controls>
+
+<pa-map-addspot-overlay [open]="showAddSpotOverlay"></pa-map-addspot-overlay>

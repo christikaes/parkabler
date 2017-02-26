@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { MapModes, Position, Spots } from '~/util';
+import { MapModes, Position, Spots, AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';
 import { DestinationActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
@@ -19,9 +19,12 @@ export class MapComponent implements OnInit {
   public mode: MapModes;
   public center: Position;
   public spots: Spots;
+  public showAddSpotOverlay: boolean;
 
   @select() private destination$: Observable<Position>;
   @select() private spots$: Observable<Spots>;
+  @select() private addSpotStep$: Observable<AddSpotSteps>;
+  @select() private appMode$: Observable<AppModes>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -44,6 +47,14 @@ export class MapComponent implements OnInit {
     // Listen to changes on spots
     this.spots$.subscribe((spots: Spots) => {
       this.spots = spots;
+    });
+
+    // Show the add spot overlay if in app spot mode, and on the location step
+    this.addSpotStep$.combineLatest(
+      this.appMode$,
+      (addSpotStep: AddSpotSteps, appMode: AppModes) => ({addSpotStep, appMode})
+    ).subscribe( ({addSpotStep, appMode}) => {
+      this.showAddSpotOverlay = addSpotStep === AddSpotSteps.Location && appMode === AppModes.AddSpot;
     });
   }
 
