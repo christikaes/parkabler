@@ -1,6 +1,8 @@
-<ng-content></ng-content>
-<br/>
-<button *ngIf="i==0" md-button color="primary" (click)="onCancel()">Cancel</button>
-<button md-button color="primary" (click)="onPrevious()">Back</button>
-<button md-raised-button color="primary" (click)="onNext()">Next</button>
-<button *ngIf="i==steps.length-1" md-raised-button color="primary" (click)="onDone()">Done</button>
+<div class="container">
+    <ng-content></ng-content>
+    <br/>
+    <button *ngIf="currentStep==0" md-button color="primary" (click)="onCancel()">Cancel</button>
+    <button *ngIf="currentStep!=0" md-button color="primary" (click)="onPrevious()">Back</button>
+    <button *ngIf="currentStep==steps.length-1" md-raised-button color="primary" (click)="onDone()">Done</button>
+    <button *ngIf="currentStep!=steps.length-1" md-raised-button color="primary" (click)="onNext()">Next</button>
+</div>

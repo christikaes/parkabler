@@ -4,12 +4,12 @@ import { StepComponent } from './step';
 @Component({
     selector: 'pa-stepper',
     templateUrl: './stepper.component.html',
-    styles: ['./stepper.component.scss']
+    styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent implements OnInit, AfterContentInit {
     @ContentChildren(StepComponent) steps: QueryList<StepComponent>;
 
-    private currentStep: number;
+    private currentStepIndex: number;
 
     @Output() private cancel = new EventEmitter();
     @Output() private done = new EventEmitter();
@@ -32,25 +32,23 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     public onNext() {
-        let nextStep = this.currentStep + 1;
-        if (nextStep < this.steps.length) {
-            this.currentStep = nextStep;
+        let nextStepIndex = this.currentStepIndex + 1;
+        if (nextStepIndex < this.steps.length) {
+            this.currentStepIndex = nextStepIndex;
             this.setStep();
-            this.stepChange.emit(nextStep);
         }
     }
 
     public onPrevious() {
-        let previousStep = this.currentStep - 1;
-        if (previousStep > -1) {
-            this.currentStep = previousStep;
+        let previousStepIndex = this.currentStepIndex - 1;
+        if (previousStepIndex > -1) {
+            this.currentStepIndex = previousStepIndex;
             this.setStep();
-            this.stepChange.emit(previousStep);
         }
     }
 
     private reset() {
-        this.currentStep = 0;
+        this.currentStepIndex = 0;
     }
 
     ngAfterContentInit() {
@@ -58,13 +56,29 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     private setStep() {
-        this.steps.toArray().forEach(step => {
-            step.active = false;
-        });
-
-        let current = this.steps.toArray()[this.currentStep];
+        let current = this.steps.toArray()[this.currentStepIndex];
         if (current) {
-            current.active = true;
+            current.state = 'active';
+
+            let nextStepIndex = this.currentStepIndex + 1;
+            if (nextStepIndex < this.steps.length){
+                this.steps.toArray()[nextStepIndex].state = 'next';
+
+                if (nextStepIndex < this.steps.length - 1) {
+                    this.steps.toArray()[nextStepIndex + 1].state = 'inactive';
+                }
+            }
+
+            let previousStepIndex = this.currentStepIndex - 1;
+            if (previousStepIndex > -1){
+                this.steps.toArray()[previousStepIndex].state = 'previous';
+
+                if (previousStepIndex > 0) {
+                    this.steps.toArray()[previousStepIndex - 1].state = 'inactive';
+                }
+            }
         }
+
+        this.stepChange.emit(this.currentStepIndex);
     }
 }
