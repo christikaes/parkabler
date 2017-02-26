@@ -1,7 +1,11 @@
 .container {
     padding: 10px;
     position: relative;
-    
+
+    .content {
+        padding-bottom: 30px;
+    }
+
     .next {
         position: absolute;
         right: 10px;

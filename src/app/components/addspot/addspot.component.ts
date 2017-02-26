@@ -28,15 +28,17 @@ export class AddSpotComponent {
   }
 
   onStepChange(step) {
-    // Update global state
-    this.stepChange.emit(step);
+    // Update global state if the step changed
+    if (step !== this.step) {
+      this.stepChange.emit(step);
+    }
   }
 
   onDone(result) {
     // post results to server through action
     console.log(result);
 
-    this.onClose();
+    this.close.emit();
   }
 
   changeNumSpots(value) {

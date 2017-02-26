@@ -53,6 +53,7 @@ export class StepperComponent implements OnChanges, AfterContentInit {
             this.currentStepIndex = previousStepIndex;
             this.setStep();
         } else {
+            console.log('cancel');
             this.cancel.emit();
             this.reset();
         }
@@ -60,6 +61,7 @@ export class StepperComponent implements OnChanges, AfterContentInit {
 
     private reset() {
         this.currentStepIndex = 0;
+        this.setStep();
     }
 
     ngAfterContentInit() {

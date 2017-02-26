@@ -1,17 +1,34 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
+import { AddSpotSteps } from '~/util';
 
 
 @Injectable()
 export class AddSpotStepActions {
-    static SET_STEP_LOCATION = 'PA/ADDSPOTMODE/LOCATION';
-    static SET_STEP_DETAILS = 'PA/ADDSPOTMODE/DETAILS';
-    static SET_STEP_SUBMITTED = 'PA/ADDSPOTMODE/SUBMITTED';
+    static SET_STEP_LOCATION = 'PA/ADDSPOTSTEP/LOCATION';
+    static SET_STEP_DETAILS = 'PA/ADDSPOTSTEP/DETAILS';
+    static SET_STEP_SUBMITTED = 'PA/ADDSPOTSTEP/SUBMITTED';
 
     constructor(
         private ngRedux: NgRedux<IAppState>
     ) {}
+
+    public setStep(step: AddSpotSteps) {
+        switch (step) {
+            case AddSpotSteps.Location:
+                this.setStepLocation();
+                break;
+            case AddSpotSteps.Details:
+                this.setStepDetails();
+                break;
+            case AddSpotSteps.Submitted:
+                this.setStepSubmitted();
+                break;
+            default:
+                throw('No step action found for: ' + step);
+        }
+    }
 
     public setStepLocation() {
         this.ngRedux.dispatch({

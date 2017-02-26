@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions } from '~/actions';
-import { Position, Place, Spots, NearbySpots, AppModes } from '~/util';
+import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions, AddSpotStepActions, ReportSpotStepActions } from '~/actions';
+import { Position, Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
@@ -12,17 +12,23 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   public mode: AppModes;
   public appModes = AppModes;
+  public addSpotStep: AddSpotSteps;
+  public reportSpotStep: ReportSpotSteps;
 
   @select() private destination$: Observable<Position>;
   @select() private spots$: Observable<Spots>;
   @select() public nearbySpots$: Observable<NearbySpots>;
   @select() private appMode$: Observable<AppModes>;
+  @select() private addSpotStep$: Observable<AddSpotSteps>;
+  @select() private reportSpotStep$: Observable<ReportSpotSteps>;
 
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private nearbySpotsActions: NearbySpotsActions,
-    private appModeActions: AppModeActions
+    private appModeActions: AppModeActions,
+    private addSpotStepActions: AddSpotStepActions,
+    private reportSpotStepActions: ReportSpotStepActions
   ) {}
 
   ngOnInit() {
@@ -41,6 +47,15 @@ export class HomeComponent implements OnInit {
     this.appMode$.subscribe((mode: AppModes) => {
         this.mode = mode;
     });
+
+    // Whenever the addspot/reportspot step changes, bubble to the components
+    this.addSpotStep$.subscribe((step: AddSpotSteps) => {
+      this.addSpotStep = step;
+    });
+
+    this.reportSpotStep$.subscribe((step: ReportSpotSteps) => {
+      this.reportSpotStep = step;
+    });
   }
 
   onPlaceUpdate(newPlace: Place) {
@@ -53,5 +68,9 @@ export class HomeComponent implements OnInit {
 
   onCloseAddSpot() {
     this.appModeActions.unsetModeAddSpot();
+  }
+
+  onAddSpotStepChange(step) {
+    this.addSpotStepActions.setStep(step);
   }
 }
