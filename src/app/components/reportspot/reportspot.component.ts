@@ -17,7 +17,6 @@ export class ReportSpotComponent implements OnChanges {
     this.close.emit();
   }
 
-
   ngOnChanges(changes: SimpleChanges) {
     for (let change in changes) {
       if (change === 'mode') {

@@ -13,7 +13,6 @@ export class AppModeActions {
     ) {}
 
     public setModeHome() {
-        console.log(AppModeActions.SET_MODE_HOME);
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_HOME
         });

@@ -1,4 +1,14 @@
-import { Component, QueryList, ContentChildren, OnInit, AfterContentInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
+import {
+    Component,
+    QueryList,
+    ContentChildren,
+    AfterContentInit,
+    Input,
+    OnChanges,
+    SimpleChanges,
+    Output,
+    EventEmitter
+} from '@angular/core';
 import { StepComponent } from './step';
 
 @Component({
@@ -6,17 +16,24 @@ import { StepComponent } from './step';
     templateUrl: './stepper.component.html',
     styleUrls: ['./stepper.component.scss']
 })
-export class StepperComponent implements OnInit, AfterContentInit {
+export class StepperComponent implements OnChanges, AfterContentInit {
+    private currentStepIndex = 0;
+
     @ContentChildren(StepComponent) steps: QueryList<StepComponent>;
 
-    private currentStepIndex: number;
+    @Input() private stepIndex: number;
 
     @Output() private cancel = new EventEmitter();
     @Output() private done = new EventEmitter();
     @Output() private stepChange = new EventEmitter();
 
-    ngOnInit() {
-        this.reset();
+    ngOnChanges(changes: SimpleChanges) {
+        for (let change in changes) {
+            if (change === 'stepIndex') {
+                this.currentStepIndex = changes[change].currentValue;
+                this.setStep();
+            }
+        }
     }
 
     public onNext() {
@@ -56,6 +73,11 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     private setStep() {
+        if (!this.steps) {
+            // content has not yet been initialized
+            return;
+        }
+
         // Set the current step
         let current = this.steps.toArray()[this.currentStepIndex];
         if (current) {

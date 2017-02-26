@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { AddSpotSteps, StepStates } from '~/util';
 import Animations from '~/animations';
 
@@ -10,10 +10,10 @@ import Animations from '~/animations';
   animations: Animations
 })
 
-export class AddSpotComponent implements OnChanges {
+export class AddSpotComponent {
 
   @Input() public opened: boolean;
-  @Input() private step: number;
+  @Input() public step = 0;
 
   @Output() private open = new EventEmitter();
   @Output() private close = new EventEmitter();
@@ -27,14 +27,6 @@ export class AddSpotComponent implements OnChanges {
     this.open.emit();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    for (let change in changes) {
-      if (change === 'step') {
-
-      }
-    }
-  }
-
   onStepChange(step) {
     // Update global state
     this.stepChange.emit(step);
@@ -43,6 +35,8 @@ export class AddSpotComponent implements OnChanges {
   onDone(result) {
     // post results to server through action
     console.log(result);
+
+    this.onClose();
   }
 
   changeNumSpots(value) {
