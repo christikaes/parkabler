@@ -48,4 +48,8 @@ export class AddSpotComponent {
   changeSpotType(value) {
     console.log(value);
   }
+
+  onLocationSet(){
+    console.log('LOCATION SET');
+  }
 }
