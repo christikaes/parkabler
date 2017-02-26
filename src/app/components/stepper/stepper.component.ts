@@ -20,7 +20,6 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     public onNext() {
-        console.log('onNext');
         let nextStepIndex = this.currentStepIndex + 1;
         if (nextStepIndex < this.steps.length) {
             this.currentStepIndex = nextStepIndex;
@@ -32,7 +31,6 @@ export class StepperComponent implements OnInit, AfterContentInit {
     }
 
     public onPrevious() {
-        console.log('onprev');
         let previousStepIndex = this.currentStepIndex - 1;
         if (previousStepIndex > -1) {
             this.currentStepIndex = previousStepIndex;

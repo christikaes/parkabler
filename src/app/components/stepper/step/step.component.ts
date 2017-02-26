@@ -4,6 +4,7 @@ import Animations from './step.animation';
 @Component({
     selector: 'pa-step',
     templateUrl: './step.component.html',
+    styleUrls: ['./step.component.scss'],
     animations: Animations
 })
 export class StepComponent {

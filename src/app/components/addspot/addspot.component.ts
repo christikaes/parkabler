@@ -17,8 +17,7 @@ export class AddSpotComponent implements OnChanges {
 
   @Output() private open = new EventEmitter();
   @Output() private close = new EventEmitter();
-  @Output() private next = new EventEmitter();
-  @Output() private previous = new EventEmitter();
+  @Output() private stepChange = new EventEmitter();
 
   onClose() {
     this.close.emit();
@@ -27,15 +26,6 @@ export class AddSpotComponent implements OnChanges {
   onOpen() {
     this.open.emit();
   }
-
-  onNext() {
-    this.next.emit();
-  }
-
-  onPrevious() {
-    this.previous.emit();
-  }
-
 
   ngOnChanges(changes: SimpleChanges) {
     for (let change in changes) {
@@ -55,12 +45,21 @@ export class AddSpotComponent implements OnChanges {
     }
   }
 
-  onStepChange() {
+  onStepChange(step) {
     // Update global state
+    this.stepChange.emit(step);
   }
 
   onDone(result) {
     // post results to server through action
     console.log(result);
+  }
+
+  changeNumSpots(value) {
+    console.log(value);
+  }
+
+  changeSpotType(value){
+    console.log(value);
   }
 }

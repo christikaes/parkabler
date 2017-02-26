@@ -38,8 +38,7 @@ import {
   AddSpotComponent,
   ReportSpotComponent,
   StepperComponent,
-  StepComponent,
-  StepNextComponent
+  StepComponent
 } from './components';
 
 // Pages
@@ -93,8 +92,7 @@ import { routing } from './app.routing';
     AddSpotComponent,
     ReportSpotComponent,
     StepComponent,
-    StepperComponent,
-    StepNextComponent
+    StepperComponent
   ],
   entryComponents: [TutorialDialogComponent],
   providers: [
