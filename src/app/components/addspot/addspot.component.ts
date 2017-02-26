@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { AddSpotModes, StepStates } from '~/util';
+import { AddSpotSteps, StepStates } from '~/util';
 import Animations from '~/animations';
 
 
@@ -29,18 +29,8 @@ export class AddSpotComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     for (let change in changes) {
-      if (change === 'mode') {
+      if (change === 'step') {
 
-        // 1
-         let previousMode = changes[change].previousValue;
-
-        // 2
-        let currentMode = changes[change].currentValue;
-
-
-
-        this[previousMode] = 'previous';
-        this[currentMode] = 'current';
       }
     }
   }
@@ -59,7 +49,7 @@ export class AddSpotComponent implements OnChanges {
     console.log(value);
   }
 
-  changeSpotType(value){
+  changeSpotType(value) {
     console.log(value);
   }
 }

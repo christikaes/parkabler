@@ -4,8 +4,8 @@ import { NearbySpotsActions } from './nearbyspots.actions';
 import { TutorialActions } from './tutorial.actions';
 import { PlacesActions } from './places.actions';
 import { AppModeActions } from './appmode.actions';
-import { AddSpotModeActions } from './addspotmode.actions';
-import { ReportSpotModeActions } from './reportspotmode.actions';
+import { AddSpotStepActions } from './addspotstep.actions';
+import { ReportSpotStepActions } from './reportspotstep.actions';
 import { SpotsListModeActions } from './spotslistmode.actions';
 
 export const ACTION_PROVIDERS = [
@@ -15,8 +15,8 @@ export const ACTION_PROVIDERS = [
   PlacesActions,
   TutorialActions,
   AppModeActions,
-  AddSpotModeActions,
-  ReportSpotModeActions,
+  AddSpotStepActions,
+  ReportSpotStepActions,
   SpotsListModeActions
 ];
 
@@ -27,7 +27,7 @@ export {
   PlacesActions,
   TutorialActions,
   AppModeActions,
-  AddSpotModeActions,
-  ReportSpotModeActions,
+  AddSpotStepActions,
+  ReportSpotStepActions,
   SpotsListModeActions
 };

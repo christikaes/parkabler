@@ -5,16 +5,16 @@ export enum AppModes {
     SpotsList
 }
 
-export type AddSpotModes = 'open'
-                        | 'closed'
-                        | 'setlocation'
-                        | 'setdetails'
-                        | 'submitted' ;
+export enum AddSpotSteps {
+    Location,
+    Details,
+    Submitted
+}
 
-export type ReportSpotModes = 'open'
-                        | 'closed'
-                        | 'setdetails'
-                        | 'submitted' ;
+export enum ReportSpotSteps {
+    Details,
+    Submitted
+}
 
 export type SpotsListModes = 'open'
                         | 'closed'

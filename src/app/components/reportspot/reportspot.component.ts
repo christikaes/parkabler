@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter, OnChanges, SimpleChanges } from '@angular/core';
-import { ReportSpotModes, StepStates } from '~/util';
+import { ReportSpotSteps, StepStates } from '~/util';
 
 @Component({
   selector: 'pa-report-spot',

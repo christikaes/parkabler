@@ -4,11 +4,11 @@
 
 <pa-drawer [open]="opened">
     <pa-stepper (close)="onClose()" (done)="onDone($event)" (stepChange)="onStepChange($event)">
-        <!-- setlocation -->
+        <!-- location -->
         <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'">
             Drag the map to place the marker over where the spot is located
         </pa-step>
-        <!-- setdetails -->
+        <!-- details -->
         <pa-step [previousCopy]="'Back'" [nextCopy]="'Submit'">
             <h2>How many spaces are there?</h2>
             <md-button-toggle-group name="spaces-buttons" (change)="changeNumSpots($event.value)">
