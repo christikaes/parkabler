@@ -4,7 +4,7 @@ import { Position } from '~/util';
 @Injectable()
 export class GeolocationService {
   currentLocation(): Promise<Position> {
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       window.navigator.geolocation.getCurrentPosition((p) => {
         resolve({
           lat: p.coords.latitude,

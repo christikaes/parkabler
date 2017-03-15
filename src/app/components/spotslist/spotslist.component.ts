@@ -31,12 +31,12 @@ export class SpotsListComponent implements OnInit {
     this.expanded = !this.expanded;
   }
 
-  onReport(position) {
+  onReport() {
     this.expanded = false;
     // set report state
   }
 
-  onClickSpot(position) {
+  onClickSpot() {
     // set map center and zoom
   }
 }

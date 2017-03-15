@@ -49,7 +49,7 @@ export class MapJSComponent extends BaseMapComponent {
     // Zoom the map smoothly
     function smoothZoom (map: any, targetZoom: number, currentZoom: number) {
       if (currentZoom !== targetZoom) {
-          window.google.maps.event.addListenerOnce(map, 'zoom_changed', function (event) {
+          window.google.maps.event.addListenerOnce(map, 'zoom_changed', function () {
               smoothZoom(map, targetZoom, currentZoom + (targetZoom > currentZoom ? 1 : -1));
           });
           setTimeout(function(){ map.setZoom(currentZoom); }, 80);
