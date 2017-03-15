@@ -11,7 +11,6 @@
     "sourceMap": true,
     "noEmitHelpers": true,
     "types": [
-        "core-js",
         "jasmine",
         "node",
         "protractor",
@@ -19,6 +18,11 @@
         "geojson",
         "mapbox-gl",
         "turf"
+     ],
+     "noUnusedParameters": true,
+     "lib":[
+       "es2015",
+       "dom"
      ]
   },
   "compileOnSave": false,
