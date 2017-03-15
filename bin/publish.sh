@@ -24,15 +24,16 @@ echo 'Build Master'
 npm install
 npm run build
 
-echo '_________________________________________'
-echo 'Build Master (Phonegap)'
-# Clean phonegap build on master
-npm run phonegap
-cd phonegap
-phonegap build android --release
-cd ..
-mkdir -p dist/apk
-cp phonegap/platforms/android/build/outputs/apk/* dist/apk/ -r
+echo 'Phonegap build disabled'
+# echo '_________________________________________'
+# echo 'Build Master (Phonegap)'
+# # Clean phonegap build on master
+# npm run phonegap
+# cd phonegap
+# phonegap build android --release
+# cd ..
+# mkdir -p dist/apk
+# cp phonegap/platforms/android/build/outputs/apk/* dist/apk/ -r
 
 echo '_________________________________________'
 echo 'Copy to gh-pages branch'
