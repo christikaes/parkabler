@@ -23,7 +23,7 @@ export class StepperComponent implements OnChanges, AfterContentInit {
 
     @Input() private stepIndex: number;
 
-    @Output() private cancel = new EventEmitter();
+    @Output() private close = new EventEmitter();
     @Output() private done = new EventEmitter();
     @Output() private stepChange = new EventEmitter();
 
@@ -53,8 +53,7 @@ export class StepperComponent implements OnChanges, AfterContentInit {
             this.currentStepIndex = previousStepIndex;
             this.setStep();
         } else {
-            console.log('cancel');
-            this.cancel.emit();
+            this.close.emit();
             this.reset();
         }
     }

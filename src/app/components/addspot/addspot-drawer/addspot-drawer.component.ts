@@ -7,6 +7,7 @@ import { AddSpotSteps, StepStates } from '~/util';
 })
 
 export class AddSpotDrawerComponent {
+  private addSpotInfo;
 
   @Input() public opened: boolean;
   @Input() public step = 0;
@@ -28,19 +29,24 @@ export class AddSpotDrawerComponent {
   onDone(result) {
     // post results to server through action
     console.log(result);
+    console.log(this.changeNumSpots);
+    console.log(this.changeSpotType);
 
     this.close.emit();
   }
 
   changeNumSpots(value) {
+    this.addSpotInfo.numSpots = value;
     console.log(value);
   }
 
   changeSpotType(value) {
+    this.addSpotInfo.spotType = value;
     console.log(value);
   }
 
   onLocationSet() {
+    this.addSpotInfo;
     console.log('LOCATION SET');
   }
 }
