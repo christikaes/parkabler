@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { MapModes, Position, Spots, AddSpotSteps, AppModes } from '~/util';
@@ -16,9 +16,9 @@ const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 export class MapComponent implements OnInit {
   public supportsGL: boolean;
 
-  private _zoom: number;
+  public _zoom: number;
   public get zoom() {
-    console.log('get zoom: ' + this._zoom);
+    // console.log('get zoom: ' + this._zoom);
     return this._zoom;
   }
   public set zoom (z) {
@@ -62,7 +62,8 @@ export class MapComponent implements OnInit {
   constructor(
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions,
-    private mapActions: MapActions
+    private mapActions: MapActions,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
@@ -70,9 +71,10 @@ export class MapComponent implements OnInit {
 
 
     // Listen to changes on the map state
-    // this.zoom$.subscribe((z: number) => {
-    //    this.zoom = z;
-    // });
+    this.zoom$.subscribe((z: number) => {
+      console.log('new zoom');
+       this.zoom = z;
+    });
     // this.center$.subscribe((c: GeoJSON.Position) => {
     //   this.center = c;
     // });
@@ -101,6 +103,7 @@ export class MapComponent implements OnInit {
   }
 
   zoomChange(z: number): void {
+    console.log('zoomChange: ' + z);
     this.zoom += z;
   }
 
