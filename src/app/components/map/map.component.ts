@@ -3,7 +3,7 @@ import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { MapModes, Position, Spots, AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';
-import { DestinationActions } from '~/actions';
+import { DestinationActions, MapActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
 // Should i add this to vendor.js?
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -15,9 +15,38 @@ const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 })
 export class MapComponent implements OnInit {
   public supportsGL: boolean;
-  public zoom: number;
+
+  private _zoom: number;
+  public get zoom() {
+    console.log('get zoom: ' + this._zoom);
+    return this._zoom;
+  }
+  public set zoom (z) {
+    console.log('set zoom: ' + z);
+    this._zoom = z;
+    this.mapActions.setZoom(z);
+  }
+
   public mode: MapModes;
-  public center: Position;
+  // private _mode: MapModes;
+  // public get mode() {
+  //   return this._mode;
+  // }
+  // public set mode(m) {
+  //   this._mode = m;
+  //   this.mapActions.setMode(m);
+  // }
+
+  public center = [-73.9876, 40.7661];
+  // private _center: GeoJSON.Position;
+  // public get center() {
+  //   return this._center;
+  // }
+  // public set center (c) {
+  //   this._center = c;
+  //   this.mapActions.setCenter(c);
+  // }
+
   public spots: Spots;
   public showAddSpotOverlay: boolean;
 
@@ -26,23 +55,36 @@ export class MapComponent implements OnInit {
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
 
+  @select(['map', 'zoom']) zoom$: Observable<number>;
+  // @select(['map', 'center']) center$: Observable<GeoJSON.Position>;
+  // @select(['map', 'mode']) mode$: Observable<MapModes>;
+
   constructor(
     private geoLocation: GeolocationService,
-    private destinationActions: DestinationActions
-  ) {
-    this.zoom = 15;
-    this.mode = 'street';
-    this.center = {lat: -71.06, lng: 42.35};
-  }
+    private destinationActions: DestinationActions,
+    private mapActions: MapActions
+  ) { }
 
   ngOnInit() {
     this.supportsGL = mapboxgl.supported();
 
+
+    // Listen to changes on the map state
+    // this.zoom$.subscribe((z: number) => {
+    //    this.zoom = z;
+    // });
+    // this.center$.subscribe((c: GeoJSON.Position) => {
+    //   this.center = c;
+    // });
+    // this.mode$.subscribe((m: MapModes) => {
+    //   this.mode = m;
+    // });
+
     // Listen to changes on destination
-    this.destination$.subscribe((destination: Position) => {
-      this.center = destination;
-      this.zoom = 15;
-    });
+    // this.destination$.subscribe((destination: Position) => {
+    //   this.center = [destination.lng, destination.lat];
+    //   this.zoom = 15;
+    // });
 
     // Listen to changes on spots
     this.spots$.subscribe((spots: Spots) => {
@@ -63,6 +105,7 @@ export class MapComponent implements OnInit {
   }
 
   modeChange(v: MapModes): void {
+    console.log('MODECHANGE');
     this.mode = v;
   }
 
@@ -70,7 +113,7 @@ export class MapComponent implements OnInit {
     // TODO-rangle: would it be better to get this from global state?
     this.geoLocation.currentLocation()
       .then((p: Position) => {
-        this.center = p;
+        this.center = [p.lng, p.lat];
         this.zoom = 18;
         this.destinationActions.setDestination(p);
       })

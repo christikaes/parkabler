@@ -1,5 +1,14 @@
-import { Component, Input, OnInit, AfterViewInit, OnChanges, ViewChild, SimpleChanges } from '@angular/core';
-import { BaseMapComponent } from '~/components/map';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  OnChanges,
+  Input,
+  SimpleChanges,
+  Output,
+  EventEmitter,
+  ViewChild
+} from '@angular/core';
 import { MapModes, Position, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
@@ -12,25 +21,62 @@ const mapstyle = require('./style_parkabler.json');
   templateUrl: './mapgl.component.html',
   styleUrls: ['./mapgl.component.scss']
 })
-export class MapGLComponent extends BaseMapComponent {
+export class MapGLComponent implements OnInit, OnChanges {
   @ViewChild('MapDiv') MapDiv;
-  private map: any;
+  // TODO-rangle: How do I add the setTimeout
+  // https://angular.io/docs/ts/latest/cookbook/component-communication.html#!#parent-to-view-child
 
-  constructor() {
-    super();
+  @Input() zoom: number;
+  @Output() zoomChange = new EventEmitter<number>();
+  @Input() center: GeoJSON.Position;
+  @Output() centerChange = new EventEmitter<GeoJSON.Position>();
+  @Input() mode: MapModes;
+  @Input() spots: any;
+
+  private map: any;
+  private initialized = false;
+
+  ngOnInit(): void {
+    this.initializeMap();
+    this.addListeners();
   }
 
-  initializeMap(done: (boolean) => void): void {
+  ngOnChanges(changes: SimpleChanges) {
+    // Only start listening to changes after the map is initialized
+    if (this.initialized) {
+        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
+      for (let change in changes) {
+        if (change === 'zoom') {
+          this.setZoom(changes[change].currentValue);
+        } else if ( change === 'mode') {
+          this.setMode(changes[change].currentValue);
+        } else if (change === 'center') {
+          // let center = changes[change].currentValue;
+          let center = [-73.9876, 40.7661];
+          // this.setCenter(center);
+        } else if (change === 'spots') {
+          this.setSpots(changes[change].currentValue);
+        } else {
+          throw 'Uncaught change: ' + change;
+        }
+      }
+    }
+  }
+
+  initializeMap(): void {
     mapboxgl.accessToken = MapboxAccessTolken;
     let mapDiv = this.MapDiv.nativeElement;
     let map = new mapboxgl.Map({
       container: mapDiv,
       style: mapstyle,
-      center: [-71.06, 42.35],
-      zoom: 15
+      center: [0, 0],
+      zoom: this.zoom
     });
     // HACK: Not sure why canvas is set to absolute position, but it breaks styling:
     map.getCanvas().style.position = 'initial';
+
+    // To see all of the events:
+    console.log(map._listeners);
 
     // Signal that the map is loaded
     map.on('load', () => {
@@ -46,23 +92,6 @@ export class MapGLComponent extends BaseMapComponent {
                     'type': 'Polygon',
                     'coordinates': [[[-67.13734351262877, 45.137451890638886],
                         [-66.96466, 44.8097],
-                        [-68.03252, 44.3252],
-                        [-69.06, 43.98],
-                        [-70.11617, 43.68405],
-                        [-70.64573401557249, 43.090083319667144],
-                        [-70.75102474636725, 43.08003225358635],
-                        [-70.79761105007827, 43.21973948828747],
-                        [-70.98176001655037, 43.36789581966826],
-                        [-70.94416541205806, 43.46633942318431],
-                        [-71.08482, 45.3052400000002],
-                        [-70.6600225491012, 45.46022288673396],
-                        [-70.30495378282376, 45.914794623389355],
-                        [-70.00014034695016, 46.69317088478567],
-                        [-69.23708614772835, 47.44777598732787],
-                        [-68.90478084987546, 47.184794623394396],
-                        [-68.23430497910454, 47.35462921812177],
-                        [-67.79035274928509, 47.066248887716995],
-                        [-67.79141211614706, 45.702585354182816],
                         [-67.13734351262877, 45.137451890638886]]]
                 }
             }
@@ -72,20 +101,34 @@ export class MapGLComponent extends BaseMapComponent {
             'fill-color': '#088',
             'fill-opacity': 0.8
         }
-    });
+      });
 
       // map.resize();
       let event = document.createEvent('HTMLEvents');
       event.initEvent('resize', true, false);
       document.dispatchEvent(event);
 
-      done(true);
+      // Setup with initial spots
+      this.setSpots(this.spots);
+
+      this.initialized = true;
     });
 
     this.map = map;
   }
 
-  updateZoom(zoom: number) {
+  addListeners() {
+    this.map.on('moveend', () => {
+      this.centerChange.emit([this.map.getCenter().lng, this.map.getCenter().lng]);
+    });
+
+    this.map.on('zoom', () => {
+      this.zoomChange.emit(this.map.getZoom());
+    });
+  }
+
+  setZoom(zoom: number) {
+    console.log('SET ZOOM');
     this.map.zoomTo(zoom);
   }
 
@@ -103,13 +146,12 @@ export class MapGLComponent extends BaseMapComponent {
     }
   }
 
-  setCenter(center: Position) {
-    this.map.flyTo({center: [center.lng, center.lat]});
+  setCenter(center: GeoJSON.Position) {
+    this.map.flyTo({center: center});
   }
 
   setSpots(spots: Spots) {
     let spotsGeoJson = convertToGeoJson(spots);
     this.map.getSource('spots').setData(spotsGeoJson);
   }
-
 }

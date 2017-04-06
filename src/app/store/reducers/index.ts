@@ -7,3 +7,4 @@ export * from './appmode.reducer';
 export * from './addspotstep.reducer';
 export * from './reportspotstep.reducer';
 export * from './spotslistmode.reducer';
+export * from './map.reducer';

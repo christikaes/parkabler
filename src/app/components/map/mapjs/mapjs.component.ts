@@ -1,5 +1,4 @@
 import { Input, Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
-import { BaseMapComponent } from '~/components/map';
 import { MapModes, Spots, Position } from '~/util';
 
 @Component({
@@ -7,7 +6,7 @@ import { MapModes, Spots, Position } from '~/util';
   templateUrl: './mapjs.component.html',
   styleUrls: ['./mapjs.component.scss']
 })
-export class MapJSComponent extends BaseMapComponent {
+export class MapJSComponent {
   @ViewChild('googleMapsDiv') googleMapsDiv;
 
   private map: any;

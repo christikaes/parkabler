@@ -8,7 +8,8 @@ import {
   appModeReducer,
   addSpotStepReducer,
   reportSpotStepReducer,
-  spotsListModeReducer
+  spotsListModeReducer,
+  mapReducer
 } from './reducers';
 
 import {
@@ -20,7 +21,8 @@ import {
   AddSpotSteps,
   ReportSpotSteps,
   SpotsListModes,
-  TutorialState
+  TutorialState,
+  MapState
 } from '~/util';
 
 // 'assemble' the full store out of modules
@@ -34,6 +36,7 @@ export interface IAppState {
   addSpotStep?: AddSpotSteps;
   reportStopStep?: ReportSpotSteps;
   spotsListMode?: SpotsListModes;
+  map?: MapState;
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -45,5 +48,6 @@ export const rootReducer = combineReducers<IAppState>({
   appMode: appModeReducer,
   addSpotStep: addSpotStepReducer,
   reportSpotStep: reportSpotStepReducer,
-  spotsListMode: spotsListModeReducer
+  spotsListMode: spotsListModeReducer,
+  map: mapReducer
 });
