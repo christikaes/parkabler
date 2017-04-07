@@ -43,18 +43,14 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     // Only start listening to changes after the map is initialized
-    console.log('####');
     if (this.initialized) {
-        console.log('!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!');
       for (let change in changes) {
         if (change === 'zoom') {
-          console.log('--');
           this.setZoom(changes[change].currentValue);
+        } else if (change === 'center') {
+          this.setCenter(changes[change].currentValue);
         } else if ( change === 'mode') {
           this.setMode(changes[change].currentValue);
-        } else if (change === 'center') {
-          let center = changes[change].currentValue;
-          this.setCenter(center);
         } else if (change === 'spots') {
           this.setSpots(changes[change].currentValue);
         } else {
@@ -120,17 +116,31 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   addListeners() {
     this.map.on('moveend', () => {
-      this.centerChange.emit([this.map.getCenter().lng, this.map.getCenter().lng]);
+      this.centerChange.emit([this.map.getCenter().lng, this.map.getCenter().lat]);
     });
 
-    this.map.on('zoom', () => {
+    this.map.on('zoomend', () => {
       this.zoomChange.emit(this.map.getZoom());
     });
   }
 
-  setZoom(zoom: number) {
-    console.log('SET ZOOM');
-    this.map.zoomTo(zoom);
+  setZoom(newZoom: number) {
+    // Update zoom, if the new zoom is significantly different
+    // ! Important so that this doesn't trigger an infinite loop due to rounding
+    let zoom = this.map.getZoom();
+    if (Math.abs(Math.round((zoom - newZoom) * 10)) > 0) {
+      this.map.zoomTo(newZoom);
+    }
+  }
+
+  setCenter(newCenter: GeoJSON.Position) {
+    // Update center, if the new center is significantly different
+    // ! Important so that this doesn't trigger an infinite loop due to rounding
+    let center = [this.map.getCenter().lng, this.map.getCenter().lat];
+    if ((Math.abs(Math.round((center[0] - newCenter[0]) * 1000)) > 0)
+        || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
+        this.map.flyTo({center: newCenter});
+    }
   }
 
   setMode(mode: MapModes) {
@@ -145,10 +155,6 @@ export class MapGLComponent implements OnInit, OnChanges {
         this.map.setPaintProperty('satellite', 'raster-opacity', 0);
         break;
     }
-  }
-
-  setCenter(center: GeoJSON.Position) {
-    this.map.flyTo({center: center});
   }
 
   setSpots(spots: Spots) {

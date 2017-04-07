@@ -13,37 +13,12 @@ const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements AfterViewInit {
   public supportsGL: boolean;
 
-  public _zoom: number;
-  public get zoom() {
-    // console.log('get zoom: ' + this._zoom);
-    return this._zoom;
-  }
-  public set zoom (z) {
-    console.log('set zoom: ' + z);
-    this._zoom = z;
-    this.mapActions.setZoom(z);
-  }
-
-  private _mode: MapModes;
-  public get mode() {
-    return this._mode;
-  }
-  public set mode(m) {
-    this._mode = m;
-    this.mapActions.setMode(m);
-  }
-
-  private _center: GeoJSON.Position;
-  public get center() {
-    return this._center;
-  }
-  public set center (c) {
-    this._center = c;
-    this.mapActions.setCenter(c);
-  }
+  public zoom: number;
+  public mode: MapModes;
+  public center: GeoJSON.Position;
 
   public spots: Spots;
   public showAddSpotOverlay: boolean;
@@ -64,14 +39,12 @@ export class MapComponent implements OnInit {
     private ref: ChangeDetectorRef
   ) { }
 
-  ngOnInit() {
+  ngAfterViewInit() {
     this.supportsGL = mapboxgl.supported();
-
 
     // Listen to changes on the map state
     this.zoom$.subscribe((z: number) => {
-      console.log('new zoom');
-       this.zoom = z;
+      this.zoom = z;
     });
     this.center$.subscribe((c: GeoJSON.Position) => {
       this.center = c;
@@ -100,22 +73,24 @@ export class MapComponent implements OnInit {
     });
   }
 
-  zoomChange(z: number): void {
-    console.log('zoomChange: ' + z);
-    this.zoom += z;
+  setMode(m: MapModes): void {
+    this.mapActions.setMode(m);
   }
 
-  modeChange(v: MapModes): void {
-    console.log('MODECHANGE');
-    this.mode = v;
+  setZoom(z: number): void {
+    this.mapActions.setZoom(z);
+  }
+
+  setCenter(c: GeoJSON.Position): void {
+    this.mapActions.setCenter(c);
   }
 
   recenterChange(): void {
     // TODO-rangle: would it be better to get this from global state?
     this.geoLocation.currentLocation()
       .then((p: Position) => {
-        this.center = [p.lng, p.lat];
-        this.zoom = 18;
+        this.mapActions.setCenter([p.lng, p.lat]);
+        this.mapActions.setZoom(18);
         this.destinationActions.setDestination(p);
       })
       .catch(() => {
