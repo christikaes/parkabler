@@ -27,25 +27,23 @@ export class MapComponent implements OnInit {
     this.mapActions.setZoom(z);
   }
 
-  public mode: MapModes;
-  // private _mode: MapModes;
-  // public get mode() {
-  //   return this._mode;
-  // }
-  // public set mode(m) {
-  //   this._mode = m;
-  //   this.mapActions.setMode(m);
-  // }
+  private _mode: MapModes;
+  public get mode() {
+    return this._mode;
+  }
+  public set mode(m) {
+    this._mode = m;
+    this.mapActions.setMode(m);
+  }
 
-  public center = [-73.9876, 40.7661];
-  // private _center: GeoJSON.Position;
-  // public get center() {
-  //   return this._center;
-  // }
-  // public set center (c) {
-  //   this._center = c;
-  //   this.mapActions.setCenter(c);
-  // }
+  private _center: GeoJSON.Position;
+  public get center() {
+    return this._center;
+  }
+  public set center (c) {
+    this._center = c;
+    this.mapActions.setCenter(c);
+  }
 
   public spots: Spots;
   public showAddSpotOverlay: boolean;
@@ -56,8 +54,8 @@ export class MapComponent implements OnInit {
   @select() private appMode$: Observable<AppModes>;
 
   @select(['map', 'zoom']) zoom$: Observable<number>;
-  // @select(['map', 'center']) center$: Observable<GeoJSON.Position>;
-  // @select(['map', 'mode']) mode$: Observable<MapModes>;
+  @select(['map', 'center']) center$: Observable<GeoJSON.Position>;
+  @select(['map', 'mode']) mode$: Observable<MapModes>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -75,18 +73,18 @@ export class MapComponent implements OnInit {
       console.log('new zoom');
        this.zoom = z;
     });
-    // this.center$.subscribe((c: GeoJSON.Position) => {
-    //   this.center = c;
-    // });
-    // this.mode$.subscribe((m: MapModes) => {
-    //   this.mode = m;
-    // });
+    this.center$.subscribe((c: GeoJSON.Position) => {
+      this.center = c;
+    });
+    this.mode$.subscribe((m: MapModes) => {
+      this.mode = m;
+    });
 
     // Listen to changes on destination
-    // this.destination$.subscribe((destination: Position) => {
-    //   this.center = [destination.lng, destination.lat];
-    //   this.zoom = 15;
-    // });
+    this.destination$.subscribe((destination: Position) => {
+      this.center = [destination.lng, destination.lat];
+      this.zoom = 15;
+    });
 
     // Listen to changes on spots
     this.spots$.subscribe((spots: Spots) => {

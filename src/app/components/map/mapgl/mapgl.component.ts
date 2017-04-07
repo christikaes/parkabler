@@ -28,6 +28,9 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   @Input() zoom: number;
   @Output() zoomChange = new EventEmitter<number>();
+  @Input() center: number;
+  @Output() centerChange = new EventEmitter<GeoJSON.Position>();
+  @Input() mode: MapModes;
   @Input() spots: any;
 
   private map: any;
@@ -47,14 +50,13 @@ export class MapGLComponent implements OnInit, OnChanges {
         if (change === 'zoom') {
           console.log('--');
           this.setZoom(changes[change].currentValue);
-        // } else if ( change === 'mode') {
-        //   this.setMode(changes[change].currentValue);
-        // } else if (change === 'center') {
-        //   // let center = changes[change].currentValue;
-        //   let center = [-73.9876, 40.7661];
-        //   // this.setCenter(center);
-        // } else if (change === 'spots') {
-        //   this.setSpots(changes[change].currentValue);
+        } else if ( change === 'mode') {
+          this.setMode(changes[change].currentValue);
+        } else if (change === 'center') {
+          let center = changes[change].currentValue;
+          this.setCenter(center);
+        } else if (change === 'spots') {
+          this.setSpots(changes[change].currentValue);
         } else {
           throw 'Uncaught change: ' + change;
         }
@@ -117,9 +119,9 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   addListeners() {
-    // this.map.on('moveend', () => {
-    //   this.centerChange.emit([this.map.getCenter().lng, this.map.getCenter().lng]);
-    // });
+    this.map.on('moveend', () => {
+      this.centerChange.emit([this.map.getCenter().lng, this.map.getCenter().lng]);
+    });
 
     this.map.on('zoom', () => {
       this.zoomChange.emit(this.map.getZoom());
@@ -131,26 +133,26 @@ export class MapGLComponent implements OnInit, OnChanges {
     this.map.zoomTo(zoom);
   }
 
-  // setMode(mode: MapModes) {
-  //   switch (mode) {
-  //     case 'satellite':
-  //       this.map.setPaintProperty('satellite', 'raster-opacity', 1);
-  //       break;
-  //     case 'street':
-  //       this.map.setPaintProperty('satellite', 'raster-opacity', 0);
-  //       break;
-  //     default:
-  //       this.map.setPaintProperty('satellite', 'raster-opacity', 0);
-  //       break;
-  //   }
-  // }
+  setMode(mode: MapModes) {
+    switch (mode) {
+      case 'satellite':
+        this.map.setPaintProperty('satellite', 'raster-opacity', 1);
+        break;
+      case 'street':
+        this.map.setPaintProperty('satellite', 'raster-opacity', 0);
+        break;
+      default:
+        this.map.setPaintProperty('satellite', 'raster-opacity', 0);
+        break;
+    }
+  }
 
-  // setCenter(center: GeoJSON.Position) {
-  //   this.map.flyTo({center: center});
-  // }
+  setCenter(center: GeoJSON.Position) {
+    this.map.flyTo({center: center});
+  }
 
-  // setSpots(spots: Spots) {
-  //   let spotsGeoJson = convertToGeoJson(spots);
-  //   this.map.getSource('spots').setData(spotsGeoJson);
-  // }
+  setSpots(spots: Spots) {
+    let spotsGeoJson = convertToGeoJson(spots);
+    this.map.getSource('spots').setData(spotsGeoJson);
+  }
 }
