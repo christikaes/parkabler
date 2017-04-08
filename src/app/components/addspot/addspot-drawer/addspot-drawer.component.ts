@@ -7,12 +7,17 @@ import { AddSpotSteps, StepStates } from '~/util';
 })
 
 export class AddSpotDrawerComponent {
-  private addSpotInfo;
+  private addSpotInfo = {
+    numSpots: null,
+    spotType: null
+  };
 
   @Input() public opened: boolean;
   @Input() public step = 0;
 
   @Output() private close = new EventEmitter();
+  @Output() private submit = new EventEmitter();
+  @Output() private setLocation = new EventEmitter();
   @Output() private stepChange = new EventEmitter();
 
   onClose() {
@@ -26,26 +31,20 @@ export class AddSpotDrawerComponent {
     }
   }
 
-  onDone(result) {
-    // post results to server through action
-    console.log(result);
-    console.log(this.changeNumSpots);
-    console.log(this.changeSpotType);
-
-    this.close.emit();
+  onSubmit() {
+    this.submit.emit(this.addSpotInfo);
   }
 
   changeNumSpots(value) {
     this.addSpotInfo.numSpots = value;
-    console.log(value);
   }
 
   changeSpotType(value) {
     this.addSpotInfo.spotType = value;
-    console.log(value);
   }
 
-  onLocationSet() {
-    console.log('LOCATION SET');
+  onSetLocation() {
+    console.log('Before emit');
+    this.setLocation.emit();
   }
 }

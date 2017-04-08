@@ -1,3 +1,10 @@
 <pa-add-spot-button *ngIf="!isAppMode" (open)="onOpenAddSpot()"></pa-add-spot-button>
 
-<pa-add-spot-drawer [opened]="isAppMode" [step]="addSpotStep" (close)="onCloseAddSpot()" (stepChange)="onAddSpotStepChange($event)"></pa-add-spot-drawer>
+<pa-add-spot-drawer 
+    [opened]="isAppMode" 
+    [step]="addSpotStep" 
+    (close)="onCloseAddSpot()" 
+    (setLocation)="onSetLocation($event)"
+    (submit)="onSubmitAddSpot($event)"
+    (stepChange)="onAddSpotStepChange($event)">
+</pa-add-spot-drawer>
