@@ -10,6 +10,7 @@ import {
   ViewChild
 } from '@angular/core';
 import { MapModes, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
+const turf = require('turf');
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 // Use this for the opensource maps:
@@ -33,6 +34,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Output() centerChange = new EventEmitter<GeoJSON.Position>();
   @Input() mode: MapModes;
   @Input() spots: any;
+  @Input() currentlocation: GeoJSON.Position;
 
   private map: any;
   private initialized = false;
@@ -54,6 +56,9 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setMode(changes[change].currentValue);
         } else if (change === 'spots') {
           this.setSpots(changes[change].currentValue);
+        } else if (change === 'currentlocation') {
+          console.log('CHANGED CURRENT CLOCATIONS');
+          this.setCurrentLocation(changes[change].currentValue);
         } else {
           throw 'Uncaught change: ' + change;
         }
@@ -108,6 +113,7 @@ export class MapGLComponent implements OnInit, OnChanges {
 
       // Setup with initial spots
       this.setSpots(this.spots);
+      this.setCurrentLocation(this.currentlocation);
 
       this.initialized = true;
     });
@@ -161,5 +167,14 @@ export class MapGLComponent implements OnInit, OnChanges {
   setSpots(spots: Spots) {
     let spotsGeoJson = convertToGeoJson(spots);
     this.map.getSource('spots').setData(spotsGeoJson);
+  }
+
+  setCurrentLocation(location: GeoJSON.Position) {
+    console.log('setCurrentLocation');
+    let data = turf.featureCollection([
+      turf.point(location)
+    ]);
+    console.log(data);
+    this.map.getSource('currentLocation').setData(data);
   }
 }

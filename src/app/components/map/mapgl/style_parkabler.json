@@ -28,6 +28,10 @@
           "cluster": true,
           "clusterMaxZoom": 14,
           "clusterRadius": 50
+        },
+        "currentLocation": {
+          "type": "geojson",
+          "data": {"type": "FeatureCollection", "features": []}
         }
     },
     "sprite": "mapbox://sprites/christikaes/cizd08d1500bm2spm00cftt8r",
@@ -858,6 +862,20 @@
                     "Arial Unicode MS Bold"
                 ],
                 "text-size": 12
+            }
+        },
+        {
+            "id": "currentLocation",
+            "type": "circle",
+            "source": "currentLocation",
+            "paint": {
+                "circle-radius": {
+                    "base": 2,
+                    "stops": [[12, 2], [22, 180]]
+                },
+                "circle-color": "#51bbd6",
+                "circle-stroke-width": 2,
+                "circle-stroke-color": "#8b8a8a"
             }
         }
     ],

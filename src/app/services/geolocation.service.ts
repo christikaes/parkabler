@@ -1,15 +1,36 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class GeolocationService {
-  currentLocation(): Promise<GeoJSON.Position> {
-    return new Promise((resolve) => {
-      window.navigator.geolocation.getCurrentPosition((p) => {
-        resolve([p.coords.longitude, p.coords.latitude]);
-      }, () => {
-        console.log('Error: LocationService: currentLocation failed, defaulting to Boston');
-        resolve([-71.0589, 42.3601]);
-      });
+  public geolocation$: Subject<GeoJSON.Position>;
+  private watchId;
+
+
+  constructor() {
+    this.watch();
+  }
+
+  public get() {
+    return this.geolocation$;
+  }
+
+  public watch() {
+    this.geolocation$ = new Subject();
+    window.navigator.geolocation.getCurrentPosition((p) => {
+      this.geolocation$.next([p.coords.longitude, p.coords.latitude]);
+    });
+    this.watchId = window.navigator.geolocation.watchPosition((p) => {
+      this.geolocation$.next([p.coords.longitude, p.coords.latitude]);
     });
   }
+
+  public clearWatch() {
+    window.navigator.geolocation.clearWatch(this.watchId);
+  }
+
+  public isAvailable() {
+    return window.navigator.geolocation != null;
+  }
+
 }

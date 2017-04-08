@@ -11,7 +11,8 @@ import {
   addSpotsReducer,
   reportSpotStepReducer,
   spotsListModeReducer,
-  mapReducer
+  mapReducer,
+  geolocationReducers
 } from './reducers';
 
 import {
@@ -41,6 +42,7 @@ export interface IAppState {
   spotsListMode?: SpotsListModes;
   map?: MapState;
   addSpotInfo?: Spot;
+  geolocation?: GeoJSON.Position;
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -55,5 +57,6 @@ export const rootReducer = combineReducers<IAppState>({
   addSpotInfo: addSpotInfoReducer,
   reportSpotStep: reportSpotStepReducer,
   spotsListMode: spotsListModeReducer,
-  map: mapReducer
+  map: mapReducer,
+  geolocation: geolocationReducers
 });

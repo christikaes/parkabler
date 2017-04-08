@@ -1,9 +1,10 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { select } from 'ng2-redux';
+import { select, NgRedux } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
 import { MapModes, Spots, AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';
 import { DestinationActions, MapActions } from '~/actions';
+import { IAppState } from '~/store';
 // TODO-rangle: is there a better way to require this?
 // Should i add this to vendor.js?
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -20,6 +21,8 @@ export class MapComponent implements AfterViewInit {
   public mode: MapModes;
   public center: GeoJSON.Position;
 
+  public currentLocation: GeoJSON.Position;
+
   public spots: Spots;
   public showAddSpotOverlay: boolean;
 
@@ -27,6 +30,7 @@ export class MapComponent implements AfterViewInit {
   @select() private spots$: Observable<Spots>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
+  @select() private geolocation$: Observable<GeoJSON.Position>;
 
   @select(['map', 'zoom']) zoom$: Observable<number>;
   @select(['map', 'center']) center$: Observable<GeoJSON.Position>;
@@ -36,7 +40,8 @@ export class MapComponent implements AfterViewInit {
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions,
     private mapActions: MapActions,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private ngRedux: NgRedux<IAppState>
   ) { }
 
   ngAfterViewInit() {
@@ -51,6 +56,12 @@ export class MapComponent implements AfterViewInit {
     });
     this.mode$.subscribe((m: MapModes) => {
       this.mode = m;
+    });
+
+    // Listen to changes in currentLocation
+    this.geolocation$.subscribe((location: GeoJSON.Position) => {
+      console.log("location:::::: " + location);
+      this.currentLocation = location;
     });
 
     // Listen to changes on destination
@@ -87,14 +98,13 @@ export class MapComponent implements AfterViewInit {
 
   recenterChange(): void {
     // TODO-rangle: would it be better to get this from global state?
-    this.geoLocation.currentLocation()
-      .then((p: GeoJSON.Position) => {
-        this.mapActions.setCenter(p);
-        this.mapActions.setZoom(18);
-        this.destinationActions.setDestination(p);
-      })
-      .catch(() => {
-        console.log('Current Location Not found');
-      });
+    let currentLocation = this.ngRedux.getState().geolocation;
+    if (!currentLocation){
+      console.log('Could not find current location');
+      return;
+    }
+    this.mapActions.setCenter(currentLocation);
+    this.mapActions.setZoom(18);
+    this.destinationActions.setDestination(currentLocation);
   }
 }

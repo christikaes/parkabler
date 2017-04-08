@@ -102,13 +102,13 @@ import { routing } from './app.routing';
   entryComponents: [TutorialDialogComponent],
   providers: [
     DevToolsExtension,
-    GeolocationService,
     SpotsService,
     AddSpotsService,
     DistanceService,
     RulesInfoService,
     PlacesService,
-    ACTION_PROVIDERS
+    ACTION_PROVIDERS,
+    GeolocationService
   ],
   bootstrap: [AppComponent]
 })

@@ -9,6 +9,7 @@ import { AddSpotInfoActions } from './addspotinfo.actions';
 import { AddSpotsActions } from './addspots.actions';
 import { ReportSpotStepActions } from './reportspotstep.actions';
 import { SpotsListModeActions } from './spotslistmode.actions';
+import { GeolocationActions } from './geolocation.actions';
 import { MapActions } from './map.actions';
 
 export const ACTION_PROVIDERS = [
@@ -23,6 +24,7 @@ export const ACTION_PROVIDERS = [
   AddSpotsActions,
   ReportSpotStepActions,
   SpotsListModeActions,
+  GeolocationActions,
   MapActions
 ];
 
@@ -38,5 +40,6 @@ export {
   AddSpotsActions,
   ReportSpotStepActions,
   SpotsListModeActions,
+  GeolocationActions,
   MapActions
 };

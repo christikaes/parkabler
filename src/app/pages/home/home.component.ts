@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions, AddSpotStepActions, ReportSpotStepActions } from '~/actions';
+import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions, AddSpotStepActions, ReportSpotStepActions, GeolocationActions } from '~/actions';
 import { Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
@@ -24,10 +24,13 @@ export class HomeComponent implements OnInit {
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private nearbySpotsActions: NearbySpotsActions,
-    private reportSpotStepActions: ReportSpotStepActions
+    private reportSpotStepActions: ReportSpotStepActions,
+    private geolocationActions: GeolocationActions
   ) {}
 
   ngOnInit() {
+    this.geolocationActions.watch();
+
     this.spotsActions.getSpots();
 
     // This combines both destination$ & spots$ observables

@@ -2,7 +2,8 @@
     [zoom]="zoom" (zoomChange)="setZoom($event)"
     [center]="center" (centerChange)="setCenter($event)" 
     [mode]="mode" (modeChange)="setMode($event)" 
-    [spots]="spots">
+    [spots]="spots"
+    [currentlocation]="currentLocation">
 </pa-map-gl>
 <!--<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-js>-->
 

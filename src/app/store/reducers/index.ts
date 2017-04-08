@@ -9,4 +9,5 @@ export * from './addspotinfo.reducer';
 export * from './addspots.reducer';
 export * from './reportspotstep.reducer';
 export * from './spotslistmode.reducer';
+export * from './geolocation.reducer';
 export * from './map.reducer';
