@@ -15,6 +15,7 @@ const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 // Use this for the opensource maps:
 // var mapstyle = require('./style.json');
 const mapstyle = require('./style_parkabler.json');
+// const mapstyle = 'mapbox://styles/mapbox/basic-v9';
 
 @Component({
   selector: 'pa-map-gl',
@@ -73,32 +74,32 @@ export class MapGLComponent implements OnInit, OnChanges {
     map.getCanvas().style.position = 'initial';
 
     // To see all of the events:
-    console.log(map._listeners);
+    // console.log(map._listeners);
 
     // Signal that the map is loaded
     map.on('load', () => {
 
-      map.addLayer({
-        'id': 'maine',
-        'type': 'fill',
-        'source': {
-            'type': 'geojson',
-            'data': {
-                'type': 'Feature',
-                'geometry': {
-                    'type': 'Polygon',
-                    'coordinates': [[[-67.13734351262877, 45.137451890638886],
-                        [-66.96466, 44.8097],
-                        [-67.13734351262877, 45.137451890638886]]]
-                }
-            }
-        },
-        'layout': {},
-        'paint': {
-            'fill-color': '#088',
-            'fill-opacity': 0.8
-        }
-      });
+      // map.addLayer({
+      //   'id': 'maine',
+      //   'type': 'fill',
+      //   'source': {
+      //       'type': 'geojson',
+      //       'data': {
+      //           'type': 'Feature',
+      //           'geometry': {
+      //               'type': 'Polygon',
+      //               'coordinates': [[[-67.13734351262877, 45.137451890638886],
+      //                   [-66.96466, 44.8097],
+      //                   [-67.13734351262877, 45.137451890638886]]]
+      //           }
+      //       }
+      //   },
+      //   'layout': {},
+      //   'paint': {
+      //       'fill-color': '#088',
+      //       'fill-opacity': 0.8
+      //   }
+      // });
 
       // map.resize();
       let event = document.createEvent('HTMLEvents');
@@ -106,7 +107,7 @@ export class MapGLComponent implements OnInit, OnChanges {
       document.dispatchEvent(event);
 
       // Setup with initial spots
-      // this.setSpots(this.spots);
+      this.setSpots(this.spots);
 
       this.initialized = true;
     });

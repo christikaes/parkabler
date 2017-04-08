@@ -97,6 +97,9 @@ module.exports = function makeWebpackConfig() {
    * This handles most of the magic responsible for converting modules
    */
   config.module = {
+    // BUG MapboxGl minification currently broken with uglify plugin
+    // https://github.com/webpack/webpack/issues/4414
+    noParse: /(mapbox-gl)\.js$/,
     rules: [
       // Support for .ts files.
       {
