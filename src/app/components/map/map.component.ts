@@ -60,7 +60,6 @@ export class MapComponent implements AfterViewInit {
 
     // Listen to changes in currentLocation
     this.geolocation$.subscribe((location: GeoJSON.Position) => {
-      console.log("location:::::: " + location);
       this.currentLocation = location;
     });
 

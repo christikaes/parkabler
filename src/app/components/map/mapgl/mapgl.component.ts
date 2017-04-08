@@ -57,7 +57,6 @@ export class MapGLComponent implements OnInit, OnChanges {
         } else if (change === 'spots') {
           this.setSpots(changes[change].currentValue);
         } else if (change === 'currentlocation') {
-          console.log('CHANGED CURRENT CLOCATIONS');
           this.setCurrentLocation(changes[change].currentValue);
         } else {
           throw 'Uncaught change: ' + change;
@@ -170,7 +169,6 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setCurrentLocation(location: GeoJSON.Position) {
-    console.log('setCurrentLocation');
     let data = turf.featureCollection([
       turf.point(location)
     ]);
