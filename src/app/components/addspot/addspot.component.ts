@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AddSpotSteps, StepStates, AppModes } from '~/util';
 import { NgRedux, select } from 'ng2-redux';
 import { IAppState } from '~/store';
-import { AppModeActions, AddSpotStepActions, AddSpotInfoActions } from '~/actions';
+import { AppModeActions, AddSpotStepActions, AddSpotInfoActions, AddSpotsActions } from '~/actions';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -23,7 +23,8 @@ export class AddSpotComponent implements OnInit {
     private ngRedux: NgRedux<IAppState>,
     private appModeActions: AppModeActions,
     private addSpotStepActions: AddSpotStepActions,
-    private addSpotInfoActions: AddSpotInfoActions
+    private addSpotInfoActions: AddSpotInfoActions,
+    private addSpotsActions: AddSpotsActions
   ) {}
 
   ngOnInit() {
@@ -54,6 +55,6 @@ export class AddSpotComponent implements OnInit {
 
   onSubmitAddSpot(state) {
     this.addSpotInfoActions.setInfo(state);
-    // Actually add the spot
+    this.addSpotsActions.addSpot();
   }
 }

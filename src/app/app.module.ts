@@ -54,6 +54,7 @@ import {
 import {
   GeolocationService,
   SpotsService,
+  AddSpotsService,
   DistanceService,
   RulesInfoService,
   PlacesService
@@ -103,6 +104,7 @@ import { routing } from './app.routing';
     DevToolsExtension,
     GeolocationService,
     SpotsService,
+    AddSpotsService,
     DistanceService,
     RulesInfoService,
     PlacesService,
