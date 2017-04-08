@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions, AddSpotStepActions, ReportSpotStepActions } from '~/actions';
-import { Position, Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
+import { Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
   public appModes = AppModes;
   public reportSpotStep: ReportSpotSteps;
 
-  @select() private destination$: Observable<Position>;
+  @select() private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<Spots>;
   @select() public nearbySpots$: Observable<NearbySpots>;
   @select() private appMode$: Observable<AppModes>;

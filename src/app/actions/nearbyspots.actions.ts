@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
-import { Spots, Position, NearbySpots } from '~/util';
+import { Spots, NearbySpots } from '~/util';
 import { DistanceService } from '~/services';
 
 @Injectable()
@@ -21,7 +21,7 @@ export class NearbySpotsActions {
         });
     }
 
-    public getNearbySpots(destination: Position, spots: Spots) {
+    public getNearbySpots(destination: GeoJSON.Position, spots: Spots) {
         if (!destination || !spots) {
             return;
         }

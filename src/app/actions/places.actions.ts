@@ -33,10 +33,7 @@ export class PlacesActions {
 
         // If not in add spot mode:
         // Set destination
-        this.destinationActions.setDestination({
-            lat: place.geometry.coordinates[1],
-            lng: place.geometry.coordinates[0]
-        });
+        this.destinationActions.setDestination(place.geometry.coordinates);
 
         // else
         // Center map

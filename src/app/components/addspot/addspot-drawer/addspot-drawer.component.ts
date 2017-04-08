@@ -46,7 +46,6 @@ export class AddSpotDrawerComponent {
   }
 
   onLocationSet() {
-    this.addSpotInfo;
     console.log('LOCATION SET');
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit , ViewChild, Output, EventEmitter } from '@angular/core';
-import { Position, Place } from '~/util';
+import { Place } from '~/util';
 import { FormControl } from '@angular/forms';
 import { PlacesService } from '~/services';
 import { Observable } from 'rxjs';

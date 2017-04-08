@@ -2,7 +2,7 @@ import { Injectable, Inject } from '@angular/core';
 import { MapboxAccessTolken } from '~/util';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
-import { Position, Place, PlaceCollection } from '~/util';
+import { Place, PlaceCollection } from '~/util';
 
 Injectable();
 export class PlacesService {
@@ -18,7 +18,7 @@ export class PlacesService {
 
     // Returns a featureCollection of possible points to resolve to
     // TODO-rangle: Why does Http return an observable strem? do we care about anything other than the first result?
-    public getAutocomplete(wordToAutocomplete: string, proximity?: Position): Observable<Place[]> {
+    public getAutocomplete(wordToAutocomplete: string, proximity?: GeoJSON.Position): Observable<Place[]> {
 
         let autocompleteUrlSearchParams = new URLSearchParams();
         autocompleteUrlSearchParams.set('access_token', this.mapboxAccessTolken);
@@ -26,7 +26,7 @@ export class PlacesService {
         autocompleteUrlSearchParams.set('autocomplete', 'true');
         autocompleteUrlSearchParams.set('country', 'us');
         if (proximity) {
-            autocompleteUrlSearchParams.set('proximity', `${proximity.lng},${proximity.lat}`);
+            autocompleteUrlSearchParams.set('proximity', `${proximity[1]},${proximity[0]}`);
         } else {
             // TODO-rangle: this query needs to know the center of the map, does it make sense for the service to get it from the store?
             // TODO: Get center of map Default to boston

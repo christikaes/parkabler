@@ -9,7 +9,7 @@ import {
   EventEmitter,
   ViewChild
 } from '@angular/core';
-import { MapModes, Position, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
+import { MapModes, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 // Use this for the opensource maps:

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFire, FirebaseListObservable } from 'angularfire2';
 import { Observable } from 'rxjs/Observable';
-import { Position } from '~/util';
 
 // If the user is offline, use this data:
 const data = require('./data/spots$.json');

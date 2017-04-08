@@ -1,5 +1,5 @@
 import { Input, Component, OnInit } from '@angular/core';
-import { Position, NearbySpots } from '~/util';
+import { NearbySpots } from '~/util';
 
 @Component({
   selector: 'pa-spots-list',

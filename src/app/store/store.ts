@@ -13,7 +13,6 @@ import {
 } from './reducers';
 
 import {
-  Position,
   Spots,
   NearbySpots,
   Place,
@@ -27,7 +26,7 @@ import {
 
 // 'assemble' the full store out of modules
 export interface IAppState {
-  destination?: Position;
+  destination?: GeoJSON.Position;
   spots?: Spots;
   nearbySpots?: NearbySpots;
   tutorial?: TutorialState;

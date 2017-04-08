@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Position, distanceBetween, Spots } from '~/util';
+import { distanceBetween, Spots } from '~/util';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 
@@ -11,9 +11,9 @@ export class DistanceService {
 
   // Returns a function that will filter spots by the given distance
   public filterByEuclideanDistance (threshold: number) {
-    return (center: Position, spots: any[]) => {
+    return (center: GeoJSON.Position, spots: Spots) => {
       return spots.filter(spot => {
-        return distanceBetween(spot.position, center) < threshold;
+        return distanceBetween(spot.coordinates, center) < threshold;
       });
     };
   }
@@ -25,9 +25,9 @@ export class DistanceService {
     return this.getDistance(originSpots, destination);
   }
 
-  getDistance(originSpots: Spots, destinationPosition: Position): Promise<any> {
+  getDistance(originSpots: Spots, destinationPosition: GeoJSON.Position): Promise<any> {
     let originPositions = originSpots.map(spot => {
-      return Object.assign({}, spot.position);
+      return Object.assign({}, spot.coordinates);
     });
     return new Promise((resolve, reject) => {
       let service = new window.google.maps.DistanceMatrixService;

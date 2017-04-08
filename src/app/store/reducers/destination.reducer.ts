@@ -1,18 +1,15 @@
 import { DestinationActions } from '~/actions';
-import { Position, Action } from '~/util';
+import { Action } from '~/util';
 
-const INITIAL_STATE: Position = {
-  lat: 42.350530,
-  lng: -71.059096
-};
+const INITIAL_STATE: GeoJSON.Position = [-71.059096, 42.350530];
 
 export function destinationReducer(
-  state: Position = INITIAL_STATE,
+  state: GeoJSON.Position = INITIAL_STATE,
   action: Action
 ) {
   switch (action.type) {
     case DestinationActions.SET:
-      return Object.assign({}, state, action.payload);
+      return [...action.payload];
     default:
       return state;
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs/Observable';
-import { MapModes, Position, Spots, AddSpotSteps, AppModes } from '~/util';
+import { MapModes, Spots, AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';
 import { DestinationActions, MapActions } from '~/actions';
 // TODO-rangle: is there a better way to require this?
@@ -23,7 +23,7 @@ export class MapComponent implements AfterViewInit {
   public spots: Spots;
   public showAddSpotOverlay: boolean;
 
-  @select() private destination$: Observable<Position>;
+  @select() private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<Spots>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
@@ -54,8 +54,8 @@ export class MapComponent implements AfterViewInit {
     });
 
     // Listen to changes on destination
-    this.destination$.subscribe((destination: Position) => {
-      this.center = [destination.lng, destination.lat];
+    this.destination$.subscribe((destination: GeoJSON.Position) => {
+      this.center = destination;
       this.zoom = 15;
     });
 
@@ -88,8 +88,8 @@ export class MapComponent implements AfterViewInit {
   recenterChange(): void {
     // TODO-rangle: would it be better to get this from global state?
     this.geoLocation.currentLocation()
-      .then((p: Position) => {
-        this.mapActions.setCenter([p.lng, p.lat]);
+      .then((p: GeoJSON.Position) => {
+        this.mapActions.setCenter(p);
         this.mapActions.setZoom(18);
         this.destinationActions.setDestination(p);
       })
