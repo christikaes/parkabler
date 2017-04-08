@@ -1,5 +1,5 @@
 <pa-drawer [open]="opened">
-    <pa-stepper (close)="onClose()" (done)="onDone($event)" (stepChange)="onStepChange($event)" [stepIndex]="step">
+    <pa-stepper (close)="onClose()" (stepChange)="onStepChange($event)" [stepIndex]="step">
         <!-- location -->
         <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'" (next)="onSetLocation()">
             Drag the map to place the marker over where the spot is located

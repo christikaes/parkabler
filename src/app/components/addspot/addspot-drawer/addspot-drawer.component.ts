@@ -8,8 +8,8 @@ import { AddSpotSteps, StepStates } from '~/util';
 
 export class AddSpotDrawerComponent {
   private addSpotInfo = {
-    numSpots: null,
-    spotType: null
+    numspots: null,
+    type: null
   };
 
   @Input() public opened: boolean;
@@ -36,11 +36,11 @@ export class AddSpotDrawerComponent {
   }
 
   changeNumSpots(value) {
-    this.addSpotInfo.numSpots = value;
+    this.addSpotInfo.numspots = value;
   }
 
   changeSpotType(value) {
-    this.addSpotInfo.spotType = value;
+    this.addSpotInfo.type = value;
   }
 
   onSetLocation() {
