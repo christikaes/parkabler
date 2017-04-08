@@ -7,7 +7,6 @@ export function appModeReducer(
     state: AppModes = INITIAL_STATE,
     action: Action
 ) {
-    console.log(action.type);
     switch (action.type) {
         case AppModeActions.SET_MODE_HOME:
             return AppModes.Home;
