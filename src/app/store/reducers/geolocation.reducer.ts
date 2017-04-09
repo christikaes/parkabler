@@ -17,7 +17,6 @@ export function geolocationReducers(
 ) {
   switch (action.type) {
     case GeolocationActions.SET:
-      console.log('SET');
       return Object.assign({}, state, {coordinates: action.payload});
     case GeolocationActions.UPDATE_AVAILABILITY:
       return Object.assign({}, state, {isAvailable: action.payload});
