@@ -1,6 +1,5 @@
 import { combineReducers } from 'redux';
 import {
-  destinationReducer,
   spotsReducer,
   nearbySpotsReducer,
   tutorialReducer,
@@ -11,6 +10,7 @@ import {
   addSpotsReducer,
   reportSpotStepReducer,
   spotsListModeReducer,
+  destinationReducer, DestinationState,
   mapReducer, MapState,
   geolocationReducers, GeolocationState
 } from './reducers';
@@ -29,7 +29,7 @@ import {
 
 // 'assemble' the full store out of modules
 export interface IAppState {
-  destination?: GeoJSON.Position;
+  destination?: DestinationState;
   spots?: Spots;
   addSpots?: Spots;
   nearbySpots?: NearbySpots;

@@ -1,15 +1,25 @@
 import { DestinationActions } from '~/actions';
 import { Action } from '~/util';
 
-const INITIAL_STATE: GeoJSON.Position = [-71.059096, 42.350530];
+export interface DestinationState {
+  isCurrentLocation?: boolean;
+  coordinates?: GeoJSON.Position;
+}
+
+const INITIAL_STATE: DestinationState = {
+  isCurrentLocation: false,
+  coordinates: null
+};
 
 export function destinationReducer(
-  state: GeoJSON.Position = INITIAL_STATE,
+  state: DestinationState = INITIAL_STATE,
   action: Action
 ) {
   switch (action.type) {
     case DestinationActions.SET:
-      return [...action.payload];
+      return Object.assign({}, state, {coordinates: action.payload});
+    case DestinationActions.SET_IS_CURRENT_LOCATION:
+      return Object.assign({}, state, {isCurrentLocation: action.payload});
     default:
       return state;
   }

@@ -28,7 +28,7 @@ export class MapComponent implements AfterViewInit {
   public spots: Spots;
   public showAddSpotOverlay: boolean;
 
-  @select() private destination$: Observable<GeoJSON.Position>;
+  @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<Spots>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
@@ -102,14 +102,18 @@ export class MapComponent implements AfterViewInit {
   }
 
   recenterChange(): void {
-    // TODO-rangle: would it be better to get this from global state?
-    let currentLocation = this.ngRedux.getState().geolocation.coordinates;
-    if (!currentLocation) {
-      console.log('Could not find current location');
-      return;
-    }
-    this.mapActions.setCenter(currentLocation);
-    this.mapActions.setZoom(18);
-    this.destinationActions.setDestination(currentLocation);
+
+    // Set destination to current location
+    this.destinationActions.setToCurrentLocation();
+
+    // // TODO-rangle: would it be better to get this from global state?
+    // let currentLocation = this.ngRedux.getState().geolocation.coordinates;
+    // if (!currentLocation) {
+    //   console.log('Could not find current location');
+    //   return;
+    // }
+    // this.mapActions.setCenter(currentLocation);
+    // this.mapActions.setZoom(18);
+    // this.destinationActions.setDestination(currentLocation);
   }
 }

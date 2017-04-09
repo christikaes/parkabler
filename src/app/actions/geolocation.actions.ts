@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 import { GeolocationService } from '~/services';
+import { DestinationActions } from '~/actions';
 
 
 @Injectable()
@@ -39,6 +40,14 @@ export class GeolocationActions {
       type: GeolocationActions.SET,
       payload: coordinates
     });
+
+    // Also set the destination if the destination is set to the currentlocation
+    if (this.ngRedux.getState().destination.isCurrentLocation){
+      this.ngRedux.dispatch({
+        type: DestinationActions.SET,
+        payload: coordinates
+      });
+    }
   }
 
   private setAvailability(isAvailable) {
