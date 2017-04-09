@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostListener } from '@angular/core';
 import { PlacesActions, SpotsActions, NearbySpotsActions, AppModeActions, AddSpotStepActions, ReportSpotStepActions, GeolocationActions } from '~/actions';
 import { Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
@@ -20,12 +20,26 @@ export class HomeComponent implements OnInit {
   @select() private appMode$: Observable<AppModes>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
 
+  // Whenever the escape key is pressed go back to home mode
+  @HostListener('document:keydown', ['$event'])
+  keydown(e: KeyboardEvent) {
+    if (e.keyCode === 27){
+      this.appModeActions.setModeHome();
+    }
+  }
+  // Whenever the backbutton (cordova) is pressed go back to home mode
+  @HostListener('document:backbutton', ['$event'])
+  backbutton() {
+    this.appModeActions.setModeHome();
+  }
+
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private nearbySpotsActions: NearbySpotsActions,
     private reportSpotStepActions: ReportSpotStepActions,
-    private geolocationActions: GeolocationActions
+    private geolocationActions: GeolocationActions,
+    private appModeActions: AppModeActions
   ) {}
 
   ngOnInit() {
