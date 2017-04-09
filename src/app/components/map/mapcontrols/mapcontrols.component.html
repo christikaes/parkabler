@@ -7,5 +7,5 @@
     <button md-mini-fab (click)="changeZoom(1)"><md-icon>add</md-icon></button>
     <button md-mini-fab (click)="changeZoom(-1)"><md-icon>remove</md-icon></button>
   </div>
-  <button md-mini-fab class="recenter" (click)="recenter()"><md-icon>gps_fixed</md-icon></button>
+  <button md-mini-fab class="recenter" (click)="recenter()" *ngIf="recenterAvailable"><md-icon>gps_fixed</md-icon></button>
 </div>

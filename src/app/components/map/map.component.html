@@ -13,5 +13,6 @@
 <pa-map-controls 
     (zoomChange)="setZoom(zoom + $event)" 
     (modeChange)="setMode($event)" 
-    (recenterChange)="recenterChange($event)">
+    (recenterChange)="recenterChange($event)"
+    [recenterAvailable]="geolocationAvailable">
 </pa-map-controls>

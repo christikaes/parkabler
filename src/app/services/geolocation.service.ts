@@ -3,7 +3,8 @@ import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class GeolocationService {
-  public geolocation$ = new Subject<GeoJSON.Position>();
+  public geolocationCoordinates$ = new Subject<GeoJSON.Position>();
+  public geolocationAvailability$ = new Subject<boolean>();
   private watchId;
 
 
@@ -11,16 +12,36 @@ export class GeolocationService {
     this.watch();
   }
 
-  public get() {
-    return this.geolocation$;
+  public getCoordinates() {
+    return this.geolocationCoordinates$;
+  }
+
+  public getAvailability() {
+    return this.geolocationAvailability$;
   }
 
   public watch() {
+    let isAvailable = this.isAvailable();
+    if (isAvailable){
+      console.log('ERROR: geolocation not available');
+    }
+
+    // Set initial position
     window.navigator.geolocation.getCurrentPosition((p) => {
-      this.geolocation$.next([p.coords.longitude, p.coords.latitude]);
+      this.geolocationAvailability$.next(true);
+      this.geolocationCoordinates$.next([p.coords.longitude, p.coords.latitude]);
+    }, ( err ) => {
+      console.log('ERROR: ' + err.message);
+      this.geolocationAvailability$.next(false);
     });
+
+    // Watch for changes
     this.watchId = window.navigator.geolocation.watchPosition((p) => {
-      this.geolocation$.next([p.coords.longitude, p.coords.latitude]);
+      this.geolocationAvailability$.next(true);
+      this.geolocationCoordinates$.next([p.coords.longitude, p.coords.latitude]);
+    }, ( err ) => {
+      console.log('ERROR: ' + err.message);
+      this.geolocationAvailability$.next(false);
     });
   }
 
@@ -29,7 +50,9 @@ export class GeolocationService {
   }
 
   public isAvailable() {
-    return window.navigator.geolocation != null;
+    let isSupported = window.navigator.geolocation != null;
+    this.geolocationAvailability$.next(isSupported);
+    return isSupported;
   }
 
 }

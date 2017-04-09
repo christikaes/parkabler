@@ -16,9 +16,17 @@ export class GeolocationActions {
 
   public watch() {
     this.geolocationService.watch();
-    let geolocation$ = this.geolocationService.get();
-    geolocation$.subscribe((coordinates) => {
+
+    // Update the coordinates whenever the currentLocation changes
+    let geolocationCoordinates$ = this.geolocationService.getCoordinates();
+    geolocationCoordinates$.subscribe((coordinates) => {
         this.setGeolocation(coordinates);
+    });
+
+    // Update the availability whenever the the availability changes
+    let geolocationAvailability$ = this.geolocationService.getAvailability();
+    geolocationAvailability$.subscribe((isAvailable) => {
+      this.setAvailability(isAvailable);
     });
   }
 
@@ -33,8 +41,7 @@ export class GeolocationActions {
     });
   }
 
-  public updateAvailability() {
-    let isAvailable = this.geolocationService.isAvailable();
+  private setAvailability(isAvailable) {
     this.ngRedux.dispatch({
       type: GeolocationActions.UPDATE_AVAILABILITY,
       payload: isAvailable

@@ -23,6 +23,7 @@ export class MapComponent implements AfterViewInit {
 
   public currentLocation: GeoJSON.Position;
   public destination: GeoJSON.Position;
+  public geolocationAvailable: boolean;
 
   public spots: Spots;
   public showAddSpotOverlay: boolean;
@@ -31,7 +32,8 @@ export class MapComponent implements AfterViewInit {
   @select() private spots$: Observable<Spots>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
-  @select(['geolocation', 'coordinates']) private geolocation$: Observable<GeoJSON.Position>;
+  @select(['geolocation', 'coordinates']) private geolocationCoordinates$: Observable<GeoJSON.Position>;
+  @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
   @select(['map', 'center']) private center$: Observable<GeoJSON.Position>;
   @select(['map', 'mode']) private mode$: Observable<MapModes>;
@@ -59,8 +61,11 @@ export class MapComponent implements AfterViewInit {
     });
 
     // Listen to changes in currentLocation
-    this.geolocation$.subscribe((location: GeoJSON.Position) => {
+    this.geolocationCoordinates$.subscribe((location: GeoJSON.Position) => {
       this.currentLocation = location;
+    });
+    this.geolocationAvailable$.subscribe((isAvailable: boolean) => {
+      this.geolocationAvailable = isAvailable;
     });
 
     // Listen to changes on destination

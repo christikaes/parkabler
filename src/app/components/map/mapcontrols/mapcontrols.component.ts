@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MapModes } from '~/util';
 
 @Component({
@@ -10,6 +10,7 @@ export class MapControlsComponent {
   @Output() zoomChange = new EventEmitter();
   @Output() modeChange = new EventEmitter();
   @Output() recenterChange = new EventEmitter();
+  @Input() recenterAvailable;
 
   constructor() {}
 
