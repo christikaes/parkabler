@@ -16,7 +16,6 @@ export const ACTION_PROVIDERS = [
   DestinationActions,
   SpotsActions,
   NearbySpotsActions,
-  PlacesActions,
   TutorialActions,
   AppModeActions,
   AddSpotStepActions,
@@ -25,14 +24,14 @@ export const ACTION_PROVIDERS = [
   ReportSpotStepActions,
   SpotsListModeActions,
   GeolocationActions,
-  MapActions
+  MapActions,
+  PlacesActions
 ];
 
 export {
   DestinationActions,
   SpotsActions,
   NearbySpotsActions,
-  PlacesActions,
   TutorialActions,
   AppModeActions,
   AddSpotStepActions,
@@ -41,5 +40,6 @@ export {
   ReportSpotStepActions,
   SpotsListModeActions,
   GeolocationActions,
-  MapActions
+  MapActions,
+  PlacesActions
 };
