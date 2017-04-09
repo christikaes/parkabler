@@ -26,13 +26,8 @@ export class NearbySpotsActions {
             return;
         }
 
-        this.ngRedux.dispatch({
-            type: NearbySpotsActions.GET
-        });
-
         const getFilteredSpots = this.distanceService.filterByEuclideanDistance(0.2);
         const filteredSpots = getFilteredSpots(destination, spots);
-
         if (filteredSpots.length > 0) {
             this.distanceService.getDistance(filteredSpots, destination)
                 .then( distances => this.spotsWithDistances(filteredSpots, distances) )

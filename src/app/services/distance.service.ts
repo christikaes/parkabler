@@ -27,13 +27,13 @@ export class DistanceService {
 
   getDistance(originSpots: Spots, destinationPosition: GeoJSON.Position): Promise<any> {
     let originPositions = originSpots.map(spot => {
-      return Object.assign({}, spot.coordinates);
+      return  new window.google.maps.LatLng(spot.coordinates[1], spot.coordinates[0]);
     });
     return new Promise((resolve, reject) => {
       let service = new window.google.maps.DistanceMatrixService;
       service.getDistanceMatrix({
         origins: originPositions,
-        destinations: [destinationPosition],
+        destinations: [new window.google.maps.LatLng(destinationPosition[1], destinationPosition[0])],
         travelMode: 'WALKING',
         unitSystem: window.google.maps.UnitSystem.METRIC
       }, function(response, status) {
