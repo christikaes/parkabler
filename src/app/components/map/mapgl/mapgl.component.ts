@@ -94,7 +94,6 @@ export class MapGLComponent implements OnInit, OnChanges {
       // Setup with initial spots
       this.setSpots(this.spots);
       this.setCurrentLocation(this.currentlocation);
-      this.setNearby(this.currentlocation);
 
       this.initialized = true;
     });
@@ -169,5 +168,6 @@ export class MapGLComponent implements OnInit, OnChanges {
       turfcircle(turf.point(center), 0.2)
     ]);
     this.map.getSource('nearby').setData(data);
+    this.setNearby(center);
   }
 }
