@@ -7,7 +7,8 @@
 <md-input-container class="places-search">
   <!--TODO: Switch to this after upgrading to beta.3-->
   <!--<md-icon mdPrefix>clear</md-icon>-->
-  <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
+  <!--placeholder="Find parking near..."-->
+  <input mdInput [mdAutocomplete]="auto" [formControl]="placesControl">
 </md-input-container>
 
 <md-autocomplete #auto="mdAutocomplete" class="autocomplete">
