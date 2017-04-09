@@ -32,6 +32,10 @@
         "currentLocation": {
           "type": "geojson",
           "data": {"type": "FeatureCollection", "features": []}
+        },
+        "nearby": {
+          "type": "geojson",
+          "data": {"type": "FeatureCollection", "features": []}
         }
     },
     "sprite": "mapbox://sprites/christikaes/cizd08d1500bm2spm00cftt8r",
@@ -876,6 +880,15 @@
                 "circle-color": "#51bbd6",
                 "circle-stroke-width": 2,
                 "circle-stroke-color": "#8b8a8a"
+            }
+        },
+        {
+            "id": "nearby",
+            "type": "fill",
+            "source": "nearby",
+            "paint": {
+                "fill-color": "#51bbd6",
+                "fill-opacity": 0.5
             }
         }
     ],

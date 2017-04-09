@@ -11,6 +11,7 @@ import {
 } from '@angular/core';
 import { MapModes, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
 const turf = require('turf');
+const turfcircle = require('@turf/circle');
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 // Use this for the opensource maps:
@@ -82,29 +83,6 @@ export class MapGLComponent implements OnInit, OnChanges {
 
     // Signal that the map is loaded
     map.on('load', () => {
-
-      // map.addLayer({
-      //   'id': 'maine',
-      //   'type': 'fill',
-      //   'source': {
-      //       'type': 'geojson',
-      //       'data': {
-      //           'type': 'Feature',
-      //           'geometry': {
-      //               'type': 'Polygon',
-      //               'coordinates': [[[-67.13734351262877, 45.137451890638886],
-      //                   [-66.96466, 44.8097],
-      //                   [-67.13734351262877, 45.137451890638886]]]
-      //           }
-      //       }
-      //   },
-      //   'layout': {},
-      //   'paint': {
-      //       'fill-color': '#088',
-      //       'fill-opacity': 0.8
-      //   }
-      // });
-
       // map.resize();
       let event = document.createEvent('HTMLEvents');
       event.initEvent('resize', true, false);
@@ -113,6 +91,7 @@ export class MapGLComponent implements OnInit, OnChanges {
       // Setup with initial spots
       this.setSpots(this.spots);
       this.setCurrentLocation(this.currentlocation);
+      this.setNearby(this.currentlocation);
 
       this.initialized = true;
     });
@@ -172,7 +151,13 @@ export class MapGLComponent implements OnInit, OnChanges {
     let data = turf.featureCollection([
       turf.point(location)
     ]);
-    console.log(data);
     this.map.getSource('currentLocation').setData(data);
+  }
+
+  setNearby(center: GeoJSON.Position) {
+    let data = turf.featureCollection([
+      turfcircle(turf.point(center), 0.2)
+    ]);
+    this.map.getSource('nearby').setData(data);
   }
 }
