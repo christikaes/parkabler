@@ -22,6 +22,7 @@ export class MapComponent implements AfterViewInit {
   public center: GeoJSON.Position;
 
   public currentLocation: GeoJSON.Position;
+  public destination: GeoJSON.Position;
 
   public spots: Spots;
   public showAddSpotOverlay: boolean;
@@ -66,6 +67,7 @@ export class MapComponent implements AfterViewInit {
     // Listen to changes on destination
     this.destination$.subscribe((destination: GeoJSON.Position) => {
       this.center = destination;
+      this.destination = destination;
       this.zoom = 15;
     });
 

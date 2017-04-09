@@ -36,6 +36,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() mode: MapModes;
   @Input() spots: any;
   @Input() currentlocation: GeoJSON.Position;
+  @Input() destination: GeoJSON.Position;
 
   private map: any;
   private initialized = false;
@@ -59,6 +60,8 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setSpots(changes[change].currentValue);
         } else if (change === 'currentlocation') {
           this.setCurrentLocation(changes[change].currentValue);
+        } else if (change === 'destination') {
+          this.setDestination(changes[change].currentValue);
         } else {
           throw 'Uncaught change: ' + change;
         }
@@ -152,6 +155,13 @@ export class MapGLComponent implements OnInit, OnChanges {
       turf.point(location)
     ]);
     this.map.getSource('currentLocation').setData(data);
+  }
+
+  setDestination(location: GeoJSON.Position) {
+    let data = turf.featureCollection([
+      turf.point(location)
+    ]);
+    this.map.getSource('destination').setData(data);
   }
 
   setNearby(center: GeoJSON.Position) {
