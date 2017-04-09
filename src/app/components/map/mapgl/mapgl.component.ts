@@ -161,6 +161,7 @@ export class MapGLComponent implements OnInit, OnChanges {
       turf.point(location)
     ]);
     this.map.getSource('destination').setData(data);
+    this.setNearby(location);
   }
 
   setNearby(center: GeoJSON.Position) {
@@ -168,6 +169,5 @@ export class MapGLComponent implements OnInit, OnChanges {
       turfcircle(turf.point(center), 0.2)
     ]);
     this.map.getSource('nearby').setData(data);
-    this.setNearby(center);
   }
 }
