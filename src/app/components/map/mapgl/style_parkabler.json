@@ -812,6 +812,7 @@
             "filter": ["!has", "point_count"],
             "layout": {
                 "icon-image": "{icon}-15",
+                "icon-size": 2,
                 "icon-allow-overlap": true,
                 "text-field": "{numspots}",
                 "text-font": [
@@ -827,7 +828,10 @@
             "source": "spots",
             "paint": {
                 "circle-color": "#51bbd6",
-                "circle-radius": 18
+                "circle-radius": 18,
+                "circle-stroke-width": 5,
+                "circle-stroke-color": "#51bbd6",
+                "circle-stroke-opacity": 0.5
             },
             "filter": [">=","point_count", 0]
         },
@@ -837,7 +841,10 @@
             "source": "spots",
             "paint": {
                 "circle-color": "#f1f075",
-                "circle-radius": 18
+                "circle-radius": 18,
+                "circle-stroke-width": 5,
+                "circle-stroke-color": "#f1f075",
+                "circle-stroke-opacity": 0.5
             },
             "filter": ["all",
                         [">=", "point_count", 10],
@@ -849,7 +856,10 @@
             "source": "spots",
             "paint": {
                 "circle-color": "#f28cb1",
-                "circle-radius": 18
+                "circle-radius": 18,
+                "circle-stroke-width": 5,
+                "circle-stroke-color": "#f28cb1",
+                "circle-stroke-opacity": 0.5
             },
             "filter": ["all",
                         [">=", "point_count", 20],
