@@ -1,5 +1,11 @@
-import { MapState, Action, MapModes } from '~/util';
+import { Action, MapModes } from '~/util';
 import { MapActions } from '~/actions';
+
+export interface MapState {
+    center: GeoJSON.Position;
+    zoom: number;
+    mode: string;
+}
 
 const INITIAL_STATE = {
     center: [42.35, -71.06],

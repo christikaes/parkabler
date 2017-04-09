@@ -11,7 +11,7 @@ import {
   addSpotsReducer,
   reportSpotStepReducer,
   spotsListModeReducer,
-  mapReducer,
+  mapReducer, MapState,
   geolocationReducers, GeolocationState
 } from './reducers';
 
@@ -24,8 +24,7 @@ import {
   AddSpotSteps,
   ReportSpotSteps,
   SpotsListModes,
-  TutorialState,
-  MapState
+  TutorialState
 } from '~/util';
 
 // 'assemble' the full store out of modules
