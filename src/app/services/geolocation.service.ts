@@ -3,7 +3,7 @@ import { Observable, Subject } from 'rxjs';
 
 @Injectable()
 export class GeolocationService {
-  public geolocation$: Subject<GeoJSON.Position>;
+  public geolocation$ = new Subject<GeoJSON.Position>();
   private watchId;
 
 
@@ -16,7 +16,6 @@ export class GeolocationService {
   }
 
   public watch() {
-    this.geolocation$ = new Subject();
     window.navigator.geolocation.getCurrentPosition((p) => {
       this.geolocation$.next([p.coords.longitude, p.coords.latitude]);
     });

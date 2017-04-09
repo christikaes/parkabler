@@ -31,11 +31,10 @@ export class MapComponent implements AfterViewInit {
   @select() private spots$: Observable<Spots>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
-  @select() private geolocation$: Observable<GeoJSON.Position>;
-
-  @select(['map', 'zoom']) zoom$: Observable<number>;
-  @select(['map', 'center']) center$: Observable<GeoJSON.Position>;
-  @select(['map', 'mode']) mode$: Observable<MapModes>;
+  @select(['geolocation', 'coordinates']) private geolocation$: Observable<GeoJSON.Position>;
+  @select(['map', 'zoom']) private zoom$: Observable<number>;
+  @select(['map', 'center']) private center$: Observable<GeoJSON.Position>;
+  @select(['map', 'mode']) private mode$: Observable<MapModes>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -99,8 +98,8 @@ export class MapComponent implements AfterViewInit {
 
   recenterChange(): void {
     // TODO-rangle: would it be better to get this from global state?
-    let currentLocation = this.ngRedux.getState().geolocation;
-    if (!currentLocation){
+    let currentLocation = this.ngRedux.getState().geolocation.coordinates;
+    if (!currentLocation) {
       console.log('Could not find current location');
       return;
     }

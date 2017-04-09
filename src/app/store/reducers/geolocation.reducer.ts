@@ -1,15 +1,26 @@
 import { GeolocationActions } from '~/actions';
 import { Action } from '~/util';
 
-const INITIAL_STATE: GeoJSON.Position = null;
+export interface GeolocationState {
+  isAvailable?: boolean;
+  coordinates?: GeoJSON.Position;
+};
+
+const INITIAL_STATE = {
+  isAvailable: false,
+  coordinates: null
+};
 
 export function geolocationReducers(
-  state: GeoJSON.Position = INITIAL_STATE,
+  state: GeolocationState = INITIAL_STATE,
   action: Action
 ) {
   switch (action.type) {
     case GeolocationActions.SET:
-      return [...action.payload];
+      console.log('SET');
+      return Object.assign({}, state, {coordinates: action.payload});
+    case GeolocationActions.UPDATE_AVAILABILITY:
+      return Object.assign({}, state, {isAvailable: action.payload});
     default:
       return state;
   }

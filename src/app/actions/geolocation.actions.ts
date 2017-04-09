@@ -7,6 +7,7 @@ import { GeolocationService } from '~/services';
 @Injectable()
 export class GeolocationActions {
   static SET = 'PA/GEOLOCATION/SET';
+  static UPDATE_AVAILABILITY = 'PA/GEOLOCATION/UPDATE/AVAILABILITY';
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -29,6 +30,14 @@ export class GeolocationActions {
     this.ngRedux.dispatch({
       type: GeolocationActions.SET,
       payload: coordinates
+    });
+  }
+
+  public updateAvailability() {
+    let isAvailable = this.geolocationService.isAvailable();
+    this.ngRedux.dispatch({
+      type: GeolocationActions.UPDATE_AVAILABILITY,
+      payload: isAvailable
     });
   }
 }

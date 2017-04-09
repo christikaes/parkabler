@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.geolocationActions.updateAvailability();
     this.geolocationActions.watch();
 
     this.spotsActions.getSpots();

@@ -26,7 +26,7 @@ const mapstyle = require('./style_parkabler.json');
 })
 export class MapGLComponent implements OnInit, OnChanges {
   @ViewChild('MapDiv') MapDiv;
-  // TODO-rangle: How do I add the setTimeout
+  // KNOWNBUG There is a known issue with the map values unsyncing with the input
   // https://angular.io/docs/ts/latest/cookbook/component-communication.html#!#parent-to-view-child
 
   @Input() zoom: number;
