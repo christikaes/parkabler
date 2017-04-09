@@ -31,4 +31,8 @@ export class PlacesComponent implements OnInit {
   selectOption(option) {
     this.placeUpdate.emit(option);
   }
+
+  clearInput() {
+    this.placesControl.setValue('');
+  }
 }

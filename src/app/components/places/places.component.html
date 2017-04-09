@@ -1,6 +1,8 @@
-<button md-mini-fab color="secondary" class="clear" disabled>
-  <md-icon>clear</md-icon>
-</button>
+<div class="clear-container">
+  <button md-mini-fab color="secondary" class="clear" *ngIf="placesControl.value" (click)="clearInput()">
+    <md-icon>clear</md-icon>
+  </button>
+</div>
 
 <md-input-container class="places-search">
   <input mdInput placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
