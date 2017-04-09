@@ -15,11 +15,11 @@ export let enhancers = [];
 
 // Enable logger for dev mode
 // TODO: Make this consistent with webpack
-if (process.env.ENV === 'server') {
-  middleware.push(
-    createLogger({
-      level: 'info',
-      collapsed: true
-    })
-  );
-}
+// if (process.env.ENV === 'server') {
+//   middleware.push(
+//     createLogger({
+//       level: 'info',
+//       collapsed: true
+//     })
+//   );
+// }
