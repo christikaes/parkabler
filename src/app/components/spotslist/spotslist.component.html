@@ -4,23 +4,25 @@
   </button>
 
   <md-nav-list class="content" *ngIf="expanded">
-    <md-list-item *ngFor="let spot of spots" class="list-item" (click)="onClickSpot(spot)">
-      <div md-line>
-        <span class="large-text">1 Space</span>
-        <a class="right" href="http://maps.google.com/maps?daddr={{spot.position.lat}},{{spot.position.lng}}" target="_blank">
-          <img md-list-avatar src="img/icons/ic_directions.svg" alt="directions">
+    <md-list-item *ngFor="let spot of spots" class="list-item item" (click)="onClickSpot(spot)">
+      <div class="item-content">
+        <div class="details">
+          <span class="large-text">1 Space</span>
+          <span> within {{spot.distanceToDest}} meters </span>
+        </div>
+        <a class="cta" href="http://maps.google.com/maps?daddr={{spot.coordinates.lat}},{{spot.coordinates.lng}}">
+          <md-icon class="icon">directions</md-icon>
+          <span>
+            Directions
+          </span>
         </a>
+        <div class="cta" (click)="onReport()">
+          <md-icon class="icon">report</md-icon>
+          <span>
+            Report
+          </span>
+        </div>
       </div>
-      <div md-line>
-        <span> within {{spot.distanceToDest}} meters </span>
-        <a (click)="onReport()">
-          Report
-        </a>
-        <a class="right" href="http://maps.google.com/maps?daddr={{spot.position.lat}},{{spot.position.lng}}" target="_blank">
-          Directions
-        </a>
-      </div>
-      <div md-line class="divider"></div>
     </md-list-item>
   </md-nav-list>
 </div>

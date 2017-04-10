@@ -19,9 +19,7 @@ export class DistanceService {
   }
 
   getDistanceToDestinationFrom(originSpots: Spots): Promise<any> {
-    console.log('TEST');
     let destination = this.ngRedux.getState().destination.coordinates;
-    console.log(destination);
     return this.getDistance(originSpots, destination);
   }
 
