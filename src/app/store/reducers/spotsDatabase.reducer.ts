@@ -14,7 +14,7 @@ export function spotsDatabaseReducer(
     action: Action
 ) {
     switch (action.type) {
-        case SpotsDatabaseActions.UPDATE_SPOTS:
+        case SpotsDatabaseActions.UPDATE:
             return turfHelper.featureCollection(action.payload.features);
 
         default:

@@ -10,8 +10,8 @@ const turfHelper = require('@turf/helpers');
 
 @Injectable()
 export class SpotsReportActions {
-    static ADD_SPOT = 'PA/SPOTS/REPORT/ADD/SPOT';
-    static REMOVE_SPOT = 'PA/SPOTS/REPORT/REMOVE/SPOT';
+    static ADD = 'PA/SPOTS/REPORT/ADD';
+    static REMOVE = 'PA/SPOTS/REPORT/REMOVE';
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
@@ -26,7 +26,7 @@ export class SpotsReportActions {
             // The spot reported was added by the user, modify the addedSpot
             if (reportSpot.geometry === addSpot.geometry) {
                 this.ngRedux.dispatch({
-                    type: SpotsAddActions.UPDATE_SPOT,
+                    type: SpotsAddActions.UPDATE,
                     payload: reportSpot
                 });
             }
@@ -34,7 +34,7 @@ export class SpotsReportActions {
 
         // Add to the reportSpot state
         this.ngRedux.dispatch({
-            type: SpotsReportActions.ADD_SPOT,
+            type: SpotsReportActions.ADD,
             payload: reportSpot
         });
 

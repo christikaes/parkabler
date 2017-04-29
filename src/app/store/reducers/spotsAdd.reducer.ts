@@ -15,17 +15,17 @@ export function spotsAddReducer(
 ) {
     switch (action.type) {
 
-        case SpotsAddActions.ADD_SPOT:
+        case SpotsAddActions.ADD:
             let addSpotFeatures = [...state.features, action.payload];
             return turfHelper.featureCollection(addSpotFeatures);
 
-        case SpotsAddActions.REMOVE_SPOT:
+        case SpotsAddActions.REMOVE:
             let removeSpotFeatures = state.features.filter((spot: GeoJSON.Feature<GeoJSON.Point>) => {
                 return spot.geometry.coordinates !== action.payload.geometry.coordinates;
             });
             return turfHelper.featureCollection([...removeSpotFeatures]);
 
-        case SpotsAddActions.UPDATE_SPOT:
+        case SpotsAddActions.UPDATE:
             let updateSpotFeatures = [];
             state.features.forEach((spot: GeoJSON.Feature<GeoJSON.Point>) => {
                 if (spot.geometry.coordinates === action.payload.geometry.coordinates) {

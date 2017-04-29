@@ -11,8 +11,8 @@ const turfHelper = require('@turf/helpers');
 
 @Injectable()
 export class SpotsDatabaseActions {
-    static GET_SPOTS = 'PA/SPOTS/DATABASE/GET/SPOTS';
-    static UPDATE_SPOTS = 'PA/SPOTS/DATABASE/UPDATE/SPOTS';
+    static GET = 'PA/SPOTS/DATABASE/GET';
+    static UPDATE = 'PA/SPOTS/DATABASE/UPDATE';
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
@@ -21,7 +21,7 @@ export class SpotsDatabaseActions {
 
     public getSpots() {
         this.ngRedux.dispatch({
-            type: SpotsDatabaseActions.GET_SPOTS
+            type: SpotsDatabaseActions.GET
         });
         this.spotsService.get()
             .subscribe((spots: Spots) => {
@@ -40,7 +40,7 @@ export class SpotsDatabaseActions {
         );
 
         this.ngRedux.dispatch({
-            type: SpotsDatabaseActions.UPDATE_SPOTS,
+            type: SpotsDatabaseActions.UPDATE,
             payload: spotsFeatureCollection
         });
     }
@@ -86,7 +86,7 @@ export class SpotsDatabaseActions {
 
                     // Remove the spot from the addSpots list
                     this.ngRedux.dispatch({
-                        type: SpotsAddActions.REMOVE_SPOT,
+                        type: SpotsAddActions.REMOVE,
                         payload: addSpot
                     });
                 }
@@ -103,7 +103,7 @@ export class SpotsDatabaseActions {
 
                     // Remove the spot from the reportSpots list
                     this.ngRedux.dispatch({
-                        type: SpotsReportActions.REMOVE_SPOT,
+                        type: SpotsReportActions.REMOVE,
                         payload: reportSpot
                     });
                 }
