@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   // Whenever the escape key is pressed go back to home mode
   @HostListener('document:keydown', ['$event'])
   keydown(e: KeyboardEvent) {
-    if (e.keyCode === 27){
+    if (e.keyCode === 27) {
       this.appModeActions.setModeHome();
     }
   }

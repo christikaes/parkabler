@@ -57,7 +57,7 @@ export class SpotsActions {
         // For each one of the reportSpots, modify the spots
         turfMeta.featureEach(reportSpots, (reportSpot: GeoJSON.Feature<GeoJSON.Point>) => {
             spots.forEach((spot: GeoJSON.Feature<GeoJSON.Point>) => {
-                if (spot.geometry.coordinates === reportSpot.geometry.coordinates){
+                if (spot.geometry.coordinates === reportSpot.geometry.coordinates) {
                     spot.properties = reportSpot.properties;
                 }
             });

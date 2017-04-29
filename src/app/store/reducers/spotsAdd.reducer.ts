@@ -28,7 +28,7 @@ export function spotsAddReducer(
         case SpotsAddActions.UPDATE_SPOT:
             let updateSpotFeatures = [];
             state.features.forEach((spot: GeoJSON.Feature<GeoJSON.Point>) => {
-                if (spot.geometry.coordinates === action.payload.geometry.coordinates){
+                if (spot.geometry.coordinates === action.payload.geometry.coordinates) {
                     spot.properties = action.payload.properties;
                 }
                 updateSpotFeatures.push(spot);

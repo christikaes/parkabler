@@ -42,7 +42,7 @@ export class GeolocationActions {
     });
 
     // Also set the destination if the destination is set to the currentlocation
-    if (this.ngRedux.getState().destination.isCurrentLocation){
+    if (this.ngRedux.getState().destination.isCurrentLocation) {
       this.ngRedux.dispatch({
         type: DestinationActions.SET,
         payload: coordinates

@@ -22,7 +22,7 @@ export class GeolocationService {
 
   public watch() {
     let isAvailable = this.isAvailable();
-    if (isAvailable){
+    if (isAvailable) {
       console.log('ERROR: geolocation not available');
     }
 
