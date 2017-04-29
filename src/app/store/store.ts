@@ -1,6 +1,9 @@
 import { combineReducers } from 'redux';
 import {
   spotsReducer,
+  spotsDatabaseReducer,
+  spotsAddReducer,
+  spotsReportReducer,
   nearbySpotsReducer,
   tutorialReducer,
   placesReducer,
@@ -30,7 +33,10 @@ import {
 // 'assemble' the full store out of modules
 export interface IAppState {
   destination?: DestinationState;
-  spots?: Spots;
+  spots?: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  spotsAdd?: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  spotsDatabase?: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  spotsReport?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   addSpots?: Spots;
   nearbySpots?: NearbySpots;
   tutorial?: TutorialState;
@@ -47,6 +53,9 @@ export interface IAppState {
 export const rootReducer = combineReducers<IAppState>({
   destination: destinationReducer,
   spots: spotsReducer,
+  spotsAdd: spotsAddReducer,
+  spotsReport: spotsReportReducer,
+  spotsDatabase: spotsDatabaseReducer,
   addSpots: addSpotsReducer,
   nearbySpots: nearbySpotsReducer,
   tutorial: tutorialReducer,

@@ -6,7 +6,7 @@ import { Observable } from 'rxjs/Observable';
 const data = require('./data/spots$.json');
 
 @Injectable()
-export class SpotsService {
+export class SpotsDatabaseService {
   private lastSpots: any[] = [];
   public spots: FirebaseListObservable<any[]>;
 

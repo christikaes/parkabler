@@ -53,7 +53,7 @@ import {
 // Services
 import {
   GeolocationService,
-  SpotsService,
+  SpotsDatabaseService,
   AddSpotsService,
   DistanceService,
   RulesInfoService,
@@ -102,7 +102,7 @@ import { routing } from './app.routing';
   entryComponents: [TutorialDialogComponent],
   providers: [
     DevToolsExtension,
-    SpotsService,
+    SpotsDatabaseService,
     AddSpotsService,
     DistanceService,
     RulesInfoService,

@@ -44,7 +44,6 @@ export class AddSpotDrawerComponent {
   }
 
   onSetLocation() {
-    console.log('Before emit');
     this.setLocation.emit();
   }
 }

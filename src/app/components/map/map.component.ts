@@ -25,11 +25,11 @@ export class MapComponent implements AfterViewInit {
   public destination: GeoJSON.Position;
   public geolocationAvailable: boolean;
 
-  public spots: Spots;
+  public spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
   public showAddSpotOverlay: boolean;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
-  @select() private spots$: Observable<Spots>;
+  @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
   @select() private appMode$: Observable<AppModes>;
   @select(['geolocation', 'coordinates']) private geolocationCoordinates$: Observable<GeoJSON.Position>;
@@ -76,7 +76,7 @@ export class MapComponent implements AfterViewInit {
     });
 
     // Listen to changes on spots
-    this.spots$.subscribe((spots: Spots) => {
+    this.spots$.subscribe((spots: GeoJSON.FeatureCollection<GeoJSON.Point>) => {
       this.spots = spots;
     });
 

@@ -1,4 +1,4 @@
-import { SpotsActions } from '~/actions';
+import { SpotsDatabaseActions } from '~/actions';
 import { Action } from '~/util';
 
 const turf = require('turf');
@@ -9,14 +9,13 @@ const turfHelper = require('@turf/helpers');
 // TODO-rangle: how do I do that?
 const INITIAL_STATE = turfHelper.featureCollection([]);
 
-
-export function spotsReducer(
+export function spotsDatabaseReducer(
     state: GeoJSON.FeatureCollection<GeoJSON.Point> = INITIAL_STATE,
     action: Action
 ) {
     switch (action.type) {
-        case SpotsActions.UPDATE_SPOTS:
-            return turfHelper.featureCollection(action.payload);
+        case SpotsDatabaseActions.UPDATE_SPOTS:
+            return turfHelper.featureCollection(action.payload.features);
 
         default:
             return state;

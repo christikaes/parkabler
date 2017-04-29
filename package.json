@@ -36,6 +36,7 @@
     "@angular/platform-browser-dynamic": "2.4.7",
     "@angular/router": "3.4.7",
     "@turf/circle": "^4.0.1",
+    "@turf/helpers": "^4.1.0",
     "@turf/meta": "^3.10.0",
     "@types/turf": "^3.5.32",
     "angularfire2": "^2.0.0-beta.8",

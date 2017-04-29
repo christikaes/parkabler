@@ -9,7 +9,7 @@ import {
   EventEmitter,
   ViewChild
 } from '@angular/core';
-import { MapModes, Spots, convertToGeoJson, MapboxAccessTolken } from '~/util';
+import { MapModes, Spots, MapboxAccessTolken } from '~/util';
 const turf = require('turf');
 const turfcircle = require('@turf/circle');
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -34,7 +34,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() center: number;
   @Output() centerChange = new EventEmitter<GeoJSON.Position>();
   @Input() mode: MapModes;
-  @Input() spots: any;
+  @Input() spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
   @Input() currentlocation: GeoJSON.Position;
   @Input() destination: GeoJSON.Position;
 
@@ -144,9 +144,8 @@ export class MapGLComponent implements OnInit, OnChanges {
     }
   }
 
-  setSpots(spots: Spots) {
-    let spotsGeoJson = convertToGeoJson(spots);
-    this.map.getSource('spots').setData(spotsGeoJson);
+  setSpots(spots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
+    this.map.getSource('spots').setData(spots);
   }
 
   setCurrentLocation(location: GeoJSON.Position) {
