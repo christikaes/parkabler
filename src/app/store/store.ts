@@ -10,7 +10,6 @@ import {
   appModeReducer,
   addSpotStepReducer,
   addSpotInfoReducer,
-  addSpotsReducer,
   reportSpotStepReducer,
   spotsListModeReducer,
   destinationReducer, DestinationState,
@@ -37,7 +36,6 @@ export interface IAppState {
   spotsAdd?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   spotsDatabase?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   spotsReport?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  addSpots?: Spots;
   nearbySpots?: NearbySpots;
   tutorial?: TutorialState;
   place?: Place;
@@ -56,7 +54,6 @@ export const rootReducer = combineReducers<IAppState>({
   spotsAdd: spotsAddReducer,
   spotsReport: spotsReportReducer,
   spotsDatabase: spotsDatabaseReducer,
-  addSpots: addSpotsReducer,
   nearbySpots: nearbySpotsReducer,
   tutorial: tutorialReducer,
   place: placesReducer,
