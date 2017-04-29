@@ -4,6 +4,13 @@ import { NgRedux } from 'ng2-redux';
 import { Spots, NearbySpots } from '~/util';
 import { DistanceService } from '~/services';
 
+const turf = require('turf');
+const turfCircle = require('@turf/circle');
+const turfWithin = require('@turf/within');
+const turfHelper = require('@turf/helpers');
+const turfMeta = require('@turf/meta');
+
+
 @Injectable()
 export class NearbySpotsActions {
     static GET = 'PA/NEARBY_SPOTS/GET';
@@ -14,21 +21,22 @@ export class NearbySpotsActions {
         private distanceService: DistanceService
     ) {}
 
-    public updateNearbySpots(nearbySpots: NearbySpots) {
+    public updateNearbySpots(nearbySpots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
         this.ngRedux.dispatch({
             type: NearbySpotsActions.UPDATE,
             payload: nearbySpots
         });
     }
 
-    public getNearbySpots(destination: GeoJSON.Position, spots: Spots) {
+    public getNearbySpots(destination: GeoJSON.Position, spots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
         if (!destination || !spots) {
             return;
         }
 
-        const getFilteredSpots = this.distanceService.filterByEuclideanDistance(0.2);
-        const filteredSpots = getFilteredSpots(destination, spots);
-        if (filteredSpots.length > 0) {
+        // Create a circle of 200m
+        const nearbyBounds = turfHelper.featureCollection([turfCircle(turf.point(destination), 0.2)]);
+        const filteredSpots = turfWithin(spots, nearbyBounds);
+        if (filteredSpots.features.length > 0) {
             this.distanceService.getDistance(filteredSpots, destination)
                 .then( distances => this.spotsWithDistances(filteredSpots, distances) )
                 .then( nearbySpots => this.updateNearbySpots(nearbySpots) )
@@ -36,12 +44,15 @@ export class NearbySpotsActions {
         }
     }
 
-    private spotsWithDistances(spots: Spots, distances: number[]): NearbySpots {
-        return spots.map((spot, i) => {
-            return Object.assign({}, spot, {
-                distanceToDestination: distances[i]
-            });
+    private spotsWithDistances(
+        spots: GeoJSON.FeatureCollection<GeoJSON.Point>,
+        distances: number[]
+    ): GeoJSON.FeatureCollection<GeoJSON.Point> {
+        turfMeta.propEach(spots, (spotProp, i) => {
+            spotProp.distanceToDestination = distances[i];
         });
+
+        return spots;
     }
 
 }

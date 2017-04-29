@@ -7,7 +7,7 @@ import { NearbySpots } from '~/util';
   styleUrls: ['./spotslist.component.scss']
 })
 export class SpotsListComponent implements OnInit {
-  @Input() private spots: NearbySpots;
+  @Input() private spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
 
   public expanded: boolean;
   public hidden: boolean;
@@ -18,7 +18,7 @@ export class SpotsListComponent implements OnInit {
   }
 
   get numSpot (): number {
-    return this.spots ? this.spots.length : 0;
+    return this.spots.features ? this.spots.features.length : 0;
   }
 
   get enabled(): boolean {

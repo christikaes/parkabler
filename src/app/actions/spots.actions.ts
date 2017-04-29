@@ -23,15 +23,8 @@ export class SpotsActions {
         private spotsService: SpotsDatabaseService
     ) {
         this.updateSpots();
-        this.spotsAdd$.subscribe(() => {
-            this.updateSpots();
-        });
 
-        this.spotsReport$.subscribe(() => {
-            this.updateSpots();
-        });
-
-        this.spotsDatabase$.subscribe(() => {
+        Observable.merge(this.spotsAdd$, this.spotsReport$, this.spotsDatabase$).subscribe(() => {
             this.updateSpots();
         });
     };

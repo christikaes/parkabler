@@ -1,15 +1,21 @@
 import { NearbySpots, Action } from '~/util';
 import { NearbySpotsActions } from '~/actions';
 
-const INITIAL_STATE = [];
+const turf = require('turf');
+const turfMeta = require('@turf/meta');
+const turfHelper = require('@turf/helpers');
+
+// TODO hydrate this initial state from localstorage
+// TODO-rangle: how do I do that?
+const INITIAL_STATE = turfHelper.featureCollection([]);
 
 export function nearbySpotsReducer(
-    state: NearbySpots = INITIAL_STATE,
+    state: GeoJSON.FeatureCollection<GeoJSON.Point> = INITIAL_STATE,
     action: Action
 ) {
     switch (action.type) {
         case NearbySpotsActions.UPDATE:
-            return [...action.payload];
+            return turfHelper.featureCollection(action.payload.features);
 
         default:
             return state;

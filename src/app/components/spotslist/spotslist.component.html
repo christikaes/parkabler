@@ -4,13 +4,13 @@
   </button>
 
   <md-nav-list class="content" *ngIf="expanded">
-    <md-list-item *ngFor="let spot of spots" class="list-item item" (click)="onClickSpot(spot)">
+    <md-list-item *ngFor="let spot of spots.features" class="list-item item" (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">
           <span class="large-text">1 Space</span>
-          <span> within {{spot.distanceToDest}} meters </span>
+          <span> within {{spot.properties.distanceToDestination}} meters </span>
         </div>
-        <a class="cta" href="http://maps.google.com/maps?daddr={{spot.coordinates.lat}},{{spot.coordinates.lng}}">
+        <a class="cta" href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates.lat}},{{spot.geometry.coordinates.lng}}">
           <md-icon class="icon">directions</md-icon>
           <span>
             Directions

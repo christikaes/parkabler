@@ -8,7 +8,7 @@ export interface GeolocationState {
 
 const INITIAL_STATE = {
   isAvailable: false,
-  coordinates: null
+  coordinates: [0, 0]
 };
 
 export function geolocationReducers(

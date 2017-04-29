@@ -9,23 +9,14 @@ export class DistanceService {
     private ngRedux: NgRedux<IAppState>
   ) { }
 
-  // Returns a function that will filter spots by the given distance
-  public filterByEuclideanDistance (threshold: number) {
-    return (center: GeoJSON.Position, spots: Spots) => {
-      return spots.filter(spot => {
-        return distanceBetween(spot.coordinates, center) < threshold;
-      });
-    };
-  }
-
-  getDistanceToDestinationFrom(originSpots: Spots): Promise<any> {
+  getDistanceToDestinationFrom(originSpots: GeoJSON.FeatureCollection<GeoJSON.Point>): Promise<any> {
     let destination = this.ngRedux.getState().destination.coordinates;
     return this.getDistance(originSpots, destination);
   }
 
-  getDistance(originSpots: Spots, destinationPosition: GeoJSON.Position): Promise<any> {
-    let originPositions = originSpots.map(spot => {
-      return  new window.google.maps.LatLng(spot.coordinates[1], spot.coordinates[0]);
+  getDistance(originSpots: GeoJSON.FeatureCollection<GeoJSON.Point>, destinationPosition: GeoJSON.Position): Promise<any> {
+    let originPositions = originSpots.features.map(spot => {
+      return  new window.google.maps.LatLng(spot.geometry.coordinates[1], spot.geometry.coordinates[0]);
     });
     return new Promise((resolve, reject) => {
       let service = new window.google.maps.DistanceMatrixService;
