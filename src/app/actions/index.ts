@@ -3,7 +3,7 @@ import { SpotsActions } from './spots.actions';
 import { SpotsDatabaseActions } from './spotsDatabase.actions';
 import { SpotsAddActions } from './spotsAdd.actions';
 import { SpotsReportActions } from './spotsReport.actions';
-import { NearbySpotsActions } from './nearbyspots.actions';
+import { SpotsNearbyActions } from './spotsNearby.actions';
 import { TutorialActions } from './tutorial.actions';
 import { PlacesActions } from './places.actions';
 import { AppModeActions } from './appmode.actions';
@@ -20,7 +20,7 @@ export const ACTION_PROVIDERS = [
   SpotsDatabaseActions,
   SpotsAddActions,
   SpotsReportActions,
-  NearbySpotsActions,
+  SpotsNearbyActions,
   TutorialActions,
   AppModeActions,
   AddSpotStepActions,
@@ -38,7 +38,7 @@ export {
   SpotsDatabaseActions,
   SpotsAddActions,
   SpotsReportActions,
-  NearbySpotsActions,
+  SpotsNearbyActions,
   TutorialActions,
   AppModeActions,
   AddSpotStepActions,

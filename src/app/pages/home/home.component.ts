@@ -3,13 +3,13 @@ import {
   PlacesActions,
   SpotsActions,
   SpotsDatabaseActions,
-  NearbySpotsActions,
+  SpotsNearbyActions,
   AppModeActions,
   AddSpotStepActions,
   ReportSpotStepActions,
   GeolocationActions
 } from '~/actions';
-import { Place, Spots, NearbySpots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
+import { Place, Spots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 
@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
-  @select() public nearbySpots$: Observable<NearbySpots>;
+  @select() public spotsNearby$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
   @select() private appMode$: Observable<AppModes>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
 
@@ -46,7 +46,7 @@ export class HomeComponent implements OnInit {
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
     private spotsDatabaseActions: SpotsDatabaseActions,
-    private nearbySpotsActions: NearbySpotsActions,
+    private spotsNearbyActions: SpotsNearbyActions,
     private reportSpotStepActions: ReportSpotStepActions,
     private geolocationActions: GeolocationActions,
     private appModeActions: AppModeActions
@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       (destination, spots) => ({destination, spots})
     ).subscribe(({destination, spots}) => {
       console.log('Get Nearby Spots' + destination);
-      this.nearbySpotsActions.getNearbySpots(destination, spots);
+      this.spotsNearbyActions.getNearbySpots(destination, spots);
     });
 
     // Whenever the app mode changes, show/hide appropriate components

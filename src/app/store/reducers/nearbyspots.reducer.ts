@@ -1,5 +1,5 @@
 import { NearbySpots, Action } from '~/util';
-import { NearbySpotsActions } from '~/actions';
+import { SpotsNearbyActions } from '~/actions';
 
 const turf = require('turf');
 const turfMeta = require('@turf/meta');
@@ -9,12 +9,12 @@ const turfHelper = require('@turf/helpers');
 // TODO-rangle: how do I do that?
 const INITIAL_STATE = turfHelper.featureCollection([]);
 
-export function nearbySpotsReducer(
+export function spotsNearbyReducer(
     state: GeoJSON.FeatureCollection<GeoJSON.Point> = INITIAL_STATE,
     action: Action
 ) {
     switch (action.type) {
-        case NearbySpotsActions.UPDATE:
+        case SpotsNearbyActions.UPDATE:
             return turfHelper.featureCollection(action.payload.features);
 
         default:

@@ -7,6 +7,6 @@
   <div>
   <pa-add-spot></pa-add-spot>
   <!--<pa-report-spot [opened]="mode==appModes.ReportSpot" (close)="onCloseReportSpot()" (open)="onOpenReportSpot()"></pa-add-spot>-->
-  <pa-spots-list [spots]="nearbySpots$ | async"></pa-spots-list>
+  <pa-spots-list [spots]="spotsNearby$ | async"></pa-spots-list>
   </div>
 </div>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
-import { Spots, NearbySpots } from '~/util';
 import { DistanceService } from '~/services';
 
 const turf = require('turf');
@@ -12,9 +11,9 @@ const turfMeta = require('@turf/meta');
 
 
 @Injectable()
-export class NearbySpotsActions {
-    static GET = 'PA/NEARBY_SPOTS/GET';
-    static UPDATE = 'PA/NEARBY_SPOTS/UPDATE';
+export class SpotsNearbyActions {
+    static GET = 'PA/SPOTS/NEARBY/GET';
+    static UPDATE = 'PA/SPOTS/NEARBY/UPDATE';
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
@@ -23,7 +22,7 @@ export class NearbySpotsActions {
 
     public updateNearbySpots(nearbySpots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
         this.ngRedux.dispatch({
-            type: NearbySpotsActions.UPDATE,
+            type: SpotsNearbyActions.UPDATE,
             payload: nearbySpots
         });
     }
