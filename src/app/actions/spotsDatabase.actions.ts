@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 import { SpotsDatabaseService } from '~/services';
-import { Spots, Spot } from '~/util';
+import { Spot } from '~/util';
 import { SpotsAddActions, SpotsReportActions } from '~/actions';
 
 const turf = require('turf');
@@ -24,12 +24,12 @@ export class SpotsDatabaseActions {
             type: SpotsDatabaseActions.GET
         });
         this.spotsService.get()
-            .subscribe((spots: Spots) => {
+            .subscribe((spots: Array<Spot>) => {
                 this.updateSpots(spots);
             });
     }
 
-    private updateSpots(spots: Spots) {
+    private updateSpots(spots: Array<Spot>) {
 
         let spotsFeatureCollection = this.convertToGeoJSON(spots);
 
@@ -45,7 +45,7 @@ export class SpotsDatabaseActions {
         });
     }
 
-    private convertToGeoJSON (spots: Spots): GeoJSON.FeatureCollection<GeoJSON.Point> {
+    private convertToGeoJSON (spots: Array<Spot>): GeoJSON.FeatureCollection<GeoJSON.Point> {
 
         let spotFeatures: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
 
@@ -55,7 +55,8 @@ export class SpotsDatabaseActions {
                 coordinates: spot.coordinates,
             }, {
                 numspots: spot.numspots,
-                type: spot.type
+                type: spot.type,
+                icon: 'marker'
             });
 
             spotFeatures.push(spotFeature);

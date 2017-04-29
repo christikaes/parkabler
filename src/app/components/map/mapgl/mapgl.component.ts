@@ -9,7 +9,7 @@ import {
   EventEmitter,
   ViewChild
 } from '@angular/core';
-import { MapModes, Spots, MapboxAccessTolken } from '~/util';
+import { MapModes, MapboxAccessTolken } from '~/util';
 const turf = require('turf');
 const turfcircle = require('@turf/circle');
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');

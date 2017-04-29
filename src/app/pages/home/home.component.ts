@@ -9,7 +9,7 @@ import {
   ReportSpotStepActions,
   GeolocationActions
 } from '~/actions';
-import { Place, Spots, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
+import { Place, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
 import { select } from 'ng2-redux';
 import { Observable } from 'rxjs';
 

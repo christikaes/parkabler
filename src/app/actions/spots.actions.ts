@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { NgRedux, select } from 'ng2-redux';
 import { IAppState } from '~/store';
 import { SpotsDatabaseService } from '~/services';
-import { Spots, Spot } from '~/util';
 import { Observable } from 'rxjs';
 
 const turf = require('turf');

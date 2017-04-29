@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { distanceBetween, Spots } from '~/util';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 

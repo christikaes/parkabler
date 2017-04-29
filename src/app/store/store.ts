@@ -19,7 +19,6 @@ import {
 
 import {
   Spot,
-  Spots,
   Place,
   AppModes,
   AddSpotSteps,
