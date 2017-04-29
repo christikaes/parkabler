@@ -1,4 +1,4 @@
-import { NearbySpots, Action } from '~/util';
+import { Action } from '~/util';
 import { SpotsNearbyActions } from '~/actions';
 
 const turf = require('turf');
