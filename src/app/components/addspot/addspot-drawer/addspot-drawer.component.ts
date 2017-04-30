@@ -3,7 +3,8 @@ import { AddSpotSteps, StepStates } from '~/util';
 
 @Component({
   selector: 'pa-add-spot-drawer',
-  templateUrl: './addspot-drawer.component.html'
+  templateUrl: './addspot-drawer.component.html',
+  styleUrls: ['./addspot-drawer.component.scss']
 })
 
 export class AddSpotDrawerComponent {
