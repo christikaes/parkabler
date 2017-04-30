@@ -815,8 +815,8 @@
             "source": "spots",
             "filter": ["!has", "point_count"],
             "layout": {
-                "icon-image": "{icon}-15",
-                "icon-size": 2,
+                "icon-image": "{icon}",
+                "icon-size": 1,
                 "icon-allow-overlap": true,
                 "text-field": "{numspots}",
                 "text-font": [

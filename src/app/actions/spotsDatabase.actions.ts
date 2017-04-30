@@ -56,7 +56,7 @@ export class SpotsDatabaseActions {
             }, {
                 numspots: spot.numspots,
                 type: spot.type,
-                icon: 'marker'
+                icon: 'ic_add_location'
             });
 
             spotFeatures.push(spotFeature);
