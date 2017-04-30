@@ -1,8 +1,8 @@
 <svg 
-    height="96" width="96"
+    height="48" width="48"
     xmlns="http://www.w3.org/2000/svg">
     <path 
     fill="#3F51B5" fill-opacity="0.8"
     stroke="#ffffff" stroke-width="1"
-    d="M48 8C32.59 8 20 20.52 20 36c0 20.100 28 52 28 52s28-28.300 28-52c0-12.348-12.52-28-28-28z"/>
+    d="M24 4C16.29 4 10 10.26 10 18c0 10.50 14 26 14 26s14-14.150 14-26c0-6.174-6.26-14-14-14z"/>
 </svg>
