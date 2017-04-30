@@ -2,6 +2,7 @@
 
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { removeNgStyles, createNewHosts } from '@angularclass/hmr';
@@ -74,6 +75,7 @@ import { routing } from './app.routing';
     NgReduxModule,
     // Material
     MaterialModule.forRoot(),
+    BrowserAnimationsModule,
     // Firebase
     AngularFireModule.initializeApp(firebaseConfig)
   ],

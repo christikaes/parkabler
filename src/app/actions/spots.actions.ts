@@ -4,7 +4,6 @@ import { IAppState } from '~/store';
 import { SpotsDatabaseService } from '~/services';
 import { Observable } from 'rxjs';
 
-const turf = require('turf');
 const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 

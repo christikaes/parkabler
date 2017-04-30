@@ -14,6 +14,7 @@ import 'angularfire2';
 
 // Material
 import '@angular/material';
+import 'hammerjs';
 
 // RxJS
 import 'rxjs';

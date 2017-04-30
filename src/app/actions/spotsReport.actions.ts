@@ -4,7 +4,6 @@ import { IAppState } from '~/store';
 import { AddSpotsService } from '~/services';
 import { SpotsAddActions } from '~/actions';
 
-const turf = require('turf');
 const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 

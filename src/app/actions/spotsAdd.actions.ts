@@ -3,7 +3,6 @@ import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
 import { AddSpotsService } from '~/services';
 
-const turf = require('turf');
 const turfHelper = require('@turf/helpers');
 
 

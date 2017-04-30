@@ -1,8 +1,6 @@
 import { Action } from '~/util';
 import { SpotsNearbyActions } from '~/actions';
 
-const turf = require('turf');
-const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 
 // TODO hydrate this initial state from localstorage
