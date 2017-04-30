@@ -20,13 +20,13 @@ export class GeolocationActions {
 
     // Update the coordinates whenever the currentLocation changes
     let geolocationCoordinates$ = this.geolocationService.getCoordinates();
-    geolocationCoordinates$.subscribe((coordinates) => {
+    geolocationCoordinates$.distinctUntilChanged().subscribe((coordinates) => {
         this.setGeolocation(coordinates);
     });
 
     // Update the availability whenever the the availability changes
     let geolocationAvailability$ = this.geolocationService.getAvailability();
-    geolocationAvailability$.subscribe((isAvailable) => {
+    geolocationAvailability$.distinctUntilChanged().subscribe((isAvailable) => {
       this.setAvailability(isAvailable);
     });
   }
@@ -51,6 +51,7 @@ export class GeolocationActions {
   }
 
   private setAvailability(isAvailable) {
+    console.log("---")
     this.ngRedux.dispatch({
       type: GeolocationActions.UPDATE_AVAILABILITY,
       payload: isAvailable

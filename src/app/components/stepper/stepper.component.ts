@@ -59,8 +59,11 @@ export class StepperComponent implements OnChanges, AfterContentInit {
     }
 
     private reset() {
-        this.currentStepIndex = 0;
-        this.setStep();
+        // Add a delay so that the animation can finish before resetting
+        setTimeout(() => {
+            this.currentStepIndex = 0;
+            this.setStep();
+        }, 1000);
     }
 
     ngAfterContentInit() {
