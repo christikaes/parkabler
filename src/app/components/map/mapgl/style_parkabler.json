@@ -84,8 +84,8 @@
           "type": "geojson",
           "data": {"type": "FeatureCollection", "features": []},
           "cluster": true,
-          "clusterMaxZoom": 14,
-          "clusterRadius": 50
+          "clusterMaxZoom": 17,
+          "clusterRadius": 10
         },
         "currentLocation": {
           "type": "geojson",
@@ -3991,13 +3991,17 @@
             "layout": {
                 "icon-image": "pin",
                 "icon-size": 1,
+                "icon-offset": [0, -12],
                 "icon-allow-overlap": true,
                 "text-field": "{numspots}",
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Bold"
                 ],
-                "text-size": 16
+                "text-size": 16,
+                "text-offset": [0, -1],
+                "text-anchor": "center",
+                "text-allow-overlap": true
             },
             "paint": {
                 "text-color": "#ffffff"
@@ -4073,7 +4077,7 @@
                 },
                 "circle-color": "#51bbd6",
                 "circle-stroke-width": 2,
-                "circle-stroke-color": "#8b8a8a"
+                "circle-stroke-color": "#fff"
             }
         },
         {
@@ -4091,7 +4095,7 @@
             "source": "destination",
             "layout": {
                 "icon-image": "star-15",
-                "icon-size": 2,
+                "icon-size": 1,
                 "icon-allow-overlap": false
             }
         }
