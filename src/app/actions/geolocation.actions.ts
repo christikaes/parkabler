@@ -51,7 +51,6 @@ export class GeolocationActions {
   }
 
   private setAvailability(isAvailable) {
-    console.log("---")
     this.ngRedux.dispatch({
       type: GeolocationActions.UPDATE_AVAILABILITY,
       payload: isAvailable
