@@ -3,6 +3,8 @@ import { MapboxAccessTolken } from '~/util';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Observable } from 'rxjs';
 import { Place, PlaceCollection } from '~/util';
+import { IAppState } from '~/store';
+import { NgRedux } from 'ng2-redux';
 
 Injectable();
 export class PlacesService {
@@ -13,25 +15,24 @@ export class PlacesService {
     // TODO-rangle: Why do I have to inject http explicitly?
     // The httpmodule is included in app.module
     constructor(
-        @Inject(Http) public http: Http
+        @Inject(Http) public http: Http,
+        @Inject(NgRedux) private ngRedux: NgRedux<IAppState>
     ) {}
 
     // Returns a featureCollection of possible points to resolve to
     // TODO-rangle: Why does Http return an observable strem? do we care about anything other than the first result?
-    public getAutocomplete(wordToAutocomplete: string, proximity?: GeoJSON.Position): Observable<Place[]> {
+    public getAutocomplete(wordToAutocomplete: string): Observable<Place[]> {
 
         let autocompleteUrlSearchParams = new URLSearchParams();
         autocompleteUrlSearchParams.set('access_token', this.mapboxAccessTolken);
         autocompleteUrlSearchParams.set('types', 'address,poi,place');
         autocompleteUrlSearchParams.set('autocomplete', 'true');
         autocompleteUrlSearchParams.set('country', 'us');
-        if (proximity) {
-            autocompleteUrlSearchParams.set('proximity', `${proximity[1]},${proximity[0]}`);
-        } else {
-            // TODO-rangle: this query needs to know the center of the map, does it make sense for the service to get it from the store?
-            // TODO: Get center of map Default to boston
-            autocompleteUrlSearchParams.set('proximity', '-71.059096,42.350530');
-        }
+        // Bias autocomplete based on center of map
+        let mapCenter = this.ngRedux.getState().map.center;
+        autocompleteUrlSearchParams.set('proximity', `${mapCenter[0]},${mapCenter[1]}`);
+        autocompleteUrlSearchParams.set('bbox',
+            `${mapCenter[0] - 1},${mapCenter[1] - 1},${mapCenter[0] + 1},${mapCenter[1] + 1}`);
 
         return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', {search: autocompleteUrlSearchParams})
             .map(this.extractData)
