@@ -20,7 +20,7 @@ export class DistanceService {
     return Observable.forkJoin(getWalkingDistanceObservables);
   }
 
-  private getWalkingDistanceBetween2Points(originPoint: GeoJSON.Feature<GeoJSON.Point>, destinationPoint: GeoJSON.Feature<GeoJSON.Point>){
+  private getWalkingDistanceBetween2Points(originPoint: GeoJSON.Feature<GeoJSON.Point>, destinationPoint: GeoJSON.Feature<GeoJSON.Point>) {
       // Url to get
       let url = `https://api.mapbox.com/directions/v5/mapbox/walking/`
                 + `${originPoint.geometry.coordinates[0]},${originPoint.geometry.coordinates[1]};`
@@ -34,7 +34,7 @@ export class DistanceService {
           if (body.code !== 'Ok') {
           throw 'Mapbox Distance response not Ok';
           }
-          if (!body.routes || !body.routes[0] || !body.routes[0].distance){
+          if (!body.routes || !body.routes[0] || !body.routes[0].distance) {
             throw 'Mapbox Distance response no distance';
           }
           return body.routes[0].distance;
