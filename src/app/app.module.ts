@@ -64,6 +64,9 @@ import {
 // Router
 import { routing } from './app.routing';
 
+// Pipes
+import { MetersToFeetPipe } from './pipes';
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -99,7 +102,8 @@ import { routing } from './app.routing';
     AddSpotOverlayComponent,
     ReportSpotComponent,
     StepComponent,
-    StepperComponent
+    StepperComponent,
+    MetersToFeetPipe
   ],
   entryComponents: [TutorialDialogComponent],
   providers: [
