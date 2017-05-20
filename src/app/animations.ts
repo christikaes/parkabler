@@ -47,14 +47,22 @@ export default [
   ]),
   trigger('slideUp', [
     state('open', style({
-      overflowY: 'hidden',
-      maxHeight: '300px' // HACK
+      maxHeight: '300px', // HACK
+      overflowY: 'hidden'
     })),
     state('closed', style({
       maxHeight: 0,
       overflowY: 'hidden'
     })),
+    state('peak', style({
+      maxHeight: '35px',
+      overflowY: 'hidden'
+    })),
     transition('open => closed', animate('600ms ease-out')),
+    transition('open => peak', animate('600ms ease-out')),
+    transition('peak => closed', animate('600ms ease-out')),
     transition('closed => open', animate('600ms ease-in')),
+    transition('closed => peak', animate('600ms ease-in')),
+    transition('peak => open', animate('600ms ease-in')),
   ])
 ];

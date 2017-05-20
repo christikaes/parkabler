@@ -1,9 +1,10 @@
-<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }">
+<!--<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }" [@slideUp]="state" [@peakUp]="state">-->
+<div class="container" [@slideUp]="state">
   <button md-button class="header" (click)="toggleExapand()">
     {{numSpot}} spots near destination
   </button>
 
-  <md-nav-list class="content" *ngIf="expanded">
+  <md-nav-list class="content">
     <md-list-item *ngFor="let spot of spots.features" class="list-item item" (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">

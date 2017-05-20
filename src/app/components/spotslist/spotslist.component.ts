@@ -1,37 +1,41 @@
-import { Input, Component, OnInit } from '@angular/core';
+import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import Animations from '~/animations';
 
 @Component({
   selector: 'pa-spots-list',
   templateUrl: './spotslist.component.html',
-  styleUrls: ['./spotslist.component.scss']
+  styleUrls: ['./spotslist.component.scss'],
+  animations: Animations
 })
-export class SpotsListComponent implements OnInit {
+export class SpotsListComponent implements OnInit, OnChanges {
   @Input() private spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
-
-  public expanded: boolean;
-  public hidden: boolean;
+  public state = 'closed';
+  public numSpot = 0;
 
   constructor() {
-    this.expanded = false;
-    this.hidden = false;
-  }
-
-  get numSpot (): number {
-    return this.spots.features ? this.spots.features.length : 0;
-  }
-
-  get enabled(): boolean {
-    return this.numSpot > 0;
+    this.state = 'closed';
   }
 
   ngOnInit() {}
 
+  ngOnChanges(changes: SimpleChanges) {
+    for (let change in changes) {
+      if (change === 'spots') {
+        let spots = changes[change].currentValue;
+        this.numSpot = spots.features ? spots.features.length : 0;
+        this.state = this.numSpot > 0 ? 'peak' : 'closed';
+      } else {
+        throw 'Uncaught change: ' + change;
+      }
+    }
+  }
+
   toggleExapand() {
-    this.expanded = !this.expanded;
+    this.state = this.state === 'peak' ? 'open' : 'peak';
   }
 
   onReport() {
-    this.expanded = false;
+    this.state = 'closed';
     // set report state
   }
 
