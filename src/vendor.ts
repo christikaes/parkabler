@@ -19,9 +19,5 @@ import 'hammerjs';
 // RxJS
 import 'rxjs';
 
-// Other vendors for example jQuery, Lodash or Bootstrap
-// You can import js, ts, css, sass, ...
-import './vendor/markerclusterer.js';
-
 // Turf
 import 'turf';

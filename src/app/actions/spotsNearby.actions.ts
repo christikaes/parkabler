@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
 import { DistanceService } from '~/services';
+import { Observable } from 'rxjs';
 
 const turf = require('turf');
 const turfCircle = require('@turf/circle');
@@ -20,13 +21,6 @@ export class SpotsNearbyActions {
         private distanceService: DistanceService
     ) {}
 
-    public updateNearbySpots(nearbySpots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
-        this.ngRedux.dispatch({
-            type: SpotsNearbyActions.UPDATE,
-            payload: nearbySpots
-        });
-    }
-
     public getNearbySpots(destination: GeoJSON.Position, spots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
         if (!destination || !spots) {
             return;
@@ -35,15 +29,18 @@ export class SpotsNearbyActions {
         // Create a circle of 200m
         const nearbyBounds = turfHelper.featureCollection([turfCircle(turf.point(destination), 0.2)]);
         const filteredSpots = turfWithin(spots, nearbyBounds);
-        if (filteredSpots.features.length > 0) {
-            this.distanceService.getDistance(filteredSpots, destination)
-                .then( distances => this.spotsWithDistances(filteredSpots, distances) )
-                .then( nearbySpots => this.updateNearbySpots(nearbySpots) )
-                .catch( err => { throw err; });
-        }
+
+        this.distanceService.getWalkingDistances(filteredSpots, turf.point(destination))
+            .subscribe((distances) => {
+                console.log(distances);
+                let nearbySpots = this.getSpotsWithDistances(filteredSpots, distances);
+                this.setNearbySpots(nearbySpots);
+            }, (error) => {
+                console.log(error);
+            });
     }
 
-    private spotsWithDistances(
+    private getSpotsWithDistances(
         spots: GeoJSON.FeatureCollection<GeoJSON.Point>,
         distances: number[]
     ): GeoJSON.FeatureCollection<GeoJSON.Point> {
@@ -54,4 +51,10 @@ export class SpotsNearbyActions {
         return spots;
     }
 
+    private setNearbySpots(nearbySpots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
+        this.ngRedux.dispatch({
+            type: SpotsNearbyActions.UPDATE,
+            payload: nearbySpots
+        });
+    }
 }

@@ -1,51 +1,56 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
-import { IAppState } from '~/store';
+import { Http, Response } from '@angular/http';
+import { MapboxAccessTolken } from '~/util';
+import { Observable } from 'rxjs';
 
 @Injectable()
 export class DistanceService {
   constructor (
-    private ngRedux: NgRedux<IAppState>
+    private http: Http
   ) { }
 
-  getDistanceToDestinationFrom(originSpots: GeoJSON.FeatureCollection<GeoJSON.Point>): Promise<any> {
-    let destination = this.ngRedux.getState().destination.coordinates;
-    return this.getDistance(originSpots, destination);
+  public getWalkingDistances(originPoints: GeoJSON.FeatureCollection<GeoJSON.Point>, destinationPoint: GeoJSON.Feature<GeoJSON.Point>) {
+
+    // For each one of the originPoints, get the walking distance between the origin and destinationPoint
+    let getWalkingDistanceObservables = originPoints.features.map((originPoint) => {
+        return this.getWalkingDistanceBetween2Points(originPoint, destinationPoint);
+      });
+
+    // Return an observable for when all of the distances have been gotten
+    return Observable.forkJoin(getWalkingDistanceObservables);
   }
 
-  getDistance(originSpots: GeoJSON.FeatureCollection<GeoJSON.Point>, destinationPosition: GeoJSON.Position): Promise<any> {
-    let originPositions = originSpots.features.map(spot => {
-      return  new window.google.maps.LatLng(spot.geometry.coordinates[1], spot.geometry.coordinates[0]);
-    });
-    return new Promise((resolve, reject) => {
-      let service = new window.google.maps.DistanceMatrixService;
-      service.getDistanceMatrix({
-        origins: originPositions,
-        destinations: [new window.google.maps.LatLng(destinationPosition[1], destinationPosition[0])],
-        travelMode: 'WALKING',
-        unitSystem: window.google.maps.UnitSystem.METRIC
-      }, function(response, status) {
-        if (status !== 'OK') {
-          alert('Error was: ' + status);
-          reject(status);
-        } else {
-          // The DistanceMatrixResponse object contains one row for each origin that was passed in the request.
-          // Each row contains an element field for each pairing of that origin with the provided destination(s).
-          let distances = response.rows.map(function(row){
-            // For each row, get all of the pairings, and get the one with the shortest distance
-            let rowData = row.elements;
-            let rowDistances = rowData.map(function(data){
-              if (data.status !== 'OK') {
-                // If there was an error, set to inf
-                return Infinity;
-              }
-              return data.distance.value;
-            });
-            return Math.min(...rowDistances);
-          });
-          resolve(distances);
-        }
-      });
-    });
+  private getWalkingDistanceBetween2Points(originPoint: GeoJSON.Feature<GeoJSON.Point>, destinationPoint: GeoJSON.Feature<GeoJSON.Point>){
+      // Url to get
+      let url = `https://api.mapbox.com/directions/v5/mapbox/walking/`
+                + `${originPoint.geometry.coordinates[0]},${originPoint.geometry.coordinates[1]};`
+                + `${destinationPoint.geometry.coordinates[0]},${destinationPoint.geometry.coordinates[1]}`
+                + `?access_token=${MapboxAccessTolken}`;
+
+      // Return an observable for when the request resolves
+      return this.http.get(url)
+        .map( (response: Response) => {
+          let body = response.json();
+          if (body.code !== 'Ok') {
+          throw 'Mapbox Distance response not Ok';
+          }
+          if (!body.routes || !body.routes[0] || !body.routes[0].distance){
+            throw 'Mapbox Distance response no distance';
+          }
+          return body.routes[0].distance;
+        })
+        .catch( (error: Response | any) => {
+          // Catch any errors thrown by the service
+          let errMsg: string;
+          if (error instanceof Response) {
+            const body = error.json() || '';
+            const err = body.error || JSON.stringify(body);
+            errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+          } else {
+            errMsg = error.message ? error.message : error.toString();
+          }
+          console.error(errMsg);
+          return Observable.throw(errMsg);
+        });
   }
 }

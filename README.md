@@ -29,7 +29,7 @@ The following stack is used:
 * Firebase3
  * We are using firebase with redux: https://www.youtube.com/watch?v=UHJq5NOtNG4
 * Redux
-* Google Maps
+* Mapbox
 * PhoneGap
 
 There are several branches, most contain old work (react version, meteor version, angular 1 version).
