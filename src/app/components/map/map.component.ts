@@ -102,18 +102,7 @@ export class MapComponent implements AfterViewInit {
   }
 
   recenterChange(): void {
-
     // Set destination to current location
     this.destinationActions.setToCurrentLocation();
-
-    // // TODO-rangle: would it be better to get this from global state?
-    // let currentLocation = this.ngRedux.getState().geolocation.coordinates;
-    // if (!currentLocation) {
-    //   console.log('Could not find current location');
-    //   return;
-    // }
-    // this.mapActions.setCenter(currentLocation);
-    // this.mapActions.setZoom(18);
-    // this.destinationActions.setDestination(currentLocation);
   }
 }

@@ -64,7 +64,6 @@ export class HomeComponent implements OnInit {
       this.spots$,
       (destination, spots) => ({destination, spots})
     ).subscribe(({destination, spots}) => {
-      console.log('Get Nearby Spots' + destination);
       this.spotsNearbyActions.getNearbySpots(destination, spots);
     });
 

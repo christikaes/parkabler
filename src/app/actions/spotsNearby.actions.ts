@@ -32,11 +32,10 @@ export class SpotsNearbyActions {
 
         this.distanceService.getWalkingDistances(filteredSpots, turf.point(destination))
             .subscribe((distances) => {
-                console.log(distances);
                 let nearbySpots = this.getSpotsWithDistances(filteredSpots, distances);
                 this.setNearbySpots(nearbySpots);
             }, (error) => {
-                console.log(error);
+                console.log('Error: ' + error);
             });
     }
 
