@@ -64,5 +64,17 @@ export default [
     transition('closed => open', animate('600ms ease-in')),
     transition('closed => peak', animate('600ms ease-in')),
     transition('peak => open', animate('600ms ease-in')),
+  ]),
+  trigger('fade', [
+    state('show', style({
+      opacity: 1,
+      display: 'block'
+    })),
+    state('hide', style({
+      opacity: 0,
+      display: 'none'
+    })),
+    transition('show => hide', animate('200ms ease-out')),
+    transition('hide => show', animate('200ms 300ms ease-in'))
   ])
 ];

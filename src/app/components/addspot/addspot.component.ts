@@ -4,11 +4,13 @@ import { NgRedux, select } from 'ng2-redux';
 import { IAppState } from '~/store';
 import { AppModeActions, AddSpotStepActions, AddSpotInfoActions, SpotsAddActions } from '~/actions';
 import { Observable } from 'rxjs';
+import Animations from '~/animations';
 
 @Component({
   selector: 'pa-add-spot',
   templateUrl: './addspot.component.html',
-  styleUrls: ['./addspot.component.scss']
+  styleUrls: ['./addspot.component.scss'],
+  animations: Animations
 })
 
 export class AddSpotComponent implements OnInit {
