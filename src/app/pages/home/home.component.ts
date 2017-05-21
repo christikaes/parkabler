@@ -76,4 +76,8 @@ export class HomeComponent implements OnInit {
   onPlaceUpdate(newPlace: Place) {
     this.placesActions.setPlace(newPlace);
   }
+
+  onCloseReportSpot() {
+    this.appModeActions.setModeHome();
+  }
 }

@@ -15,6 +15,7 @@ import Animations from '~/animations';
 
 export class AddSpotComponent implements OnInit {
   public isAppMode: boolean;
+  public showAddButton: boolean;
   public addSpotStep: AddSpotSteps;
   public addSpotSteps = AddSpotSteps;
 
@@ -32,6 +33,7 @@ export class AddSpotComponent implements OnInit {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.isAppMode = mode === AppModes.AddSpot;
+      this.showAddButton = mode !== AppModes.AddSpot && mode !== AppModes.ReportSpot;
     });
 
     this.addSpotStep$.subscribe((step: AddSpotSteps) => {
