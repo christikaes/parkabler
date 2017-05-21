@@ -58,7 +58,6 @@ import {
   AddSpotsService,
   DistanceService,
   RulesInfoService,
-  PlacesService,
   PlaceService
 } from './services';
 
@@ -114,7 +113,6 @@ import { MetersToFeetPipe } from './pipes';
     AddSpotsService,
     DistanceService,
     RulesInfoService,
-    PlacesService,
     PlaceService,
     ACTION_PROVIDERS,
     GeolocationService
