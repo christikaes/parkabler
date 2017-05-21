@@ -3,8 +3,6 @@ import { SpotsNearbyActions } from '~/actions';
 
 const turfHelper = require('@turf/helpers');
 
-// TODO hydrate this initial state from localstorage
-// TODO-rangle: how do I do that?
 const INITIAL_STATE = turfHelper.featureCollection([]);
 
 export function spotsNearbyReducer(

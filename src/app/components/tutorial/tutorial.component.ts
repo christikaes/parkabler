@@ -23,8 +23,6 @@ export class TutorialComponent implements OnInit {
     ) {}
 
     ngOnInit() {
-        // TODO-range: how does this dialog setup look?
-        // The dialog lags a bit when opening up
         this.tutorial$.subscribe((tutorialState: TutorialState) => {
             // Note: the dialog takes care of closing itself, we just have to open it
             if (tutorialState.open) {

@@ -4,8 +4,6 @@ import { Action } from '~/util';
 const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 
-// TODO hydrate this initial state from localstorage
-// TODO-rangle: how do I do that?
 const INITIAL_STATE = turfHelper.featureCollection([]);
 
 

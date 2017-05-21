@@ -20,7 +20,6 @@ export class PlacesService {
     ) {}
 
     // Returns a featureCollection of possible points to resolve to
-    // TODO-rangle: Why does Http return an observable strem? do we care about anything other than the first result?
     public getAutocomplete(wordToAutocomplete: string): Observable<Place[]> {
 
         let autocompleteUrlSearchParams = new URLSearchParams();
