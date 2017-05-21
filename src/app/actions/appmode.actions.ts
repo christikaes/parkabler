@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from 'ng2-redux';
 import { IAppState } from '~/store';
-
+import { AppModes } from '~/util';
 
 @Injectable()
 export class AppModeActions {
@@ -35,9 +35,12 @@ export class AppModeActions {
     }
 
     public setModeSpotsList() {
-        this.ngRedux.dispatch({
-            type: AppModeActions.SET_MODE_SPOTSLIST
-        });
+        // Only set to spotsList mode if current mode is home
+        if (this.ngRedux.getState().appMode === AppModes.Home) {
+            this.ngRedux.dispatch({
+                type: AppModeActions.SET_MODE_SPOTSLIST
+            });
+        }
     }
 
     public setModeReportSpot() {

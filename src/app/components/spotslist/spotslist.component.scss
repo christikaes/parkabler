@@ -14,7 +14,7 @@ $list-item-height: 75px;
 }
 
 .content {
-  max-height: $list-item-height*3.5;
+  max-height: $list-item-height*2.5;
   overflow-y: scroll;
   background-color: white;
 }
@@ -32,9 +32,17 @@ $list-item-height: 75px;
     width: 100%;
 
     .details{
+      display: flex;
+      flex-direction: column;
       flex-grow: 3;
       padding: 10px;
+      font-size: 14px;
+
+      .large-text {
+        font-size: 18px;
+      }
     }
+
 
     .cta {
       flex-grow: 1;
@@ -52,6 +60,10 @@ $list-item-height: 75px;
       }
     }
   }
+}
+
+.selected-item {
+  background-color: #bdd9f5;
 }
 
 md-nav-list {
