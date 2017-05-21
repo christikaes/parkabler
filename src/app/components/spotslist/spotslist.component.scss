@@ -34,9 +34,10 @@ $list-item-height: 75px;
     .details{
       display: flex;
       flex-direction: column;
-      flex-grow: 3;
+      flex-grow: 1;
       padding: 10px;
       font-size: 14px;
+      text-align: left;
 
       .large-text {
         font-size: 18px;
@@ -45,7 +46,7 @@ $list-item-height: 75px;
 
 
     .cta {
-      flex-grow: 1;
+      width: 70px;
       display: flex;
       flex-direction: column;
       text-align: center;

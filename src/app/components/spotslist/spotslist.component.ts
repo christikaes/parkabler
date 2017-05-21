@@ -58,7 +58,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
     this.state = this.state === 'peak' ? 'open' : 'peak';
   }
 
-  onReport() {
+  onEdit() {
     this.state = 'closed';
     this.appModeActions.setModeReportSpot();
   }

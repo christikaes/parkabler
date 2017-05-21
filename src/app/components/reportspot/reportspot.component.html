@@ -2,6 +2,7 @@
     <pa-stepper (close)="onClose()" (done)="onClose()" (stepChange)="onStepChange()">
         <!-- details -->
         <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Submit'">
+            <h3>Editing this spot</h3>
             <h4>How many spaces are there?</h4>
             <md-button-toggle-group name="spaces-buttons" (change)="changeNumSpots($event.value)">
                 <md-button-toggle value="None" checked=true>None</md-button-toggle>
