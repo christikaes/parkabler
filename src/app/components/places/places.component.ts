@@ -1,7 +1,7 @@
 import { Component, OnInit , ViewChild, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { Place } from '~/util';
 import { FormControl } from '@angular/forms';
-import { PlaceService } from '~/services';
+import { PlacesService } from '~/services';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -18,7 +18,7 @@ export class PlacesComponent implements OnInit, OnChanges {
   @Output() placeUpdate = new EventEmitter();
 
   constructor(
-    private placesService: PlaceService
+    private placesService: PlacesService
   ) {
     this.placesControl = new FormControl();
   }

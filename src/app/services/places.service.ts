@@ -7,7 +7,7 @@ import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
 
 @Injectable()
-export class PlaceService {
+export class PlacesService {
     private mapboxAccessTolken = MapboxAccessTolken;
     private mapboxPlacesAPIUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 

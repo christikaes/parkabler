@@ -58,7 +58,7 @@ import {
   AddSpotsService,
   DistanceService,
   RulesInfoService,
-  PlaceService
+  PlacesService
 } from './services';
 
 // Router
@@ -113,7 +113,7 @@ import { MetersToFeetPipe } from './pipes';
     AddSpotsService,
     DistanceService,
     RulesInfoService,
-    PlaceService,
+    PlacesService,
     ACTION_PROVIDERS,
     GeolocationService
   ],
