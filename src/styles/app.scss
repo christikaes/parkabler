@@ -25,3 +25,9 @@ body {
 a {
   color: #03A9F4;
 }
+
+// HACK:
+//  This sets the height for the spotslist component list items
+.mat-list-item-content {
+  min-height: 100%;
+}

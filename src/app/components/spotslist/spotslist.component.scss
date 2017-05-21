@@ -1,3 +1,5 @@
+$list-item-height: 75px;
+
 .container {
   bottom: 0px;
   left: 0px;
@@ -12,13 +14,13 @@
 }
 
 .content {
-  max-height: 200px; // TODO: don't hard code
+  max-height: $list-item-height*3.5;
   overflow-y: scroll;
   background-color: white;
 }
 
 .item {
-  height: 65px;
+  
   display: flex;
   flex-direction: column;
   border-bottom: 1px solid #3F51B5;
@@ -51,3 +53,12 @@
     }
   }
 }
+
+md-nav-list {
+  padding: 0;
+}
+
+md-list-item {
+  height: $list-item-height;
+}
+
