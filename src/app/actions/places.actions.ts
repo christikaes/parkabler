@@ -22,9 +22,14 @@ export class PlacesActions {
             payload: place
         });
 
+
         if (this.ngRedux.getState().appMode !== AppModes.AddSpot) {
-            // If not in add spot mode set destination
-            this.destinationActions.setDestination(place.geometry.coordinates);
+            // If not in add spot mode set/clear destination
+            if (place === null) {
+                this.destinationActions.setDestination(null);
+            } else {
+                this.destinationActions.setDestination(place.geometry.coordinates);
+            }
         } else {
             // Otherwise, just center the map
             this.mapActions.setCenter(place.geometry.coordinates);

@@ -156,17 +156,23 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setDestination(location: GeoJSON.Position) {
-    let data = turf.featureCollection([
-      turf.point(location)
-    ]);
+    let data = turf.featureCollection([]);
+    if (location !== null) {
+      data = turf.featureCollection([
+        turf.point(location)
+      ]);
+    }
     this.map.getSource('destination').setData(data);
     this.setNearby(location);
   }
 
   setNearby(center: GeoJSON.Position) {
-    let data = turf.featureCollection([
-      turfcircle(turf.point(center), 0.2)
-    ]);
+    let data = turf.featureCollection([]);
+    if (center !== null) {
+      data = turf.featureCollection([
+        turfcircle(turf.point(center), 0.2)
+      ]);
+    }
     this.map.getSource('nearby').setData(data);
   }
 }

@@ -23,6 +23,7 @@ export class SpotsNearbyActions {
 
     public getNearbySpots(destination: GeoJSON.Position, spots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
         if (!destination || !spots) {
+            this.setNearbySpots(turfHelper.featureCollection([]));
             return;
         }
 

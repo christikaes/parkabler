@@ -70,9 +70,11 @@ export class MapComponent implements AfterViewInit {
 
     // Listen to changes on destination
     this.destination$.subscribe((destination: GeoJSON.Position) => {
-      this.center = destination;
       this.destination = destination;
-      this.zoom = 15;
+      if (destination !== null) {
+        this.center = destination;
+        this.zoom = 15;
+      }
     });
 
     // Listen to changes on spots

@@ -1,22 +1,21 @@
-import { Injectable, Inject } from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { MapboxAccessTolken } from '~/util';
 import { Http, Response, URLSearchParams } from '@angular/http';
-import { Observable } from 'rxjs';
 import { Place, PlaceCollection } from '~/util';
 import { IAppState } from '~/store';
 import { NgRedux } from 'ng2-redux';
 
-Injectable();
-export class PlacesService {
-
+@Injectable()
+export class PlaceService {
     private mapboxAccessTolken = MapboxAccessTolken;
     private mapboxPlacesAPIUrl = 'https://api.mapbox.com/geocoding/v5/mapbox.places/';
 
     // TODO-rangle: Why do I have to inject http explicitly?
     // The httpmodule is included in app.module
     constructor(
-        @Inject(Http) public http: Http,
-        @Inject(NgRedux) private ngRedux: NgRedux<IAppState>
+        private http: Http,
+        private ngRedux: NgRedux<IAppState>
     ) {}
 
     // Returns a featureCollection of possible points to resolve to
@@ -34,7 +33,7 @@ export class PlacesService {
 
         return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', {search: autocompleteUrlSearchParams})
             .map(this.extractData)
-            .map(this.addCurrentLocation)
+            .map(this.addCurrentLocation, this)
             .catch(this.handleError);
     }
 
@@ -65,15 +64,16 @@ export class PlacesService {
     }
 
     private addCurrentLocation(thinFeatures) {
-        // console.log(this.ngRedux.getState());
-        // if (this.ngRedux.getState().geolocation.isAvailable) {
-        //     thinFeatures.push({
-        //         text: 'You',
-        //         geometry: {
-        //             coordinates: this.ngRedux.getState().geolocation.coordinates
-        //         }
-        //     });
-        // }
+        if (this.ngRedux.getState().geolocation.isAvailable) {
+            thinFeatures.pop();
+            thinFeatures.unshift({
+                text: 'me',
+                place_name: 'Near me',
+                geometry: {
+                    coordinates: this.ngRedux.getState().geolocation.coordinates
+                }
+            });
+        }
 
         return thinFeatures;
     }
@@ -90,5 +90,4 @@ export class PlacesService {
         console.error(errMsg);
         return Observable.throw(errMsg);
     }
-
 }

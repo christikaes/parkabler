@@ -15,7 +15,6 @@ import { GeolocationActions } from './geolocation.actions';
 import { MapActions } from './map.actions';
 
 export const ACTION_PROVIDERS = [
-  DestinationActions,
   SpotsActions,
   SpotsDatabaseActions,
   SpotsAddActions,
@@ -29,11 +28,11 @@ export const ACTION_PROVIDERS = [
   SpotsListModeActions,
   GeolocationActions,
   MapActions,
-  PlacesActions
+  PlacesActions,
+  DestinationActions
 ];
 
 export {
-  DestinationActions,
   SpotsActions,
   SpotsDatabaseActions,
   SpotsAddActions,
@@ -47,5 +46,6 @@ export {
   SpotsListModeActions,
   GeolocationActions,
   MapActions,
-  PlacesActions
+  PlacesActions,
+  DestinationActions
 };

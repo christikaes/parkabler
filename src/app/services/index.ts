@@ -4,3 +4,4 @@ export * from './addspots.service';
 export * from './distance.service';
 export * from './rulesinfo.service';
 export * from './places.service';
+export * from './place.service';

@@ -25,6 +25,22 @@ export class DestinationActions {
       type: DestinationActions.SET,
       payload: currentLocation
     });
+
+    // Update the places to reflect the destination
+    this.ngRedux.dispatch({
+      type: 'PA/PLACES/SET',
+      payload: {
+        text: 'me',
+        place_name: 'Near me',
+        geometry: {
+          type: 'Point',
+          coordinates: currentLocation
+        },
+        type: 'Feature',
+        properties: null
+      }
+    });
+
     this.setCurrentLocation(true);
   }
 
