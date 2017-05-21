@@ -1,5 +1,3 @@
-// TODO-rangle: is there a good way to break this file up? it's really long /:
-
 import { NgModule, ApplicationRef } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -16,6 +14,8 @@ import { MaterialModule } from '@angular/material';
 
 // NgFire
 import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
 const firebaseConfig = {
   apiKey: 'AIzaSyABlDFTj5lUcR9e_I2ZzrB6D26c5FU9mE8',
   authDomain: 'parkabler.firebaseapp.com',
@@ -77,9 +77,10 @@ import { MetersToFeetPipe } from './pipes';
     // Redux
     NgReduxModule,
     // Material
-    MaterialModule.forRoot(),
+    MaterialModule,
     BrowserAnimationsModule,
     // Firebase
+    AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
   declarations: [

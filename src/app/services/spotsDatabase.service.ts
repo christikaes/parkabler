@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFire, FirebaseListObservable } from 'angularfire2';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 
 // If the user is offline, use this data:
@@ -11,10 +11,10 @@ export class SpotsDatabaseService {
   public spots: FirebaseListObservable<any[]>;
 
   constructor(
-    private af: AngularFire
+    private db: AngularFireDatabase
   ) {
     // this.spots = Observable.of(data.spots);
-    this.spots = af.database.list('spots');
+    this.spots = db.list('spots');
   }
 
   // Gets all the spots from the database
