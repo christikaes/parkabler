@@ -1,9 +1,8 @@
-// component styles are encapsulated and only applied to their components
 .container {
   bottom: 0px;
   left: 0px;
   width: 100%;
-  z-index: 1001;
+  position: relative;
 }
 
 .header {

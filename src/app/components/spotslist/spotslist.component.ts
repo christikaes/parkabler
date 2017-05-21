@@ -1,4 +1,9 @@
 import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { select } from 'ng2-redux';
+import { AppModes } from '~/util';
+import { Observable } from 'rxjs';
+import { AppModeActions } from '~/actions';
+
 import Animations from '~/animations';
 
 @Component({
@@ -9,21 +14,40 @@ import Animations from '~/animations';
 })
 export class SpotsListComponent implements OnInit, OnChanges {
   @Input() private spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
+
+  @select() private appMode$: Observable<AppModes>;
+
   public state = 'closed';
   public numSpot = 0;
 
-  constructor() {
+  constructor(
+    private appModeActions: AppModeActions
+  ) {
     this.state = 'closed';
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.appMode$.subscribe( (mode: AppModes) => {
+      if (mode !== AppModes.SpotsList) {
+        this.state = 'closed';
+      } else {
+        this.state = 'peak';
+      }
+    });
+  }
 
   ngOnChanges(changes: SimpleChanges) {
     for (let change in changes) {
       if (change === 'spots') {
         let spots = changes[change].currentValue;
         this.numSpot = spots.features ? spots.features.length : 0;
-        this.state = this.numSpot > 0 ? 'peak' : 'closed';
+        if (this.numSpot > 0) {
+          this.state = 'peak';
+          this.appModeActions.setModeSpotsList();
+        } else {
+          this.state = 'closed';
+          this.appModeActions.setModeHome();
+        }
       } else {
         throw 'Uncaught change: ' + change;
       }
@@ -36,7 +60,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
 
   onReport() {
     this.state = 'closed';
-    // set report state
+    this.appModeActions.setModeReportSpot();
   }
 
   onClickSpot() {

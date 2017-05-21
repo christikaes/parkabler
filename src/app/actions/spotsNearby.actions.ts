@@ -29,6 +29,7 @@ export class SpotsNearbyActions {
         // Create a circle of 200m
         const nearbyBounds = turfHelper.featureCollection([turfCircle(turf.point(destination), 0.2)]);
         const filteredSpots = turfWithin(spots, nearbyBounds);
+        this.setNearbySpots(filteredSpots);
 
         this.distanceService.getWalkingDistances(filteredSpots, turf.point(destination))
             .subscribe((distances) => {
