@@ -18,13 +18,13 @@ export class ReportSpotComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let change in changes) {
+    for (const change in changes) {
       if (change === 'mode') {
         // 1
-        let previousMode = changes[change].previousValue;
+        const previousMode = changes[change].previousValue;
 
         // 2
-        let currentMode = changes[change].currentValue;
+        const currentMode = changes[change].currentValue;
 
         this[previousMode] = 'previous';
         this[currentMode] = 'current';
@@ -34,5 +34,13 @@ export class ReportSpotComponent implements OnChanges {
 
   onStepChange() {
     console.log('StepChanged');
+  }
+
+  changeNumSpots(value) {
+    console.log('CHANGE NUM SPOTS');
+  }
+
+  changeSpotType(value) {
+    console.log('CHANGE SPOT TYPE');
   }
 }

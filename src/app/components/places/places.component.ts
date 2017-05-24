@@ -31,11 +31,11 @@ export class PlacesComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let change in changes) {
+    for (const change in changes) {
       if (change === 'placeValue') {
         this.placesControl.setValue(changes[change].currentValue);
       } else {
-        throw 'Uncaught change: ' + change;
+        throw new Error('Uncaught change: ' + change);
       }
     }
   }
@@ -47,5 +47,9 @@ export class PlacesComponent implements OnInit, OnChanges {
   clearInput() {
     this.placesControl.setValue('');
     this.placeUpdate.emit(null);
+  }
+
+  search() {
+    this.placeUpdate.emit(this.placesControl.value);
   }
 }

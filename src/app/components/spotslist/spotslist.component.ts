@@ -13,7 +13,7 @@ import Animations from '~/animations';
   animations: Animations
 })
 export class SpotsListComponent implements OnInit, OnChanges {
-  @Input() private spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  @Input() public spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
 
   @select() private appMode$: Observable<AppModes>;
 
