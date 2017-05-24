@@ -1,0 +1,15 @@
+{
+  "name": "Parkabler",
+  "short_name": "Parkabler",
+  "theme_color": "#2196f3",
+  "background_color": "#ffffff",
+  "display": "fullscreen",
+  "orientation": "portrait",
+  "scope": "/",
+  "start_url": "/",
+  "icons": { "16": "assets/img/favicon-16x16.png",
+           "48": "assets/img/favicon-16x16.png",
+          "128": "assets/img/favicon-16x16.png",
+          "192": "assets/img/favicon-16x16.png",
+          "512": "assets/img/favicon-16x16.png" }
+}
