@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { GeolocationService } from '~/services';
 import { DestinationActions } from '~/actions';
@@ -19,13 +19,13 @@ export class GeolocationActions {
     this.geolocationService.watch();
 
     // Update the coordinates whenever the currentLocation changes
-    let geolocationCoordinates$ = this.geolocationService.getCoordinates();
+    const geolocationCoordinates$ = this.geolocationService.getCoordinates();
     geolocationCoordinates$.distinctUntilChanged().subscribe((coordinates) => {
         this.setGeolocation(coordinates);
     });
 
     // Update the availability whenever the the availability changes
-    let geolocationAvailability$ = this.geolocationService.getAvailability();
+    const geolocationAvailability$ = this.geolocationService.getAvailability();
     geolocationAvailability$.distinctUntilChanged().subscribe((isAvailable) => {
       this.setAvailability(isAvailable);
     });

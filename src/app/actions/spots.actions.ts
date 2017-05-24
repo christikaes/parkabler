@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { SpotsDatabaseService } from '~/services';
 import { Observable } from 'rxjs';
@@ -29,11 +29,11 @@ export class SpotsActions {
 
     private getUpdatedSpots(): Array<GeoJSON.Feature<GeoJSON.Point>> {
 
-        let addSpots = this.ngRedux.getState().spotsAdd;
-        let reportSpots = this.ngRedux.getState().spotsReport;
-        let databaseSpots = this.ngRedux.getState().spotsDatabase;
+        const addSpots = this.ngRedux.getState().spotsAdd;
+        const reportSpots = this.ngRedux.getState().spotsReport;
+        const databaseSpots = this.ngRedux.getState().spotsDatabase;
 
-        let spots: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
+        const spots: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
 
         // For each one of the databaseSpots, add it to the spots
         turfMeta.featureEach(databaseSpots, (databaseSpot: GeoJSON.Feature<GeoJSON.Point>) => {
@@ -58,7 +58,7 @@ export class SpotsActions {
     };
 
     private updateSpots() {
-        let spots = this.getUpdatedSpots();
+        const spots = this.getUpdatedSpots();
         this.ngRedux.dispatch({
             type: SpotsActions.UPDATE_SPOTS,
             payload: spots

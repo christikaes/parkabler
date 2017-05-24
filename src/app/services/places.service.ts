@@ -4,7 +4,7 @@ import { MapboxAccessTolken } from '~/util';
 import { Http, Response, URLSearchParams } from '@angular/http';
 import { Place, PlaceCollection } from '~/util';
 import { IAppState } from '~/store';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 
 @Injectable()
 export class PlacesService {
@@ -20,13 +20,13 @@ export class PlacesService {
 
     // Returns a featureCollection of possible points to resolve to
     public getAutocomplete(wordToAutocomplete: string): Observable<Place[]> {
-        let autocompleteUrlSearchParams = new URLSearchParams();
+        const autocompleteUrlSearchParams = new URLSearchParams();
         autocompleteUrlSearchParams.set('access_token', this.mapboxAccessTolken);
         autocompleteUrlSearchParams.set('types', 'address,poi,place');
         autocompleteUrlSearchParams.set('autocomplete', 'true');
         autocompleteUrlSearchParams.set('country', 'us');
         // Bias autocomplete based on center of map
-        let mapCenter = this.ngRedux.getState().map.center;
+        const mapCenter = this.ngRedux.getState().map.center;
         autocompleteUrlSearchParams.set('proximity', `${mapCenter[0]},${mapCenter[1]}`);
         autocompleteUrlSearchParams.set('bbox',
             `${mapCenter[0] - 1},${mapCenter[1] - 1},${mapCenter[0] + 1},${mapCenter[1] + 1}`);
@@ -38,7 +38,7 @@ export class PlacesService {
     }
 
     private extractData(res: Response) {
-        let data = res.json();
+        const data = res.json();
         if (!data ) {
             return { };
         }
@@ -51,7 +51,7 @@ export class PlacesService {
         //      https://github.com/mapbox/carmen/blob/master/carmen-geojson.md
 
         // Go through the data and remove unnecessary information
-        let thinFeatures = [];
+        const thinFeatures = [];
         data.features.forEach((feature) => {
             thinFeatures.push({
                 text: feature.text,

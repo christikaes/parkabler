@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 
 @Injectable()
 export class TutorialActions {

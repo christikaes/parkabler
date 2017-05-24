@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AddSpotsService } from '~/services';
 
@@ -20,8 +20,8 @@ export class SpotsAddActions {
     ) {};
 
     public addSpot() {
-        let spot = this.ngRedux.getState().addSpotInfo;
-        let spotFeature = turfHelper.feature({
+        const spot = this.ngRedux.getState().addSpotInfo;
+        const spotFeature = turfHelper.feature({
             type: 'Point',
             coordinates: spot.coordinates
         }, {

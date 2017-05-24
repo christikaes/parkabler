@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { DistanceService } from '~/services';
 import { Observable } from 'rxjs';
 
@@ -34,7 +34,7 @@ export class SpotsNearbyActions {
 
         this.distanceService.getWalkingDistances(filteredSpots, turf.point(destination))
             .subscribe((distances) => {
-                let nearbySpots = this.getSpotsWithDistances(filteredSpots, distances);
+                const nearbySpots = this.getSpotsWithDistances(filteredSpots, distances);
                 this.setNearbySpots(nearbySpots);
             }, (error) => {
                 console.log('Error: ' + error);

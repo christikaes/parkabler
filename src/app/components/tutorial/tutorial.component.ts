@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { select, NgRedux } from 'ng2-redux';
+import { select, NgRedux } from '@angular-redux/store';
 import { MdDialog, MdDialogRef } from '@angular/material';
 import { TutorialDialogComponent } from './tutorial-dialog';
 import { Observable } from 'rxjs';
@@ -35,8 +35,8 @@ export class TutorialComponent implements OnInit {
     }
 
     private openTutorial() {
-        let {tutorial} = this.ngRedux.getState();
-        let dialogConfig = {
+        const {tutorial} = this.ngRedux.getState();
+        const dialogConfig = {
             data: tutorial.tutorial
         };
         this.dialogRef = this.dialog.open(TutorialDialogComponent, dialogConfig);

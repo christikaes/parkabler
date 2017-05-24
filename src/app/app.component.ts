@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { DevToolsExtension, NgRedux } from 'ng2-redux';
+import { DevToolsExtension, NgRedux } from '@angular-redux/store';
 import { IAppState, rootReducer, middleware, enhancers } from './store';
-import '../styles/app.scss';
 
 /*
  * App Component

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AddSpotSteps } from '~/util';
 
@@ -26,7 +26,7 @@ export class AddSpotStepActions {
                 this.setStepSubmitted();
                 break;
             default:
-                throw('No step action found for: ' + step);
+                throw new Error(('No step action found for: ' + step));
         }
     }
 

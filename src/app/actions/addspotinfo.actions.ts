@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AddSpotSteps } from '~/util';
 
@@ -20,7 +20,7 @@ export class AddSpotInfoActions {
     }
 
     public setLocation() {
-        let coordinates = this.ngRedux.getState().map.center;
+        const coordinates = this.ngRedux.getState().map.center;
         this.setInfo({
             coordinates: coordinates
         });

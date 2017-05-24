@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AddSpotSteps, StepStates, AppModes } from '~/util';
-import { NgRedux, select } from 'ng2-redux';
+import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AppModeActions, AddSpotStepActions, AddSpotInfoActions, SpotsAddActions } from '~/actions';
 import { Observable } from 'rxjs';

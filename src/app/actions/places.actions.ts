@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { IAppState } from '~/store';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { Place, PlaceCollection, AppModes } from '~/util';
-import { DestinationActions } from '~/actions';
 // TODO-rangle: Why is this causing a DI issue when I get it from the barrel?
+import { DestinationActions } from '~/actions/destination.actions';
 import { MapActions } from '~/actions/map.actions';
 
 @Injectable()

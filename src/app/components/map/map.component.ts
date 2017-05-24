@@ -1,5 +1,5 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
-import { select, NgRedux } from 'ng2-redux';
+import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { MapModes, AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';

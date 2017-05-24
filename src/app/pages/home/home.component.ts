@@ -10,7 +10,7 @@ import {
   GeolocationActions
 } from '~/actions';
 import { Place, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
 @Component({

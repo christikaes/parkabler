@@ -1,5 +1,5 @@
 import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
-import { select } from 'ng2-redux';
+import { select } from '@angular-redux/store';
 import { AppModes } from '~/util';
 import { Observable } from 'rxjs';
 import { AppModeActions } from '~/actions';
@@ -37,9 +37,9 @@ export class SpotsListComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let change in changes) {
+    for (const change in changes) {
       if (change === 'spots') {
-        let spots = changes[change].currentValue;
+        const spots = changes[change].currentValue;
         this.numSpot = spots.features ? spots.features.length : 0;
         if (this.numSpot > 0) {
           this.state = 'peak';
@@ -49,7 +49,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
           this.appModeActions.setModeHome();
         }
       } else {
-        throw 'Uncaught change: ' + change;
+        throw new Error('Uncaught change: ' + change);
       }
     }
   }

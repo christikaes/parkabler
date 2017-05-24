@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 
 @Injectable()
@@ -20,7 +20,7 @@ export class DestinationActions {
   }
 
   public setToCurrentLocation() {
-    let currentLocation = this.ngRedux.getState().geolocation.coordinates;
+    const currentLocation = this.ngRedux.getState().geolocation.coordinates;
     this.ngRedux.dispatch({
       type: DestinationActions.SET,
       payload: currentLocation

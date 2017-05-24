@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { NgRedux } from 'ng2-redux';
+import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { SpotsDatabaseService } from '~/services';
 import { Spot } from '~/util';
@@ -31,7 +31,7 @@ export class SpotsDatabaseActions {
 
     private updateSpots(spots: Array<Spot>) {
 
-        let spotsFeatureCollection = this.convertToGeoJSON(spots);
+        const spotsFeatureCollection = this.convertToGeoJSON(spots);
 
         this.databaseSpotsUpdated(
             spotsFeatureCollection,
@@ -47,10 +47,10 @@ export class SpotsDatabaseActions {
 
     private convertToGeoJSON (spots: Array<Spot>): GeoJSON.FeatureCollection<GeoJSON.Point> {
 
-        let spotFeatures: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
+        const spotFeatures: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
 
         spots.forEach((spot) => {
-            let spotFeature = turfHelper.feature({
+            const spotFeature = turfHelper.feature({
                 type: 'Point',
                 coordinates: spot.coordinates,
             }, {

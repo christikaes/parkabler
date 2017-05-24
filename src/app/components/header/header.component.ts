@@ -15,7 +15,7 @@ export class HeaderComponent {
     private sanitizer: DomSanitizer,
     private appModeActions: AppModeActions
   ) {
-     mdIconRegistry.addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('img/logo.svg'));
+     mdIconRegistry.addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('assets/img/logo.svg'));
   }
 
    onClickHome() {
