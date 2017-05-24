@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-     "ng": "ng",
+    "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
@@ -45,6 +45,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.3",
     "@angular/compiler-cli": "^4.0.0",
+    "@angular/service-worker": "^1.0.0-beta.14",
     "@types/geojson": "^1.0.0",
     "@types/jasmine": "2.5.38",
     "@types/mapbox-gl": "^0.29.1",
