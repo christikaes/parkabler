@@ -49,7 +49,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges) {
     // Only start listening to changes after the map is initialized
     if (this.initialized) {
-      for (let change in changes) {
+      for (const change in changes) {
         if (change === 'zoom') {
           this.setZoom(changes[change].currentValue);
         } else if (change === 'center') {
@@ -63,7 +63,7 @@ export class MapGLComponent implements OnInit, OnChanges {
         } else if (change === 'destination') {
           this.setDestination(changes[change].currentValue);
         } else {
-          throw 'Uncaught change: ' + change;
+          throw new Error('Uncaught change: ' + change);
         }
       }
     }
@@ -71,8 +71,8 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   initializeMap(): void {
     mapboxgl.accessToken = MapboxAccessTolken;
-    let mapDiv = this.MapDiv.nativeElement;
-    let map = new mapboxgl.Map({
+    const mapDiv = this.MapDiv.nativeElement;
+    const map = new mapboxgl.Map({
       container: mapDiv,
       style: mapstyle,
       center: [-71.06, 42.35],
@@ -87,7 +87,7 @@ export class MapGLComponent implements OnInit, OnChanges {
     // Signal that the map is loaded
     map.on('load', () => {
       // map.resize();
-      let event = document.createEvent('HTMLEvents');
+      const event = document.createEvent('HTMLEvents');
       event.initEvent('resize', true, false);
       document.dispatchEvent(event);
 
@@ -109,12 +109,19 @@ export class MapGLComponent implements OnInit, OnChanges {
     this.map.on('zoomend', () => {
       this.zoomChange.emit(this.map.getZoom());
     });
+
+    this.map.on('click', 'unclustered-points', function (e) {
+        new mapboxgl.Popup({offset: 25})
+            .setLngLat(e.features[0].geometry.coordinates)
+            .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
+            .addTo(this.map);
+    }.bind(this));
   }
 
   setZoom(newZoom: number) {
     // Update zoom, if the new zoom is significantly different
     // ! Important so that this doesn't trigger an infinite loop due to rounding
-    let zoom = this.map.getZoom();
+    const zoom = this.map.getZoom();
     if (Math.abs(Math.round((zoom - newZoom) * 10)) > 0) {
       this.map.zoomTo(newZoom);
     }
@@ -123,7 +130,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   setCenter(newCenter: GeoJSON.Position) {
     // Update center, if the new center is significantly different
     // ! Important so that this doesn't trigger an infinite loop due to rounding
-    let center = [this.map.getCenter().lng, this.map.getCenter().lat];
+    const center = [this.map.getCenter().lng, this.map.getCenter().lat];
     if ((Math.abs(Math.round((center[0] - newCenter[0]) * 1000)) > 0)
         || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
         this.map.flyTo({center: newCenter});
@@ -149,7 +156,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setCurrentLocation(location: GeoJSON.Position) {
-    let data = turf.featureCollection([
+    const data = turf.featureCollection([
       turf.point(location)
     ]);
     this.map.getSource('currentLocation').setData(data);
@@ -175,4 +182,5 @@ export class MapGLComponent implements OnInit, OnChanges {
     }
     this.map.getSource('nearby').setData(data);
   }
+
 }
