@@ -4,18 +4,15 @@ import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AppModeActions, AddSpotStepActions, AddSpotInfoActions, SpotsAddActions } from '~/actions';
 import { Observable } from 'rxjs';
-import Animations from '~/animations';
 
 @Component({
   selector: 'pa-add-spot',
   templateUrl: './addspot.component.html',
-  styleUrls: ['./addspot.component.scss'],
-  animations: Animations
+  styleUrls: ['./addspot.component.scss']
 })
 
 export class AddSpotComponent implements OnInit {
   public isAppMode: boolean;
-  public showAddButton: boolean;
   public addSpotStep: AddSpotSteps;
   public addSpotSteps = AddSpotSteps;
 
@@ -33,16 +30,11 @@ export class AddSpotComponent implements OnInit {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.isAppMode = mode === AppModes.AddSpot;
-      this.showAddButton = mode !== AppModes.AddSpot && mode !== AppModes.ReportSpot;
     });
 
     this.addSpotStep$.subscribe((step: AddSpotSteps) => {
       this.addSpotStep = step;
     });
-  }
-
-  onOpenAddSpot() {
-    this.appModeActions.setModeAddSpot();
   }
 
   onCloseAddSpot() {
