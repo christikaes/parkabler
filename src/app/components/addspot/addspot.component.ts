@@ -16,6 +16,8 @@ export class AddSpotComponent implements OnInit {
   public addSpotStep: AddSpotSteps;
   public addSpotSteps = AddSpotSteps;
 
+  public numSpots: number;
+
   @select() private appMode$: Observable<AppModes>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
 
@@ -30,6 +32,7 @@ export class AddSpotComponent implements OnInit {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.isAppMode = mode === AppModes.AddSpot;
+      console.log(this.isAppMode);
     });
 
     this.addSpotStep$.subscribe((step: AddSpotSteps) => {
@@ -50,7 +53,9 @@ export class AddSpotComponent implements OnInit {
   }
 
   onSubmitAddSpot(state) {
-    this.addSpotInfoActions.setInfo(state);
+    this.addSpotInfoActions.setInfo({
+      numspots: this.numSpots
+    });
     this.spotsAddActions.addSpot();
   }
 }

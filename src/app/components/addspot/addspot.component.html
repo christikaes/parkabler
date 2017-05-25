@@ -1,11 +1,24 @@
-<!--TODO-usability-->
-<!--<pa-add-spot-button (open)="onOpenAddSpot()" [@fade]="showAddButton ? 'show' : 'hide'" ></pa-add-spot-button>-->
-
-<pa-add-spot-drawer 
-    [opened]="isAppMode" 
-    [step]="addSpotStep" 
-    (close)="onCloseAddSpot()" 
-    (setLocation)="onSetLocation()"
-    (submit)="onSubmitAddSpot($event)"
-    (stepChange)="onAddSpotStepChange($event)">
-</pa-add-spot-drawer>
+<pa-drawer [open]="isAppMode">
+    <pa-stepper (close)="onCloseAddSpot()" (stepChange)="onAddSpotStepChange($event)" [stepIndex]="addSpotStep">
+        <!-- location -->
+        <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'" (next)="onSetLocation()">
+            Drag and zoom the map to put the marker exactly over the spot
+        </pa-step>
+        <!-- details -->
+        <pa-step [previousCopy]="'Back'" [nextCopy]="'Submit'" (next)="onSubmitAddSpot($event)">
+            <h4>How many spaces are there?</h4>
+            <md-button-toggle-group name="spaces-buttons" [(ngModel)]="numSpots">
+                <md-button-toggle value="1" checked=true>1</md-button-toggle>
+                <md-button-toggle value="2">2</md-button-toggle>
+                <md-button-toggle value="3">3</md-button-toggle>
+                <md-button-toggle value="4">4</md-button-toggle>
+                <md-button-toggle value="Many">Many</md-button-toggle>
+            </md-button-toggle-group>
+            <input mdInput aria-label="description" placeholder="Description">
+        </pa-step>
+        <!-- submitted -->
+        <pa-step [previousCopy]="''" [nextCopy]="'OK'" (next)="onClose()">
+           Thank you for your help! The details have been submitted, we will review the submission and add it to the map accordingly.
+        </pa-step>
+    </pa-stepper>
+</pa-drawer>
