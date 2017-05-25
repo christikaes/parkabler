@@ -47,7 +47,7 @@ export default [
   ]),
   trigger('slideUp', [
     state('open', style({
-      maxHeight: '300px', // HACK
+      maxHeight: '350px', // HACK
       overflowY: 'hidden'
     })),
     state('closed', style({

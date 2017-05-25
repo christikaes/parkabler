@@ -31,7 +31,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
       if (mode !== AppModes.SpotsList) {
         this.state = 'closed';
       } else {
-        this.state = 'peak';
+        this.state = 'open';
       }
     });
   }
@@ -42,7 +42,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
         const spots = changes[change].currentValue;
         this.numSpot = spots.features ? spots.features.length : 0;
         if (this.numSpot > 0) {
-          this.state = 'peak';
+          this.state = 'open';
           this.appModeActions.setModeSpotsList();
         } else {
           this.state = 'closed';

@@ -2,6 +2,8 @@
 <div class="container" [@slideUp]="state">
   <button md-button class="header" (click)="toggleExapand()">
     {{numSpot}} spots near destination
+    <md-icon *ngIf="state!='open'">keyboard_arrow_up</md-icon>
+    <md-icon *ngIf="state=='open'">keyboard_arrow_down</md-icon>
   </button>
 
   <md-nav-list class="content">
@@ -14,7 +16,7 @@
         <div class="cta" (click)="onEdit()">
           <md-icon class="icon">edit_location</md-icon>
           <span>
-            Edit Spot
+            Update
           </span>
         </div>
         <a class="cta" href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}" target="_blank">

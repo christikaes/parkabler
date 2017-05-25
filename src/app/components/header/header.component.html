@@ -1,21 +1,25 @@
 <md-toolbar color="primary">
-   <button md-button>
+
+  <pa-tutorial></pa-tutorial>
+   <!--TODO-usability-->
+   <!--<button md-button>
     TEXT MODE
-   </button> 
+   </button> -->
 
   <span class="fill-remaining-space"></span>
   <md-icon svgIcon="logo" class="logo" (click)="onClickHome()"></md-icon>
   <span class="park" (click)="onClickHome()">park</span><span class="abler" (click)="onClickHome()">abler</span>
   <span class="fill-remaining-space"></span>
 
-  <button md-button [mdMenuTriggerFor]="menu">
-    HELP
-  </button>
-  <md-menu #menu="mdMenu">
+   <button md-button [routerLink]="'/rulesinfo'">
+      RULES
+    </button>
+  <!--TODO-usability-->
+  <!--<md-menu #menu="mdMenu">
     <button md-menu-item [routerLink]="'/rulesinfo'">
       <md-icon>information</md-icon>
       <span>Parking Rules</span>
     </button>
     <pa-tutorial></pa-tutorial>
-  </md-menu>
+  </md-menu>-->
 </md-toolbar>

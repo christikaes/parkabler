@@ -3,7 +3,6 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AddSpotSteps } from '~/util';
 
-
 @Injectable()
 export class AddSpotStepActions {
     static SET_STEP_LOCATION = 'PA/ADDSPOTSTEP/LOCATION';
@@ -15,6 +14,7 @@ export class AddSpotStepActions {
     ) {}
 
     public setStep(step: AddSpotSteps) {
+        console.log(step);
         switch (step) {
             case AddSpotSteps.Location:
                 this.setStepLocation();
