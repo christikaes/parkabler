@@ -48,7 +48,18 @@ export class SpotsNearbyActions {
         turfMeta.propEach(spots, (spotProp, i) => {
             spotProp.distanceToDestination = distances[i];
         });
-
+        spots.features = spots.features.sort((spota: any, spotb: any) => {
+            if (!spota.properties.distanceToDestination || !spotb.properties.distanceToDestination) {
+                return 0;
+            }
+            if (spota.properties.distanceToDestination < spotb.properties.distanceToDestination) {
+                return -1;
+            }
+            if (spota.properties.distanceToDestination > spotb.properties.distanceToDestination) {
+                return 1;
+            }
+            return 0;
+        });
         return spots;
     }
 
