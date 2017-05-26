@@ -21,12 +21,14 @@
     max-width: 700px;
     text-overflow: ellipsis;
     background-color: white;
+    border: 1px solid #304FFE;
+    border-left: 0px;
   }
 
   .search {
-    height: 40px;
+    height: 42px;
     display: inline-block;
-    border-radius: 3px;
+    border-radius: 0px;
   }
 
   .clear {
@@ -41,5 +43,7 @@
     display: inline-block;
     height: 40px;
     width: 40px;
+    border: 1px solid #304FFE;
+    border-right: 0px;
   }
 }

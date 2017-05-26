@@ -2,7 +2,7 @@
     <pa-stepper (close)="onCloseAddSpot()" (stepChange)="onAddSpotStepChange($event)" [stepIndex]="addSpotStep">
         <!-- location -->
         <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'" (next)="onSetLocation()">
-            Drag and zoom the map to put the marker exactly over the spot
+            Drag the map to put the marker exactly over the spot
         </pa-step>
         <!-- details -->
         <pa-step [previousCopy]="'Back'" [nextCopy]="'Submit'" (next)="onSubmitAddSpot($event)">
