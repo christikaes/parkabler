@@ -28,10 +28,12 @@ export class SpotsAddActions {
             numspots: spot.numspots
         });
 
-        this.ngRedux.dispatch({
-            type: SpotsAddActions.ADD,
-            payload: spotFeature
-        });
+        for (let i = 0; i < spot.numspots; i++) {
+            this.ngRedux.dispatch({
+                type: SpotsAddActions.ADD,
+                payload: spotFeature
+            });
+        }
 
         this.addSpotsService.addSpot(spotFeature);
     }

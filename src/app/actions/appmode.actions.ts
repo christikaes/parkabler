@@ -13,11 +13,15 @@ export class AppModeActions {
     static SET_MODE_REPORTSPOT = 'PA/MODE/REPORTSPOT';
     static SET_MODE_PREVIOUS = 'PA/MODE/PREVIOUS';
 
+    private previousZoom: number;
+
     constructor(
         private ngRedux: NgRedux<IAppState>,
         private mapActions: MapActions,
         private placesActions: PlacesActions
-    ) {}
+    ) {
+        this.previousZoom = this.ngRedux.getState().map.zoom;
+    }
 
 
     public setModeHome() {
@@ -28,6 +32,7 @@ export class AppModeActions {
 
     public setModeAddSpot() {
         this.placesActions.setPlace(null);
+        this.previousZoom = this.ngRedux.getState().map.zoom;
         this.mapActions.setZoom(18);
 
         this.ngRedux.dispatch({
@@ -37,6 +42,7 @@ export class AppModeActions {
     }
 
     public unsetModeAddSpot() {
+        this.mapActions.setZoom(this.previousZoom);
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_PREVIOUS
         });
