@@ -84,7 +84,7 @@
           "type": "geojson",
           "data": {"type": "FeatureCollection", "features": []},
           "cluster": true,
-          "clusterMaxZoom": 17,
+          "clusterMaxZoom": 22,
           "clusterRadius": 10
         },
         "currentLocation": {
@@ -3993,7 +3993,6 @@
                 "icon-size": 1,
                 "icon-offset": [0, -12],
                 "icon-allow-overlap": true,
-                "text-field": "{numspots}",
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Bold"
