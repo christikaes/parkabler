@@ -3984,47 +3984,50 @@
             }
         },
         {
-            "id": "unclustered-points",
+            "id": "unclustered-points-v2",
             "type": "symbol",
             "source": "spots",
             "filter": ["!has", "point_count"],
             "layout": {
-                "icon-image": "pin",
+                "icon-image": "pin-v2",
                 "icon-size": 1,
                 "icon-offset": [0, -12],
                 "icon-allow-overlap": true,
+                "text-field": "{numspots}",
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Bold"
                 ],
-                "text-size": 16,
-                "text-offset": [0, -1],
+                "text-size": 20,
+                "text-offset": [-0.3, -0.6],
                 "text-anchor": "center",
-                "text-allow-overlap": true
+                "text-allow-overlap": true,
+                "visibility": "none"
             },
             "paint": {
                 "text-color": "#ffffff"
             }
         },
         {
-            "id": "unclustered-points-count",
+            "id": "unclustered-points-v3",
             "type": "symbol",
             "source": "spots",
             "filter": ["!has", "point_count"],
             "layout": {
-                "icon-image": "circle-15",
-                "icon-size": 2,
-                "icon-offset": [5, -15],
+                "icon-image": "pin-v3",
+                "icon-size": 1,
+                "icon-offset": [0, -12],
                 "icon-allow-overlap": true,
+                "text-field": "{numspots}",
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Bold"
                 ],
-                "text-field": "{numspots}",
                 "text-size": 16,
-                "text-offset": [0.6, -1.9],
+                "text-offset": [0.6, -1.7],
                 "text-anchor": "center",
-                "text-allow-overlap": true
+                "text-allow-overlap": true,
+                "visibility": "visible"
             },
             "paint": {
                 "text-color": "#ffffff"
