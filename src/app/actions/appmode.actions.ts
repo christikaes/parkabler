@@ -3,7 +3,7 @@ import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { AppModes } from '~/util';
 import { MapActions } from '~/actions/map.actions';
-
+import { PlacesActions } from '~/actions/places.actions';
 
 @Injectable()
 export class AppModeActions {
@@ -15,7 +15,8 @@ export class AppModeActions {
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
-        private mapActions: MapActions
+        private mapActions: MapActions,
+        private placesActions: PlacesActions
     ) {}
 
 
@@ -26,11 +27,13 @@ export class AppModeActions {
     }
 
     public setModeAddSpot() {
+        this.placesActions.setPlace(null);
+        this.mapActions.setZoom(18);
+
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_ADDSPOT
         });
 
-        this.mapActions.setZoom(18);
     }
 
     public unsetModeAddSpot() {

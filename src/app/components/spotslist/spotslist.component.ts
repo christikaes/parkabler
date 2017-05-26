@@ -20,6 +20,8 @@ export class SpotsListComponent implements OnInit, OnChanges {
   public state = 'closed';
   public numSpot = 0;
 
+  private appMode;
+
   constructor(
     private appModeActions: AppModeActions
   ) {
@@ -28,10 +30,13 @@ export class SpotsListComponent implements OnInit, OnChanges {
 
   ngOnInit() {
     this.appMode$.subscribe( (mode: AppModes) => {
+      this.appMode = mode;
       if (mode !== AppModes.SpotsList) {
         this.state = 'closed';
       } else {
-        this.state = 'open';
+        if (this.numSpot < 0) {
+          this.state = 'open';
+        }
       }
     });
   }
@@ -46,7 +51,9 @@ export class SpotsListComponent implements OnInit, OnChanges {
           this.appModeActions.setModeSpotsList();
         } else {
           this.state = 'closed';
-          this.appModeActions.setModeHome();
+          if (this.appMode !== AppModes.AddSpot) {
+            this.appModeActions.setModeHome();
+          }
         }
       } else {
         throw new Error('Uncaught change: ' + change);

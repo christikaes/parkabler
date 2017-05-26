@@ -77,6 +77,8 @@ export class HomeComponent implements OnInit {
     this.place$.subscribe((place: Place) => {
       if (place && place.text) {
         this.placeValue = place.text;
+      } else {
+        this.placeValue = '';
       }
     });
   }
