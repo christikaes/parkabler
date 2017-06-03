@@ -1,0 +1,12 @@
+{
+  "rules": {
+    "spots": {
+      ".read": true,
+      ".write": "auth != null"
+    },
+    "addspots": {
+      ".read": "auth != null",
+      ".write": true
+    }
+  }
+}
