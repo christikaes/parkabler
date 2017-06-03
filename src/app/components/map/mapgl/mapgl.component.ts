@@ -110,14 +110,7 @@ export class MapGLComponent implements OnInit, OnChanges {
       this.zoomChange.emit(this.map.getZoom());
     });
 
-    this.map.on('click', 'unclustered-points-v2', function (e) {
-        new mapboxgl.Popup({offset: 25})
-            .setLngLat(e.features[0].geometry.coordinates)
-            .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
-            .addTo(this.map);
-    }.bind(this));
-
-    this.map.on('click', 'unclustered-points-v3', function (e) {
+    this.map.on('click', 'unclustered-points', function (e) {
         new mapboxgl.Popup({offset: 25})
             .setLngLat(e.features[0].geometry.coordinates)
             .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)

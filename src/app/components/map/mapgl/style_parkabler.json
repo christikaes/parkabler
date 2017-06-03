@@ -3984,32 +3984,7 @@
             }
         },
         {
-            "id": "unclustered-points-v2",
-            "type": "symbol",
-            "source": "spots",
-            "filter": ["!has", "point_count"],
-            "layout": {
-                "icon-image": "pin-v2",
-                "icon-size": 1,
-                "icon-offset": [0, -12],
-                "icon-allow-overlap": true,
-                "text-field": "{numspots}",
-                "text-font": [
-                    "DIN Offc Pro Medium",
-                    "Arial Unicode MS Bold"
-                ],
-                "text-size": 20,
-                "text-offset": [-0.3, -0.6],
-                "text-anchor": "center",
-                "text-allow-overlap": true,
-                "visibility": "none"
-            },
-            "paint": {
-                "text-color": "#ffffff"
-            }
-        },
-        {
-            "id": "unclustered-points-v3",
+            "id": "unclustered-points",
             "type": "symbol",
             "source": "spots",
             "filter": ["!has", "point_count"],
@@ -4024,13 +3999,13 @@
                     "Arial Unicode MS Bold"
                 ],
                 "text-size": 16,
-                "text-offset": [0.6, -1.7],
+                "text-offset": [0.6, -1.65],
                 "text-anchor": "center",
                 "text-allow-overlap": true,
                 "visibility": "visible"
             },
             "paint": {
-                "text-color": "#ffffff"
+                "text-color": "#3f51b5"
             }
         },
         {
