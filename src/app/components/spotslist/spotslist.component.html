@@ -13,12 +13,6 @@
           <span class="large-text">{{spot.properties.numspots}} parking spot</span>
           <span> within {{spot.properties.distanceToDestination | paMetersToFeet}} feet </span>
         </div>
-        <div class="cta" (click)="onEdit()">
-          <md-icon class="icon">edit_location</md-icon>
-          <span>
-            Update
-          </span>
-        </div>
         <a class="cta" href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}" target="_blank">
           <md-icon class="icon">directions</md-icon>
           <span>
