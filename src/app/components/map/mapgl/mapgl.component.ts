@@ -10,8 +10,9 @@ import {
   ViewChild
 } from '@angular/core';
 import { MapModes, MapboxAccessTolken } from '~/util';
-const turf = require('turf');
+
 const turfcircle = require('@turf/circle');
+const turfhelpers = require('@turf/helpers');
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
 
 // Use this for the opensource maps:
@@ -76,8 +77,15 @@ export class MapGLComponent implements OnInit, OnChanges {
       container: mapDiv,
       style: mapstyle,
       center: [-71.06, 42.35],
-      zoom: 15
+      zoom: 15,
+      attributionControl: false
     });
+
+    // Add compact attribution control
+    map.addControl(new mapboxgl.AttributionControl({
+        compact: true
+    }));
+
     // HACK: Not sure why canvas is set to absolute position, but it breaks styling:
     map.getCanvas().style.position = 'initial';
 
@@ -156,17 +164,17 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setCurrentLocation(location: GeoJSON.Position) {
-    const data = turf.featureCollection([
-      turf.point(location)
+    const data = turfhelpers.featureCollection([
+      turfhelpers.point(location)
     ]);
     this.map.getSource('currentLocation').setData(data);
   }
 
   setDestination(location: GeoJSON.Position) {
-    let data = turf.featureCollection([]);
+    let data = turfhelpers.featureCollection([]);
     if (location !== null) {
-      data = turf.featureCollection([
-        turf.point(location)
+      data = turfhelpers.featureCollection([
+        turfhelpers.point(location)
       ]);
     }
     this.map.getSource('destination').setData(data);
@@ -174,10 +182,10 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setNearby(center: GeoJSON.Position) {
-    let data = turf.featureCollection([]);
+    let data = turfhelpers.featureCollection([]);
     if (center !== null) {
-      data = turf.featureCollection([
-        turfcircle(turf.point(center), 0.2)
+      data = turfhelpers.featureCollection([
+        turfcircle(turfhelpers.point(center), 0.2)
       ]);
     }
     this.map.getSource('nearby').setData(data);

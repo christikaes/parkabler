@@ -4,7 +4,6 @@ import { NgRedux } from '@angular-redux/store';
 import { DistanceService } from '~/services';
 import { Observable } from 'rxjs';
 
-const turf = require('turf');
 const turfCircle = require('@turf/circle');
 const turfWithin = require('@turf/within');
 const turfHelper = require('@turf/helpers');
@@ -28,11 +27,11 @@ export class SpotsNearbyActions {
         }
 
         // Create a circle of 200m
-        const nearbyBounds = turfHelper.featureCollection([turfCircle(turf.point(destination), 0.2)]);
+        const nearbyBounds = turfHelper.featureCollection([turfCircle(turfHelper.point(destination), 0.2)]);
         const filteredSpots = turfWithin(spots, nearbyBounds);
         this.setNearbySpots(filteredSpots);
 
-        this.distanceService.getWalkingDistances(filteredSpots, turf.point(destination))
+        this.distanceService.getWalkingDistances(filteredSpots, turfHelper.point(destination))
             .subscribe((distances) => {
                 const nearbySpots = this.getSpotsWithDistances(filteredSpots, distances);
                 this.setNearbySpots(nearbySpots);

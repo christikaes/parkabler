@@ -1,7 +1,6 @@
 import { SpotsAddActions } from '~/actions';
 import { Action } from '~/util';
 
-const turf = require('turf');
 const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 
@@ -14,17 +13,17 @@ export function spotsAddReducer(
     switch (action.type) {
 
         case SpotsAddActions.ADD:
-            let addSpotFeatures = [...state.features, action.payload];
+            const addSpotFeatures = [...state.features, action.payload];
             return turfHelper.featureCollection(addSpotFeatures);
 
         case SpotsAddActions.REMOVE:
-            let removeSpotFeatures = state.features.filter((spot: GeoJSON.Feature<GeoJSON.Point>) => {
+            const removeSpotFeatures = state.features.filter((spot: GeoJSON.Feature<GeoJSON.Point>) => {
                 return spot.geometry.coordinates !== action.payload.geometry.coordinates;
             });
             return turfHelper.featureCollection([...removeSpotFeatures]);
 
         case SpotsAddActions.UPDATE:
-            let updateSpotFeatures = [];
+            const updateSpotFeatures = [];
             state.features.forEach((spot: GeoJSON.Feature<GeoJSON.Point>) => {
                 if (spot.geometry.coordinates === action.payload.geometry.coordinates) {
                     spot.properties = action.payload.properties;

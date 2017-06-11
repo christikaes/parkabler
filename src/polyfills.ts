@@ -80,7 +80,4 @@ import 'hammerjs';
 // RxJS
 import 'rxjs';
 
-// Turf
-import 'turf';
-
 import '@angular-redux/store';

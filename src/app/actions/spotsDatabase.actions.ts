@@ -5,7 +5,6 @@ import { SpotsDatabaseService } from '~/services';
 import { Spot } from '~/util';
 import { SpotsAddActions, SpotsReportActions } from '~/actions';
 
-const turf = require('turf');
 const turfMeta = require('@turf/meta');
 const turfHelper = require('@turf/helpers');
 
