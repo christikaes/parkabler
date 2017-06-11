@@ -4,10 +4,6 @@
       ".read": true,
       ".write": false
     },
-    "spots": {
-      ".read": true,
-      ".write": false
-    },
     "addspots": {
       ".read": false,
       ".write": true
