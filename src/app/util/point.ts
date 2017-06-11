@@ -1,3 +1,5 @@
+import { Feature } from '@types/geojson';
+
 export type SpotType = 'regular'|'accessible';
 
 export interface Spot {
