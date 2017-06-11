@@ -3991,7 +3991,7 @@
             "layout": {
                 "icon-image": "pin-v3",
                 "icon-size": 1,
-                "icon-offset": [0, -12],
+                "icon-offset": [4, -21],
                 "icon-allow-overlap": true,
                 "text-field": "{numspots}",
                 "text-font": [
@@ -3999,7 +3999,7 @@
                     "Arial Unicode MS Bold"
                 ],
                 "text-size": 16,
-                "text-offset": [0.6, -1.65],
+                "text-offset": [0.8, -2.1],
                 "text-anchor": "center",
                 "text-allow-overlap": true,
                 "visibility": "visible"
