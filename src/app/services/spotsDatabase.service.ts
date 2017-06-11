@@ -8,13 +8,13 @@ const data = require('./data/spots$.json');
 @Injectable()
 export class SpotsDatabaseService {
   private lastSpots: any[] = [];
-  public spots: FirebaseListObservable<any[]>;
+  public spots: Observable<GeoJSON.Feature<GeoJSON.Point>[]>;
 
   constructor(
     private db: AngularFireDatabase
   ) {
     // this.spots = Observable.of(data.spots);
-    this.spots = db.list('spots');
+    this.spots = db.list('spotsall');
   }
 
   // Gets all the spots from the database

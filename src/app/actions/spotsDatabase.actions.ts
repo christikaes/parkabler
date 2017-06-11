@@ -24,14 +24,14 @@ export class SpotsDatabaseActions {
             type: SpotsDatabaseActions.GET
         });
         this.spotsService.get()
-            .subscribe((spots: Array<Spot>) => {
+            .subscribe((spots: GeoJSON.Feature<GeoJSON.Point>[]) => {
                 this.updateSpots(spots);
             });
     }
 
-    private updateSpots(spots: Array<Spot>) {
+    private updateSpots(spots: GeoJSON.Feature<GeoJSON.Point>[]) {
 
-        const spotsFeatureCollection = this.convertToGeoJSON(spots);
+        const spotsFeatureCollection = turfHelper.featureCollection(spots);
 
         this.databaseSpotsUpdated(
             spotsFeatureCollection,
@@ -43,26 +43,6 @@ export class SpotsDatabaseActions {
             type: SpotsDatabaseActions.UPDATE,
             payload: spotsFeatureCollection
         });
-    }
-
-    private convertToGeoJSON (spots: Array<Spot>): GeoJSON.FeatureCollection<GeoJSON.Point> {
-
-        const spotFeatures: Array<GeoJSON.Feature<GeoJSON.Point>> = [];
-
-        spots.forEach((spot) => {
-            const spotFeature = turfHelper.feature({
-                type: 'Point',
-                coordinates: spot.coordinates,
-            }, {
-                numspots: spot.numspots,
-                type: spot.type,
-                icon: 'pin'
-            });
-
-            spotFeatures.push(spotFeature);
-        });
-
-        return turfHelper.featureCollection(spotFeatures);
     }
 
     // When the databaseSpots update, we need to sync up the addSpots and reportSpots
