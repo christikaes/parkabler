@@ -1,11 +1,11 @@
 {
   "rules": {
-    "spots": {
+    "spotsall": {
       ".read": true,
-      ".write": "auth != null"
+      ".write": false
     },
     "addspots": {
-      ".read": "auth != null",
+      ".read": false,
       ".write": true
     }
   }
