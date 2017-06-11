@@ -6,3 +6,11 @@ h4 {
     background-color: #3F51B5;
     color: #E8EAF6;
 }
+
+.additional-feat-container { 
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    margin: auto;
+    text-align: left;
+}
