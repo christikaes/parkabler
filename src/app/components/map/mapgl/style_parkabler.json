@@ -4099,6 +4099,17 @@
                 "icon-size": 1,
                 "icon-allow-overlap": false
             }
+        },
+        {
+            "id": "addSpotOverlayBackground",
+            "type": "background",
+            "layout": {
+                "visibility": "visible"
+            },
+            "paint": {
+                "background-opacity": 0,
+                "background-color": "hsl(0, 0%, 100%)"
+            }
         }
     ],
     "created": "2017-04-29T20:46:21.887Z",

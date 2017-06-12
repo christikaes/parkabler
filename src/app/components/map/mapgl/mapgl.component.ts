@@ -216,8 +216,10 @@ export class MapGLComponent implements OnInit, OnChanges {
   setAddSpotOverlay(show: boolean) {
     if (show) {
       this.addSpotOverlayMarker.addTo(this.map);
+      this.map.setPaintProperty('addSpotOverlayBackground', 'background-opacity', 0.5);
     } else {
       this.addSpotOverlayMarker.remove();
+      this.map.setPaintProperty('addSpotOverlayBackground', 'background-opacity', 0);
     }
   }
 
