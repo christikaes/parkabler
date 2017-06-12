@@ -202,8 +202,7 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   setupAddSpotOverlay() {
     const el = document.createElement('div');
-    el.style.backgroundImage = 'url(assets/img/pin.svg)';
-    el.style.backgroundImage = 'url(assets/img/pin.svg)';
+    el.style.backgroundImage = 'url(assets/img/add_pin.svg)';
     el.style.backgroundSize = 'contain';
     el.style.backgroundColor = 'transparent';
     el.style.margin = '-50px -25px';
