@@ -38,9 +38,11 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
   @Input() currentlocation: GeoJSON.Position;
   @Input() destination: GeoJSON.Position;
+  @Input() showAddSpotOverlay: boolean;
 
   private map: any;
   private initialized = false;
+  private addSpotOverlayMarker;
 
   ngOnInit(): void {
     this.initializeMap();
@@ -63,6 +65,8 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setCurrentLocation(changes[change].currentValue);
         } else if (change === 'destination') {
           this.setDestination(changes[change].currentValue);
+        } else if (change === 'showAddSpotOverlay') {
+          this.setAddSpotOverlay(changes[change].currentValue);
         } else {
           throw new Error('Uncaught change: ' + change);
         }
@@ -73,7 +77,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   initializeMap(): void {
     mapboxgl.accessToken = MapboxAccessTolken;
     const mapDiv = this.MapDiv.nativeElement;
-    const map = new mapboxgl.Map({
+    this.map = new mapboxgl.Map({
       container: mapDiv,
       style: mapstyle,
       center: [-71.06, 42.35],
@@ -82,18 +86,18 @@ export class MapGLComponent implements OnInit, OnChanges {
     });
 
     // Add compact attribution control
-    map.addControl(new mapboxgl.AttributionControl({
+    this.map.addControl(new mapboxgl.AttributionControl({
         compact: true
     }));
 
     // HACK: Not sure why canvas is set to absolute position, but it breaks styling:
-    map.getCanvas().style.position = 'initial';
+    this.map.getCanvas().style.position = 'initial';
 
     // To see all of the events:
     // console.log(map._listeners);
 
     // Signal that the map is loaded
-    map.on('load', () => {
+    this.map.on('load', () => {
       // map.resize();
       const event = document.createEvent('HTMLEvents');
       event.initEvent('resize', true, false);
@@ -102,11 +106,10 @@ export class MapGLComponent implements OnInit, OnChanges {
       // Setup with initial spots
       this.setSpots(this.spots);
       this.setCurrentLocation(this.currentlocation);
+      this.setupAddSpotOverlay();
 
       this.initialized = true;
     });
-
-    this.map = map;
   }
 
   addListeners() {
@@ -124,6 +127,12 @@ export class MapGLComponent implements OnInit, OnChanges {
             .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
             .addTo(this.map);
     }.bind(this));
+
+    this.map.on('move', () => {
+      if (this.addSpotOverlayMarker) {
+        this.addSpotOverlayMarker.setLngLat([this.map.getCenter().lng, this.map.getCenter().lat]);
+      }
+    });
   }
 
   setZoom(newZoom: number) {
@@ -189,6 +198,28 @@ export class MapGLComponent implements OnInit, OnChanges {
       ]);
     }
     this.map.getSource('nearby').setData(data);
+  }
+
+  setupAddSpotOverlay() {
+    const el = document.createElement('div');
+    el.style.backgroundImage = 'url(assets/img/pin.svg)';
+    el.style.backgroundImage = 'url(assets/img/pin.svg)';
+    el.style.backgroundSize = 'contain';
+    el.style.backgroundColor = 'transparent';
+    el.style.margin = '-50px -25px';
+    el.style.width = '50px';
+    el.style.height = '50px';
+
+    this.addSpotOverlayMarker = new mapboxgl.Marker(el)
+      .setLngLat([this.map.getCenter().lng, this.map.getCenter().lat]);
+  }
+
+  setAddSpotOverlay(show: boolean) {
+    if (show) {
+      this.addSpotOverlayMarker.addTo(this.map);
+    } else {
+      this.addSpotOverlayMarker.remove();
+    }
   }
 
 }
