@@ -28,8 +28,8 @@
 
     .transparent {
         background-color: transparent;
-        box-shadow: inset 0 0 5px 5px black;
-        border: 1px solid white;
+        box-shadow: 0 0 0 50px black;
+        border-radius: 3px;
         float:left;
     }
 
@@ -45,7 +45,7 @@
 
 .foreground {
     position: absolute;
-    top: 30%;
+    top: 20%;
     width: 100%;
 
     .card {
@@ -55,6 +55,10 @@
         .message {
             font-size: 24px;
             margin-bottom: 40px;
+        }
+
+        img {
+            max-height: 200px;
         }
     }
 

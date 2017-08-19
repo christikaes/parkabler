@@ -9,8 +9,11 @@
     <div class="foreground">
         <md-card class="card">
             <div class="message">{{message}}</div>
-            <button md-raised-button (click)="onNext()" color="accent">Skip</button>
-            <button md-raised-button (click)="onNext()" color="primary">Next</button>
+            <img src="assets/img/tutorial/tutorial.gif" />
+            <md-card-actions>
+                <button md-raised-button (click)="onNext()" color="accent">Skip</button>
+                <button md-raised-button (click)="onNext()" color="primary">Next</button>
+            </md-card-actions>
         </md-card>
     </div>
 </div>

@@ -49,11 +49,12 @@ export class HelpComponent implements OnInit, AfterViewInit {
 
   public onNext() {
     const helpEl = <HTMLElement>document.querySelector('[data-tutorial=' + this.steps[this.step].dataTutorial + ']')
+    const padding = 5;
     this.transparentBox = {
-      top: helpEl.offsetTop,
-      left: helpEl.offsetLeft,
-      width: helpEl.offsetWidth,
-      height: helpEl.offsetHeight
+      top: helpEl.offsetTop - padding,
+      left: helpEl.offsetLeft - padding,
+      width: helpEl.offsetWidth + padding * 2,
+      height: helpEl.offsetHeight + padding * 2
     }
     this.message = this.steps[this.step].message;
     this.step++;
