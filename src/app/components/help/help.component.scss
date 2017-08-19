@@ -1,0 +1,46 @@
+.container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    opacity: 0.8;
+
+    div {
+        transition: all 0.5s ease-in-out;
+    }
+}
+
+.top {
+    width: 100%;
+    background-color: black;
+}
+
+.left {
+    float:left;
+    background-color: black;
+}
+
+.transparent {
+    background-color: transparent;
+    box-shadow: inset 0 0 5px 5px black;
+    float:left;
+}
+
+.right {
+    overflow:hidden; 
+    background-color:black;
+}
+
+.bottom {
+    width: 100%;
+    height: 100%;
+    background-color: black;
+}

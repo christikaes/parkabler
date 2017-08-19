@@ -39,7 +39,8 @@ import {
   AddSpotOverlayComponent,
   ReportSpotComponent,
   StepperComponent,
-  StepComponent
+  StepComponent,
+  HelpComponent
 } from './components';
 
 // Pages
@@ -84,6 +85,7 @@ import { MetersToFeetPipe } from './pipes';
   declarations: [
     AppComponent,
     HomeComponent,
+    HelpComponent,
     HeaderComponent,
     SpotsListComponent,
     DrawerComponent,

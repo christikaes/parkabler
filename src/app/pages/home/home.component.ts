@@ -23,6 +23,7 @@ export class HomeComponent implements OnInit {
   public appModes = AppModes;
   public reportSpotStep: ReportSpotSteps;
   public placeValue: string;
+  public tutorialOpen = false;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
@@ -30,6 +31,7 @@ export class HomeComponent implements OnInit {
   @select() private appMode$: Observable<AppModes>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
   @select() private place$: Observable<Place>;
+  @select(['tutorial', 'open']) private tutorialOpen$: Observable<boolean>;
 
   // Whenever the escape key is pressed go back to home mode
   @HostListener('document:keydown', ['$event'])
@@ -73,6 +75,10 @@ export class HomeComponent implements OnInit {
     this.appMode$.subscribe((mode: AppModes) => {
         this.mode = mode;
     });
+
+    this.tutorialOpen$.subscribe((open: boolean) => {
+      this.tutorialOpen = open;
+    })
 
     this.place$.subscribe((place: Place) => {
       if (place && place.text) {

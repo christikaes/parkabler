@@ -26,7 +26,8 @@ export class TutorialComponent implements OnInit {
         this.tutorial$.subscribe((tutorialState: TutorialState) => {
             // Note: the dialog takes care of closing itself, we just have to open it
             if (tutorialState.open) {
-                this.openTutorial();
+                // TODO: replaced with helpcomponent
+                // this.openTutorial();
             } else {
                 // If something outside of the dialog framework asks to close this
                 this.dialog.closeAll();

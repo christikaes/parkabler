@@ -8,3 +8,4 @@ export * from './addspot';
 export * from './addspot-button';
 export * from './reportspot';
 export * from './stepper';
+export * from './help';
