@@ -7,10 +7,10 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 })
 export class HelpComponent implements OnInit, AfterViewInit {
   public transparentBox = {
-    top: 100,
-    left: 100,
-    width: 100,
-    height: 100,
+    top: 0,
+    left: 0,
+    width: 0,
+    height: 0,
   }
   public message = 'Welcome to Parkabler'
   private steps = [

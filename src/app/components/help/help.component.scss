@@ -15,32 +15,48 @@
 
     div {
         transition: all 0.5s ease-in-out;
+        background-color: black;
+    }
+
+    .top {
+        width: 100%;
+    }
+
+    .left {
+        float:left;
+    }
+
+    .transparent {
+        background-color: transparent;
+        box-shadow: inset 0 0 5px 5px black;
+        border: 1px solid white;
+        float:left;
+    }
+
+    .right {
+        overflow:hidden; 
+    }
+
+    .bottom {
+        width: 100%;
+        height: 100%;
     }
 }
 
-.top {
+.foreground {
+    position: absolute;
+    top: 30%;
     width: 100%;
-    background-color: black;
+
+    .card {
+        max-width: 300px;
+        margin: auto;
+        
+        .message {
+            font-size: 24px;
+            margin-bottom: 40px;
+        }
+    }
+
 }
 
-.left {
-    float:left;
-    background-color: black;
-}
-
-.transparent {
-    background-color: transparent;
-    box-shadow: inset 0 0 5px 5px black;
-    float:left;
-}
-
-.right {
-    overflow:hidden; 
-    background-color:black;
-}
-
-.bottom {
-    width: 100%;
-    height: 100%;
-    background-color: black;
-}
