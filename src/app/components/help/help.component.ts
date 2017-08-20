@@ -1,4 +1,5 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { TutorialActions } from '~/actions';
 
 @Component({
   selector: 'pa-help',
@@ -37,7 +38,7 @@ export class HelpComponent implements OnInit, AfterViewInit {
   ]
   private step = 0;
 
-  constructor() {
+  constructor(private tutorialActions: TutorialActions) {
   }
 
   ngOnInit() {
@@ -62,6 +63,10 @@ export class HelpComponent implements OnInit, AfterViewInit {
     if (this.steps.length === this.step){
       this.step = 0;
     }
+  }
+
+  public onSkip() {
+    this.tutorialActions.close();
   }
 
 }
