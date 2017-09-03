@@ -1,6 +1,8 @@
-md-toolbar {
-  position: absolute;
-  z-index: 1;
+:host {
+  width: 100%;
+  background-color: #3f51b5;
+  display: flex;
+  color: rgba(255, 255, 255, 0.87);
   font-size: 30px;
 }
 
@@ -34,6 +36,10 @@ span {
 }
 
 @media screen and (max-width: 400px) {
-  .park { display: none; }
-  .abler {display: none;}
+  .park {
+    display: none;
+  }
+  .abler {
+    display: none;
+  }
 }

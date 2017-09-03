@@ -57,7 +57,7 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setZoom(changes[change].currentValue);
         } else if (change === 'center') {
           this.setCenter(changes[change].currentValue);
-        } else if ( change === 'mode') {
+        } else if (change === 'mode') {
           this.setMode(changes[change].currentValue);
         } else if (change === 'spots') {
           this.setSpots(changes[change].currentValue);
@@ -82,13 +82,14 @@ export class MapGLComponent implements OnInit, OnChanges {
       style: mapstyle,
       center: [-71.06, 42.35],
       zoom: 15,
-      attributionControl: false
+      attributionControl: false,
+      logoPosition: 'top-left'
     });
 
     // Add compact attribution control
     this.map.addControl(new mapboxgl.AttributionControl({
-        compact: true
-    }));
+      compact: true
+    }), 'top-right');
 
     // HACK: Not sure why canvas is set to absolute position, but it breaks styling:
     this.map.getCanvas().style.position = 'initial';
@@ -122,10 +123,10 @@ export class MapGLComponent implements OnInit, OnChanges {
     });
 
     this.map.on('click', 'unclustered-points', function (e) {
-        new mapboxgl.Popup({offset: 25})
-            .setLngLat(e.features[0].geometry.coordinates)
-            .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
-            .addTo(this.map);
+      new mapboxgl.Popup({ offset: 25 })
+        .setLngLat(e.features[0].geometry.coordinates)
+        .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
+        .addTo(this.map);
     }.bind(this));
 
     this.map.on('move', () => {
@@ -149,8 +150,8 @@ export class MapGLComponent implements OnInit, OnChanges {
     // ! Important so that this doesn't trigger an infinite loop due to rounding
     const center = [this.map.getCenter().lng, this.map.getCenter().lat];
     if ((Math.abs(Math.round((center[0] - newCenter[0]) * 1000)) > 0)
-        || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
-        this.map.flyTo({center: newCenter});
+      || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
+      this.map.flyTo({ center: newCenter });
     }
   }
 

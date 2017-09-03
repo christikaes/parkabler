@@ -2,13 +2,12 @@
   color: black;
   position: absolute;
   z-index: 1;
-  top: 60px;
+  top: 10px;
   left: 0;
   right: 0;
   padding: 20px 10px;
   display: flex;
   justify-content: center;
-
   .places-search {
     font-size: 17px;
     font-family: Roboto;
@@ -24,21 +23,18 @@
     border: 1px solid #304FFE;
     border-left: 0px;
   }
-
   .search {
     height: 42px;
     display: inline-block;
     border-radius: 0px;
   }
-
   .clear {
     height: 40px;
     border: none;
     background-color: white;
     box-shadow: none;
   }
-
-  .clear-container{
+  .clear-container {
     background-color: white;
     display: inline-block;
     height: 40px;
