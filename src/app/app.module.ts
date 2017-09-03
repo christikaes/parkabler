@@ -46,8 +46,7 @@ import {
 // Pages
 import {
   HomeComponent,
-  RulesInfoComponent,
-  TextComponent
+  RulesInfoComponent
 } from './pages';
 
 // Services
@@ -90,7 +89,6 @@ import { MetersToFeetPipe } from './pipes';
     SpotsListComponent,
     DrawerComponent,
     PlacesComponent,
-    TextComponent,
     RulesInfoComponent,
     MapComponent,
     MapGLComponent,
@@ -119,5 +117,5 @@ import { MetersToFeetPipe } from './pipes';
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor() {}
+  constructor() { }
 }
