@@ -1,19 +1,22 @@
-<div class="container">
-    <div class="backdrop">
-        <div class="top" [style.height.px]="transparentBox.top"></div>
-        <div class="left" [style.width.px]="transparentBox.left" [style.height.px]="transparentBox.height"></div>
-        <div class="transparent" [style.width.px]="transparentBox.width" [style.height.px]="transparentBox.height"></div>
-        <div class="right" [style.height.px]="transparentBox.height"></div>
-        <div class="bottom"></div>
+<div class="mock-navigate" data-tutorial="navigate">
+  3 SPOTS NEAR DESTINATION
+</div>
+
+<div class="container" [@fade]>
+  <div class="backdrop">
+    <div class="top" [style.height.px]="transparentBox.top"></div>
+    <div class="left" [style.width.px]="transparentBox.left" [style.height.px]="transparentBox.height"></div>
+    <div class="transparent" [style.width.px]="transparentBox.width" [style.height.px]="transparentBox.height"></div>
+    <div class="right" [style.height.px]="transparentBox.height"></div>
+    <div class="bottom"></div>
+  </div>
+  <div class="foreground">
+    <div class="title">{{info.title}}</div>
+    <div class="message">{{info.message}}</div>
+    <img class="image" src="{{info.img}}" alt="Tutorial explaination" />
+    <div class="actions">
+      <button md-button (click)="onSkip()" color="accent">Skip</button>
+      <button md-button (click)="onNext()" color="accent">Next</button>
     </div>
-    <div class="foreground">
-        <md-card class="card">
-            <div class="message">{{message}}</div>
-            <img src="assets/img/tutorial/tutorial.gif" />
-            <md-card-actions>
-                <button md-raised-button (click)="onSkip()" color="accent">Skip</button>
-                <button md-raised-button (click)="onNext()" color="primary">Next</button>
-            </md-card-actions>
-        </md-card>
-    </div>
+  </div>
 </div>

@@ -2,7 +2,7 @@ import { TutorialActions } from '~/actions';
 import { Tutorial, TutorialState, Action } from '~/util';
 
 const INITIAL_STATE: TutorialState = {
-    open: false,
+    open: true,
     tutorial: 'intro'
 };
 
@@ -13,13 +13,13 @@ export function tutorialReducer(
     switch (action.type) {
 
         case TutorialActions.OPEN:
-            return Object.assign({}, state, {open: true});
+            return Object.assign({}, state, { open: true });
 
         case TutorialActions.CLOSE:
-            return Object.assign({}, state, {open: false});
+            return Object.assign({}, state, { open: false });
 
         case TutorialActions.SET:
-            return Object.assign({}, state, {tutorial: action.payload});
+            return Object.assign({}, state, { tutorial: action.payload });
 
         default:
             return state;

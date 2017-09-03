@@ -1,66 +1,81 @@
 .container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1000;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
 }
 
 .backdrop {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  opacity: 0.8;
+  div {
+    transition: all 0.5s ease-in-out;
+    background-color: black;
+  }
+  .top {
+    width: 100%;
+  }
+  .left {
+    float: left;
+  }
+  .transparent {
+    background-color: transparent;
+    box-shadow: 0 0 0 1000px black;
+    border-radius: 3px;
+    float: left;
+  }
+  .right {
+    overflow: hidden;
+  }
+  .bottom {
     width: 100%;
     height: 100%;
-    overflow: hidden;
-    opacity: 0.8;
-
-    div {
-        transition: all 0.5s ease-in-out;
-        background-color: black;
-    }
-
-    .top {
-        width: 100%;
-    }
-
-    .left {
-        float:left;
-    }
-
-    .transparent {
-        background-color: transparent;
-        box-shadow: 0 0 0 50px black;
-        border-radius: 3px;
-        float:left;
-    }
-
-    .right {
-        overflow:hidden; 
-    }
-
-    .bottom {
-        width: 100%;
-        height: 100%;
-    }
+  }
 }
 
 .foreground {
-    position: absolute;
-    top: 20%;
-    width: 100%;
-
-    .card {
-        max-width: 300px;
-        margin: auto;
-        
-        .message {
-            font-size: 24px;
-            margin-bottom: 40px;
-        }
-
-        img {
-            max-height: 200px;
-        }
-    }
-
+  position: absolute;
+  top: 0;
+  left: 5%;
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  .title {
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+  }
+  .message {
+    height: 20vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    color: white;
+  }
+  .image {
+    height: 40vh;
+    margin: 0 auto;
+  }
+  .actions {
+    margin-top: 10px;
+  }
 }
 
+.mock-navigate {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+  line-height: 30px;
+  width: 100%;
+  background-color: #3F51B5;
+  color: white;
+  font-size: 16px;
+}
