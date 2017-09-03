@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
   @select() public spotsNearby$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
-  @select() private appMode$: Observable<AppModes>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
   @select() private place$: Observable<Place>;
 
@@ -67,11 +66,6 @@ export class HomeComponent implements OnInit {
       (destination, spots) => ({ destination, spots })
     ).subscribe(({destination, spots}) => {
       this.spotsNearbyActions.getNearbySpots(destination, spots);
-    });
-
-    // Whenever the app mode changes, show/hide appropriate components
-    this.appMode$.subscribe((mode: AppModes) => {
-      this.mode = mode;
     });
 
     this.place$.subscribe((place: Place) => {

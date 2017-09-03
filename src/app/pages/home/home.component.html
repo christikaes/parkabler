@@ -1,12 +1,9 @@
 <pa-header></pa-header>
-<div class="content">
-  <div class="map-container">
-    <pa-map></pa-map>
-    <pa-places (placeUpdate)="onPlaceUpdate($event)" [placeValue]="placeValue"></pa-places>
-  </div>
-  <div>
-    <pa-add-spot></pa-add-spot>
-    <pa-report-spot [opened]="mode==appModes.ReportSpot" (close)="onCloseReportSpot()"></pa-report-spot>
-    <pa-spots-list [spots]="spotsNearby$ | async"></pa-spots-list>
-  </div>
+<div class="map-container">
+  <pa-map></pa-map>
+  <pa-places (placeUpdate)="onPlaceUpdate($event)" [placeValue]="placeValue"></pa-places>
+</div>
+<div>
+  <pa-add-spot></pa-add-spot>
+  <pa-spots-list [spots]="spotsNearby$ | async"></pa-spots-list>
 </div>

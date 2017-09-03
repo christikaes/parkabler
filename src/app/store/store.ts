@@ -9,7 +9,6 @@ import {
   appModeReducer,
   addSpotStepReducer,
   addSpotInfoReducer,
-  reportSpotStepReducer,
   spotsListModeReducer,
   destinationReducer, DestinationState,
   mapReducer, MapState,
@@ -21,7 +20,6 @@ import {
   Place,
   AppModes,
   AddSpotSteps,
-  ReportSpotSteps,
   SpotsListModes
 } from '~/util';
 
@@ -36,7 +34,6 @@ export interface IAppState {
   place?: Place;
   appMode?: AppModes;
   addSpotStep?: AddSpotSteps;
-  reportStopStep?: ReportSpotSteps;
   spotsListMode?: SpotsListModes;
   map?: MapState;
   addSpotInfo?: Spot;
@@ -54,7 +51,6 @@ export const rootReducer = combineReducers<IAppState>({
   appMode: appModeReducer,
   addSpotStep: addSpotStepReducer,
   addSpotInfo: addSpotInfoReducer,
-  reportSpotStep: reportSpotStepReducer,
   spotsListMode: spotsListModeReducer,
   map: mapReducer,
   geolocation: geolocationReducers

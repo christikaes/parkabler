@@ -34,7 +34,6 @@ import {
   MapControlsComponent,
   AddSpotComponent,
   AddSpotButtonComponent,
-  ReportSpotComponent,
   StepperComponent,
   StepComponent,
   HelpComponent
@@ -92,7 +91,6 @@ import { MetersToFeetPipe } from './pipes';
     MapControlsComponent,
     AddSpotComponent,
     AddSpotButtonComponent,
-    ReportSpotComponent,
     StepComponent,
     StepperComponent,
     MetersToFeetPipe
