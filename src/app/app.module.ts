@@ -36,7 +36,8 @@ import {
   AddSpotButtonComponent,
   StepperComponent,
   StepComponent,
-  HelpComponent
+  HelpComponent,
+  InfoComponent
 } from './components';
 
 // Pages
@@ -81,6 +82,7 @@ import { MetersToFeetPipe } from './pipes';
     AppComponent,
     HomeComponent,
     HelpComponent,
+    InfoComponent,
     HeaderComponent,
     SpotsListComponent,
     DrawerComponent,

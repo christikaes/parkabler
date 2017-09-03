@@ -2,20 +2,16 @@ import { style, animate, transition, state, trigger } from '@angular/animations'
 
 export default [
   trigger('slideLeft', [
-    state('in', style({
-      transform: 'translate3d(0, 0, 0)',
-      position: 'absolute', top: 0, left: 0,
-    })),
-    transition('void => *', [
+    transition(':enter', [
       style({
         transform: 'translate3d(100%, 0, 0)',
         position: 'absolute', top: 0, left: 0,
       }),
-      animate('600ms cubic-bezier(0.77, 0, 0.175, 1)')
+      animate('300ms cubic-bezier(0.77, 0, 0.175, 1)')
     ]),
-    transition('* => void', [
+    transition(':leave', [
       animate(
-        '600ms cubic-bezier(0.77, 0, 0.175, 1)',
+        '300ms cubic-bezier(0.77, 0, 0.175, 1)',
         style({
           transform: 'translate3d(100%, 0, 0)',
           position: 'absolute', top: 0, left: 0,
@@ -24,20 +20,16 @@ export default [
     ])
   ]),
   trigger('slideRight', [
-    state('in', style({
-      transform: 'translate3d(0, 0, 0)',
-      position: 'absolute', top: 0, left: 0,
-    })),
-    transition('void => *', [
+    transition(':enter', [
       style({
         transform: 'translate3d(-100%, 0, 0)',
         position: 'absolute', top: 0, left: 0,
       }),
-      animate('600ms cubic-bezier(0.77, 0, 0.175, 1)')
+      animate('300ms cubic-bezier(0.77, 0, 0.175, 1)')
     ]),
-    transition('* => void', [
+    transition(':leave', [
       animate(
-        '600ms cubic-bezier(0.77, 0, 0.175, 1)',
+        '300ms cubic-bezier(0.77, 0, 0.175, 1)',
         style({
           transform: 'translate3d(-100%, 0, 0)',
           position: 'absolute', top: 0, left: 0,

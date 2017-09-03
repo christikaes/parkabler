@@ -18,7 +18,7 @@ export class RulesInfoComponent implements OnInit, OnDestroy {
   private sub: Subscription;
   private id: number;
 
-  private updateContent = function(){
+  private updateContent = function () {
     if (!this.rules) {
       return;
     }
@@ -27,16 +27,16 @@ export class RulesInfoComponent implements OnInit, OnDestroy {
       this.content = this.rules[this.id].content;
       this.isHome = false;
     } else {
-      this.title = 'Rules and Regulations';
+      this.title = 'Information';
       this.content = [];
       this.isHome = true;
       for (let i = 0; i < this.rules.length; i++) {
-          let text = this.rules[i].title;
-          let href = ['/rulesinfo', {id: i}];
-          this.content.push({
-            'text': text,
-            'href': href
-          });
+        let text = this.rules[i].title;
+        let href = ['/rulesinfo', { id: i }];
+        this.content.push({
+          'text': text,
+          'href': href
+        });
       }
     }
   };
@@ -54,9 +54,9 @@ export class RulesInfoComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
-       this.id = +params['id']; // (+) converts string 'id' to a number
-       this.updateContent();
-     });
+      this.id = +params['id']; // (+) converts string 'id' to a number
+      this.updateContent();
+    });
   }
 
   ngOnDestroy() {
