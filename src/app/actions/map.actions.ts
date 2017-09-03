@@ -1,18 +1,16 @@
 import { Injectable } from '@angular/core';
 import { NgRedux } from '@angular-redux/store';
 import { IAppState } from '~/store';
-import { MapModes } from '~/util';
 
 
 @Injectable()
 export class MapActions {
   static SET_CENTER = 'PA/MAP/SET/CENTER';
   static SET_ZOOM = 'PA/MAP/SET/ZOOM';
-  static SET_MODE = 'PA/MAP/SET/MODE';
 
   constructor(
     private ngRedux: NgRedux<IAppState>
-  ) {}
+  ) { }
 
   public setZoom(zoom: number) {
     if (this.ngRedux.getState().map.zoom !== zoom) {
@@ -32,12 +30,4 @@ export class MapActions {
     }
   }
 
-  public setMode(mode: MapModes) {
-    if (this.ngRedux.getState().map.mode !== mode) {
-      this.ngRedux.dispatch({
-        type: MapActions.SET_MODE,
-        payload: mode
-      });
-    }
-  }
 }

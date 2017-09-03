@@ -1,19 +1,10 @@
-<pa-map-gl *ngIf="supportsGL" 
-    [zoom]="zoom" (zoomChange)="setZoom($event)"
-    [center]="center" (centerChange)="setCenter($event)" 
-    [mode]="mode" (modeChange)="setMode($event)" 
-    [spots]="spots"
-    [currentlocation]="currentLocation"
-    [destination]="destination"
-    [showAddSpotOverlay]="showAddSpotOverlay">
+<pa-map-gl *ngIf="supportsGL" [zoom]="zoom" (zoomChange)="setZoom($event)" [center]="center" (centerChange)="setCenter($event)"
+  [spots]="spots" [currentlocation]="currentLocation" [destination]="destination" [showAddSpotOverlay]="showAddSpotOverlay">
 </pa-map-gl>
 <!--<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-js>-->
 
 <!--<pa-map-addspot-overlay [open]="showAddSpotOverlay"></pa-map-addspot-overlay>-->
 
-<pa-map-controls 
-    (zoomChange)="setZoom(zoom + $event)" 
-    (modeChange)="setMode($event)" 
-    (recenterChange)="recenterChange()"
-    [recenterAvailable]="geolocationAvailable">
+<pa-map-controls (zoomChange)="setZoom(zoom + $event)" (modeChange)="setMode($event)" (recenterChange)="recenterChange()"
+  [recenterAvailable]="geolocationAvailable">
 </pa-map-controls>

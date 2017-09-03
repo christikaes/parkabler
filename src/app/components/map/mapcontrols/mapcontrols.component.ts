@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MapModes } from '~/util';
 
 @Component({
   selector: 'pa-map-controls',
@@ -12,11 +11,7 @@ export class MapControlsComponent {
   @Output() recenterChange = new EventEmitter();
   @Input() recenterAvailable;
 
-  constructor() {}
-
-  changeMode(v: MapModes): void {
-    this.modeChange.emit(v);
-  }
+  constructor() { }
 
   changeZoom(z: number): void {
     this.zoomChange.emit(z);

@@ -9,7 +9,7 @@ import {
   EventEmitter,
   ViewChild
 } from '@angular/core';
-import { MapModes, MapboxAccessTolken } from '~/util';
+import { MapboxAccessTolken } from '~/util';
 
 const turfcircle = require('@turf/circle');
 const turfhelpers = require('@turf/helpers');
@@ -34,7 +34,6 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Output() zoomChange = new EventEmitter<number>();
   @Input() center: number;
   @Output() centerChange = new EventEmitter<GeoJSON.Position>();
-  @Input() mode: MapModes;
   @Input() spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
   @Input() currentlocation: GeoJSON.Position;
   @Input() destination: GeoJSON.Position;
@@ -57,8 +56,6 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setZoom(changes[change].currentValue);
         } else if (change === 'center') {
           this.setCenter(changes[change].currentValue);
-        } else if (change === 'mode') {
-          this.setMode(changes[change].currentValue);
         } else if (change === 'spots') {
           this.setSpots(changes[change].currentValue);
         } else if (change === 'currentlocation') {
@@ -152,20 +149,6 @@ export class MapGLComponent implements OnInit, OnChanges {
     if ((Math.abs(Math.round((center[0] - newCenter[0]) * 1000)) > 0)
       || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
       this.map.flyTo({ center: newCenter });
-    }
-  }
-
-  setMode(mode: MapModes) {
-    switch (mode) {
-      case 'satellite':
-        this.map.setPaintProperty('satellite', 'raster-opacity', 1);
-        break;
-      case 'street':
-        this.map.setPaintProperty('satellite', 'raster-opacity', 0);
-        break;
-      default:
-        this.map.setPaintProperty('satellite', 'raster-opacity', 0);
-        break;
     }
   }
 

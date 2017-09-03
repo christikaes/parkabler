@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { MapModes, AddSpotSteps, AppModes } from '~/util';
+import { AddSpotSteps, AppModes } from '~/util';
 import { GeolocationService } from '~/services';
 import { DestinationActions, MapActions } from '~/actions';
 import { IAppState } from '~/store';
@@ -18,7 +18,6 @@ export class MapComponent implements AfterViewInit {
   public supportsGL: boolean;
 
   public zoom: number;
-  public mode: MapModes;
   public center: GeoJSON.Position;
 
   public currentLocation: GeoJSON.Position;
@@ -36,7 +35,6 @@ export class MapComponent implements AfterViewInit {
   @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
   @select(['map', 'center']) private center$: Observable<GeoJSON.Position>;
-  @select(['map', 'mode']) private mode$: Observable<MapModes>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -55,9 +53,6 @@ export class MapComponent implements AfterViewInit {
     });
     this.center$.subscribe((c: GeoJSON.Position) => {
       this.center = c;
-    });
-    this.mode$.subscribe((m: MapModes) => {
-      this.mode = m;
     });
 
     // Listen to changes in currentLocation
@@ -85,14 +80,10 @@ export class MapComponent implements AfterViewInit {
     // Show the add spot overlay if in app spot mode, and on the location step
     this.addSpotStep$.combineLatest(
       this.appMode$,
-      (addSpotStep: AddSpotSteps, appMode: AppModes) => ({addSpotStep, appMode})
-    ).subscribe( ({addSpotStep, appMode}) => {
+      (addSpotStep: AddSpotSteps, appMode: AppModes) => ({ addSpotStep, appMode })
+    ).subscribe(({addSpotStep, appMode}) => {
       this.showAddSpotOverlay = addSpotStep === AddSpotSteps.Location && appMode === AppModes.AddSpot;
     });
-  }
-
-  setMode(m: MapModes): void {
-    this.mapActions.setMode(m);
   }
 
   setZoom(z: number): void {

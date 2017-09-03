@@ -1,4 +1,4 @@
-import { Action, MapModes } from '~/util';
+import { Action } from '~/util';
 import { MapActions } from '~/actions';
 
 export interface MapState {
@@ -19,13 +19,10 @@ export function mapReducer(
 ) {
     switch (action.type) {
         case MapActions.SET_CENTER:
-            return Object.assign({}, state, {center: action.payload});
+            return Object.assign({}, state, { center: action.payload });
 
         case MapActions.SET_ZOOM:
-            return Object.assign({}, state, {zoom: action.payload});
-
-        case MapActions.SET_MODE:
-            return Object.assign({}, state, {mode: action.payload});
+            return Object.assign({}, state, { zoom: action.payload });
 
         default:
             return state;
