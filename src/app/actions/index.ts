@@ -4,7 +4,6 @@ import { SpotsDatabaseActions } from './spotsDatabase.actions';
 import { SpotsAddActions } from './spotsAdd.actions';
 import { SpotsReportActions } from './spotsReport.actions';
 import { SpotsNearbyActions } from './spotsNearby.actions';
-import { TutorialActions } from './tutorial.actions';
 import { PlacesActions } from './places.actions';
 import { AppModeActions } from './appmode.actions';
 import { AddSpotStepActions } from './addspotstep.actions';
@@ -20,7 +19,6 @@ export const ACTION_PROVIDERS = [
   SpotsAddActions,
   SpotsReportActions,
   SpotsNearbyActions,
-  TutorialActions,
   AppModeActions,
   AddSpotStepActions,
   AddSpotInfoActions,
@@ -38,7 +36,6 @@ export {
   SpotsAddActions,
   SpotsReportActions,
   SpotsNearbyActions,
-  TutorialActions,
   AppModeActions,
   AddSpotStepActions,
   AddSpotInfoActions,

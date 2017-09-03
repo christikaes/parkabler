@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
   public appModes = AppModes;
   public reportSpotStep: ReportSpotSteps;
   public placeValue: string;
-  public tutorialOpen = false;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
@@ -31,7 +30,6 @@ export class HomeComponent implements OnInit {
   @select() private appMode$: Observable<AppModes>;
   @select() private reportSpotStep$: Observable<ReportSpotSteps>;
   @select() private place$: Observable<Place>;
-  @select(['tutorial', 'open']) private tutorialOpen$: Observable<boolean>;
 
   // Whenever the escape key is pressed go back to home mode
   @HostListener('document:keydown', ['$event'])
@@ -54,7 +52,7 @@ export class HomeComponent implements OnInit {
     private reportSpotStepActions: ReportSpotStepActions,
     private geolocationActions: GeolocationActions,
     private appModeActions: AppModeActions
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.geolocationActions.watch();
@@ -66,19 +64,15 @@ export class HomeComponent implements OnInit {
     // We then use the latest values from both to get nearby spots
     this.destination$.combineLatest(
       this.spots$,
-      (destination, spots) => ({destination, spots})
+      (destination, spots) => ({ destination, spots })
     ).subscribe(({destination, spots}) => {
       this.spotsNearbyActions.getNearbySpots(destination, spots);
     });
 
     // Whenever the app mode changes, show/hide appropriate components
     this.appMode$.subscribe((mode: AppModes) => {
-        this.mode = mode;
+      this.mode = mode;
     });
-
-    this.tutorialOpen$.subscribe((open: boolean) => {
-      this.tutorialOpen = open;
-    })
 
     this.place$.subscribe((place: Place) => {
       if (place && place.text) {

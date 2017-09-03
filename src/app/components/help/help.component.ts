@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { TutorialActions } from '~/actions';
 import Animations from '~/animations';
 
 @Component({
@@ -9,6 +8,7 @@ import Animations from '~/animations';
   animations: Animations
 })
 export class HelpComponent {
+  public open = true;
   public transparentBox = {
     top: 0,
     left: 0,
@@ -22,37 +22,37 @@ export class HelpComponent {
   }
   private steps = [
     {
-      dataTutorial: 'places',
+      dataSelector: 'places',
       title: 'Search',
       message: 'Get started by searching for your destination. You can also hit the near me to find parking near your location.',
       img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-      dataTutorial: 'navigate',
+      dataSelector: 'navigate',
       title: 'Navigate',
       message: 'Spots near your destination will be listed here. You can navigate to the spot with your favorite map app.',
       img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-      dataTutorial: 'map-controls',
+      dataSelector: 'map-controls',
       title: 'Map Controls',
       message: 'Center the map on your location or zoom in and out using these controls.',
       img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-      dataTutorial: 'add-spot',
+      dataSelector: 'add-spot',
       title: 'Add/Edit Spots',
       message: 'Parkabler is powered by contributions from the community. You can also add new spots that we don\'t know about yet and edit spaces with incorrect information.',
       img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-      dataTutorial: 'rules',
+      dataSelector: 'rules',
       title: 'Info',
       message: 'Find information about parking rules in your city here. You can also find information about this app.',
       img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-      dataTutorial: 'help',
+      dataSelector: 'help',
       title: 'Help',
       message: 'You can always open this help from here',
       img: '/assets/img/tutorial/tutorial.gif'
@@ -60,11 +60,8 @@ export class HelpComponent {
   ]
   private step = 0;
 
-  constructor(private tutorialActions: TutorialActions) {
-  }
-
   public onNext() {
-    const helpEl = <HTMLElement>document.querySelector('[data-tutorial=' + this.steps[this.step].dataTutorial + ']')
+    const helpEl = <HTMLElement>document.querySelector('[data-help=' + this.steps[this.step].dataSelector + ']')
     const elBoundingRect = helpEl.getBoundingClientRect()
     const padding = 5;
     this.transparentBox = {
@@ -76,13 +73,17 @@ export class HelpComponent {
     this.info = this.steps[this.step];
     this.step++;
     if (this.steps.length === this.step) {
-      this.tutorialActions.close();
+      this.open = false;
       this.step = 0;
     }
   }
 
   public onSkip() {
-    this.tutorialActions.close();
+    this.open = false;
+  }
+
+  public onOpen() {
+    this.open = true;
   }
 
 }

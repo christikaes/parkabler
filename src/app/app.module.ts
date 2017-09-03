@@ -32,8 +32,6 @@ import {
   MapComponent,
   MapGLComponent,
   MapControlsComponent,
-  TutorialComponent,
-  TutorialDialogComponent,
   AddSpotComponent,
   AddSpotButtonComponent,
   ReportSpotComponent,
@@ -92,8 +90,6 @@ import { MetersToFeetPipe } from './pipes';
     MapComponent,
     MapGLComponent,
     MapControlsComponent,
-    TutorialComponent,
-    TutorialDialogComponent,
     AddSpotComponent,
     AddSpotButtonComponent,
     ReportSpotComponent,
@@ -101,7 +97,6 @@ import { MetersToFeetPipe } from './pipes';
     StepperComponent,
     MetersToFeetPipe
   ],
-  entryComponents: [TutorialDialogComponent],
   providers: [
     DevToolsExtension,
     SpotsDatabaseService,

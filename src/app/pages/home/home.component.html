@@ -5,9 +5,8 @@
     <pa-places (placeUpdate)="onPlaceUpdate($event)" [placeValue]="placeValue"></pa-places>
   </div>
   <div>
-  <pa-add-spot></pa-add-spot>
-  <pa-report-spot [opened]="mode==appModes.ReportSpot" (close)="onCloseReportSpot()"></pa-report-spot>
-  <pa-spots-list [spots]="spotsNearby$ | async"></pa-spots-list>
+    <pa-add-spot></pa-add-spot>
+    <pa-report-spot [opened]="mode==appModes.ReportSpot" (close)="onCloseReportSpot()"></pa-report-spot>
+    <pa-spots-list [spots]="spotsNearby$ | async"></pa-spots-list>
   </div>
 </div>
-<pa-help *ngIf="tutorialOpen"></pa-help>

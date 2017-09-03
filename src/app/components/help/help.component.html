@@ -1,8 +1,11 @@
-<div class="mock-navigate" data-tutorial="navigate">
-  3 SPOTS NEAR DESTINATION
-</div>
+<button md-button (click)="onOpen()" data-help="help">
+    HELP
+</button>
 
-<div class="container" [@fade]>
+<div *ngIf="open" class="container" [@fade]>
+  <div class="mock-navigate" data-help="navigate">
+    3 SPOTS NEAR DESTINATION
+  </div>
   <div class="backdrop">
     <div class="top" [style.height.px]="transparentBox.top"></div>
     <div class="left" [style.width.px]="transparentBox.left" [style.height.px]="transparentBox.height"></div>
@@ -13,7 +16,7 @@
   <div class="foreground">
     <div class="title">{{info.title}}</div>
     <div class="message">{{info.message}}</div>
-    <img class="image" src="{{info.img}}" alt="Tutorial explaination" />
+    <img class="image" src="{{info.img}}" alt="Help explaination" />
     <div class="actions">
       <button md-button (click)="onSkip()" color="accent">Skip</button>
       <button md-button (click)="onNext()" color="accent">Next</button>

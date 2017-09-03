@@ -5,7 +5,6 @@ import {
   spotsAddReducer,
   spotsReportReducer,
   spotsNearbyReducer,
-  tutorialReducer,
   placesReducer,
   appModeReducer,
   addSpotStepReducer,
@@ -23,8 +22,7 @@ import {
   AppModes,
   AddSpotSteps,
   ReportSpotSteps,
-  SpotsListModes,
-  TutorialState
+  SpotsListModes
 } from '~/util';
 
 // 'assemble' the full store out of modules
@@ -35,7 +33,6 @@ export interface IAppState {
   spotsDatabase?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   spotsReport?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   spotsNearby?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  tutorial?: TutorialState;
   place?: Place;
   appMode?: AppModes;
   addSpotStep?: AddSpotSteps;
@@ -53,7 +50,6 @@ export const rootReducer = combineReducers<IAppState>({
   spotsReport: spotsReportReducer,
   spotsDatabase: spotsDatabaseReducer,
   spotsNearby: spotsNearbyReducer,
-  tutorial: tutorialReducer,
   place: placesReducer,
   appMode: appModeReducer,
   addSpotStep: addSpotStepReducer,
