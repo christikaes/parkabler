@@ -15,6 +15,11 @@ export class AddSpotComponent implements OnInit {
   public isAppMode: boolean;
   public addSpotStep: AddSpotSteps;
   public addSpotSteps = AddSpotSteps;
+  public ramp: boolean;
+  public timeRestrictions: boolean;
+  public fee: boolean;
+  public residential: boolean;
+  public comments: boolean;
 
   public numSpots: number;
 
@@ -27,7 +32,7 @@ export class AddSpotComponent implements OnInit {
     private addSpotStepActions: AddSpotStepActions,
     private addSpotInfoActions: AddSpotInfoActions,
     private spotsAddActions: SpotsAddActions
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
