@@ -1,6 +1,6 @@
 <!--<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }" [@slideUp]="state" [@peakUp]="state">-->
 <div class="container" [@slideUp]="state">
-  <button md-button class="header" (click)="toggleExapand()">
+  <button md-button class="header" (click)="toggleExapand()" (panup)="onPanUp($event)" (pandown)="onPanDown($event)">
     {{numSpot}} SPOTS NEAR DESTINATION
     <md-icon *ngIf="state!='open'">keyboard_arrow_up</md-icon>
     <md-icon *ngIf="state=='open'">keyboard_arrow_down</md-icon>

@@ -29,7 +29,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
   }
 
   ngOnInit() {
-    this.appMode$.subscribe( (mode: AppModes) => {
+    this.appMode$.subscribe((mode: AppModes) => {
       this.appMode = mode;
       if (mode !== AppModes.SpotsList) {
         this.state = 'closed';
@@ -72,5 +72,13 @@ export class SpotsListComponent implements OnInit, OnChanges {
 
   onClickSpot() {
     // set map center and zoom
+  }
+
+  onPanDown(e) {
+    this.state = 'peak'
+  }
+
+  onPanUp(e) {
+    this.state = 'open'
   }
 }
