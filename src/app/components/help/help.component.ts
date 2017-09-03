@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import Animations from '~/animations';
+import { defaultInfo, steps } from './help-data'
 
 @Component({
   selector: 'pa-help',
@@ -15,53 +16,11 @@ export class HelpComponent {
     width: 0,
     height: 0,
   }
-  public info = {
-    title: 'Parkabler',
-    message: 'Welcome to Parkabler! You can use this app to find and navigate to accessible parking spots.',
-    img: '/assets/img/tutorial/tutorial.gif'
-  }
-  private steps = [
-    {
-      dataSelector: 'places',
-      title: 'Search',
-      message: 'Get started by searching for your destination. You can also hit the near me to find parking near your location.',
-      img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
-      dataSelector: 'navigate',
-      title: 'Navigate',
-      message: 'Spots near your destination will be listed here. You can navigate to the spot with your favorite map app.',
-      img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
-      dataSelector: 'map-controls',
-      title: 'Map Controls',
-      message: 'Center the map on your location or zoom in and out using these controls.',
-      img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
-      dataSelector: 'add-spot',
-      title: 'Add/Edit Spots',
-      message: 'Parkabler is powered by contributions from the community. You can also add new spots that we don\'t know about yet and edit spaces with incorrect information.',
-      img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
-      dataSelector: 'rules',
-      title: 'Info',
-      message: 'Find information about parking rules in your city here. You can also find information about this app.',
-      img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
-      dataSelector: 'help',
-      title: 'Help',
-      message: 'You can always open this help from here',
-      img: '/assets/img/tutorial/tutorial.gif'
-    }
-  ]
+  public info = defaultInfo;
   private step = 0;
 
   public onNext() {
-    const helpEl = <HTMLElement>document.querySelector('[data-help=' + this.steps[this.step].dataSelector + ']')
+    const helpEl = <HTMLElement>document.querySelector('[data-help=' + steps[this.step].dataSelector + ']')
     const elBoundingRect = helpEl.getBoundingClientRect()
     const padding = 5;
     this.transparentBox = {
@@ -70,15 +29,15 @@ export class HelpComponent {
       width: elBoundingRect.width + padding * 2,
       height: elBoundingRect.height + padding * 2
     }
-    this.info = this.steps[this.step];
+    this.info = steps[this.step];
     this.step++;
-    if (this.steps.length === this.step) {
-      this.open = false;
+    if (steps.length === this.step) {
+      this.onClose();
       this.step = 0;
     }
   }
 
-  public onSkip() {
+  public onClose() {
     this.open = false;
   }
 
