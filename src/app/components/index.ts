@@ -4,7 +4,7 @@ export * from './spotslist';
 export * from './drawer';
 export * from './map';
 export * from './addspot';
-export * from './addspot-button';
+export * from './add-edit-button';
 export * from './stepper';
 export * from './help';
 export * from './info';

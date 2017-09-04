@@ -33,7 +33,7 @@ import {
   MapGLComponent,
   MapControlsComponent,
   AddSpotComponent,
-  AddSpotButtonComponent,
+  AddEditButtonComponent,
   StepperComponent,
   StepComponent,
   HelpComponent,
@@ -92,7 +92,7 @@ import { MetersToFeetPipe } from './pipes';
     MapGLComponent,
     MapControlsComponent,
     AddSpotComponent,
-    AddSpotButtonComponent,
+    AddEditButtonComponent,
     StepComponent,
     StepperComponent,
     MetersToFeetPipe

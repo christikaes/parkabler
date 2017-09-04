@@ -79,25 +79,38 @@
         "composite": {
             "url": "mapbox://mapbox.mapbox-streets-v7",
             "type": "vector"
-        }, 
+        },
         "spots": {
-          "type": "geojson",
-          "data": {"type": "FeatureCollection", "features": []},
-          "cluster": true,
-          "clusterMaxZoom": 22,
-          "clusterRadius": 10
+            "type": "geojson",
+            "buffer": 512,
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            },
+            "cluster": true,
+            "clusterMaxZoom": 22,
+            "clusterRadius": 10
         },
         "currentLocation": {
-          "type": "geojson",
-          "data": {"type": "FeatureCollection", "features": []}
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            }
         },
         "destination": {
-          "type": "geojson",
-          "data": {"type": "FeatureCollection", "features": []}
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            }
         },
         "nearby": {
-          "type": "geojson",
-          "data": {"type": "FeatureCollection", "features": []}
+            "type": "geojson",
+            "data": {
+                "type": "FeatureCollection",
+                "features": []
+            }
         }
     },
     "sprite": "mapbox://sprites/christikaes/cj34vt25f00062rl5ij34i52b",
@@ -3987,11 +4000,17 @@
             "id": "unclustered-points",
             "type": "symbol",
             "source": "spots",
-            "filter": ["!has", "point_count"],
+            "filter": [
+                "!has",
+                "point_count"
+            ],
             "layout": {
                 "icon-image": "pin-v3",
                 "icon-size": 1,
-                "icon-offset": [4, -21],
+                "icon-offset": [
+                    4,
+                    -21
+                ],
                 "icon-allow-overlap": true,
                 "text-field": "{numspots}",
                 "text-font": [
@@ -3999,7 +4018,10 @@
                     "Arial Unicode MS Bold"
                 ],
                 "text-size": 16,
-                "text-offset": [0.8, -2.1],
+                "text-offset": [
+                    0.8,
+                    -2.1
+                ],
                 "text-anchor": "center",
                 "text-allow-overlap": true,
                 "visibility": "visible"
@@ -4019,7 +4041,11 @@
                 "circle-stroke-color": "#3F51B5",
                 "circle-stroke-opacity": 0.5
             },
-            "filter": [">=","point_count", 0]
+            "filter": [
+                ">=",
+                "point_count",
+                0
+            ]
         },
         {
             "id": "cluster-1",
@@ -4032,9 +4058,19 @@
                 "circle-stroke-color": "#f1f075",
                 "circle-stroke-opacity": 0.5
             },
-            "filter": ["all",
-                        [">=", "point_count", 10],
-                        ["<", "point_count", 0]]
+            "filter": [
+                "all",
+                [
+                    ">=",
+                    "point_count",
+                    10
+                ],
+                [
+                    "<",
+                    "point_count",
+                    0
+                ]
+            ]
         },
         {
             "id": "cluster-2",
@@ -4047,9 +4083,19 @@
                 "circle-stroke-color": "#f28cb1",
                 "circle-stroke-opacity": 0.5
             },
-            "filter": ["all",
-                        [">=", "point_count", 20],
-                        ["<", "point_count", 10]]
+            "filter": [
+                "all",
+                [
+                    ">=",
+                    "point_count",
+                    20
+                ],
+                [
+                    "<",
+                    "point_count",
+                    10
+                ]
+            ]
         },
         {
             "id": "cluster-count",
@@ -4074,7 +4120,16 @@
             "paint": {
                 "circle-radius": {
                     "base": 2,
-                    "stops": [[12, 2], [22, 180]]
+                    "stops": [
+                        [
+                            12,
+                            2
+                        ],
+                        [
+                            22,
+                            180
+                        ]
+                    ]
                 },
                 "circle-color": "#51bbd6",
                 "circle-stroke-width": 2,

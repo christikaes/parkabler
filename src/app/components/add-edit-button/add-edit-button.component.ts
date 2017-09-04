@@ -7,13 +7,13 @@ import { Observable } from 'rxjs';
 import { AppModes } from '~/util';
 
 @Component({
-  selector: 'pa-add-spot-button',
-  templateUrl: './addspot-button.component.html',
-  styleUrls: ['./addspot-button.component.scss'],
+  selector: 'pa-add-edit-button',
+  templateUrl: './add-edit-button.component.html',
+  styleUrls: ['./add-edit-button.component.scss'],
   animations: Animations
 })
 
-export class AddSpotButtonComponent implements OnInit {
+export class AddEditButtonComponent implements OnInit {
   public showAddButton: boolean;
 
   @select() private appMode$: Observable<AppModes>;
