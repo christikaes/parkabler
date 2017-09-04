@@ -14,7 +14,7 @@ import { AppModes } from '~/util';
 })
 
 export class AddEditButtonComponent implements OnInit {
-  public showAddButton: boolean;
+  public show: boolean;
 
   @select() private appMode$: Observable<AppModes>;
 
@@ -24,11 +24,15 @@ export class AddEditButtonComponent implements OnInit {
 
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
-      this.showAddButton = mode !== AppModes.AddSpot && mode !== AppModes.ReportSpot;
+      this.show = mode !== AppModes.Add && mode !== AppModes.Edit;
     });
   }
 
-  onOpenAddSpot() {
-    this.appModeActions.setModeAddSpot();
+  onOpenAdd() {
+    this.appModeActions.setModeAdd();
+  }
+
+  onOpenEdit() {
+    this.appModeActions.setModeEdit();
   }
 }

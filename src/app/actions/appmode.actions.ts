@@ -32,7 +32,7 @@ export class AppModeActions {
         });
     }
 
-    public setModeAddSpot() {
+    public setModeAdd() {
         this.placesActions.setPlace(null);
         this.previousZoom = this.ngRedux.getState().map.zoom;
         this.mapActions.setZoom(18);
@@ -43,10 +43,16 @@ export class AppModeActions {
 
     }
 
-    public unsetModeAddSpot() {
+    public unsetMode() {
         this.mapActions.setZoom(this.previousZoom);
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_PREVIOUS
+        });
+    }
+
+    public setModeEdit() {
+        this.ngRedux.dispatch({
+            type: AppModeActions.SET_MODE_EDIT
         });
     }
 
@@ -59,9 +65,4 @@ export class AppModeActions {
         }
     }
 
-    public setModeEdit() {
-        this.ngRedux.dispatch({
-            type: AppModeActions.SET_MODE_EDIT
-        });
-    }
 }

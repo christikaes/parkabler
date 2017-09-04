@@ -1,5 +1,5 @@
 <button md-raised-button
-        *ngIf="showAddButton"
+        *ngIf="show"
         [mdMenuTriggerFor]="spotMenu"
         color="primary"
         class="add-edit-button"
@@ -10,11 +10,12 @@
 <md-menu #spotMenu="mdMenu"
          class="spot-menu">
     <button md-menu-item
-            (click)="onOpenAddSpot()"> 
+            (click)="onOpenAdd()"> 
         <md-icon>add_location</md-icon> 
         ADD NEW SPOT 
     </button>
-    <button md-menu-item> 
+    <button md-menu-item
+            (click)="onOpenEdit()">
         <md-icon>edit_location</md-icon> 
         EDIT EXISTING SPOT 
     </button>

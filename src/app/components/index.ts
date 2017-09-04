@@ -3,7 +3,7 @@ export * from './places';
 export * from './spotslist';
 export * from './drawer';
 export * from './map';
-export * from './addspot';
+export * from './add-drawer';
 export * from './add-edit-button';
 export * from './stepper';
 export * from './help';
