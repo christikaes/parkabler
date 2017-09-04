@@ -5,7 +5,7 @@ const INITIAL_STATE: AppModes = AppModes.Home;
 
 let previousMode = AppModes.Home;
 
-export function  appModeReducer(
+export function appModeReducer(
     state: AppModes = INITIAL_STATE,
     action: Action
 ) {
@@ -14,17 +14,25 @@ export function  appModeReducer(
             previousMode = AppModes.Home;
             return AppModes.Home;
 
-        case AppModeActions.SET_MODE_ADDSPOT:
+        case AppModeActions.SET_MODE_ADD:
             previousMode = state;
-            return AppModes.AddSpot;
+            return AppModes.Add;
 
-        case AppModeActions.SET_MODE_REPORTSPOT:
+        case AppModeActions.SET_MODE_EDIT:
             previousMode = state;
-            return AppModes.ReportSpot;
+            return AppModes.Edit;
 
-        case AppModeActions.SET_MODE_SPOTSLIST:
+        case AppModeActions.SET_MODE_SEARCH:
             previousMode = AppModes.Home;
-            return AppModes.SpotsList;
+            return AppModes.Search;
+
+        case AppModeActions.SET_MODE_NAVIGATE:
+            previousMode = AppModes.Home;
+            return AppModes.Navigate;
+
+        case AppModeActions.SET_MODE_INFO:
+            previousMode = AppModes.Home;
+            return AppModes.Info;
 
         case AppModeActions.SET_MODE_PREVIOUS:
             return previousMode;

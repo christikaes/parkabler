@@ -5,11 +5,9 @@ import {
   SpotsDatabaseActions,
   SpotsNearbyActions,
   AppModeActions,
-  AddSpotStepActions,
-  ReportSpotStepActions,
   GeolocationActions
 } from '~/actions';
-import { Place, AppModes, AddSpotSteps, ReportSpotSteps } from '~/util';
+import { Place, AppModes } from '~/util';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs';
 
@@ -21,13 +19,11 @@ import { Observable } from 'rxjs';
 export class HomeComponent implements OnInit {
   public mode: AppModes;
   public appModes = AppModes;
-  public reportSpotStep: ReportSpotSteps;
   public placeValue: string;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
   @select() public spotsNearby$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
-  @select() private reportSpotStep$: Observable<ReportSpotSteps>;
   @select() private place$: Observable<Place>;
 
   // Whenever the escape key is pressed go back to home mode
@@ -48,7 +44,6 @@ export class HomeComponent implements OnInit {
     private spotsActions: SpotsActions,
     private spotsDatabaseActions: SpotsDatabaseActions,
     private spotsNearbyActions: SpotsNearbyActions,
-    private reportSpotStepActions: ReportSpotStepActions,
     private geolocationActions: GeolocationActions,
     private appModeActions: AppModeActions
   ) { }
@@ -64,7 +59,7 @@ export class HomeComponent implements OnInit {
     this.destination$.combineLatest(
       this.spots$,
       (destination, spots) => ({ destination, spots })
-    ).subscribe(({destination, spots}) => {
+    ).subscribe(({ destination, spots }) => {
       this.spotsNearbyActions.getNearbySpots(destination, spots);
     });
 

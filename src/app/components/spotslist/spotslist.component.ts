@@ -31,7 +31,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.appMode = mode;
-      if (mode !== AppModes.SpotsList) {
+      if (mode !== AppModes.Navigate) {
         this.state = 'closed';
       } else {
         if (this.numSpot < 0) {
@@ -51,7 +51,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
           this.appModeActions.setModeSpotsList();
         } else {
           this.state = 'closed';
-          if (this.appMode !== AppModes.AddSpot) {
+          if (this.appMode !== AppModes.Add) {
             this.appModeActions.setModeHome();
           }
         }
@@ -63,11 +63,6 @@ export class SpotsListComponent implements OnInit, OnChanges {
 
   toggleExapand() {
     this.state = this.state === 'peak' ? 'open' : 'peak';
-  }
-
-  onEdit() {
-    this.state = 'closed';
-    this.appModeActions.setModeReportSpot();
   }
 
   onClickSpot() {

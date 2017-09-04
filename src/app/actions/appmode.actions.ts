@@ -8,9 +8,11 @@ import { PlacesActions } from '~/actions/places.actions';
 @Injectable()
 export class AppModeActions {
     static SET_MODE_HOME = 'PA/MODE/HOME';
-    static SET_MODE_ADDSPOT = 'PA/MODE/ADDSPOT';
-    static SET_MODE_SPOTSLIST = 'PA/MODE/SPOTSLIST';
-    static SET_MODE_REPORTSPOT = 'PA/MODE/REPORTSPOT';
+    static SET_MODE_ADD = 'PA/MODE/ADD';
+    static SET_MODE_EDIT = 'PA/MODE/EDIT';
+    static SET_MODE_SEARCH = 'PA/MODE/SEARCH';
+    static SET_MODE_NAVIGATE = 'PA/MODE/NAVIGATE';
+    static SET_MODE_INFO = 'PA/MODE/INFO';
     static SET_MODE_PREVIOUS = 'PA/MODE/PREVIOUS';
 
     private previousZoom: number;
@@ -36,7 +38,7 @@ export class AppModeActions {
         this.mapActions.setZoom(18);
 
         this.ngRedux.dispatch({
-            type: AppModeActions.SET_MODE_ADDSPOT
+            type: AppModeActions.SET_MODE_ADD
         });
 
     }
@@ -52,14 +54,14 @@ export class AppModeActions {
         // Only set to spotsList mode if current mode is home
         if (this.ngRedux.getState().appMode === AppModes.Home) {
             this.ngRedux.dispatch({
-                type: AppModeActions.SET_MODE_SPOTSLIST
+                type: AppModeActions.SET_MODE_NAVIGATE
             });
         }
     }
 
-    public setModeReportSpot() {
+    public setModeEdit() {
         this.ngRedux.dispatch({
-            type: AppModeActions.SET_MODE_REPORTSPOT
+            type: AppModeActions.SET_MODE_EDIT
         });
     }
 }

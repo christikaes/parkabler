@@ -1,25 +1,12 @@
 export enum AppModes {
-    Home,
-    AddSpot,
-    ReportSpot,
-    SpotsList
-}
-
-export enum AddSpotSteps {
-    Location,
-    Details,
-    Submitted
-}
-
-export enum ReportSpotSteps {
-    Details,
-    Submitted
+    Home = 'HOME',
+    Add = 'ADD',
+    Edit = 'EDIT',
+    Search = 'SEARCH',
+    Navigate = 'NAVIGATE',
+    Info = 'INFO'
 }
 
 export type SpotsListModes = 'open'
-                        | 'closed'
-                        | 'expanded' ;
-
-export type StepStates = 'active'
-                        | 'previous'
-                        | 'next' ;
+    | 'closed'
+    | 'expanded';

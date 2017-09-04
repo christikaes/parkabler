@@ -14,7 +14,7 @@ export class PlacesActions {
         private ngRedux: NgRedux<IAppState>,
         private destinationActions: DestinationActions,
         private mapActions: MapActions
-    ) {}
+    ) { }
 
     public setPlace(place: Place) {
         this.ngRedux.dispatch({
@@ -23,7 +23,7 @@ export class PlacesActions {
         });
 
 
-        if (this.ngRedux.getState().appMode !== AppModes.AddSpot) {
+        if (this.ngRedux.getState().appMode !== AppModes.Add) {
             // If not in add spot mode set/clear destination
             if (place === null) {
                 this.destinationActions.setDestination(null);

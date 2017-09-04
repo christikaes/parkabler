@@ -1,4 +1,4 @@
-import { Feature } from '@types/geojson';
+import { Feature } from 'geojson';
 
 export type SpotType = 'regular' | 'accessible';
 
