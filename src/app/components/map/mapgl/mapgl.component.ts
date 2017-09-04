@@ -38,6 +38,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() currentlocation: GeoJSON.Position;
   @Input() destination: GeoJSON.Position;
   @Input() showAddSpotOverlay: boolean;
+  @Input() interactable: boolean;
 
   private map: any;
   private initialized = false;
@@ -64,6 +65,8 @@ export class MapGLComponent implements OnInit, OnChanges {
           this.setDestination(changes[change].currentValue);
         } else if (change === 'showAddSpotOverlay') {
           this.setAddSpotOverlay(changes[change].currentValue);
+        } else if (change === 'interactable') {
+          this.setInteractable(changes[change].currentValue);
         } else {
           throw new Error('Uncaught change: ' + change);
         }
@@ -204,6 +207,23 @@ export class MapGLComponent implements OnInit, OnChanges {
     } else {
       this.addSpotOverlayMarker.remove();
       this.map.setPaintProperty('addSpotOverlayBackground', 'background-opacity', 0);
+    }
+  }
+
+  setInteractable(interactable: boolean) {
+    if (interactable) {
+      this.map['dragPan'].enable();
+      this.map['keyboard'].enable();
+      if (this.showAddSpotOverlay) {
+        this.map.setPaintProperty('addSpotOverlayBackground', 'background-opacity', 0.5);
+      }
+    } else {
+      this.map['dragPan'].disable();
+      this.map['keyboard'].disable();
+      if (this.showAddSpotOverlay) {
+        this.map.setPaintProperty('addSpotOverlayBackground', 'background-opacity', 0);
+      }
+
     }
   }
 

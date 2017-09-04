@@ -1,15 +1,24 @@
-<pa-drawer [open]="appMode === (appMode$ | async)">
+<pa-drawer [open]="open">
 
-  <pa-stepper (close)="onCloseAddSpot()" (stepChange)="onAddSpotStepChange($event)" [stepIndex]="addSpotStep">
+  <pa-stepper (close)="onClose()">
+
     <!-- location -->
-    <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'" (next)="onSetLocation()">
+    <pa-step [previousCopy]="'Cancel'"
+             [nextCopy]="'Next'"
+             (next)="onSetLocation()">
       Drag the map to put the marker exactly over the spot
     </pa-step>
+
     <!-- details -->
-    <pa-step [previousCopy]="'Back'" [nextCopy]="'Submit'" (next)="onSubmitAddSpot($event)">
+    <pa-step [previousCopy]="'Back'"
+             (previous)="onUnsetLocation()"
+             [nextCopy]="'Submit'"
+             (next)="onSubmit()">
       <h4>How many spaces are there?</h4>
-      <md-button-toggle-group name="spaces-buttons" [(ngModel)]="numSpots">
-        <md-button-toggle value="1" checked=true>1</md-button-toggle>
+      <md-button-toggle-group name="spaces-buttons"
+                              [(ngModel)]="newSpotDetails.quantity">
+        <md-button-toggle value="1"
+                          checked=true>1</md-button-toggle>
         <md-button-toggle value="2">2</md-button-toggle>
         <md-button-toggle value="3">3</md-button-toggle>
         <md-button-toggle value="4">4</md-button-toggle>
@@ -17,26 +26,27 @@
       </md-button-toggle-group>
       <h4>Additional Features</h4>
       <div class="additional-feat-container">
-        <md-checkbox name="ramp" [(ngModel)]="ramp" color="primary" [indeterminate]="true">
-          Ramp
-        </md-checkbox>
-        <md-checkbox name="time-restrictions" [(ngModel)]="timeRestrictions" color="primary" [indeterminate]="true">
-          Time Restrictions
-        </md-checkbox>
-        <md-checkbox name="fee" [(ngModel)]="fee" color="primary" [indeterminate]="true">
+        <md-checkbox name="fee"
+                     [(ngModel)]="newSpotDetails.cost"
+                     color="primary"
+                     [indeterminate]="true">
           Fee Associated
         </md-checkbox>
-        <md-checkbox name="residential" [(ngModel)]="residential" color="primary" [indeterminate]="true">
-          Residential Permit Required
-        </md-checkbox>
         <md-input-container>
-          <input mdInput aria-label="description" [(ngModel)]="comments" placeholder="Description">
+          <input mdInput
+                 aria-label="description"
+                 [(ngModel)]="newSpotDetails.description"
+                 placeholder="Description">
         </md-input-container>
       </div>
     </pa-step>
+
     <!-- submitted -->
-    <pa-step [previousCopy]="''" [nextCopy]="'OK'" (next)="onCloseAddSpot()">
+    <pa-step [previousCopy]="''"
+             [nextCopy]="'OK'"
+             (next)="onClose()">
       Thank you for your help! The details have been submitted, we will review the submission and add it to the map accordingly.
     </pa-step>
+
   </pa-stepper>
 </pa-drawer>

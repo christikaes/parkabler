@@ -6,8 +6,6 @@ import { SpotsReportActions } from './spotsReport.actions';
 import { SpotsNearbyActions } from './spotsNearby.actions';
 import { PlacesActions } from './places.actions';
 import { AppModeActions } from './appmode.actions';
-import { AddSpotStepActions } from './addspotstep.actions';
-import { AddSpotInfoActions } from './addspotinfo.actions';
 import { ReportSpotStepActions } from './reportspotstep.actions';
 import { SpotsListModeActions } from './spotslistmode.actions';
 import { GeolocationActions } from './geolocation.actions';
@@ -20,8 +18,6 @@ export const ACTION_PROVIDERS = [
   SpotsReportActions,
   SpotsNearbyActions,
   AppModeActions,
-  AddSpotStepActions,
-  AddSpotInfoActions,
   ReportSpotStepActions,
   SpotsListModeActions,
   GeolocationActions,
@@ -37,8 +33,6 @@ export {
   SpotsReportActions,
   SpotsNearbyActions,
   AppModeActions,
-  AddSpotStepActions,
-  AddSpotInfoActions,
   ReportSpotStepActions,
   SpotsListModeActions,
   GeolocationActions,

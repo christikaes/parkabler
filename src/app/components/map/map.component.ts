@@ -25,7 +25,6 @@ export class MapComponent implements AfterViewInit {
   public geolocationAvailable: boolean;
 
   public spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  public showAddSpotOverlay: boolean;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
@@ -35,6 +34,8 @@ export class MapComponent implements AfterViewInit {
   @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
   @select(['map', 'center']) private center$: Observable<GeoJSON.Position>;
+  @select(['map', 'interactable']) private interactable$: Observable<boolean>;
+  @select(['map', 'addSpotOverlay']) private addSpotOverlay$: Observable<boolean>;
 
   constructor(
     private geoLocation: GeolocationService,
@@ -77,13 +78,6 @@ export class MapComponent implements AfterViewInit {
       this.spots = spots;
     });
 
-    // Show the add spot overlay if in app spot mode, and on the location step
-    this.addSpotStep$.combineLatest(
-      this.appMode$,
-      (addSpotStep: AddSpotSteps, appMode: AppModes) => ({ addSpotStep, appMode })
-    ).subscribe(({addSpotStep, appMode}) => {
-      this.showAddSpotOverlay = addSpotStep === AddSpotSteps.Location && appMode === AppModes.AddSpot;
-    });
   }
 
   setZoom(z: number): void {

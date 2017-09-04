@@ -3,6 +3,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -19,6 +20,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -35,6 +37,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -51,6 +54,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$8/hr",
@@ -67,6 +71,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -83,6 +88,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -99,6 +105,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "$0",
@@ -116,6 +123,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$5/hr",
@@ -132,6 +140,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -148,6 +157,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -164,6 +174,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -180,6 +191,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -197,6 +209,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -213,6 +226,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -229,6 +243,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -245,6 +260,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -261,6 +277,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -277,6 +294,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -293,6 +311,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -309,6 +328,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -325,6 +345,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -341,6 +362,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -357,6 +379,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -373,6 +396,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -389,6 +413,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -405,6 +430,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -421,6 +447,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -437,6 +464,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -453,6 +481,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -469,6 +498,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -485,6 +515,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -501,6 +532,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -517,6 +549,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -533,6 +566,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -549,6 +583,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -565,6 +600,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -581,6 +617,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -597,6 +634,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -613,6 +651,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -629,6 +668,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -645,6 +685,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -661,6 +702,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -677,6 +719,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -693,6 +736,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -709,6 +753,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -725,6 +770,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -741,6 +787,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -757,6 +804,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -773,6 +821,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -789,6 +838,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "$0",
@@ -805,6 +855,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -821,6 +872,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -837,6 +889,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -853,6 +906,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -869,6 +923,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -885,6 +940,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -901,6 +957,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -917,6 +974,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "$0",
@@ -933,6 +991,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "$0",
@@ -949,6 +1008,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "$0",
@@ -965,6 +1025,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$0",
@@ -981,6 +1042,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 5,
                 "cost": "$0",
@@ -997,6 +1059,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1013,6 +1076,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "0/hr",
@@ -1029,6 +1093,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "0/hr",
@@ -1045,6 +1110,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1061,6 +1127,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "0/hr",
@@ -1077,6 +1144,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1093,6 +1161,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "0/hr",
@@ -1109,6 +1178,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "$/hr",
@@ -1125,6 +1195,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "0/hr",
@@ -1141,6 +1212,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1157,6 +1229,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1173,6 +1246,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1189,6 +1263,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "0/hr",
@@ -1205,6 +1280,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1221,6 +1297,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1238,6 +1315,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1255,6 +1333,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "0/hr",
@@ -1271,6 +1350,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 4,
                 "cost": "0/hr",
@@ -1287,6 +1367,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1303,6 +1384,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1319,6 +1401,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1335,6 +1418,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "cost": "0/hr",
@@ -1351,6 +1435,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "0/hr",
@@ -1367,6 +1452,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1383,6 +1469,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 2,
                 "cost": "0/hr",
@@ -1399,6 +1486,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "cost": "0/hr",
@@ -1415,6 +1503,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 3,
                 "commercial": true
@@ -1430,6 +1519,7 @@
         {
             "type": "Feature",
             "properties": {
+                "addedBy": "admin",
                 "verified": true,
                 "quantity": 1,
                 "commercial": true

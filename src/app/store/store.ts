@@ -7,19 +7,17 @@ import {
   spotsNearbyReducer,
   placesReducer,
   appModeReducer,
-  addSpotStepReducer,
-  addSpotInfoReducer,
   spotsListModeReducer,
   destinationReducer, DestinationState,
   mapReducer, MapState,
-  geolocationReducers, GeolocationState
+  geolocationReducers, GeolocationState,
+  userIDReducer
 } from './reducers';
 
 import {
   Spot,
   Place,
   AppModes,
-  AddSpotSteps,
   SpotsListModes
 } from '~/util';
 
@@ -33,11 +31,10 @@ export interface IAppState {
   spotsNearby?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   place?: Place;
   appMode?: AppModes;
-  addSpotStep?: AddSpotSteps;
   spotsListMode?: SpotsListModes;
   map?: MapState;
-  addSpotInfo?: Spot;
   geolocation?: GeolocationState;
+  userID?: string;
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -49,9 +46,8 @@ export const rootReducer = combineReducers<IAppState>({
   spotsNearby: spotsNearbyReducer,
   place: placesReducer,
   appMode: appModeReducer,
-  addSpotStep: addSpotStepReducer,
-  addSpotInfo: addSpotInfoReducer,
   spotsListMode: spotsListModeReducer,
   map: mapReducer,
-  geolocation: geolocationReducers
+  geolocation: geolocationReducers,
+  userID: userIDReducer
 });
