@@ -20,10 +20,12 @@ export class AddSpotComponent implements OnInit {
   public fee: boolean;
   public residential: boolean;
   public comments: boolean;
+  public appMode = AppModes.AddSpot;
 
   public numSpots: number;
 
-  @select() private appMode$: Observable<AppModes>;
+  @select() public appMode$: Observable<AppModes>;
+  @select() private spotSelected$: Observable<GeoJSON.Feature<GeoJSON.Point>>;
   @select() private addSpotStep$: Observable<AddSpotSteps>;
 
   constructor(
@@ -35,10 +37,6 @@ export class AddSpotComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.appMode$.subscribe((mode: AppModes) => {
-      this.isAppMode = mode === AppModes.AddSpot;
-      console.log(this.isAppMode);
-    });
 
     this.addSpotStep$.subscribe((step: AddSpotSteps) => {
       this.addSpotStep = step;

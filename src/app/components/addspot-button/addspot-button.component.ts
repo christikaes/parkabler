@@ -20,7 +20,7 @@ export class AddSpotButtonComponent implements OnInit {
 
   constructor(
     private appModeActions: AppModeActions
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
@@ -28,7 +28,7 @@ export class AddSpotButtonComponent implements OnInit {
     });
   }
 
-  onOpen() {
+  onOpenAddSpot() {
     this.appModeActions.setModeAddSpot();
   }
 }

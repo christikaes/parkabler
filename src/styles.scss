@@ -35,3 +35,15 @@ a {
 .mat-input-placeholder {
   color: #3f51b5;
 }
+
+// This sets the styles for the add/edit spots menu
+.spot-menu {
+
+  .mat-menu-content{
+    background-color: #3f51b5;
+  }
+
+  .mat-menu-item, .mat-icon {
+    color: rgba(255, 255, 255, 0.87);
+  }
+}

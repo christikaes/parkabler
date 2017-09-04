@@ -1,11 +1,8 @@
-<pa-drawer [open]="isAppMode">
+<pa-drawer [open]="appMode === (appMode$ | async)">
+
   <pa-stepper (close)="onCloseAddSpot()" (stepChange)="onAddSpotStepChange($event)" [stepIndex]="addSpotStep">
     <!-- location -->
     <pa-step [previousCopy]="'Cancel'" [nextCopy]="'Next'" (next)="onSetLocation()">
-      Add a new Spot? Edit an existing spot
-    </pa-step>
-    <!-- location -->
-    <pa-step [previousCopy]="'Back'" [nextCopy]="'Next'" (next)="onSetLocation()">
       Drag the map to put the marker exactly over the spot
     </pa-step>
     <!-- details -->
