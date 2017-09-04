@@ -33,6 +33,7 @@ import {
   MapGLComponent,
   MapControlsComponent,
   AddSpotComponent,
+  EditComponent,
   AddEditButtonComponent,
   StepperComponent,
   StepComponent,
@@ -95,7 +96,8 @@ import { MetersToFeetPipe } from './pipes';
     AddEditButtonComponent,
     StepComponent,
     StepperComponent,
-    MetersToFeetPipe
+    MetersToFeetPipe,
+    EditComponent
   ],
   providers: [
     DevToolsExtension,

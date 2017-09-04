@@ -2,11 +2,11 @@
 
   <pa-stepper (close)="onClose()">
 
-    <!-- location -->
+    <!-- select marker -->
     <pa-step [previousCopy]="'Cancel'"
              [nextCopy]="'Next'"
              (next)="onSetLocation()">
-      Drag the map to put the marker exactly over the spot
+      Select the spot to edit
     </pa-step>
 
     <!-- details -->
@@ -17,6 +17,7 @@
       <h4>How many spaces are there?</h4>
       <md-button-toggle-group name="spaces-buttons"
                               [(ngModel)]="newSpotDetails.quantity">
+        <md-button-toggle value="0">None</md-button-toggle>
         <md-button-toggle value="1">1</md-button-toggle>
         <md-button-toggle value="2">2</md-button-toggle>
         <md-button-toggle value="3">3</md-button-toggle>
