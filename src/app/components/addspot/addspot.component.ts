@@ -21,6 +21,7 @@ export class AddSpotComponent implements OnInit {
   public residential: boolean;
   public comments: boolean;
   public appMode = AppModes.AddSpot;
+  private location;
 
   public numSpots: number;
 
@@ -52,7 +53,8 @@ export class AddSpotComponent implements OnInit {
   }
 
   onSetLocation() {
-    this.addSpotInfoActions.setLocation();
+    this.location = this.ngRedux.getState().map.center;
+    // this.addSpotInfoActions.setLocation();
   }
 
   onSubmitAddSpot(state) {
