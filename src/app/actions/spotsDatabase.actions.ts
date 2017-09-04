@@ -16,14 +16,19 @@ export class SpotsDatabaseActions {
     constructor(
         private ngRedux: NgRedux<IAppState>,
         private spotsService: SpotsDatabaseService
-    ) {};
+    ) { };
 
     public getSpots() {
         this.ngRedux.dispatch({
             type: SpotsDatabaseActions.GET
         });
         this.spotsService.get()
-            .subscribe((spots: GeoJSON.Feature<GeoJSON.Point>[]) => {
+            .subscribe((spots: any[]) => {
+                // Save the key as a prop
+                spots.forEach(spot => {
+                    spot.properties.$key = spot.$key
+                })
+
                 this.updateSpots(spots);
             });
     }
