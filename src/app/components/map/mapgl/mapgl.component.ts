@@ -9,7 +9,7 @@ import {
   EventEmitter,
   ViewChild
 } from '@angular/core';
-import { MapboxAccessTolken } from '~/util';
+import { MapboxAccessTolken, Spot2 } from '~/util';
 
 const turfcircle = require('@turf/circle');
 const turfhelpers = require('@turf/helpers');
@@ -39,6 +39,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() destination: GeoJSON.Position;
   @Input() showAddSpotOverlay: boolean;
   @Input() interactable: boolean;
+  @Output() markerSelected = new EventEmitter<Spot2>();
 
   private map: any;
   private initialized = false;
@@ -127,6 +128,7 @@ export class MapGLComponent implements OnInit, OnChanges {
         .setLngLat(e.features[0].geometry.coordinates)
         .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
         .addTo(this.map);
+      this.markerSelected.emit(e.features[0])
     }.bind(this));
 
     this.map.on('move', () => {

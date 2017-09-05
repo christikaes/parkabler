@@ -7,7 +7,8 @@
            [currentlocation]="currentLocation"
            [destination]="destination"
            [showAddSpotOverlay]="addSpotOverlay$ | async"
-           [interactable]="interactable$ | async">
+           [interactable]="interactable$ | async"
+           (markerSelected)="setSelectedSpot($event)">
 </pa-map-gl>
 <!--<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-js>-->
 

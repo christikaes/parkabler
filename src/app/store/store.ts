@@ -11,11 +11,13 @@ import {
   destinationReducer, DestinationState,
   mapReducer, MapState,
   geolocationReducers, GeolocationState,
-  userIDReducer
+  userIDReducer,
+  spotReducer
 } from './reducers';
 
 import {
   Spot,
+  Spot2,
   Place,
   AppModes,
   SpotsListModes
@@ -35,6 +37,7 @@ export interface IAppState {
   map?: MapState;
   geolocation?: GeolocationState;
   userID?: string;
+  spot?: Spot2
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -49,5 +52,6 @@ export const rootReducer = combineReducers<IAppState>({
   spotsListMode: spotsListModeReducer,
   map: mapReducer,
   geolocation: geolocationReducers,
-  userID: userIDReducer
+  userID: userIDReducer,
+  spot: spotReducer
 });

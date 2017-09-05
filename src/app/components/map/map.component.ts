@@ -1,9 +1,9 @@
-import { Component, OnInit, AfterViewInit, ViewChild, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { AddSpotSteps, AppModes } from '~/util';
+import { Spot2 } from '~/util';
 import { GeolocationService } from '~/services';
-import { DestinationActions, MapActions } from '~/actions';
+import { DestinationActions, MapActions, SpotActions } from '~/actions';
 import { IAppState } from '~/store';
 // TODO-rangle: is there a better way to require this?
 // Should i add this to vendor.js?
@@ -28,8 +28,6 @@ export class MapComponent implements AfterViewInit {
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
-  @select() private addSpotStep$: Observable<AddSpotSteps>;
-  @select() private appMode$: Observable<AppModes>;
   @select(['geolocation', 'coordinates']) private geolocationCoordinates$: Observable<GeoJSON.Position>;
   @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
@@ -40,8 +38,8 @@ export class MapComponent implements AfterViewInit {
   constructor(
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions,
+    private spotActions: SpotActions,
     private mapActions: MapActions,
-    private ref: ChangeDetectorRef,
     private ngRedux: NgRedux<IAppState>
   ) { }
 
@@ -86,6 +84,10 @@ export class MapComponent implements AfterViewInit {
 
   setCenter(c: GeoJSON.Position): void {
     this.mapActions.setCenter(c);
+  }
+
+  setSelectedSpot(spot: Spot2): void {
+    this.spotActions.setFocusedSpot(spot);
   }
 
   recenterChange(): void {

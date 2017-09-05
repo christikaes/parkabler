@@ -10,3 +10,4 @@ export * from './spotslistmode.reducer';
 export * from './geolocation.reducer';
 export * from './map.reducer';
 export * from './userID.reducer';
+export * from './spot.reducer';

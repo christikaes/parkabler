@@ -18,12 +18,13 @@ export class EditComponent {
   public newSpotDetails = {
     cost: null,
     description: null,
-    coordinates: null,
     quantity: 1
   };
+  private focusedSpot: Spot2;
 
   @select() private appMode$: Observable<AppModes>;
   @select() private spotSelected$: Observable<GeoJSON.Feature<GeoJSON.Point>>;
+  @select(['spot']) public focusedSpot$: Observable<Spot2>;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -50,27 +51,23 @@ export class EditComponent {
   }
 
   public onSetLocation() {
-    this.newSpotDetails.coordinates = this.ngRedux.getState().map.center;
+    this.focusedSpot = this.ngRedux.getState().spot;
+    console.log(this.focusedSpot)
     this.mapActions.setInteractable(false);
   }
 
   public onUnsetLocation() {
-    this.newSpotDetails.coordinates = null;
     this.mapActions.setInteractable(true);
   }
 
   public onSubmit() {
     // Create a new Spot and add it to the addSpots
-    const newSpot = turfHelper.feature({
-      type: 'Point',
-      coordinates: this.newSpotDetails.coordinates
-    }, {
-        addedBy: this.ngRedux.getState().userID,
-        verified: false,
-        quantity: this.newSpotDetails.quantity,
-        cost: this.newSpotDetails.cost,
-        description: this.newSpotDetails.description
-      });
+    const newSpot = Object.assign({}, this.focusedSpot);
+    newSpot.properties.addedBy = this.ngRedux.getState().userID;
+    newSpot.properties.verified = false;
+    newSpot.properties.quantity = this.newSpotDetails.quantity;
+    newSpot.properties.cost = this.newSpotDetails.cost;
+    newSpot.properties.description = this.newSpotDetails.description;
 
     // this.spotsAddActions.addSpot(newSpot);
 
