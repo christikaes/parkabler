@@ -39,7 +39,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   @Input() destination: GeoJSON.Position;
   @Input() showAddSpotOverlay: boolean;
   @Input() interactable: boolean;
-  @Output() markerSelected = new EventEmitter<Spot2>();
+  @Output() markerSelected = new EventEmitter<string>();
 
   private map: any;
   private initialized = false;
@@ -128,7 +128,10 @@ export class MapGLComponent implements OnInit, OnChanges {
         .setLngLat(e.features[0].geometry.coordinates)
         .setHTML(`<a class="cta" href="http://maps.google.com/maps?daddr=${e.features[0].geometry.coordinates[1]},${e.features[0].geometry.coordinates[0]}" target="_blank">Navigate</a>`)
         .addTo(this.map);
-      this.markerSelected.emit(e.features[0])
+      e.features[0].properties.size = 2;
+      console.log(e.features[0].properties.id);
+      console.log('----------------');
+      this.markerSelected.emit(e.features[0].properties.id);
     }.bind(this));
 
     this.map.on('move', () => {
@@ -158,6 +161,10 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setSpots(spots: GeoJSON.FeatureCollection<GeoJSON.Point>) {
+    // HACK: There is a bug with MapboxGl cluster drops property id
+    spots.features.forEach(spot => {
+      spot.properties = Object.assign({}, spot.properties, { id: spot.id, size: 2 });
+    });
     this.map.getSource('spots').setData(spots);
   }
 

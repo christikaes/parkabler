@@ -10,9 +10,9 @@ export class SpotActions {
     constructor(
         private ngRedux: NgRedux<IAppState>
     ) {
-    };
+    }
 
-    public setFocusedSpot(spot: Spot2) {
+    public setFocusedSpot(spot: string) {
         this.ngRedux.dispatch({
             type: SpotActions.SET_FOCUS,
             payload: spot

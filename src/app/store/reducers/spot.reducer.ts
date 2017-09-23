@@ -5,12 +5,12 @@ const INITIAL_STATE = null;
 
 
 export function spotReducer(
-    state: Spot2 = INITIAL_STATE,
+    state: string = INITIAL_STATE,
     action: Action
 ) {
     switch (action.type) {
         case SpotActions.SET_FOCUS:
-            return Object.assign({}, action.payload);
+            return action.payload;
 
         default:
             return state;

@@ -3,7 +3,7 @@ import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/databa
 import { Observable } from 'rxjs/Observable';
 
 // If the user is offline, use this data:
-const data = require('./data/spots$.json');
+const data = require('./dataFinal/allSpots.json');
 
 @Injectable()
 export class SpotsDatabaseService {
@@ -18,7 +18,7 @@ export class SpotsDatabaseService {
   }
 
   // Gets all the spots from the database
-  public get () {
+  public get() {
     return this.spots;
   }
 }

@@ -25,7 +25,7 @@ export class SpotsActions {
         Observable.merge(this.spotsAdd$, this.spotsReport$, this.spotsDatabase$).subscribe(() => {
             this.updateSpots();
         });
-    };
+    }
 
     private getUpdatedSpots(): Array<GeoJSON.Feature<GeoJSON.Point>> {
 
@@ -55,7 +55,7 @@ export class SpotsActions {
         });
 
         return spots;
-    };
+    }
 
     private updateSpots() {
         const spots = this.getUpdatedSpots();

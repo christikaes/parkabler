@@ -9,8 +9,13 @@ export class AddSpotsService {
     private db: AngularFireDatabase
   ) { }
 
-  // Pushes the given spot the the database
+  // Pushes the given spot the database
   public addSpot(spot: Spot2) {
     this.db.list('addspots').push(spot);
+  }
+
+  // Edits the given spot in the datatabase
+  public editSpot(spot: Spot2) {
+    this.db.list('editspots').push(spot);
   }
 }

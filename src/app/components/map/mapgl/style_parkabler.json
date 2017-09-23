@@ -4005,7 +4005,7 @@
                 "point_count"
             ],
             "layout": {
-                "icon-image": "pin-v3",
+                "icon-image": "pin-v{size}",
                 "icon-size": 1,
                 "icon-offset": [
                     4,

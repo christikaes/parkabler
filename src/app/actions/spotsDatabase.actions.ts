@@ -16,7 +16,7 @@ export class SpotsDatabaseActions {
     constructor(
         private ngRedux: NgRedux<IAppState>,
         private spotsService: SpotsDatabaseService
-    ) { };
+    ) { }
 
     public getSpots() {
         this.ngRedux.dispatch({
@@ -26,8 +26,8 @@ export class SpotsDatabaseActions {
             .subscribe((spots: any[]) => {
                 // Save the key as a prop
                 spots.forEach(spot => {
-                    spot.properties.$key = spot.$key
-                })
+                    spot.id = spot.$key;
+                });
 
                 this.updateSpots(spots);
             });

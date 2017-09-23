@@ -86,7 +86,7 @@ export class MapComponent implements AfterViewInit {
     this.mapActions.setCenter(c);
   }
 
-  setSelectedSpot(spot: Spot2): void {
+  setSelectedSpot(spot: string): void {
     this.spotActions.setFocusedSpot(spot);
   }
 

@@ -37,7 +37,7 @@ export interface IAppState {
   map?: MapState;
   geolocation?: GeolocationState;
   userID?: string;
-  spot?: Spot2
+  spot?: string;
 }
 
 export const rootReducer = combineReducers<IAppState>({

@@ -15,7 +15,7 @@ export class SpotsAddActions {
     constructor(
         private ngRedux: NgRedux<IAppState>,
         private addSpotsService: AddSpotsService
-    ) { };
+    ) { }
 
     public addSpot(newSpot: Spot2) {
         this.ngRedux.dispatch({
@@ -24,5 +24,18 @@ export class SpotsAddActions {
         });
 
         this.addSpotsService.addSpot(newSpot);
+    }
+
+    public editSpot(newSpot: Spot2) {
+        console.log('editSpot');
+        console.log(newSpot);
+        const type = newSpot.properties.quantity === 0 ? SpotsAddActions.REMOVE : SpotsAddActions.UPDATE;
+        this.ngRedux.dispatch({
+            type,
+            payload: newSpot
+        });
+
+
+        // this.addSpotsService.editSpot(newSpot);
     }
 }
