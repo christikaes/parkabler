@@ -3,7 +3,7 @@ import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { Observable } from 'rxjs/Observable';
 import { AppModeActions, SpotsActions, MapActions } from '~/actions';
-import { AppModes, Spot2 } from '~/util';
+import { AppModes } from '~/util';
 
 const turfHelper = require('@turf/helpers');
 
@@ -23,7 +23,6 @@ export class AddSpotComponent {
   };
 
   @select() private appMode$: Observable<AppModes>;
-  @select() private spotSelected$: Observable<GeoJSON.Feature<GeoJSON.Point>>;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
