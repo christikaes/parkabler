@@ -9,8 +9,8 @@ export interface MapState {
 }
 
 const INITIAL_STATE = {
-    center: [42.35, -71.06],
-    zoom: 15,
+    center: [-71.06, 42.36],
+    zoom: 13,
     interactable: true,
     addSpotOverlay: false
 };
