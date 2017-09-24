@@ -51,7 +51,6 @@ import {
 import {
   GeolocationService,
   SpotsDatabaseService,
-  AddSpotsService,
   DistanceService,
   RulesInfoService,
   PlacesService
@@ -102,7 +101,6 @@ import { MetersToFeetPipe } from './pipes';
   providers: [
     DevToolsExtension,
     SpotsDatabaseService,
-    AddSpotsService,
     DistanceService,
     RulesInfoService,
     PlacesService,

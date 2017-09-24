@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NgRedux, select } from '@angular-redux/store';
 import { IAppState } from '~/store';
 import { Observable } from 'rxjs/Observable';
-import { AppModeActions, SpotsAddActions, MapActions } from '~/actions';
+import { AppModeActions, SpotsActions, MapActions } from '~/actions';
 import { AppModes, Spot2 } from '~/util';
 
 const turfHelper = require('@turf/helpers');
@@ -28,7 +28,7 @@ export class AddSpotComponent {
   constructor(
     private ngRedux: NgRedux<IAppState>,
     private appModeActions: AppModeActions,
-    private spotsAddActions: SpotsAddActions,
+    private spotsActions: SpotsActions,
     private mapActions: MapActions
   ) {
     // Whenever add spot is opened, show the add spot overlay over the map
@@ -36,7 +36,7 @@ export class AddSpotComponent {
       if (appMode === AppModes.Add) {
         this.onOpen();
       }
-    })
+    });
   }
 
   private onOpen() {
@@ -74,7 +74,7 @@ export class AddSpotComponent {
         description: this.newSpotDetails.description
       });
 
-    this.spotsAddActions.addSpot(newSpot);
+    this.spotsActions.updateUserSpot(newSpot);
 
     // Reset the Map overlay and interactiveness
     this.mapActions.setAddSpotOverlay(false);

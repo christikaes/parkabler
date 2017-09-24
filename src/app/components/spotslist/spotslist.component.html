@@ -1,20 +1,28 @@
 <!--<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }" [@slideUp]="state" [@peakUp]="state">-->
-<div class="container" [@slideUp]="state">
-  <button md-button class="header" (click)="toggleExapand()" (panup)="onPanUp($event)" (pandown)="onPanDown($event)">
+<div class="container"
+     [@slideUp]="state">
+  <button md-button
+          class="header"
+          (click)="toggleExapand()"
+          (panup)="onPanUp($event)"
+          (pandown)="onPanDown($event)">
     {{numSpot}} SPOTS NEAR DESTINATION
     <md-icon *ngIf="state!='open'">keyboard_arrow_up</md-icon>
     <md-icon *ngIf="state=='open'">keyboard_arrow_down</md-icon>
   </button>
 
   <md-nav-list class="content">
-    <md-list-item *ngFor="let spot of spots.features" class="item" (click)="onClickSpot(spot)">
+    <md-list-item *ngFor="let spot of spots"
+                  class="item"
+                  (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">
           <span class="large-text">{{spot.properties.numspots}} parking spot</span>
           <span> within {{spot.properties.distanceToDestination | paMetersToFeet}} feet </span>
         </div>
-        <a class="cta" href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}"
-          target="_blank">
+        <a class="cta"
+           href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}"
+           target="_blank">
           <md-icon class="icon">directions</md-icon>
           <span>
             Directions

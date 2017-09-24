@@ -1,11 +1,12 @@
 const createLogger = require('redux-logger');
 const persistState = ('redux-localstorage');
 
-import { IAppState, rootReducer } from './store';
+import { IAppState, rootReducer, Spots, Spot } from './store';
 
 export {
   IAppState,
-  rootReducer
+  rootReducer,
+  Spots, Spot
 };
 
 export let middleware = [];

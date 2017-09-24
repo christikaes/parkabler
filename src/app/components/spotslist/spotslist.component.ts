@@ -3,6 +3,7 @@ import { select } from '@angular-redux/store';
 import { AppModes } from '~/util';
 import { Observable } from 'rxjs';
 import { AppModeActions } from '~/actions';
+import { Spots } from '~/store';
 
 import Animations from '~/animations';
 
@@ -13,7 +14,7 @@ import Animations from '~/animations';
   animations: Animations
 })
 export class SpotsListComponent implements OnInit, OnChanges {
-  @Input() public spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  @Input() public spots: Spots;
 
   @select() private appMode$: Observable<AppModes>;
 
@@ -45,7 +46,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
     for (const change in changes) {
       if (change === 'spots') {
         const spots = changes[change].currentValue;
-        this.numSpot = spots.features ? spots.features.length : 0;
+        this.numSpot = spots.length;
         if (this.numSpot > 0) {
           this.state = 'open';
           this.appModeActions.setModeSpotsList();
@@ -70,10 +71,10 @@ export class SpotsListComponent implements OnInit, OnChanges {
   }
 
   onPanDown(e) {
-    this.state = 'peak'
+    this.state = 'peak';
   }
 
   onPanUp(e) {
-    this.state = 'open'
+    this.state = 'open';
   }
 }

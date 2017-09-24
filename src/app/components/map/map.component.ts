@@ -1,10 +1,11 @@
 import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { Spot2 } from '~/util';
 import { GeolocationService } from '~/services';
-import { DestinationActions, MapActions, SpotActions } from '~/actions';
-import { IAppState } from '~/store';
+import { DestinationActions, MapActions, SpotsActions } from '~/actions';
+import { IAppState, Spots } from '~/store';
+const turfHelper = require('@turf/helpers');
+
 // TODO-rangle: is there a better way to require this?
 // Should i add this to vendor.js?
 const mapboxgl = require('mapbox-gl/dist/mapbox-gl.js');
@@ -27,7 +28,7 @@ export class MapComponent implements AfterViewInit {
   public spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
-  @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
+  @select(['spots', 'compiled']) private spots$: Observable<Spots>;
   @select(['geolocation', 'coordinates']) private geolocationCoordinates$: Observable<GeoJSON.Position>;
   @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
@@ -38,7 +39,7 @@ export class MapComponent implements AfterViewInit {
   constructor(
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions,
-    private spotActions: SpotActions,
+    private spotsActions: SpotsActions,
     private mapActions: MapActions,
     private ngRedux: NgRedux<IAppState>
   ) { }
@@ -72,8 +73,8 @@ export class MapComponent implements AfterViewInit {
     });
 
     // Listen to changes on spots
-    this.spots$.subscribe((spots: GeoJSON.FeatureCollection<GeoJSON.Point>) => {
-      this.spots = spots;
+    this.spots$.subscribe((spots) => {
+      this.spots = turfHelper.featureCollection(spots);
     });
 
   }
@@ -86,8 +87,8 @@ export class MapComponent implements AfterViewInit {
     this.mapActions.setCenter(c);
   }
 
-  setSelectedSpot(spot: string): void {
-    this.spotActions.setFocusedSpot(spot);
+  setSelectedSpot(spotId: string): void {
+    this.spotsActions.setActiveSpotId(spotId);
   }
 
   recenterChange(): void {

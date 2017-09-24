@@ -1,22 +1,17 @@
 import { combineReducers } from 'redux';
 import {
-  spotsReducer,
-  spotsDatabaseReducer,
-  spotsAddReducer,
-  spotsReportReducer,
-  spotsNearbyReducer,
+  spotsReducer, Spots, Spot, SpotsState,
   placesReducer,
   appModeReducer,
   destinationReducer, DestinationState,
   mapReducer, MapState,
   geolocationReducers, GeolocationState,
-  userIDReducer,
-  spotReducer
+  userIDReducer
 } from './reducers';
 
+export { Spots, Spot };
+
 import {
-  Spot,
-  Spot2,
   Place,
   AppModes,
 } from '~/util';
@@ -24,11 +19,7 @@ import {
 // 'assemble' the full store out of modules
 export interface IAppState {
   destination?: DestinationState;
-  spots?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  spotsAdd?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  spotsDatabase?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  spotsReport?: GeoJSON.FeatureCollection<GeoJSON.Point>;
-  spotsNearby?: GeoJSON.FeatureCollection<GeoJSON.Point>;
+  spots?: SpotsState;
   place?: Place;
   appMode?: AppModes;
   map?: MapState;
@@ -40,14 +31,9 @@ export interface IAppState {
 export const rootReducer = combineReducers<IAppState>({
   destination: destinationReducer,
   spots: spotsReducer,
-  spotsAdd: spotsAddReducer,
-  spotsReport: spotsReportReducer,
-  spotsDatabase: spotsDatabaseReducer,
-  spotsNearby: spotsNearbyReducer,
   place: placesReducer,
   appMode: appModeReducer,
   map: mapReducer,
   geolocation: geolocationReducers,
-  userID: userIDReducer,
-  spot: spotReducer
+  userID: userIDReducer
 });

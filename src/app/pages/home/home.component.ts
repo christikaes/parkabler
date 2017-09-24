@@ -2,14 +2,13 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import {
   PlacesActions,
   SpotsActions,
-  SpotsDatabaseActions,
-  SpotsNearbyActions,
   AppModeActions,
   GeolocationActions
 } from '~/actions';
 import { Place, AppModes } from '~/util';
 import { select } from '@angular-redux/store';
-import { Observable } from 'rxjs';
+import { Observable } from 'rxjs/Observable';
+import { Spots } from '~/store';
 
 @Component({
   selector: 'pa-home',
@@ -22,8 +21,8 @@ export class HomeComponent implements OnInit {
   public placeValue: string;
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
-  @select() private spots$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
-  @select() public spotsNearby$: Observable<GeoJSON.FeatureCollection<GeoJSON.Point>>;
+  @select(['spots', 'nearby']) public spotsNearby$: Observable<Spots>;
+  @select(['spots', 'database']) public spotsDatabase$: Observable<Spots>;
   @select() private place$: Observable<Place>;
 
   // Whenever the escape key is pressed go back to home mode
@@ -42,8 +41,6 @@ export class HomeComponent implements OnInit {
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
-    private spotsDatabaseActions: SpotsDatabaseActions,
-    private spotsNearbyActions: SpotsNearbyActions,
     private geolocationActions: GeolocationActions,
     private appModeActions: AppModeActions
   ) { }
@@ -52,15 +49,16 @@ export class HomeComponent implements OnInit {
     this.geolocationActions.watch();
 
     // Get spots from the database
-    this.spotsDatabaseActions.getSpots();
+    this.spotsActions.getDatabaseSpots();
 
+    // TODO: MOVE THIS
     // This combines both destination$ & spots$ observables
     // We then use the latest values from both to get nearby spots
     this.destination$.combineLatest(
-      this.spots$,
+      this.spotsDatabase$,
       (destination, spots) => ({ destination, spots })
     ).subscribe(({ destination, spots }) => {
-      this.spotsNearbyActions.getNearbySpots(destination, spots);
+      this.spotsActions.getNearbySpots(destination, spots);
     });
 
     this.place$.subscribe((place: Place) => {
