@@ -7,7 +7,6 @@ import {
   spotsNearbyReducer,
   placesReducer,
   appModeReducer,
-  spotsListModeReducer,
   destinationReducer, DestinationState,
   mapReducer, MapState,
   geolocationReducers, GeolocationState,
@@ -20,7 +19,6 @@ import {
   Spot2,
   Place,
   AppModes,
-  SpotsListModes
 } from '~/util';
 
 // 'assemble' the full store out of modules
@@ -33,7 +31,6 @@ export interface IAppState {
   spotsNearby?: GeoJSON.FeatureCollection<GeoJSON.Point>;
   place?: Place;
   appMode?: AppModes;
-  spotsListMode?: SpotsListModes;
   map?: MapState;
   geolocation?: GeolocationState;
   userID?: string;
@@ -49,7 +46,6 @@ export const rootReducer = combineReducers<IAppState>({
   spotsNearby: spotsNearbyReducer,
   place: placesReducer,
   appMode: appModeReducer,
-  spotsListMode: spotsListModeReducer,
   map: mapReducer,
   geolocation: geolocationReducers,
   userID: userIDReducer,

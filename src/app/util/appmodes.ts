@@ -6,7 +6,3 @@ export enum AppModes {
     Navigate = 'NAVIGATE',
     Info = 'INFO'
 }
-
-export type SpotsListModes = 'open'
-    | 'closed'
-    | 'expanded';

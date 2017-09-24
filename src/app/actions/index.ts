@@ -7,7 +7,6 @@ import { SpotsNearbyActions } from './spotsNearby.actions';
 import { PlacesActions } from './places.actions';
 import { AppModeActions } from './appmode.actions';
 import { SpotActions } from './spot.actions';
-import { SpotsListModeActions } from './spotslistmode.actions';
 import { GeolocationActions } from './geolocation.actions';
 import { MapActions } from './map.actions';
 
@@ -18,7 +17,6 @@ export const ACTION_PROVIDERS = [
   SpotsReportActions,
   SpotsNearbyActions,
   AppModeActions,
-  SpotsListModeActions,
   GeolocationActions,
   MapActions,
   PlacesActions,
@@ -33,7 +31,6 @@ export {
   SpotsReportActions,
   SpotsNearbyActions,
   AppModeActions,
-  SpotsListModeActions,
   GeolocationActions,
   MapActions,
   PlacesActions,
