@@ -96,7 +96,7 @@ export class MapGLComponent implements OnInit, OnChanges {
     this.map.getCanvas().style.position = 'initial';
 
     // To see all of the events:
-    console.log(this.map._listeners);
+    // console.log(this.map._listeners);
 
     // Signal that the map is loaded
     this.map.on('load', () => {

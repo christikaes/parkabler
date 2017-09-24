@@ -11,29 +11,15 @@
   width: 100%;
   height: 100%;
   overflow: hidden;
-  opacity: 0.8;
-  div {
-    transition: all 0.5s ease-in-out;
-    background-color: black;
-  }
-  .top {
-    width: 100%;
-  }
-  .left {
-    float: left;
-  }
+  position: relative;
+
   .transparent {
+    transition: all 0.5s ease-in-out;
+    position: absolute;
     background-color: transparent;
-    box-shadow: 0 0 0 1000px black;
+    box-shadow: 0 0 0 6000px rgba(0,0,0,0.9);
     border-radius: 3px;
     float: left;
-  }
-  .right {
-    overflow: hidden;
-  }
-  .bottom {
-    width: 100%;
-    height: 100%;
   }
 }
 

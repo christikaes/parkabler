@@ -2,7 +2,7 @@ export const defaultInfo = {
     title: 'Parkabler',
     message: 'Welcome to Parkabler! You can use this app to find and navigate to accessible parking spots.',
     img: '/assets/img/tutorial/tutorial.gif'
-}
+};
 
 export const steps = [
     {
@@ -18,15 +18,15 @@ export const steps = [
         img: '/assets/img/tutorial/tutorial.gif'
     },
     {
-        dataSelector: 'map-controls',
-        title: 'Map Controls',
-        message: 'Center the map on your location or zoom in and out using these controls.',
-        img: '/assets/img/tutorial/tutorial.gif'
-    },
-    {
         dataSelector: 'add-spot',
         title: 'Add/Edit Spots',
         message: 'Parkabler is powered by contributions from the community. You can also add new spots that we don\'t know about yet and edit spaces with incorrect information.',
+        img: '/assets/img/tutorial/tutorial.gif'
+    },
+    {
+        dataSelector: 'map-controls',
+        title: 'Map Controls',
+        message: 'Center the map on your location or zoom in and out using these controls.',
         img: '/assets/img/tutorial/tutorial.gif'
     },
     {
@@ -41,4 +41,4 @@ export const steps = [
         message: 'You can always open this help from here',
         img: '/assets/img/tutorial/tutorial.gif'
     }
-]
+];

@@ -29,6 +29,9 @@ export class SpotsActions {
             type: SpotsActions.SET_DATABASE_SPOTS,
             payload: spots
         });
+
+        // Update the nearbySpots
+        this.getNearbySpots(this.ngRedux.getState().destination.coordinates, this.ngRedux.getState().spots.compiled);
     }
 
     // User Spots
@@ -37,6 +40,9 @@ export class SpotsActions {
             type: SpotsActions.UPDATE_USER_SPOT,
             payload: spot
         });
+
+        // Update the nearbySpots
+        this.getNearbySpots(this.ngRedux.getState().destination.coordinates, this.ngRedux.getState().spots.compiled);
 
         this.spotsDatabaseService.addSpot(spot);
     }

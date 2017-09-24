@@ -1,25 +1,37 @@
-<button md-button (click)="onOpen()" data-help="help">
+<button md-button
+        (click)="onOpen()"
+        data-help="help">
     HELP
 </button>
 
-<div *ngIf="open" class="container" [@fade]>
-  <div class="mock-navigate" data-help="navigate">
+<div *ngIf="open"
+     class="container"
+     [@fade]>
+  <div class="mock-navigate"
+       data-help="navigate">
     3 SPOTS NEAR DESTINATION
   </div>
   <div class="backdrop">
-    <div class="top" [style.height.px]="transparentBox.top"></div>
-    <div class="left" [style.width.px]="transparentBox.left" [style.height.px]="transparentBox.height"></div>
-    <div class="transparent" [style.width.px]="transparentBox.width" [style.height.px]="transparentBox.height"></div>
-    <div class="right" [style.height.px]="transparentBox.height"></div>
-    <div class="bottom"></div>
+    <div class="transparent"
+         [style.top.px]="transparentBox.top"
+         [style.left.px]="transparentBox.left"
+         [style.width.px]="transparentBox.width"
+         [style.height.px]="transparentBox.height">
+    </div>
   </div>
   <div class="foreground">
     <div class="title">{{info.title}}</div>
     <div class="message">{{info.message}}</div>
-    <img class="image" src="{{info.img}}" alt="Help explaination" />
+    <img class="image"
+         src="{{info.img}}"
+         alt="Help explaination" />
     <div class="actions">
-      <button md-button (click)="onClose()" color="accent">Skip</button>
-      <button md-button (click)="onNext()" color="accent">Next</button>
+      <button md-button
+              (click)="onClose()"
+              color="accent">Skip</button>
+      <button md-button
+              (click)="onNext()"
+              color="accent">Next</button>
     </div>
   </div>
 </div>
