@@ -38,10 +38,6 @@ export class SpotsActions {
             payload: spot
         });
 
-        // Try to add to nearby Spot
-        // if (spot.properties.quantity > 0) {
-
-        // }
         this.spotsDatabaseService.addSpot(spot);
     }
 

@@ -82,7 +82,6 @@
         },
         "spots": {
             "type": "geojson",
-            "buffer": 512,
             "data": {
                 "type": "FeatureCollection",
                 "features": []
@@ -4005,14 +4004,14 @@
                 "point_count"
             ],
             "layout": {
-                "icon-image": "pin-v{size}",
+                "icon-image": "{marker}",
                 "icon-size": 1,
                 "icon-offset": [
                     4,
                     -21
                 ],
                 "icon-allow-overlap": true,
-                "text-field": "{numspots}",
+                "text-field": "{quantity}",
                 "text-font": [
                     "DIN Offc Pro Medium",
                     "Arial Unicode MS Bold"
@@ -4045,56 +4044,6 @@
                 ">=",
                 "point_count",
                 0
-            ]
-        },
-        {
-            "id": "cluster-1",
-            "type": "circle",
-            "source": "spots",
-            "paint": {
-                "circle-color": "#f1f075",
-                "circle-radius": 20,
-                "circle-stroke-width": 5,
-                "circle-stroke-color": "#f1f075",
-                "circle-stroke-opacity": 0.5
-            },
-            "filter": [
-                "all",
-                [
-                    ">=",
-                    "point_count",
-                    10
-                ],
-                [
-                    "<",
-                    "point_count",
-                    0
-                ]
-            ]
-        },
-        {
-            "id": "cluster-2",
-            "type": "circle",
-            "source": "spots",
-            "paint": {
-                "circle-color": "#f28cb1",
-                "circle-radius": 20,
-                "circle-stroke-width": 5,
-                "circle-stroke-color": "#f28cb1",
-                "circle-stroke-opacity": 0.5
-            },
-            "filter": [
-                "all",
-                [
-                    ">=",
-                    "point_count",
-                    20
-                ],
-                [
-                    "<",
-                    "point_count",
-                    10
-                ]
             ]
         },
         {
