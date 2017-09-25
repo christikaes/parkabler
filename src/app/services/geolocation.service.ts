@@ -7,11 +7,6 @@ export class GeolocationService {
   public geolocationAvailability$ = new Subject<boolean>();
   private watchId;
 
-
-  constructor() {
-    this.watch();
-  }
-
   public getCoordinates() {
     return this.geolocationCoordinates$;
   }
@@ -21,7 +16,7 @@ export class GeolocationService {
   }
 
   public watch() {
-    let isAvailable = this.isAvailable();
+    const isAvailable = this.isAvailable();
     if (isAvailable) {
       console.log('ERROR: geolocation not available');
     }
@@ -30,7 +25,7 @@ export class GeolocationService {
     window.navigator.geolocation.getCurrentPosition((p) => {
       this.geolocationAvailability$.next(true);
       this.geolocationCoordinates$.next([p.coords.longitude, p.coords.latitude]);
-    }, ( err ) => {
+    }, (err) => {
       console.log('ERROR: ' + err.message);
       this.geolocationAvailability$.next(false);
     });
@@ -39,7 +34,7 @@ export class GeolocationService {
     this.watchId = window.navigator.geolocation.watchPosition((p) => {
       this.geolocationAvailability$.next(true);
       this.geolocationCoordinates$.next([p.coords.longitude, p.coords.latitude]);
-    }, ( err ) => {
+    }, (err) => {
       console.log('ERROR: ' + err.message);
       this.geolocationAvailability$.next(false);
     });
@@ -50,7 +45,7 @@ export class GeolocationService {
   }
 
   public isAvailable() {
-    let isSupported = window.navigator.geolocation != null;
+    const isSupported = window.navigator.geolocation != null;
     this.geolocationAvailability$.next(isSupported);
     return isSupported;
   }

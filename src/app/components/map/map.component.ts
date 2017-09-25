@@ -58,6 +58,11 @@ export class MapComponent implements AfterViewInit {
     // Listen to changes in currentLocation
     this.geolocationCoordinates$.subscribe((location: GeoJSON.Position) => {
       this.currentLocation = location;
+
+      // If it is the first view, then set the current center
+      if (this.ngRedux.getState().firstView && location) {
+        this.center = location;
+      }
     });
     this.geolocationAvailable$.subscribe((isAvailable: boolean) => {
       this.geolocationAvailable = isAvailable;

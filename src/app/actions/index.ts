@@ -8,8 +8,8 @@ import { MapActions } from './map.actions';
 export const ACTION_PROVIDERS = [
   SpotsActions,
   AppModeActions,
-  GeolocationActions,
   MapActions,
+  GeolocationActions,
   PlacesActions,
   DestinationActions
 ];
@@ -17,8 +17,8 @@ export const ACTION_PROVIDERS = [
 export {
   SpotsActions,
   AppModeActions,
-  GeolocationActions,
   MapActions,
+  GeolocationActions,
   PlacesActions,
   DestinationActions
 };

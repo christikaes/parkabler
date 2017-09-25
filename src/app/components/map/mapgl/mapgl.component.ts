@@ -32,7 +32,7 @@ export class MapGLComponent implements OnInit, OnChanges {
 
   @Input() zoom: number;
   @Output() zoomChange = new EventEmitter<number>();
-  @Input() center: number;
+  @Input() center: GeoJSON.Position;
   @Output() centerChange = new EventEmitter<GeoJSON.Position>();
   @Input() spots: GeoJSON.FeatureCollection<GeoJSON.Point>;
   @Input() currentlocation: GeoJSON.Position;
@@ -107,6 +107,7 @@ export class MapGLComponent implements OnInit, OnChanges {
 
       // Setup with initial spots
       this.setSpots(this.spots);
+      this.setCenter(this.center);
       this.setCurrentLocation(this.currentlocation);
       this.setupAddSpotOverlay();
 
@@ -193,6 +194,9 @@ export class MapGLComponent implements OnInit, OnChanges {
   }
 
   setCurrentLocation(location: GeoJSON.Position) {
+    if (!location) {
+      return;
+    }
     const data = turfhelpers.featureCollection([
       turfhelpers.point(location)
     ]);

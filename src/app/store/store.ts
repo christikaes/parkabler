@@ -6,7 +6,8 @@ import {
   destinationReducer, DestinationState,
   mapReducer, MapState,
   geolocationReducers, GeolocationState,
-  userIDReducer
+  userIDReducer,
+  firstViewReducer
 } from './reducers';
 
 export { Spots, Spot };
@@ -25,7 +26,7 @@ export interface IAppState {
   map?: MapState;
   geolocation?: GeolocationState;
   userID?: string;
-  spot?: string;
+  firstView?: boolean;
 }
 
 export const rootReducer = combineReducers<IAppState>({
@@ -35,5 +36,6 @@ export const rootReducer = combineReducers<IAppState>({
   appMode: appModeReducer,
   map: mapReducer,
   geolocation: geolocationReducers,
-  userID: userIDReducer
+  userID: userIDReducer,
+  firstView: firstViewReducer
 });
