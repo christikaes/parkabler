@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import Animations from '~/animations';
 import { defaultInfo, steps } from './help-data';
+import { NgRedux } from '@angular-redux/store';
+import { IAppState } from '~/store';
 
 @Component({
   selector: 'pa-help',
@@ -18,6 +20,12 @@ export class HelpComponent {
   };
   public info = defaultInfo;
   private step = -1;
+
+  constructor(
+    private ngRedux: NgRedux<IAppState>
+  ) {
+    this.open = this.ngRedux.getState().firstView;
+  }
 
   public onNext() {
     this.step++;
