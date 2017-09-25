@@ -20,11 +20,9 @@ export class EditComponent {
     description: null,
     quantity: 1
   };
-  private activeSpotId: string;
 
   @select() private appMode$: Observable<AppModes>;
   @select() private spotSelected$: Observable<GeoJSON.Feature<GeoJSON.Point>>;
-  @select(['spots', 'activeId']) public activeSpotId$: Observable<string>;
 
   constructor(
     private ngRedux: NgRedux<IAppState>,
@@ -51,7 +49,6 @@ export class EditComponent {
   }
 
   public onSetLocation() {
-    this.activeSpotId = this.ngRedux.getState().spots.activeId;
     this.mapActions.setInteractable(false);
   }
 
@@ -61,8 +58,7 @@ export class EditComponent {
 
   public onSubmit() {
     // Create a new Spot and add it to the addSpots
-    const activeSpot = this.ngRedux.getState().spots.compiled.find(s => s.id === this.activeSpotId);
-    const newSpot = { ...activeSpot };
+    const newSpot = { ...this.ngRedux.getState().spots.active };
     newSpot.properties.addedBy = this.ngRedux.getState().userID;
     newSpot.properties.verified = false;
     newSpot.properties.quantity = this.newSpotDetails.quantity;

@@ -176,7 +176,7 @@ export class MapGLComponent implements OnInit, OnChanges {
     const center = [this.map.getCenter().lng, this.map.getCenter().lat];
     if ((Math.abs(Math.round((center[0] - newCenter[0]) * 1000)) > 0)
       || (Math.abs(Math.round((center[1] - newCenter[1]) * 1000)) > 0)) {
-      this.map.flyTo({ center: newCenter });
+      this.map.easeTo({ center: newCenter, zoom: this.zoom });
     }
   }
 

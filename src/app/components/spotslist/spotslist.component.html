@@ -12,12 +12,27 @@
   </button>
 
   <md-nav-list class="content">
+    <!-- <md-list-item *ngIf="active"
+                  class="item"
+                  (click)="onClickSpot(active)">
+      <div class="details">
+        <span class="large-text">{{active.properties.quantity}} parking spot</span>
+      </div>
+      <a class="cta"
+         href="http://maps.google.com/maps?daddr={{active.geometry.coordinates[1]}},{{active.geometry.coordinates[0]}}"
+         target="_blank">
+        <md-icon class="icon">directions</md-icon>
+        <span>
+                Directions
+              </span>
+      </a>
+    </md-list-item> -->
     <md-list-item *ngFor="let spot of spots"
                   class="item"
                   (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">
-          <span class="large-text">{{spot.properties.numspots}} parking spot</span>
+          <span class="large-text">{{spot.properties.quantity}} parking spot</span>
           <span> within {{spot.properties.distanceToDestination | paMetersToFeet}} feet </span>
         </div>
         <a class="cta"

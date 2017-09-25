@@ -8,7 +8,7 @@ import {
 import { Place, AppModes } from '~/util';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
-import { Spots } from '~/store';
+import { Spots, Spot } from '~/store';
 
 @Component({
   selector: 'pa-home',
@@ -22,6 +22,7 @@ export class HomeComponent implements OnInit {
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select(['spots', 'nearby']) public spotsNearby$: Observable<Spots>;
+  @select(['spots', 'active']) public spotsActive$: Observable<Spot>;
   @select(['spots', 'database']) public spotsDatabase$: Observable<Spots>;
   @select() private place$: Observable<Place>;
 

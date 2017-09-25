@@ -9,7 +9,7 @@ export class SpotsActions {
     static SET_DATABASE_SPOTS = 'PA/SPOTS/SET/DATABASE/SPOTS';
     static UPDATE_USER_SPOT = 'PA/SPOTS/UPDATE/USER/SPOT';
     static SET_NEARBY_SPOTS = 'PA/SPOTS/SET/NEARBY/SPOTS';
-    static SET_ACTIVEID = 'PA/SPOTS/SET/ACTIVEID';
+    static SET_ACTIVE_SPOT = 'PA/SPOTS/SET/ACTIVE/SPOT';
 
     constructor(
         private ngRedux: NgRedux<IAppState>,
@@ -69,9 +69,13 @@ export class SpotsActions {
 
     // Active SpotId
     public setActiveSpotId(activeId: string) {
+        const activeSpot = this.ngRedux.getState().spots.compiled.find(s => s.id === activeId);
+        this.setActiveSpot(activeSpot);
+    }
+    public setActiveSpot(spot: Spot) {
         this.ngRedux.dispatch({
-            type: SpotsActions.SET_ACTIVEID,
-            payload: activeId
+            type: SpotsActions.SET_ACTIVE_SPOT,
+            payload: spot
         });
     }
 

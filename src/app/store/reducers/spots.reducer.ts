@@ -23,7 +23,7 @@ export interface SpotsState {
     database: Spots;
     user: Spots;
     nearby: Spots;
-    activeId: string;
+    active: Spot;
 }
 
 const INITIAL_STATE: SpotsState = {
@@ -31,7 +31,7 @@ const INITIAL_STATE: SpotsState = {
     database: [],
     user: [],
     nearby: [],
-    activeId: null
+    active: null
 };
 
 export function spotsReducer(
@@ -47,7 +47,7 @@ export function spotsReducer(
             let user = [...state.user];
             database.forEach(ds => user = user.filter(us => us.id !== ds.id));
             // 2. recompileAll
-            const compiled = compileAll(database, user, state.nearby, state.activeId);
+            const compiled = compileAll(database, user, state.nearby, state.active);
 
             return { ...state, database, user, compiled };
         }
@@ -59,15 +59,13 @@ export function spotsReducer(
             if (!state.user.map(s => s.id).includes(newSpot.id)) {
                 //  1. ADD If the newSpot is not in user
                 user = [...user, newSpot];
-            } else if (newSpot.quantity > 0) {
-                // 2. SET If it is in user, and there are spots
-                user = user.map(spot => spot.id === newSpot.id ? newSpot : spot);
             } else {
-                // 3. DELETE If it is in user and there
-                user = user.filter(spot => spot.id !== newSpot.id);
+                // 2. SET If it is in user
+                user = user.map(spot => spot.id === newSpot.id ? newSpot : spot);
             }
-            // 4. recompileAll
-            const compiled = compileAll(state.database, user, state.nearby, state.activeId);
+
+            // 3. recompileAll
+            const compiled = compileAll(state.database, user, state.nearby, state.active);
 
             return { ...state, user, compiled };
         }
@@ -83,13 +81,13 @@ export function spotsReducer(
         }
 
         // The active spotId was set
-        case SpotsActions.SET_ACTIVEID: {
+        case SpotsActions.SET_ACTIVE_SPOT: {
             // 1. Set the active spot
-            const activeId = action.payload;
+            const active = action.payload;
             // 2. Recompile just activeId (since nothing else should change)
-            const compiled = compileActiveSpot(state.compiled, activeId);
+            const compiled = compileActiveSpot(state.compiled, active);
 
-            return { ...state, activeId, compiled };
+            return { ...state, active, compiled };
         }
 
         default:
@@ -97,11 +95,11 @@ export function spotsReducer(
     }
 }
 
-// Sets the `active` prop on each spot based on the activeId
-const compileActiveSpot = (compiled: Spots, activeId: string) => {
+// Sets the `active` prop on each spot based on the active spot
+const compileActiveSpot = (compiled: Spots, active: Spot) => {
     return compiled.map(spot => {
         // Set the active prop
-        const properties = { ...spot.properties, active: spot.id === activeId };
+        const properties = { ...spot.properties, active: active ? spot.id === active.id : false };
         return { ...spot, properties };
     });
 };
@@ -119,10 +117,13 @@ const compileNearby = (compiled: Spots, nearby: Spots) => {
 };
 
 // Recompiled based on all of the data
-const compileAll = (database: Spots, user: Spots, nearby: Spots, activeId: string) => {
-    let compiled = [...database, ...user];
+const compileAll = (database: Spots, user: Spots, nearby: Spots, active: Spot) => {
+    // Remove spots fromdb that are in user
+    let compiled = database.filter(ds => !user.map(us => us.id).includes(ds.id));
+    // Remove spots in user that are 0, and add to db
+    compiled = [...compiled, ...user.filter(s => s.properties.quantity > 0)];
     compiled = compileNearby(compiled, nearby);
-    compiled = compileActiveSpot(compiled, activeId);
+    compiled = compileActiveSpot(compiled, active);
 
     return compiled;
 };

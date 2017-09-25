@@ -25,6 +25,16 @@ export class SpotsDatabaseService {
 
   // Pushes the given spot the database
   public addSpot(spot: Spot) {
-    this.db.list('addspots').push(spot);
+    this.db.list('addspots').push({
+      id: spot.id,
+      type: spot.type,
+      geometry: spot.geometry,
+      properties: {
+        addedBy: spot.properties.addedBy,
+        verified: spot.properties.verified,
+        quantity: spot.properties.quantity,
+        cost: spot.properties.cost
+      }
+    });
   }
 }

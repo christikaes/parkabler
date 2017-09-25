@@ -4,6 +4,7 @@ import { IAppState } from '~/store';
 import { Observable } from 'rxjs/Observable';
 import { AppModeActions, SpotsActions, MapActions } from '~/actions';
 import { AppModes } from '~/util';
+const uuidv4 = require('uuid/v4');
 
 const turfHelper = require('@turf/helpers');
 
@@ -72,6 +73,7 @@ export class AddSpotComponent {
         cost: this.newSpotDetails.cost,
         description: this.newSpotDetails.description
       });
+    newSpot.id = uuidv4();
 
     this.spotsActions.updateUserSpot(newSpot);
 

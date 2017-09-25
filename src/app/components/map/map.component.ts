@@ -3,7 +3,7 @@ import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { GeolocationService } from '~/services';
 import { DestinationActions, MapActions, SpotsActions } from '~/actions';
-import { IAppState, Spots } from '~/store';
+import { IAppState, Spots, Spot } from '~/store';
 const turfHelper = require('@turf/helpers');
 
 // TODO-rangle: is there a better way to require this?
@@ -29,6 +29,7 @@ export class MapComponent implements AfterViewInit {
 
   @select(['destination', 'coordinates']) private destination$: Observable<GeoJSON.Position>;
   @select(['spots', 'compiled']) private spots$: Observable<Spots>;
+  @select(['spots', 'active']) private active$: Observable<Spot>;
   @select(['geolocation', 'coordinates']) private geolocationCoordinates$: Observable<GeoJSON.Position>;
   @select(['geolocation', 'isAvailable']) private geolocationAvailable$: Observable<boolean>;
   @select(['map', 'zoom']) private zoom$: Observable<number>;
@@ -72,16 +73,23 @@ export class MapComponent implements AfterViewInit {
     this.destination$.subscribe((destination: GeoJSON.Position) => {
       this.destination = destination;
       if (destination !== null) {
-        this.center = destination;
         this.zoom = 15;
+        this.center = destination;
       }
     });
 
     // Listen to changes on spots
-    this.spots$.subscribe((spots) => {
+    this.spots$.subscribe((spots: Spots) => {
       this.spots = turfHelper.featureCollection(spots);
     });
 
+    // Listen to changes on the active spot
+    this.active$.subscribe((spot: Spot) => {
+      if (spot) {
+        this.zoom = 15;
+        this.center = spot.geometry.coordinates;
+      }
+    });
   }
 
   setZoom(z: number): void {

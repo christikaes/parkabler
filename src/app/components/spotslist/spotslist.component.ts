@@ -2,8 +2,8 @@ import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/cor
 import { select } from '@angular-redux/store';
 import { AppModes } from '~/util';
 import { Observable } from 'rxjs';
-import { AppModeActions } from '~/actions';
-import { Spots } from '~/store';
+import { AppModeActions, SpotsActions } from '~/actions';
+import { Spots, Spot } from '~/store';
 
 import Animations from '~/animations';
 
@@ -15,6 +15,7 @@ import Animations from '~/animations';
 })
 export class SpotsListComponent implements OnInit, OnChanges {
   @Input() public spots: Spots;
+  @Input() public active: Spot;
 
   @select() private appMode$: Observable<AppModes>;
 
@@ -24,7 +25,8 @@ export class SpotsListComponent implements OnInit, OnChanges {
   private appMode;
 
   constructor(
-    private appModeActions: AppModeActions
+    private appModeActions: AppModeActions,
+    private spotsActions: SpotsActions
   ) {
     this.state = 'closed';
   }
@@ -35,7 +37,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
       if (mode !== AppModes.Navigate) {
         this.state = 'closed';
       } else {
-        if (this.numSpot < 0) {
+        if (this.numSpot > 0) {
           this.state = 'open';
         }
       }
@@ -56,6 +58,8 @@ export class SpotsListComponent implements OnInit, OnChanges {
             this.appModeActions.setModeHome();
           }
         }
+      } else if (change === 'active') {
+        // TODO
       } else {
         throw new Error('Uncaught change: ' + change);
       }
@@ -66,8 +70,8 @@ export class SpotsListComponent implements OnInit, OnChanges {
     this.state = this.state === 'peak' ? 'open' : 'peak';
   }
 
-  onClickSpot() {
-    // set map center and zoom
+  onClickSpot(spot: Spot) {
+    this.spotsActions.setActiveSpot(spot);
   }
 
   onPanDown(e) {
