@@ -112,7 +112,7 @@
             }
         }
     },
-    "sprite": "mapbox://sprites/christikaes/cj34vt25f00062rl5ij34i52b",
+    "sprite": "mapbox://sprites/christikaes/cj8km3osc524z2smvipvf19e3",
     "glyphs": "mapbox://fonts/christikaes/{fontstack}/{range}.pbf",
     "layers": [
         {
@@ -3996,6 +3996,15 @@
             }
         },
         {
+            "id": "nearby",
+            "type": "fill",
+            "source": "nearby",
+            "paint": {
+                "fill-color": "#51bbd6",
+                "fill-opacity": 0.5
+            }
+        },
+        {
             "id": "unclustered-points",
             "type": "symbol",
             "source": "spots",
@@ -4083,15 +4092,6 @@
                 "circle-color": "#51bbd6",
                 "circle-stroke-width": 2,
                 "circle-stroke-color": "#fff"
-            }
-        },
-        {
-            "id": "nearby",
-            "type": "fill",
-            "source": "nearby",
-            "paint": {
-                "fill-color": "#51bbd6",
-                "fill-opacity": 0.5
             }
         },
         {

@@ -183,7 +183,7 @@ export class MapGLComponent implements OnInit, OnChanges {
   setSpots(spots: any) {
     // HACK: There is a bug with MapboxGl cluster drops property id
     spots.features.forEach(spot => {
-      const marker = spot.properties.active ? 'pin' : spot.properties.nearby ? 'pin-v2' : 'pin-v3';
+      const marker = spot.properties.active ? 'pin-active' : spot.properties.nearby ? 'pin-nearby' : 'pin-default';
       spot.properties = {
         ...spot.properties,
         id: spot.id,
