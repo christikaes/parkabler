@@ -5,12 +5,12 @@
                           linear>
 
     <!-- location -->
-    <mat-step [stepControl]="location"
-              [editable]="!submitted"
-              label="Location">
+    <mat-step label="Location"
+              [stepControl]="location"
+              [editable]="!submitted">
       <form [formGroup]="location">
-        Drag the map to put the marker exactly over the spot
-        <mat-error *ngIf="!location.controls.coordinates.valid && location.controls.coordinates.dirty">This field is required</mat-error>
+        Drag the map to put the marker exactly over the parking spot.
+        <mat-error *ngIf="!location.controls.coordinates.valid && location.controls.coordinates.dirty">Please make sure to drag the map so that the marker is over the parking spot.</mat-error>
         <div>
           <button mat-raised-button
                   matStepperNext
@@ -19,12 +19,11 @@
       </form>
     </mat-step>
 
-    <!-- submitted -->
-    <mat-step [stepControl]="details"
-              [editable]="!submitted"
-              label="Details">
+    <!-- details -->
+    <mat-step label="Details"
+              [stepControl]="details"
+              [editable]="!submitted">
       <form [formGroup]="details">
-
         <h4>How many spaces are there?</h4>
         <mat-button-toggle-group name="spaces-buttons"
                                  formControlName="quantity">
@@ -57,7 +56,6 @@
                   matStepperNext
                   (click)="details.controls.quantity.markAsDirty()">Submit</button>
         </div>
-
       </form>
     </mat-step>
 

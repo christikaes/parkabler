@@ -51,6 +51,12 @@ export class AppModeActions {
     }
 
     public setModeEdit() {
+        const activeSpot = this.ngRedux.getState().spots.active;
+        if (activeSpot) {
+            this.mapActions.setZoom(18);
+            this.mapActions.setCenter(activeSpot.geometry.coordinates);
+        }
+
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_EDIT
         });

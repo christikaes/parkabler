@@ -1,52 +1,76 @@
-<pa-drawer [open]="open">
+<pa-drawer [open]="(appMode$ | async) === AppModes.Edit">
 
-  <pa-stepper (close)="onClose()">
+  <mat-horizontal-stepper (selectionChange)="onStepChange($event)"
+                          #stepper
+                          linear>
 
-    <!-- select marker -->
-    <pa-step [previousCopy]="'Cancel'"
-             [nextCopy]="'Next'"
-             (next)="onSetLocation()">
-      Select the spot to edit
-    </pa-step>
+    <!-- location -->
+    <mat-step label="Select"
+              [stepControl]="selected"
+              [editable]="!submitted">
+      <form [formGroup]="selected">
+        Tap to select the spot to edit.
+        <mat-error *ngIf="!selected.controls.spot.valid && selected.controls.spot.dirty">Please select a spot.</mat-error>
+        <div>
+          <button mat-raised-button
+                  matStepperNext
+                  (click)="selected.controls.spot.markAsDirty()">Next</button>
+        </div>
+      </form>
+    </mat-step>
 
     <!-- details -->
-    <pa-step [previousCopy]="'Back'"
-             (previous)="onUnsetLocation()"
-             [nextCopy]="'Submit'"
-             (next)="onSubmit()">
-      <h4>How many spaces are there?</h4>
-      <mat-button-toggle-group name="spaces-buttons"
-                               [(ngModel)]="newSpotDetails.quantity">
-        <mat-button-toggle value="0">None</mat-button-toggle>
-        <mat-button-toggle value="1">1</mat-button-toggle>
-        <mat-button-toggle value="2">2</mat-button-toggle>
-        <mat-button-toggle value="3">3</mat-button-toggle>
-        <mat-button-toggle value="4">4</mat-button-toggle>
-        <mat-button-toggle value="Many">Many</mat-button-toggle>
-      </mat-button-toggle-group>
-      <h4>Additional Features</h4>
-      <div class="additional-feat-container">
-        <mat-checkbox name="fee"
-                      [(ngModel)]="newSpotDetails.cost"
-                      color="primary"
-                      [indeterminate]="true">
-          Fee Associated
-        </mat-checkbox>
-        <mat-input-container>
-          <input matInput
-                 aria-label="description"
-                 [(ngModel)]="newSpotDetails.description"
-                 placeholder="Description">
-        </mat-input-container>
-      </div>
-    </pa-step>
+    <mat-step label="Edit"
+              [stepControl]="details"
+              [editable]="!submitted">
+      <form [formGroup]="details">
+        <h4>How many spaces are there?</h4>
+        <mat-button-toggle-group name="spaces-buttons"
+                                 formControlName="quantity">
+          <mat-button-toggle value="0">None</mat-button-toggle>
+          <mat-button-toggle value="1">1</mat-button-toggle>
+          <mat-button-toggle value="2">2</mat-button-toggle>
+          <mat-button-toggle value="3">3</mat-button-toggle>
+          <mat-button-toggle value="4">4</mat-button-toggle>
+          <mat-button-toggle value="Many">Many</mat-button-toggle>
+        </mat-button-toggle-group>
+        <mat-error *ngIf="!details.controls.quantity.valid && details.controls.quantity.dirty">This field is required</mat-error>
+        <h4>Additional Features</h4>
+        <div class="additional-feat-container">
+          <mat-checkbox name="fee"
+                        formControlName="cost"
+                        color="primary"
+                        [indeterminate]="true">
+            Fee Associated
+          </mat-checkbox>
+          <mat-input-container>
+            <input matInput
+                   aria-label="description"
+                   formControlName="description"
+                   placeholder="Description">
+          </mat-input-container>
+        </div>
+        <div>
+          <button mat-button
+                  matStepperPrevious>Back</button>
+          <button mat-button
+                  matStepperNext
+                  (click)="details.controls.quantity.markAsDirty()">Submit</button>
+        </div>
+      </form>
+    </mat-step>
 
     <!-- submitted -->
-    <pa-step [previousCopy]="''"
-             [nextCopy]="'OK'"
-             (next)="onClose()">
-      Thank you for your help! The details have been submitted, we will review the submission and add it to the map accordingly.
-    </pa-step>
+    <mat-step label="Done"
+              [editable]="false"
+              [completed]="false">
+      <!--HACK: Editable and completed because Can't reset the stepper-->
+      Thank you for your help! Your updaes have been submitted, we will review the submission and add it to the map accordingly.
+      <div>
+        <button mat-button
+                (click)="onClose()">OK</button>
+      </div>
+    </mat-step>
+  </mat-horizontal-stepper>
 
-  </pa-stepper>
 </pa-drawer>

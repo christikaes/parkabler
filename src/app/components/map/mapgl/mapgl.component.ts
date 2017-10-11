@@ -136,22 +136,28 @@ export class MapGLComponent implements OnInit, OnChanges {
     };
 
     this.map.on('click', function (e) {
-      this.markerSelected.emit(null);
+      if (this.interactable) {
+        this.markerSelected.emit(null);
+      }
     }.bind(this));
 
     this.map.on('click', 'cluster-0', function (e) {
-      this.markerSelected.emit(null);
-      centerOnClick(e.lngLat);
+      if (this.interactable) {
+        this.markerSelected.emit(null);
+        centerOnClick(e.lngLat);
+      }
     }.bind(this));
 
     this.map.on('click', 'unclustered-points', function (e) {
-      const unactiveFeature = e.features.find(f => !f.properties.active);
-      if (unactiveFeature && this.map.getZoom() >= 15) {
-        this.markerSelected.emit(unactiveFeature.properties.id);
-      } else {
-        this.markerSelected.emit(null);
+      if (this.interactable) {
+        const unactiveFeature = e.features.find(f => !f.properties.active);
+        if (unactiveFeature && this.map.getZoom() >= 15) {
+          this.markerSelected.emit(unactiveFeature.properties.id);
+        } else {
+          this.markerSelected.emit(null);
+        }
+        centerOnClick(e.lngLat);
       }
-      centerOnClick(e.lngLat);
     }.bind(this));
 
     this.map.on('move', () => {

@@ -16,7 +16,6 @@ const turfHelper = require('@turf/helpers');
 })
 
 export class AddSpotComponent implements OnInit {
-  public open = false;
   public submitted = false;
   public location: FormGroup;
   public details: FormGroup;
@@ -65,6 +64,9 @@ export class AddSpotComponent implements OnInit {
         this.submitted = false;
         this.location.reset();
         this.details.reset();
+      } else {
+        this.mapActions.setAddSpotOverlay(false);
+        this.mapActions.setInteractable(true);
       }
     });
   }
