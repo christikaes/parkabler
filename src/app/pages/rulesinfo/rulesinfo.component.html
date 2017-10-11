@@ -1,18 +1,17 @@
 <div [@fade]>
-  <mat-toolbar color="primary">
+  <div class="toolbar">
     <button mat-button
             *ngIf='isHome'
             [routerLink]="''">< Map</button>
     <button mat-button
             *ngIf='!isHome'
             [routerLink]="'/rulesinfo'">< Back</button>
-    <span>{{title}}</span>
-  </mat-toolbar>
+    <h1 class="title">{{title}}</h1>
+  </div>
 
   <div class="container">
     <!-- Show a nav list for nav pages (home page) -->
     <mat-nav-list *ngIf='isHome'
-                  class="content"
                   [@slideRight]>
       <div>
         State:
@@ -22,7 +21,7 @@
           </mat-option>
         </mat-select>
       </div>
-      <h3 matSubheader>Parking rules and regultions</h3>
+      <h2 class="header">Parking rules and regultions</h2>
       <a mat-list-item
          *ngFor="let item of content"
          [routerLink]="item.href">
@@ -31,7 +30,7 @@
         <span class="fill-remaining-space"></span>
         <mat-icon>chevron_right</mat-icon>
       </a>
-      <h3 matSubheader>About the App</h3>
+      <h2 class="header">About the App</h2>
       <a mat-list-item
          *ngFor="let item of aboutApp"
          [routerLink]="item.href">
@@ -46,6 +45,7 @@
     <div *ngIf='!isHome'
          class="content"
          [@slideLeft]>
+      <h2>{{title}}</h2>
       <div *ngFor="let item of content"
            class="line"
            [ngClass]="{separated: !!item.img}">

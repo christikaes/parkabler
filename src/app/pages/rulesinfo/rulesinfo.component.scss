@@ -1,20 +1,36 @@
+.toolbar {
+  width: 100%;
+  background-color: #3f51b5;
+  display: flex;
+  color: rgba(255, 255, 255, 0.87);
+  font-size: 30px;
+  align-items: center;
+  height: 60px;
+}
+
 .container { 
   position: relative; 
+  text-align: left;
+}
+
+.title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 60px;
+  margin: auto 0;
 }
 
 .content {
-  text-align: left;
+  padding: 20px;
 }
 
 .content .line {
   display: flex;
   flex-direction: row;
   align-items: center;
-  padding: 20px;
 
   img {
     margin: 10px;
-    height: 100px;
     width: 60px;
   }
 }
@@ -27,4 +43,13 @@
   // This fills the remaining space, by using flexbox.
   // Every toolbar row uses a flexbox row layout.
   flex: 1 1 auto;
+}
+
+.mat-nav-list .mat-list-item {
+  border-bottom: 1px solid grey;
+  height: 55px;
+}
+
+.header {
+  padding-left: 10px;
 }

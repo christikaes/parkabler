@@ -1,48 +1,73 @@
 {
-    "Boston": [{
-        "title": "Where can I park with a disabled placard?",
-        "content": [{
-            "text": "Any parking space designated as a disabled parking spot. In Boston, this is always represented by  a blue disabled parking sign (see “Sign” section for details). Other parking ordinances may be in  effect, so obey all designated parking rules. Some spots are only in effect for a part of the day (for  example, 8am-8pm, and require a special resident permit thereafter). Other spots may require a  resident parking pass, so please pay attention and obey all designated parking rules as stated on  the sign."
-        }, {
-            "text": "Massachusetts law also allows vehicles with proper Disabled Parking authority to disregard public  meter fees. Currently, you can park for free without a time limit at any metered spot in the City of  Boston. Of note, Massachusetts Port Authority does not exempt meter fees for Disabled Parking."
-        }]
-    }, {
-        "title": "Where am I NOT allowed to park?",
-        "content": [{
-            "text": "Do not park in a cross-hatch area (Zebra Stripe) adjacent to a HP space. This area is reserved for  van ramp access."
-        }, {
-            "text": "Disabled parking signs that say “ramp” underneath (see “sign” section). This sign denotes a ramp  so that individuals that have difficulty mounting a curve may move freely from street to sidewalk. You  should not park in front of this space."
-        }, {
-            "text": "If you do not have the appropriate residential sticker or are outside of the time window that is  detailed on the disabled parking sign."
-        }]
-    }, {
-        "title": "I am traveling from out of state. Can I park in a disabled parking spot?",
-        "content": [{
-            "text": "Yes. The state of Massachusetts recognizes HP passes from all states."
-        }, {
-            "text": "Similarly, all U.S. States and Canada recognize the Massachusetts Disabled Placard as an authorized document for HP parking. However, New York City does not recognize Disabled Placards issued by any other authority other than the City of New York."
-        }]
-    }, {
-        "title": "How can I apply for a HP sign in front of my house?",
-        "content": [{
-            "text": "The Registry of Motor Vehicles does not designate HP parking spaces. You must inquire with your local City or Town office. Many cities have Disability Commissions which can assist you with this."
-        }]
-    }, {
-        "title": "New/Pending",
-        "content": [{
-            "text": "The City is currently considering enforcing the 2-hour limit on metered parking sports even with a disabled parking placard. No official changes have been made. If and when rule changes occur, we will keep you aware of them on this page."
-        }]
-    }, {
-        "title": "Signs",
-        "content": [{
-            "img": "img/signs/1.jpg",
-            "text": "Appropriate disabled parking sport designation"
-        }, {
-            "img": "img/signs/2.jpg",
-            "text": "Designates “ramp” only. Do not park here"
-        }, {
-            "img": "img/signs/3.png",
-            "text": "Unfortunately, individuals may hang private signs on the street to try to designate disabled parking  spots for private use; however, these are not spots designated by the city and you should not park at  spots"
-        }]
-    }]
+    "Boston": [
+        {
+            "title": "Where can I park with a disabled placard?",
+            "content": [
+                {
+                    "text": "Any parking space designated as a disabled parking spot. In Boston, this is always represented by  a blue disabled parking sign (see “Sign” section for details). Other parking ordinances may be in  effect, so obey all designated parking rules. Some spots are only in effect for a part of the day (for  example, 8am-8pm, and require a special resident permit thereafter). Other spots may require a  resident parking pass, so please pay attention and obey all designated parking rules as stated on  the sign."
+                },
+                {
+                    "text": "Massachusetts law also allows vehicles with proper Disabled Parking authority to disregard public  meter fees. Currently, you can park for free without a time limit at any metered spot in the City of  Boston. Of note, Massachusetts Port Authority does not exempt meter fees for Disabled Parking."
+                }
+            ]
+        },
+        {
+            "title": "Where am I NOT allowed to park?",
+            "content": [
+                {
+                    "text": "Do not park in a cross-hatch area (Zebra Stripe) adjacent to a HP space. This area is reserved for  van ramp access."
+                },
+                {
+                    "text": "Disabled parking signs that say “ramp” underneath (see “sign” section). This sign denotes a ramp  so that individuals that have difficulty mounting a curve may move freely from street to sidewalk. You  should not park in front of this space."
+                },
+                {
+                    "text": "If you do not have the appropriate residential sticker or are outside of the time window that is  detailed on the disabled parking sign."
+                }
+            ]
+        },
+        {
+            "title": "I am traveling from out of state. Can I park in a disabled parking spot?",
+            "content": [
+                {
+                    "text": "Yes. The state of Massachusetts recognizes HP passes from all states."
+                },
+                {
+                    "text": "Similarly, all U.S. States and Canada recognize the Massachusetts Disabled Placard as an authorized document for HP parking. However, New York City does not recognize Disabled Placards issued by any other authority other than the City of New York."
+                }
+            ]
+        },
+        {
+            "title": "How can I apply for a HP sign in front of my house?",
+            "content": [
+                {
+                    "text": "The Registry of Motor Vehicles does not designate HP parking spaces. You must inquire with your local City or Town office. Many cities have Disability Commissions which can assist you with this."
+                }
+            ]
+        },
+        {
+            "title": "New/Pending",
+            "content": [
+                {
+                    "text": "The City is currently considering enforcing the 2-hour limit on metered parking sports even with a disabled parking placard. No official changes have been made. If and when rule changes occur, we will keep you aware of them on this page."
+                }
+            ]
+        },
+        {
+            "title": "Signs",
+            "content": [
+                {
+                    "img": "/assets/img/signs/1.jpg",
+                    "text": "Appropriate disabled parking sport designation"
+                },
+                {
+                    "img": "/assets/img/signs/2.jpg",
+                    "text": "Designates “ramp” only. Do not park here"
+                },
+                {
+                    "img": "/assets/img/signs/3.png",
+                    "text": "Unfortunately, individuals may hang private signs on the street to try to designate disabled parking  spots for private use; however, these are not spots designated by the city and you should not park at  spots"
+                }
+            ]
+        }
+    ]
 }
