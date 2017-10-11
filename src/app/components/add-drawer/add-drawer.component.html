@@ -10,11 +10,13 @@
               [editable]="!submitted">
       <form [formGroup]="location">
         Drag the map to put the marker exactly over the parking spot.
-        <mat-error *ngIf="!location.controls.coordinates.valid && location.controls.coordinates.dirty">Please make sure to drag the map so that the marker is over the parking spot.</mat-error>
-        <div>
+        <div class="actions">
+          <button mat-button
+                  (click)="onClose()">Cancel</button>
           <button mat-raised-button
+                  color="primary"
                   matStepperNext
-                  (click)="location.controls.coordinates.markAsDirty()">Next</button>
+                  [disabled]="!location.controls.coordinates.valid">Next</button>
         </div>
       </form>
     </mat-step>
@@ -24,7 +26,9 @@
               [stepControl]="details"
               [editable]="!submitted">
       <form [formGroup]="details">
-        <h4>How many spaces are there?</h4>
+        <h4 [ngClass]="{'error': !details.controls.quantity.valid && details.controls.quantity.dirty}">
+          How many spaces are there?
+        </h4>
         <mat-button-toggle-group name="spaces-buttons"
                                  formControlName="quantity">
           <mat-button-toggle value="1">1</mat-button-toggle>
@@ -33,9 +37,8 @@
           <mat-button-toggle value="4">4</mat-button-toggle>
           <mat-button-toggle value="Many">Many</mat-button-toggle>
         </mat-button-toggle-group>
-        <mat-error *ngIf="!details.controls.quantity.valid && details.controls.quantity.dirty">This field is required</mat-error>
-        <h4>Additional Features</h4>
         <div class="additional-feat-container">
+          <h4>Optional</h4>
           <mat-checkbox name="fee"
                         formControlName="cost"
                         color="primary"
@@ -49,11 +52,13 @@
                    placeholder="Description">
           </mat-input-container>
         </div>
-        <div>
+        <div class="actions">
           <button mat-button
                   matStepperPrevious>Back</button>
-          <button mat-button
+          <button mat-raised-button
+                  color="primary"
                   matStepperNext
+                  [disabled]="!details.controls.quantity.valid && details.controls.quantity.dirty"
                   (click)="details.controls.quantity.markAsDirty()">Submit</button>
         </div>
       </form>
@@ -65,8 +70,11 @@
               [completed]="false">
       <!--HACK: Editable and completed because Can't reset the stepper-->
       Thank you for your help! The details have been submitted, we will review the submission and add it to the map accordingly.
-      <div>
+      <div class="actions">
         <button mat-button
+                (click)="onClose()">Close</button>
+        <button mat-raised-button
+                color="primary"
                 (click)="onClose()">OK</button>
       </div>
     </mat-step>

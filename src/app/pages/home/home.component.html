@@ -4,7 +4,7 @@
   <pa-places (placeUpdate)="onPlaceUpdate($event)"
              [placeValue]="placeValue"></pa-places>
 </div>
-<div>
+<div class="bottom-drawer">
   <pa-add-drawer></pa-add-drawer>
   <pa-edit-drawer></pa-edit-drawer>
   <pa-spots-list [spots]="spotsNearby$ | async"

@@ -10,11 +10,13 @@
               [editable]="!submitted">
       <form [formGroup]="selected">
         Tap to select the spot to edit.
-        <mat-error *ngIf="!selected.controls.spot.valid && selected.controls.spot.dirty">Please select a spot.</mat-error>
-        <div>
+        <div class="actions">
+          <button mat-button
+                  (click)="onClose()">Cancel</button>
           <button mat-raised-button
+                  color="primary"
                   matStepperNext
-                  (click)="selected.controls.spot.markAsDirty()">Next</button>
+                  [disabled]="!selected.controls.spot.valid">Next</button>
         </div>
       </form>
     </mat-step>
@@ -27,15 +29,14 @@
         <h4>How many spaces are there?</h4>
         <mat-button-toggle-group name="spaces-buttons"
                                  formControlName="quantity">
-          <mat-button-toggle value="0">None</mat-button-toggle>
+          <mat-button-toggle value="0">0</mat-button-toggle>
           <mat-button-toggle value="1">1</mat-button-toggle>
           <mat-button-toggle value="2">2</mat-button-toggle>
           <mat-button-toggle value="3">3</mat-button-toggle>
           <mat-button-toggle value="4">4</mat-button-toggle>
           <mat-button-toggle value="Many">Many</mat-button-toggle>
         </mat-button-toggle-group>
-        <mat-error *ngIf="!details.controls.quantity.valid && details.controls.quantity.dirty">This field is required</mat-error>
-        <h4>Additional Features</h4>
+
         <div class="additional-feat-container">
           <mat-checkbox name="fee"
                         formControlName="cost"
@@ -50,12 +51,12 @@
                    placeholder="Description">
           </mat-input-container>
         </div>
-        <div>
+        <div class="actions">
           <button mat-button
                   matStepperPrevious>Back</button>
-          <button mat-button
-                  matStepperNext
-                  (click)="details.controls.quantity.markAsDirty()">Submit</button>
+          <button mat-raised-button
+                  color="primary"
+                  matStepperNext>Submit</button>
         </div>
       </form>
     </mat-step>
@@ -66,8 +67,11 @@
               [completed]="false">
       <!--HACK: Editable and completed because Can't reset the stepper-->
       Thank you for your help! Your updaes have been submitted, we will review the submission and add it to the map accordingly.
-      <div>
+      <div class="actions">
         <button mat-button
+                (click)="onClose()">Close</button>
+        <button mat-raised-button
+                color="primary"
                 (click)="onClose()">OK</button>
       </div>
     </mat-step>

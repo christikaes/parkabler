@@ -16,7 +16,8 @@ import {
   MatIconModule,
   MatCheckboxModule,
   MatMenuModule,
-  MatButtonToggleModule
+  MatButtonToggleModule,
+  MatInputModule
 } from '@angular/material';
 
 // NgFire
@@ -86,6 +87,7 @@ import { MetersToFeetPipe } from './pipes';
     MatCheckboxModule,
     MatMenuModule,
     MatButtonToggleModule,
+    MatInputModule,
     // Firebase
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig)

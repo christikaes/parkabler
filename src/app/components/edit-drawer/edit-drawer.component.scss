@@ -1,16 +1,31 @@
+// Angular Material themeing
+@import '~@angular/material/theming';
+@import 'src/styles.scss';
+
 h4 {
     margin: 10px;
 }
 
+.mat-button-toggle{
+    color: rgba(0,0,0,0.9);
+}
+
 .mat-button-toggle-checked {
-    background-color: #3F51B5;
+    background-color: mat-color($primary);
     color: #E8EAF6;
 }
 
 .additional-feat-container { 
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
     max-width: 500px;
     margin: auto;
     text-align: left;
+}
+
+.actions {
+    margin-top: 10px;
+    display: flex;
+    justify-content: space-between;
 }
