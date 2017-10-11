@@ -6,6 +6,5 @@ export * from './map';
 export * from './add-drawer';
 export * from './edit-drawer';
 export * from './add-edit-button';
-export * from './stepper';
 export * from './help';
 export * from './info';

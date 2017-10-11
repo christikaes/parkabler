@@ -43,8 +43,6 @@ import {
   AddSpotComponent,
   EditComponent,
   AddEditButtonComponent,
-  StepperComponent,
-  StepComponent,
   HelpComponent,
   InfoComponent
 } from './components';
@@ -107,8 +105,6 @@ import { MetersToFeetPipe } from './pipes';
     MapControlsComponent,
     AddSpotComponent,
     AddEditButtonComponent,
-    StepComponent,
-    StepperComponent,
     MetersToFeetPipe,
     EditComponent
   ],
