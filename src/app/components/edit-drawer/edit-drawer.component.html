@@ -15,29 +15,29 @@
              [nextCopy]="'Submit'"
              (next)="onSubmit()">
       <h4>How many spaces are there?</h4>
-      <md-button-toggle-group name="spaces-buttons"
-                              [(ngModel)]="newSpotDetails.quantity">
-        <md-button-toggle value="0">None</md-button-toggle>
-        <md-button-toggle value="1">1</md-button-toggle>
-        <md-button-toggle value="2">2</md-button-toggle>
-        <md-button-toggle value="3">3</md-button-toggle>
-        <md-button-toggle value="4">4</md-button-toggle>
-        <md-button-toggle value="Many">Many</md-button-toggle>
-      </md-button-toggle-group>
+      <mat-button-toggle-group name="spaces-buttons"
+                               [(ngModel)]="newSpotDetails.quantity">
+        <mat-button-toggle value="0">None</mat-button-toggle>
+        <mat-button-toggle value="1">1</mat-button-toggle>
+        <mat-button-toggle value="2">2</mat-button-toggle>
+        <mat-button-toggle value="3">3</mat-button-toggle>
+        <mat-button-toggle value="4">4</mat-button-toggle>
+        <mat-button-toggle value="Many">Many</mat-button-toggle>
+      </mat-button-toggle-group>
       <h4>Additional Features</h4>
       <div class="additional-feat-container">
-        <md-checkbox name="fee"
-                     [(ngModel)]="newSpotDetails.cost"
-                     color="primary"
-                     [indeterminate]="true">
+        <mat-checkbox name="fee"
+                      [(ngModel)]="newSpotDetails.cost"
+                      color="primary"
+                      [indeterminate]="true">
           Fee Associated
-        </md-checkbox>
-        <md-input-container>
-          <input mdInput
+        </mat-checkbox>
+        <mat-input-container>
+          <input matInput
                  aria-label="description"
                  [(ngModel)]="newSpotDetails.description"
                  placeholder="Description">
-        </md-input-container>
+        </mat-input-container>
       </div>
     </pa-step>
 

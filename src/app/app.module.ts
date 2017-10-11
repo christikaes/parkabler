@@ -9,7 +9,15 @@ import { NgReduxModule, DevToolsExtension } from '@angular-redux/store';
 import { ACTION_PROVIDERS } from './actions';
 
 // NgMaterial
-import { MaterialModule } from '@angular/material';
+import {
+  MatButtonModule,
+  MatAutocompleteModule,
+  MatStepperModule,
+  MatIconModule,
+  MatCheckboxModule,
+  MatMenuModule,
+  MatButtonToggleModule
+} from '@angular/material';
 
 // NgFire
 import { AngularFireModule } from 'angularfire2';
@@ -72,8 +80,14 @@ import { MetersToFeetPipe } from './pipes';
     // Redux
     NgReduxModule,
     // Material
-    MaterialModule,
     BrowserAnimationsModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatIconModule,
+    MatStepperModule,
+    MatCheckboxModule,
+    MatMenuModule,
+    MatButtonToggleModule,
     // Firebase
     AngularFireDatabaseModule,
     AngularFireModule.initializeApp(firebaseConfig)

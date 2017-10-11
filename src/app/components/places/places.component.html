@@ -1,17 +1,31 @@
 <div class="clear-container">
-  <button md-mini-fab color="secondary" class="clear" *ngIf="placesControl.value" (click)="clearInput()">
-    <md-icon>clear</md-icon>
+  <button mat-mini-fab
+          color="secondary"
+          class="clear"
+          *ngIf="placesControl.value"
+          (click)="clearInput()">
+    <mat-icon>clear</mat-icon>
   </button>
 </div>
 
-<input class="places-search" placeholder="Find parking near..." [mdAutocomplete]="auto" [formControl]="placesControl">
+<input class="places-search"
+       placeholder="Find parking near..."
+       [matAutocomplete]="auto"
+       [formControl]="placesControl">
 
-<md-autocomplete #auto="mdAutocomplete" class="autocomplete">
-  <md-option *ngFor="let place of matchingPlaceCollection | async" [value]="place.text" (click)="selectOption(place)">
+<mat-autocomplete #auto="matAutocomplete"
+                  class="autocomplete">
+  <mat-option *ngFor="let place of matchingPlaceCollection | async"
+              [value]="place.text"
+              (click)="selectOption(place)">
     {{ place.place_name }}
-  </md-option>
-</md-autocomplete>
+  </mat-option>
+</mat-autocomplete>
 
-<button md-mini-fab color="primary" class="search" (click)="search()" data-help="places">
-  <md-icon>search</md-icon>
+<button mat-mini-fab
+        color="primary"
+        class="search"
+        (click)="search()"
+        data-help="places">
+  <mat-icon>search</mat-icon>
 </button>

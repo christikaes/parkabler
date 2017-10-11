@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MdIconRegistry } from '@angular/material';
+import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { AppModeActions } from '~/actions';
 
@@ -11,11 +11,11 @@ import { AppModeActions } from '~/actions';
 export class HeaderComponent {
 
   constructor(
-    private mdIconRegistry: MdIconRegistry,
+    private matIconRegistry: MatIconRegistry,
     private sanitizer: DomSanitizer,
     private appModeActions: AppModeActions
   ) {
-     mdIconRegistry.addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('assets/img/logo.svg'));
+     matIconRegistry.addSvgIcon('logo', sanitizer.bypassSecurityTrustResourceUrl('assets/img/logo.svg'));
   }
 
    onClickHome() {

@@ -1,18 +1,18 @@
 <!--<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }" [@slideUp]="state" [@peakUp]="state">-->
 <div class="container"
      [@slideUp]="state">
-  <button md-button
+  <button mat-button
           class="header"
           (click)="toggleExapand()"
           (panup)="onPanUp($event)"
           (pandown)="onPanDown($event)">
     {{numSpot}} SPOTS NEAR DESTINATION
-    <md-icon *ngIf="state!='open'">keyboard_arrow_up</md-icon>
-    <md-icon *ngIf="state=='open'">keyboard_arrow_down</md-icon>
+    <mat-icon *ngIf="state!='open'">keyboard_arrow_up</mat-icon>
+    <mat-icon *ngIf="state=='open'">keyboard_arrow_down</mat-icon>
   </button>
 
-  <md-nav-list class="content">
-    <!-- <md-list-item *ngIf="active"
+  <mat-nav-list class="content">
+    <!-- <mat-list-item *ngIf="active"
                   class="item"
                   (click)="onClickSpot(active)">
       <div class="details">
@@ -21,15 +21,15 @@
       <a class="cta"
          href="http://maps.google.com/maps?daddr={{active.geometry.coordinates[1]}},{{active.geometry.coordinates[0]}}"
          target="_blank">
-        <md-icon class="icon">directions</md-icon>
+        <mat-icon class="icon">directions</mat-icon>
         <span>
                 Directions
               </span>
       </a>
-    </md-list-item> -->
-    <md-list-item *ngFor="let spot of spots"
-                  class="item"
-                  (click)="onClickSpot(spot)">
+    </mat-list-item> -->
+    <mat-list-item *ngFor="let spot of spots"
+                   class="item"
+                   (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">
           <span class="large-text">{{spot.properties.quantity}} parking spot</span>
@@ -38,12 +38,12 @@
         <a class="cta"
            href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}"
            target="_blank">
-          <md-icon class="icon">directions</md-icon>
+          <mat-icon class="icon">directions</mat-icon>
           <span>
             Directions
           </span>
         </a>
       </div>
-    </md-list-item>
-  </md-nav-list>
+    </mat-list-item>
+  </mat-nav-list>
 </div>
