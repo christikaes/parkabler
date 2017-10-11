@@ -16,7 +16,7 @@ export class PlacesService {
     constructor(
         private http: Http,
         private ngRedux: NgRedux<IAppState>
-    ) {}
+    ) { }
 
     // Returns a featureCollection of possible points to resolve to
     public getAutocomplete(wordToAutocomplete: string): Observable<Place[]> {
@@ -28,10 +28,10 @@ export class PlacesService {
         // Bias autocomplete based on center of map
         const mapCenter = this.ngRedux.getState().map.center;
         autocompleteUrlSearchParams.set('proximity', `${mapCenter[0]},${mapCenter[1]}`);
-        autocompleteUrlSearchParams.set('bbox',
-            `${mapCenter[0] - 1},${mapCenter[1] - 1},${mapCenter[0] + 1},${mapCenter[1] + 1}`);
+        // autocompleteUrlSearchParams.set('bbox',
+        //     `${mapCenter[0] - 1},${mapCenter[1] - 1},${mapCenter[0] + 1},${mapCenter[1] + 1}`);
 
-        return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', {search: autocompleteUrlSearchParams})
+        return this.http.get(this.mapboxPlacesAPIUrl + wordToAutocomplete + '.json', { search: autocompleteUrlSearchParams })
             .map(this.extractData)
             .map(this.addCurrentLocation, this)
             .catch(this.handleError);
@@ -39,8 +39,8 @@ export class PlacesService {
 
     private extractData(res: Response) {
         const data = res.json();
-        if (!data ) {
-            return { };
+        if (!data) {
+            return {};
         }
 
         // Assumptions:
@@ -78,7 +78,7 @@ export class PlacesService {
         return thinFeatures;
     }
 
-    private handleError (error: Response | any) {
+    private handleError(error: Response | any) {
         let errMsg: string;
         if (error instanceof Response) {
             const body = error.json() || '';
