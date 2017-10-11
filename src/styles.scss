@@ -21,7 +21,6 @@ $custom-typography: mat-typography-config(
 );
 
 @include mat-core($custom-typography);
-@include mat-button-typography($custom-typography);
 
 $primary: mat-palette($mat-indigo);
 $secondary:  mat-palette($mat-grey, A200, A100, A400);
@@ -65,5 +64,20 @@ a {
 
   .mat-menu-item, .mat-icon {
     color: rgba(255, 255, 255, 0.87);
+  }
+}
+
+// Add/Edit spot stepper make sure that text does not overflow for small screens
+@media(max-width: 400px){
+  .mat-horizontal-stepper-header-container {
+    padding: 0 5%;
+  }
+  .mat-horizontal-stepper-header {
+    margin: auto -10%;
+  }
+
+  .mat-stepper-horizontal-line {
+    padding: -5%;
+    visibility: hidden;
   }
 }
