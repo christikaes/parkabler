@@ -5,6 +5,7 @@
   color: rgba(255, 255, 255, 0.87);
   font-size: 30px;
   align-items: center;
+  height: 60px;
 }
 
 mat-button {
@@ -22,9 +23,11 @@ span {
 }
 
 .logo {
-  width: 60px;
+  width: 40px;
   height: 60px;
   color: #FFFFFF;
+  margin-right: 5px;
+  opacity: 0.95
 }
 
 .park {
