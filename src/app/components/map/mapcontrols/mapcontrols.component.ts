@@ -11,6 +11,8 @@ export class MapControlsComponent {
   @Output() recenterChange = new EventEmitter();
   @Input() recenterAvailable;
 
+  public showGeolocationRequest = false;
+
   constructor() { }
 
   changeZoom(z: number): void {
@@ -18,6 +20,10 @@ export class MapControlsComponent {
   }
 
   recenter() {
+    if (!this.recenterAvailable) {
+      this.showGeolocationRequest = !this.showGeolocationRequest;
+    }
+
     this.recenterChange.emit();
   }
 }

@@ -17,8 +17,14 @@ export class GeolocationService {
 
   public watch() {
     const isAvailable = this.isAvailable();
-    if (isAvailable) {
+    if (!isAvailable) {
       console.log('ERROR: geolocation not available');
+      return;
+    }
+
+    if (this.watchId) {
+      console.log('Already watching geolocation');
+      return;
     }
 
     // Set initial position
@@ -37,11 +43,13 @@ export class GeolocationService {
     }, (err) => {
       console.log('ERROR: ' + err.message);
       this.geolocationAvailability$.next(false);
+      this.clearWatch();
     });
   }
 
   public clearWatch() {
     window.navigator.geolocation.clearWatch(this.watchId);
+    this.watchId = null;
   }
 
   public isAvailable() {

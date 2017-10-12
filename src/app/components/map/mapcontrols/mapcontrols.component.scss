@@ -1,3 +1,6 @@
+@import '~@angular/material/theming';
+@import 'src/styles.scss';
+
 .map-controls{
   position: absolute;
   bottom: 40px;
@@ -22,4 +25,34 @@
   position: absolute;
   bottom: 90px;
   right: 0px;
+}
+
+.geolocationRequest {
+  position: absolute;
+  right: 60px;
+  width: 100px;
+  background-color: #ffffff;
+  border: 1px solid mat-color($primary);
+  padding: 5px 5px 5px 30px;
+  text-align: left;
+  border-radius: 4px;
+
+  .arrow {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    top: 10px;
+    right: -9px;
+    background-color: #ffffff;
+    border-right: 1px solid mat-color($primary);
+    border-bottom: 1px solid mat-color($primary);
+    transform:rotate(-45deg);
+  }
+
+  .close {
+    position: absolute;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+  }
 }

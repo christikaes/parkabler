@@ -18,10 +18,12 @@ export class GeolocationActions {
   public watch() {
     this.geolocationService.watch();
 
+    // TODO: DistinctUntilChanges doesn't work for Subjects
+
     // Update the coordinates whenever the currentLocation changes
     const geolocationCoordinates$ = this.geolocationService.getCoordinates();
     geolocationCoordinates$.distinctUntilChanged().subscribe((coordinates) => {
-        this.setGeolocation(coordinates);
+      this.setGeolocation(coordinates);
     });
 
     // Update the availability whenever the the availability changes

@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { select, NgRedux } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 import { GeolocationService } from '~/services';
-import { DestinationActions, MapActions, SpotsActions } from '~/actions';
+import { DestinationActions, MapActions, SpotsActions, GeolocationActions } from '~/actions';
 import { IAppState, Spots, Spot } from '~/store';
 const turfHelper = require('@turf/helpers');
 
@@ -41,6 +41,7 @@ export class MapComponent implements AfterViewInit {
     private geoLocation: GeolocationService,
     private destinationActions: DestinationActions,
     private spotsActions: SpotsActions,
+    private geolocationActions: GeolocationActions,
     private mapActions: MapActions,
     private ngRedux: NgRedux<IAppState>
   ) { }
@@ -105,6 +106,11 @@ export class MapComponent implements AfterViewInit {
   }
 
   recenterChange(): void {
+    // If the geolocation is not found, then try to watch it
+    if (!this.geolocationAvailable) {
+      this.geolocationActions.watch();
+    }
+
     // Set destination to current location
     this.destinationActions.setToCurrentLocation();
   }

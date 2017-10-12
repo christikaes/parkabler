@@ -13,9 +13,21 @@
         <mat-icon>remove</mat-icon>
       </button>
     </div>
+
+    <!-- Recenter -->
     <button mat-mini-fab
             class="recenter"
-            (click)="recenter()"
-            *ngIf="recenterAvailable"><mat-icon>my_location</mat-icon></button>
+            (click)="recenter()">
+            <mat-icon *ngIf="recenterAvailable">my_location</mat-icon>
+            <mat-icon *ngIf="!recenterAvailable">location_disabled</mat-icon>
+          </button>
+    <div class="geolocationRequest"
+         *ngIf="showGeolocationRequest && !recenterAvailable">
+      Could not find your location. Please turn on GPS
+
+      <mat-icon class="close"
+                (click)="showGeolocationRequest = false">close</mat-icon>
+      <div class="arrow"></div>
+    </div>
   </div>
 </div>

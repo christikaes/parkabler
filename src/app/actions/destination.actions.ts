@@ -9,7 +9,7 @@ export class DestinationActions {
 
   constructor(
     private ngRedux: NgRedux<IAppState>
-  ) {}
+  ) { }
 
   public setDestination(destination: GeoJSON.Position) {
     this.ngRedux.dispatch({
@@ -21,6 +21,12 @@ export class DestinationActions {
 
   public setToCurrentLocation() {
     const currentLocation = this.ngRedux.getState().geolocation.coordinates;
+    this.setCurrentLocation(true);
+
+    if (!currentLocation) {
+      return;
+    }
+
     this.ngRedux.dispatch({
       type: DestinationActions.SET,
       payload: currentLocation
@@ -41,7 +47,11 @@ export class DestinationActions {
       }
     });
 
-    this.setCurrentLocation(true);
+    this.ngRedux.dispatch({
+      type: 'PA/MAP/SET/CENTER',
+      payload: currentLocation
+    });
+
   }
 
   private setCurrentLocation(isCurrentLocation: boolean) {

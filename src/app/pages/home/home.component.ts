@@ -2,8 +2,7 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import {
   PlacesActions,
   SpotsActions,
-  AppModeActions,
-  GeolocationActions
+  AppModeActions
 } from '~/actions';
 import { Place, AppModes } from '~/util';
 import { select } from '@angular-redux/store';
@@ -42,13 +41,10 @@ export class HomeComponent implements OnInit {
   constructor(
     private placesActions: PlacesActions,
     private spotsActions: SpotsActions,
-    private geolocationActions: GeolocationActions,
     private appModeActions: AppModeActions
   ) { }
 
   ngOnInit() {
-    this.geolocationActions.watch();
-
     // Get spots from the database
     this.spotsActions.getDatabaseSpots();
 
