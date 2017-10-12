@@ -89,17 +89,16 @@ export class EditComponent implements OnInit {
     this.submitted = true;
     // Create a new Spot and add it to the addSpots
     const newSpot = {
-      ...this.selected.value,
+      ...this.selected.controls.spot.value,
       properties: {
-        ...this.selected.value.properties,
+        ...this.selected.controls.spot.value.properties,
         addedBy: this.ngRedux.getState().userID,
         verified: false,
         ...this.details.value
       }
     };
 
-    // TODO: PUSH
-    // this.spotsActions.updateUserSpot(newSpot);
+    this.spotsActions.updateUserSpot(newSpot);
   }
 
   public onStepChange({ selectedIndex, previouslySelectedIndex }) {
