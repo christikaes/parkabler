@@ -13,7 +13,6 @@
 <!--<pa-map-js *ngIf="!supportsGL" [zoom]="zoom" [mode]="mode" [center]="center" [spots]="spots"></pa-map-js>-->
 
 <pa-map-controls (zoomChange)="setZoom(zoom + $event)"
-                 (modeChange)="setMode($event)"
                  (recenterChange)="recenterChange()"
                  [recenterAvailable]="geolocationAvailable">
 </pa-map-controls>

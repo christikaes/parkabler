@@ -23,7 +23,7 @@ export class AddSpotComponent implements OnInit {
 
   @ViewChild('stepper') stepper;
 
-  @select() private appMode$: Observable<AppModes>;
+  @select() public appMode$: Observable<AppModes>;
   @select(['map', 'center']) private mapCenter$: Observable<GeoJSON.Position>;
 
   constructor(
