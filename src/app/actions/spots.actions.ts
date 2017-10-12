@@ -77,6 +77,29 @@ export class SpotsActions {
             type: SpotsActions.SET_ACTIVE_SPOT,
             payload: spot
         });
+
+        if (spot) {
+            // If there is a destnation and this is not a nearby spot, then try add its distance
+            const destination = this.ngRedux.getState().destination.coordinates;
+            const isNearbySpot = this.ngRedux.getState().spots.nearby.map(s => s.id).includes(spot.id);
+            if (destination && !isNearbySpot) {
+                // Get the walking distances and async set them
+                console.log('GETTING WALKING DIST');
+                this.distanceService.getWalkingDistances([spot], destination)
+                    .subscribe((distances) => {
+                        const newSpot = {
+                            ...spot, properties: {
+                                ...spot.properties,
+                                distanceToDestination: distances[0]
+                            }
+                        };
+                        this.ngRedux.dispatch({
+                            type: SpotsActions.SET_ACTIVE_SPOT,
+                            payload: newSpot
+                        });
+                    });
+            }
+        }
     }
 
 }

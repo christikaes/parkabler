@@ -1,4 +1,4 @@
-import { Input, Component, OnInit, OnChanges, SimpleChanges } from '@angular/core';
+import { Input, Component, OnInit, OnChanges, SimpleChanges, ViewChild } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { AppModes } from '~/util';
 import { Observable } from 'rxjs';
@@ -14,13 +14,16 @@ import Animations from '~/animations';
   animations: Animations
 })
 export class SpotsListComponent implements OnInit, OnChanges {
-  @Input() public spots: Spots;
+  @Input() public nearby: Spots;
   @Input() public active: Spot;
+
+  @ViewChild('spotsList') spotsList;
 
   @select() private appMode$: Observable<AppModes>;
 
   public state = 'closed';
   public numSpot = 0;
+  public spots = [];
 
   private appMode;
 
@@ -34,10 +37,10 @@ export class SpotsListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.appMode = mode;
-      if (mode !== AppModes.Navigate) {
+      if (mode !== AppModes.Navigate && !this.active) {
         this.state = 'closed';
       } else {
-        if (this.numSpot > 0) {
+        if (this.spots.length > 0) {
           this.state = 'open';
         }
       }
@@ -46,24 +49,45 @@ export class SpotsListComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     for (const change in changes) {
-      if (change === 'spots') {
-        const spots = changes[change].currentValue;
-        this.numSpot = spots.length;
-        if (this.numSpot > 0) {
-          this.state = 'open';
-          this.appModeActions.setModeSpotsList();
-        } else {
-          this.state = 'closed';
-          if (this.appMode !== AppModes.Add && this.appMode !== AppModes.Edit) {
-            this.appModeActions.setModeHome();
-          }
-        }
+      if (change === 'nearby') {
+        this.updateSpots();
       } else if (change === 'active') {
-        // TODO
+        this.updateSpots();
+        // Open the drawer if there was a change in the active value
+        const newActive = changes[change].currentValue;
+        const prevActive = changes[change].previousValue;
+        if ((newActive && prevActive && newActive.id !== prevActive.id)
+          || (newActive && !prevActive)) {
+          this.state = 'open';
+        }
       } else {
         throw new Error('Uncaught change: ' + change);
       }
     }
+  }
+
+  private updateSpots() {
+    // Update the spots
+    this.spots = [...this.nearby];
+    if (this.active && !this.nearby.map(s => s.id).includes(this.active.id)) {
+      this.spots.push(this.active);
+    }
+
+    // Open the drawer as appropriate
+    if (this.spots.length > 0) {
+      if (this.state === 'closed') {
+        this.state = 'open';
+      }
+      this.appModeActions.setModeSpotsList();
+    } else {
+      this.state = 'closed';
+      if (this.appMode !== AppModes.Add && this.appMode !== AppModes.Edit) {
+        this.appModeActions.setModeHome();
+      }
+    }
+
+    // Scroll to the active element
+    this.spotsList.scrollTop = 20;
   }
 
   toggleExapand() {

@@ -64,8 +64,9 @@ $list-item-height: 75px;
   }
 }
 
-.selected-item {
-  background-color: #bdd9f5;
+#active {
+  background-color: #CFD8DC;
+  font-weight: 500;
 }
 
 mat-nav-list {

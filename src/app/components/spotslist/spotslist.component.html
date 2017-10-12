@@ -1,39 +1,29 @@
 <!--<div class="container" *ngIf="enabled && !hidden" [ngClass]="{ expanded: expanded }" [@slideUp]="state" [@peakUp]="state">-->
+
 <div class="container"
      [@slideUp]="state">
-  <button mat-button
-          class="header"
-          (click)="toggleExapand()"
-          (panup)="onPanUp($event)"
-          (pandown)="onPanDown($event)">
-    {{numSpot}} SPOTS NEAR DESTINATION
+  <a mat-button
+     class="header"
+     (click)="toggleExapand()"
+     (panup)="onPanUp($event)"
+     (pandown)="onPanDown($event)">
     <mat-icon *ngIf="state!='open'">keyboard_arrow_up</mat-icon>
     <mat-icon *ngIf="state=='open'">keyboard_arrow_down</mat-icon>
-  </button>
+    {{nearby.length > 0 ? nearby.length + ' SPOTS NEAR DESTINATION' : 'SPOT DETAILS'}}
+    <mat-icon *ngIf="state!='open'">keyboard_arrow_up</mat-icon>
+    <mat-icon *ngIf="state=='open'">keyboard_arrow_down</mat-icon>
+  </a>
 
-  <mat-nav-list class="content">
-    <!-- <mat-list-item *ngIf="active"
-                  class="item"
-                  (click)="onClickSpot(active)">
-      <div class="details">
-        <span class="large-text">{{active.properties.quantity}} parking spot</span>
-      </div>
-      <a class="cta"
-         href="http://maps.google.com/maps?daddr={{active.geometry.coordinates[1]}},{{active.geometry.coordinates[0]}}"
-         target="_blank">
-        <mat-icon class="icon">directions</mat-icon>
-        <span>
-                Directions
-              </span>
-      </a>
-    </mat-list-item> -->
+  <mat-nav-list class="content"
+                #spotsList>
     <mat-list-item *ngFor="let spot of spots"
                    class="item"
+                   [attr.id]="active && spot.id === active.id ? 'active' : null"
                    (click)="onClickSpot(spot)">
       <div class="item-content">
         <div class="details">
           <span class="large-text">{{spot.properties.quantity}} parking spot</span>
-          <span> within {{spot.properties.distanceToDestination | paMetersToFeet}} feet </span>
+          <span *ngIf="spot.properties.distanceToDestination"> within {{spot.properties.distanceToDestination | paMetersToFeet}} feet </span>
         </div>
         <a class="cta"
            href="http://maps.google.com/maps?daddr={{spot.geometry.coordinates[1]}},{{spot.geometry.coordinates[0]}}"
