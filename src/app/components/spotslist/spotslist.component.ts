@@ -54,7 +54,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
           this.appModeActions.setModeSpotsList();
         } else {
           this.state = 'closed';
-          if (this.appMode !== AppModes.Add) {
+          if (this.appMode !== AppModes.Add && this.appMode !== AppModes.Edit) {
             this.appModeActions.setModeHome();
           }
         }
