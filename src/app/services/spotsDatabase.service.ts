@@ -15,7 +15,7 @@ export class SpotsDatabaseService {
     private db: AngularFireDatabase
   ) {
     // this.spots = Observable.of(data.spots);
-    this.spots = db.list('compiled');
+    this.spots = db.list('spotsall');
   }
 
   // Gets all the spots from the database
