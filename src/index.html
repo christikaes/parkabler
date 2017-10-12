@@ -1,35 +1,94 @@
 <!doctype html>
 <html>
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
-  <meta name="theme-color" content="#3F51B5">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta name="theme-color"
+          content="#3F51B5">
 
-  <base href="./">
+    <base href="./">
 
-  <link rel="icon" type="image/x-icon" href="assets/img/favicon.ico">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Raleway:400,500,600,700,800" rel="stylesheet">
-  <link href='assets/vendor/mapbox-gl.css' rel='stylesheet' />
-  <link href='assets/manifest.json' rel='manifest' />
+    <link rel="icon"
+          type="image/x-icon"
+          href="assets/img/favicon.ico">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons|Raleway:400,500,600,700,800"
+          rel="stylesheet">
+    <link href='assets/vendor/mapbox-gl.css'
+          rel='stylesheet' />
+    <link href='assets/manifest.json'
+          rel='manifest' />
 
-  <title>ParkAbler</title>
-  <style>
-    .loading-background {
-      max-height: 100%;
-      height: auto;
-      position: fixed;
-      left: 0;
-      right: 0;
-      margin: 0 auto;
-    }
-  </style>
-</head>
+    <title>ParkAbler</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
 
-<body>
-  <pa-app>
-    <img src="assets/img/loading.png" class="loading-background" />
-  </pa-app>
-</body>
+      .loading-background {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: #2b2b2b;
+        background-image: url(assets/img/map.jpg);
+        background-position: center;
+        background-size: cover;
+      }
+
+      .loading-overlay {
+        background: linear-gradient(#001fff, #00861d);
+        opacity: 0.1;
+        width: 100%;
+        height: 100%;
+        position: absolute;
+      }
+
+      .loading-img {
+        width: 100%
+      }
+
+      .loading-spinner {
+        position: absolute;
+        bottom: 30px;
+      }
+
+      .loading-text {
+        font-family: 'Raleway', 'Arial', 'sans-serif';
+        color: #ffffff;
+        margin: 5px;
+        font-weight: 400;
+      }
+
+      .spacer {
+        height: 50px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <pa-app>
+      <div class="loading-background">
+        <div class="loading-overlay"></div>
+        <img src="assets/img/logo.svg"
+             alt="logo" />
+        <div class="spacer"></div>
+        <h1 class="loading-text">parkabler</h1>
+        <h2 class="loading-text">find parking fast</h2>
+        <div class="spacer"></div>
+        <img src="assets/img/loading.svg"
+             alt="loading" />
+      </div>
+    </pa-app>
+  </body>
 
 </html>
