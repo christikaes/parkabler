@@ -70,5 +70,31 @@ export default [
         animate('300ms', style({ opacity: 0 }))
       ]
     )
+  ]),
+  trigger('fadeRight', [
+    transition(
+      ':enter', [
+        style({
+          opacity: 0,
+          transform: 'translate3d(20%, 0, 0)'
+        }),
+        animate('300ms', style({
+          opacity: 1,
+          transform: 'translate3d(0, 0, 0)'
+        }))
+      ]
+    ),
+    transition(
+      ':leave', [
+        style({
+          opacity: 1,
+          transform: 'translate3d(0, 0, 0)'
+        }),
+        animate('300ms', style({
+          opacity: 0,
+          transform: 'translate3d(20%, 0, 0)'
+        }))
+      ]
+    )
   ])
 ];

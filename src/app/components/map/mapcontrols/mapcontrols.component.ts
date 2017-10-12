@@ -1,9 +1,11 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import Animations from '~/animations';
 
 @Component({
   selector: 'pa-map-controls',
   templateUrl: './mapcontrols.component.html',
-  styleUrls: ['./mapcontrols.component.scss']
+  styleUrls: ['./mapcontrols.component.scss'],
+  animations: Animations
 })
 export class MapControlsComponent {
   @Output() zoomChange = new EventEmitter();

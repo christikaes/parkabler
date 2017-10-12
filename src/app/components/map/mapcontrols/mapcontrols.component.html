@@ -22,6 +22,7 @@
             <mat-icon *ngIf="!recenterAvailable">location_disabled</mat-icon>
           </button>
     <div class="geolocationRequest"
+         [@fadeRight]
          *ngIf="showGeolocationRequest && !recenterAvailable">
       Could not find your location. Please turn on GPS
 
