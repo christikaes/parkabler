@@ -8,7 +8,7 @@ export const steps = [
     {
         dataSelector: 'places',
         title: 'Search',
-        message: 'Get started by searching for your destination. You can also hit the near me to find parking near your location.',
+        message: 'Get started by searching for your destination. You can also select `Near Me` to find parking near your location.',
         img: '/assets/img/tutorial/tutorial.gif'
     },
     {
@@ -19,8 +19,14 @@ export const steps = [
     },
     {
         dataSelector: 'add-spot',
-        title: 'Add/Edit Spots',
-        message: 'Parkabler is powered by contributions from the community. You can also add new spots that we don\'t know about yet and edit spaces with incorrect information.',
+        title: 'Add Spots',
+        message: 'Parkabler is powered by contributions from the community. See a spot that is not on our map? Add it from here.',
+        img: '/assets/img/tutorial/tutorial.gif'
+    },
+    {
+        dataSelector: 'add-spot',
+        title: 'Edit Spots',
+        message: 'Help keep our info current. If you see a spot that has incorrect information, edit it here.',
         img: '/assets/img/tutorial/tutorial.gif'
     },
     {
@@ -32,13 +38,13 @@ export const steps = [
     {
         dataSelector: 'rules',
         title: 'Info',
-        message: 'Find information about parking rules in your city here. You can also find information about this app.',
+        message: 'Find information about parking rules in your city and about the app here.',
         img: '/assets/img/tutorial/tutorial.gif'
     },
     {
         dataSelector: 'help',
         title: 'Help',
-        message: 'You can always open this help from here',
+        message: 'You can always access this tutorial from here. Happy parking!',
         img: '/assets/img/tutorial/tutorial.gif'
     }
 ];
