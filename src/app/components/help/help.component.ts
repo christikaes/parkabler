@@ -92,6 +92,8 @@ export class HelpComponent {
 
     this.update();
     this.open = true;
+
+    window['ga']('send', 'event', 'appmode', 'help', 'release-1');
   }
 
 }

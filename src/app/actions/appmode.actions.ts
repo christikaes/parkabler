@@ -30,6 +30,8 @@ export class AppModeActions {
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_HOME
         });
+
+        window['ga']('send', 'event', 'appmode', 'home', 'release-1');
     }
 
     public setModeAdd() {
@@ -41,6 +43,7 @@ export class AppModeActions {
             type: AppModeActions.SET_MODE_ADD
         });
 
+        window['ga']('send', 'event', 'appmode', 'add', 'release-1');
     }
 
     public unsetMode() {
@@ -60,6 +63,8 @@ export class AppModeActions {
         this.ngRedux.dispatch({
             type: AppModeActions.SET_MODE_EDIT
         });
+
+        window['ga']('send', 'event', 'appmode', 'edit', 'release-1');
     }
 
     public setModeSpotsList() {
@@ -69,6 +74,8 @@ export class AppModeActions {
                 type: AppModeActions.SET_MODE_NAVIGATE
             });
         }
+
+        window['ga']('send', 'event', 'appmode', 'spots-list', 'release-1');
     }
 
 }
