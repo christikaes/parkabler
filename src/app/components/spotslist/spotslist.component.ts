@@ -37,7 +37,7 @@ export class SpotsListComponent implements OnInit, OnChanges {
   ngOnInit() {
     this.appMode$.subscribe((mode: AppModes) => {
       this.appMode = mode;
-      if (mode !== AppModes.Navigate && !this.active) {
+      if (mode === AppModes.Add || mode === AppModes.Edit || (mode !== AppModes.Navigate && !this.active)) {
         this.state = 'closed';
       } else {
         if (this.spots.length > 0) {
