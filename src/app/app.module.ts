@@ -75,6 +75,7 @@ import { MetersToFeetPipe } from './pipes';
 @NgModule({
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpModule,
     FormsModule,
     ReactiveFormsModule,
@@ -82,7 +83,6 @@ import { MetersToFeetPipe } from './pipes';
     // Redux
     NgReduxModule,
     // Material
-    BrowserAnimationsModule,
     MatAutocompleteModule,
     MatButtonModule,
     MatIconModule,
